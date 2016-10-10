@@ -1,0 +1,29 @@
+<%- model_class = Heb412Gen::Doc -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= Heb412Gen::Doc.human_attribute_name(:nombre) %>:</strong></dt>
+  <dd><%= @doc.nombre if @doc.nombre %></dd>
+  <dt><strong><%= Heb412Gen::Doc.human_attribute_name(:fuente) %>:</strong></dt>
+  <dd><%= @doc.fuente if @doc.fuente %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+    heb412_gen.docs_path, :class => 'btn'  
+  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+    heb412_gen.edit_doc_path(h @doc.id), :class => 'btn' 
+  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+    heb412_gen.doc_path(h @doc.id),
+    :method => 'delete',
+    :data => { :confirm => 
+      t('.confirm', :default => 
+        t("helpers.links.confirm", :default => 'Are you sure?')) 
+  },
+    :class => 'btn btn-danger' 
+  %>
+</div>

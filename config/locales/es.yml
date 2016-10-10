@@ -1,0 +1,9 @@
+es:
+  attributes:
+    fechacreacion: Creación
+    fechadeshabilitacion: Deshabilitación 
+  activerecord:
+    attributes:
+      "sal7711_web/acto":
+        presponsable: Agente de Persecución
+

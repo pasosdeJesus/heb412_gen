@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: sipdes
+  password: xyz
+  host: /var/www/var/run/postgresql
+
+development:
+  <<: *default
+  database: heb412gen_des
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: heb412gen_pru
+
+production:
+  <<: *default
+  database: heb412gen_prod
