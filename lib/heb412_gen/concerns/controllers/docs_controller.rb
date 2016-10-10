@@ -11,7 +11,8 @@ module Heb412Gen
           include ActionView::Helpers::AssetUrlHelper
           include Sip::FormatoFechaHelper
   
-          before_action :set_doc, only: [:edit, :update, :destroy, :show]
+          before_action :set_doc, only: [:edit, :update, :destroy, 
+                                         :show, :impreso]
 
           # GET /docs/new
           def new
@@ -83,6 +84,22 @@ module Heb412Gen
               }
               format.json { head :no_content }
             end
+          end
+
+          def impreso
+            puts "ajdunto_file_name=#{@doc.adjunto_file_name}"
+            puts "ruta_doc=#{@doc.ruta_doc}"
+            libro = Rspreadsheet.open(@doc.ruta_doc)
+            hoja = libro.worksheets(1)
+            hoja[5,2] = 7
+            hoja[6,2] = Date.today
+            n=File.join('/tmp', 'otronombre.ods')
+            libro.save(n)
+
+            send_file n, x_sendfile: true
+              #type: 'application/vnd.oasis.opendocument.text',
+              #disposition: 'attachment',
+              #filename: 'elnombre.ods'
           end
 
           private

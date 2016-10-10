@@ -63,6 +63,8 @@ gem 'twitter_cldr'
 # Maneja adjuntos
 gem "paperclip"#, "~> 4.1"
 
+gem 'rspreadsheet'
+
 # Zonas horarias
 gem "tzinfo"
 

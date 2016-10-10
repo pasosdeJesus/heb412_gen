@@ -17,6 +17,10 @@
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
     heb412_gen.edit_doc_path(h @doc.id), :class => 'btn' 
   %>
+  <%= link_to t('Generar Hoja de Calculo'),
+    heb412_gen.doc_path(h @doc.id) + '/impreso', :class => 'btn',
+    :target => '_blank' 
+  %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
     heb412_gen.doc_path(h @doc.id),
     :method => 'delete',
