@@ -48,6 +48,9 @@ gem "font-awesome-rails"
 # Formularios simples 
 gem "simple_form"
 
+# Formularios anidados (algunos con ajax)
+gem "cocoon", git: "https://github.com/vtamara/cocoon.git"
+
 # Autenticación y roles
 gem "devise"
 gem "devise-i18n"

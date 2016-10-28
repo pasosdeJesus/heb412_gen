@@ -4,6 +4,7 @@ es:
     fechadeshabilitacion: Deshabilitación 
   activerecord:
     attributes:
-      "sal7711_web/acto":
-        presponsable: Agente de Persecución
+      "heb412_gen/doc":
+        nombremenu: Nombre por presentar en aplicación
+        tipodoc: Tipo de documento
 

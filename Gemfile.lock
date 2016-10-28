@@ -18,6 +18,12 @@ GIT
       twitter_cldr
       will_paginate
 
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 20f8f3bab2fee21309c57b586f5fab9921ac0894
+  specs:
+    cocoon (1.2.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -259,6 +265,7 @@ DEPENDENCIES
   byebug
   cancancan
   chosen-rails
+  cocoon!
   coffee-rails (~> 4.2)
   colorize
   compass-rails

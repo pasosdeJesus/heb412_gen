@@ -8,6 +8,12 @@ module Heb412Gen
 
         included do
 
+          has_many :campohc, class_name: '::Heb412Gen::Campohc',
+            foreign_key: 'doc_id', validate: true, 
+            dependent: :destroy
+          accepts_nested_attributes_for :campohc, allow_destroy: true,
+            reject_if: :all_blank
+
           has_attached_file :adjunto, :path => :ruta_doc
 
           def ruta_doc

@@ -1,0 +1,22 @@
+<tr class='nested-fields'>
+  <td>
+    <%= f.input :nombrecampo,
+      collection: Ability::acciones_plantillas['Listado de Casos'][
+        :campos],
+      label: false
+    %>
+  </td>
+  <td>
+    <%= f.input :columna,
+      collection: ('A'..'CZ').to_a,
+      label: false
+    %>
+  </td>
+  <td>
+    <%= f.input :id, as: :hidden %>
+    <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger' 
+    %>
+    <div><%= f.error_notification %></div>
+  </td>
+</tr>

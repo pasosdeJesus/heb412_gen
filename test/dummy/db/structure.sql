@@ -176,6 +176,38 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: heb412_gen_campohc; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE heb412_gen_campohc (
+    id integer NOT NULL,
+    doc_id integer NOT NULL,
+    nombrecampo character varying(127) NOT NULL,
+    columna character varying(5) NOT NULL,
+    fila integer
+);
+
+
+--
+-- Name: heb412_gen_campohc_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE heb412_gen_campohc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_campohc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE heb412_gen_campohc_id_seq OWNED BY heb412_gen_campohc.id;
+
+
+--
 -- Name: heb412_gen_doc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -192,7 +224,10 @@ CREATE TABLE heb412_gen_doc (
     adjunto_file_name character varying,
     adjunto_content_type character varying,
     adjunto_file_size integer,
-    adjunto_updated_at timestamp without time zone
+    adjunto_updated_at timestamp without time zone,
+    nombremenu character varying(127),
+    vista character varying(255),
+    filainicial integer
 );
 
 
@@ -753,6 +788,13 @@ CREATE TABLE usuario (
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY heb412_gen_campohc ALTER COLUMN id SET DEFAULT nextval('heb412_gen_campohc_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY heb412_gen_doc ALTER COLUMN id SET DEFAULT nextval('heb412_gen_doc_id_seq'::regclass);
 
 
@@ -800,6 +842,14 @@ ALTER TABLE ONLY sip_clase
 
 ALTER TABLE ONLY sip_etiqueta
     ADD CONSTRAINT etiqueta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: heb412_gen_campohc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_campohc
+    ADD CONSTRAINT heb412_gen_campohc_pkey PRIMARY KEY (id);
 
 
 --
@@ -1000,6 +1050,14 @@ ALTER TABLE ONLY sip_departamento
 
 
 --
+-- Name: fk_rails_1e5f26c999; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_campohc
+    ADD CONSTRAINT fk_rails_1e5f26c999 FOREIGN KEY (doc_id) REFERENCES heb412_gen_doc(id);
+
+
+--
 -- Name: fk_rails_2dd6d3dac3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1125,6 +1183,6 @@ ALTER TABLE ONLY sip_ubicacion
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150503120915'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150707164448'), ('20150710114451'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20151020203421'), ('20160519195544'), ('20161009111443'), ('20161010152631');
+INSERT INTO schema_migrations (version) VALUES ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150503120915'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150707164448'), ('20150710114451'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20151020203421'), ('20160519195544'), ('20161009111443'), ('20161010152631'), ('20161026110802'), ('20161027233011');
 
 

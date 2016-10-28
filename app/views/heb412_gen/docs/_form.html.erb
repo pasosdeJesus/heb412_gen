@@ -6,18 +6,20 @@
   <div class="row">
     <div id="campos" class="col-sm-offset-0 col-sm-4">
 
+      <%= render partial: 'sip/hogar/errores', locals: { f: f } %>
+
       <%= f.input(
         :tipodoc, 
         collection: [ #[:ADJUNTO, :A],
                       #[:CARPETA, :C],
-                      ["PLANTILLA DE HOJA DE CÁLCULO", :H], 
-                      #["PLANTILLA DE DOCUMENTO", :D], 
+                      ["PLANTILLA: HOJA DE CÁLCULO(ODS) PARA UN LISTADO DE REGISTROS", :H], 
+                      #["PLANTILLA: HOJA DE CÁLCULO(ODS) PARA UN REGISTRO", :U], 
+                      #["PLANTILLA: DOCUMENTO(ODT) PARA UN REGISTRO", :D], 
+                      #["PLANTILLA: DOCUMENTO(ODT) PARA UN LISTADO DE REGISTROS", :M], 
                       #[:URL, :U] 
                       ], 
         include_blank: false ) 
       %>
-
-      <%= render partial: 'sip/hogar/errores', locals: { f: f } %>
 
       <% if !f.object || !f.object.id || !f.object.adjunto_file_name %>
         <%= f.input :adjunto, as: :file, label: 'Archivo' %>
@@ -28,8 +30,59 @@
         </div>
       <% end %>
   
-      <%= f.input :fuente%> 
-  
+      <%= f.input :fuente,
+        input_html: {
+        "data-toggle" => 'tooltip',
+        "title" => 'URL o referencia para dar crédito'
+      } %> 
+
+      <%= f.input :vista, 
+        collection: ::Ability::acciones_plantillas.keys,
+        include_blank: false,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Desde que parte de la aplicación se podrá llenar la plantilla'
+        } %>
+      <%= f.input :nombremenu,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Nombre de esta plantilla para humanos'
+        } %>
+
+      <%= f.input :descripcion %> 
+      <%= f.input :filainicial,
+         input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro'
+        } %>
+
+
+      <div id="campos">
+        <table border=1 width="100%">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Columna</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="campohc">
+            <%= f.simple_fields_for :campohc do |c| %>
+              <%= render 'campohc', :f => c %>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="links">
+          <%= link_to_add_association 'Añadir Campo', f, 
+            :campohc,
+            :"data-association-insertion-node" => "tbody#campohc", 
+            :"data-association-insertion-method" => "append", 
+            partial: 'campohc',
+            :class => 'btn-primary' %>
+        </div>
+      </div>
+
       <div class="form-actions abajocentrado">
         <%= f.button :submit, :class => 'btn-primary' %>
 

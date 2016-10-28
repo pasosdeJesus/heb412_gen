@@ -45,6 +45,12 @@ module Heb412Gen
           def create
             authorize! :edit, Heb412Gen::Doc
             @doc = Heb412Gen::Doc.new(doc_params)
+            if !@doc.nombre && @doc.adjunto_file_name
+              @doc.nombre = @doc.adjunto_file_name
+            end
+            if !@doc.nombremenu && @doc.nombre
+              @doc.nombremenu = @doc.nombre
+            end
             create_gen(@doc)
           end
 
@@ -86,6 +92,10 @@ module Heb412Gen
             end
           end
 
+          def index
+            @docs = Heb412Gen::Doc.all
+          end
+
           def impreso
             puts "ajdunto_file_name=#{@doc.adjunto_file_name}"
             puts "ruta_doc=#{@doc.ruta_doc}"
@@ -116,7 +126,15 @@ module Heb412Gen
               :url,
               :fuente,
               :descripcion,
-              :adjunto
+              :adjunto,
+              :vista,
+              :nombremenu, 
+              :filainicial,
+              :campohc_attributes => [
+                :id,
+                :nombrecampo,
+                :columna
+              ]
             )
           end
         end
