@@ -96,6 +96,30 @@ module Heb412Gen
             @docs = Heb412Gen::Doc.all
           end
 
+          # Llena una plantilla para multiples registros
+          # a partir de una fuente de datos (tabla o vista)
+          def self.llena_plantilla_multiple_fd(doc, fd)
+            puts "ajdunto_file_name=#{doc.adjunto_file_name}"
+            puts "ruta_doc=#{doc.ruta_doc}"
+            libro = Rspreadsheet.open(doc.ruta_doc)
+            hoja = libro.worksheets(1)
+            fila = doc.filainicial
+            fd.each do |r|
+              doc.campohc.each do |c|
+                hoja[fila, (('A'..'CZ').to_a.find_index(
+                  c.columna))+1] =
+                  r[c.nombrecampo]
+              end
+              fila += 1
+            end 
+
+            send_file n, x_sendfile: true
+              #type: 'application/vnd.oasis.opendocument.text',
+              #disposition: 'attachment',
+              #filename: 'elnombre.ods'
+
+          end
+
           def impreso
             puts "ajdunto_file_name=#{@doc.adjunto_file_name}"
             puts "ruta_doc=#{@doc.ruta_doc}"

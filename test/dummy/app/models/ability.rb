@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Ability  < Heb412Gen::Ability
 
-  @@acciones_plantillas = {'Listado de Casos' => { campos:
+  @@acciones_plantillas = {'Listado de casos' => { campos:
      ['ultimaatencion_mes', 'ultimaatencion_fecha', 
       'contacto_nombres', 'contacto_apellidos', 'contacto_identificacion', 
       'contacto_genero', 'contacto_edad', 'contacto_etnia',
