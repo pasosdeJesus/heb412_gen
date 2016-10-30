@@ -106,14 +106,18 @@ module Heb412Gen
             fila = doc.filainicial
             fd.each do |r|
               doc.campohc.each do |c|
-                hoja[fila, (('A'..'CZ').to_a.find_index(
-                  c.columna))+1] =
-                  r[c.nombrecampo]
+                #byebug
+                col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{r[c.nombrecampo]}"
+                hoja[fila, col] = r[c.nombrecampo]
               end
               fila += 1
             end 
 
-            send_file n, x_sendfile: true
+            n=File.join('/tmp', doc.adjunto_file_name)
+            libro.save(n)
+            return n
+            #send_file n, x_sendfile: true
               #type: 'application/vnd.oasis.opendocument.text',
               #disposition: 'attachment',
               #filename: 'elnombre.ods'
@@ -125,9 +129,18 @@ module Heb412Gen
             puts "ruta_doc=#{@doc.ruta_doc}"
             libro = Rspreadsheet.open(@doc.ruta_doc)
             hoja = libro.worksheets(1)
-            hoja[5,2] = 7
-            hoja[6,2] = Date.today
-            n=File.join('/tmp', 'otronombre.ods')
+            fila = @doc.filainicial
+            (1..3).each do |r|
+              @doc.campohc.each do |c|
+                col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r=#{r}"
+                hoja[fila, col] = fila.to_s+" - " +col.to_s + " - " + 
+                  c.nombrecampo
+              end
+              fila += 1
+            end 
+
+            n=File.join('/tmp', @doc.adjunto_file_name)
             libro.save(n)
 
             send_file n, x_sendfile: true
