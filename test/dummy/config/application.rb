@@ -30,6 +30,8 @@ module Dummy
 
     config.x.url_colchon = 'colchon-articulos'
 
+    config.x.ruta_sisarch = Rails.root.join('public', 'sisarch')
+
     #FactoryGirl.definition_file_paths << Pathname.new("../factories") 
     #FactoryGirl.definition_file_paths.uniq! 
     #FactoryGirl.find_definitions

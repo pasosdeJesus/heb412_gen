@@ -1,0 +1,31 @@
+
+<h1 id="ruta"><%= @ruta if @ruta %></h1>
+
+<div id="contenido">
+  <%= render partial: 'index_contenido' %>
+</div>
+
+<%= simple_form_for :nuevo, 
+  { remote: true,
+    url: heb412_gen.nueva_carpeta_path,
+    method: "post" } do |f| 
+%>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-0 col-md-2"> 
+        <%= f.input :nombre,
+          label: false,
+          placeholder: 'Nombre' %>
+        <%= f.input :ruta, 
+          as: :hidden, 
+          input_html: {
+            value: "arch/#{@ruta}"
+          } 
+        %>
+      </div>
+      <div class="col-md-offset-0 col-md-2"> 
+        <%= f.button :submit, 'Nueva Carpeta', class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+<% end %>

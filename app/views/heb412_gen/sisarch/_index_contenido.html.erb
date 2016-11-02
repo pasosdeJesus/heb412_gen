@@ -1,0 +1,15 @@
+<ul>
+  <% @dir.each do |a| %>
+    <li>
+      <% if a[:estado].ftype == "directory" %>
+        <% url = File.join(
+          Rails.configuration.relative_url_root,
+          "/sis/arch", a[:ruta]) %>
+        <%= link_to a[:nombre], url, remote: true %>
+      <% else %>
+          <%= a[:nombre] %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
