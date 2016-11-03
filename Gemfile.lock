@@ -280,7 +280,8 @@ DEPENDENCIES
   puma
   rails (~> 5.0.0)
   rspreadsheet
-  sass-rails (~> 5.0)
+  sass
+  sass-rails
   simple_form
   sip!
   spring
@@ -294,4 +295,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.13.1
+   1.13.6

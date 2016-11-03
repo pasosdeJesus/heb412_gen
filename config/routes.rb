@@ -4,7 +4,7 @@ Heb412Gen::Engine.routes.draw do
 
   #get "sisarch", to: "sisarch#index"
   get "sis/*ruta", to: "sisarch#index", as: :sisarch
-  get "sis", to: "sisarch#index", as: :sisini
+  get "sis/arch", to: "sisarch#index", as: :sisini
 
   post "sis/nueva", to: "sisarch#nueva_carpeta", as: :nueva_carpeta
   post "sis/nuevo", to: "sisarch#nuevo_archivo", as: :nuevo_archivo

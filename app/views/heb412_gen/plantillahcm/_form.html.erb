@@ -9,7 +9,7 @@
       <%= render partial: 'sip/hogar/errores', locals: { f: f } %>
 
       <% ods =[] 
-         Dir.chdir(Rails.application.config.x.ruta_sisarch) { 
+         Dir.chdir(Rails.application.config.x.heb412_ruta) { 
         ods= Dir.glob("**/*.ods") } %>
 
       <%= f.input :ruta, 

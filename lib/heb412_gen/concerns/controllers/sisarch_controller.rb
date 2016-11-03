@@ -51,15 +51,27 @@ module Heb412Gen
               return
             end
             logger.debug "~ ruta=#{@ruta}"
-            if !File.exists? Rails.application.config.x.ruta_sisarch
-              flash[:error] = "No existe ruta #{Rails.application.config.x.ruta_sisarch}"
+            if !File.exists? Rails.application.config.x.heb412_ruta
+              flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
               redirect_to '/'
               return
             end
-            rr = Rails.application.config.x.ruta_sisarch.join(
+            rr = Rails.application.config.x.heb412_ruta.join(
               "./" + @ruta)
             logger.debug "~ rr=#{rr.to_s}/"
-            presenta_contenido rr
+            if params[:descarga]
+              ar = params[:descarga].gsub(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/, '')
+              arr = rr.join(ar)
+              if !File.exists?(arr)
+                flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
+                redirect_to '/'
+                return
+              end
+              send_file arr, x_sendfile: true
+              return
+            else
+              presenta_contenido rr
+            end
           end
 
 
@@ -73,7 +85,7 @@ module Heb412Gen
             nombre = params[:nueva][:nombre]
             nombre.gsub!(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ]/, '')
 
-            rr1 = Rails.application.config.x.ruta_sisarch.join(
+            rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(nombre)
             logger.debug "~ rr2=#{rr2.to_s}/"
@@ -91,7 +103,7 @@ module Heb412Gen
             nombre = params[:nuevo][:archivo].original_filename
             nombre.gsub!(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/, '')
 
-            rr1 = Rails.application.config.x.ruta_sisarch.join(
+            rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(nombre)
             logger.debug "~ rr2=#{rr2.to_s}"

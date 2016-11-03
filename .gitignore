@@ -19,6 +19,7 @@ config/database.yml
 *swp
 *.log
 *swp
+*core
 pkg/
 test/dummy/config/database.yml
 test/dummy/tmp/
@@ -32,4 +33,4 @@ herram/
 
 test/dummy/public/colchon-articulos/
 test/dummy/archivos/
-test/dummy/public/sisarch/
+test/dummy/public/heb412/

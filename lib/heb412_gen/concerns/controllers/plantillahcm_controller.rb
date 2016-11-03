@@ -100,7 +100,8 @@ module Heb412Gen
           # Llena una plantilla para multiples registros
           # a partir de una fuente de datos (tabla o vista)
           def self.llena_plantilla_multiple_fd(plantillahcm, fd)
-            ruta = File.join(Rails.application.config.x.ruta_sisarch, plantillahcm.ruta).to_s
+            ruta = File.join(Rails.application.config.x.heb412_ruta, 
+                             plantillahcm.ruta).to_s
             puts "ruta=#{ruta}"
             libro = Rspreadsheet.open(ruta)
             hoja = libro.worksheets(1)
@@ -136,7 +137,8 @@ module Heb412Gen
               fd << reg
             end 
 
-            n = Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(@plantillahcm, fd)
+            n = Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(
+              @plantillahcm, fd)
             send_file n, x_sendfile: true
               #type: 'application/vnd.oasis.openplantillahcmument.text',
               #disposition: 'attachment',
