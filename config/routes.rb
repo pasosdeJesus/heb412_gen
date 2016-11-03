@@ -7,10 +7,16 @@ Heb412Gen::Engine.routes.draw do
   get "sis", to: "sisarch#index", as: :sisini
 
   post "sis/nueva", to: "sisarch#nueva_carpeta", as: :nueva_carpeta
+  post "sis/nuevo", to: "sisarch#nuevo_archivo", as: :nuevo_archivo
 
+  resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' },  
+    only: [:edit, :update, :new, :create, :destroy, :show]
   resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
 
   get "docs/:id/impreso" => "docs#impreso", as: :impreso
+  
+  get "plantillahcm/:id/impreso" => "plantillahcm#impreso", 
+    as: :plantillahcm_impresa
 
 
 #  namespace :admin do

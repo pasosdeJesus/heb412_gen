@@ -208,6 +208,37 @@ ALTER SEQUENCE heb412_gen_campohc_id_seq OWNED BY heb412_gen_campohc.id;
 
 
 --
+-- Name: heb412_gen_campoplantillahcm; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE heb412_gen_campoplantillahcm (
+    id integer NOT NULL,
+    plantillahcm_id integer,
+    nombrecampo character varying(127),
+    columna character varying(5)
+);
+
+
+--
+-- Name: heb412_gen_campoplantillahcm_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE heb412_gen_campoplantillahcm_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_campoplantillahcm_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE heb412_gen_campoplantillahcm_id_seq OWNED BY heb412_gen_campoplantillahcm.id;
+
+
+--
 -- Name: heb412_gen_doc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -227,7 +258,11 @@ CREATE TABLE heb412_gen_doc (
     adjunto_updated_at timestamp without time zone,
     nombremenu character varying(127),
     vista character varying(255),
-    filainicial integer
+    filainicial integer,
+    ruta character varying(2047),
+    licencia character varying(255),
+    tdoc_id integer,
+    tdoc_type character varying
 );
 
 
@@ -248,6 +283,41 @@ CREATE SEQUENCE heb412_gen_doc_id_seq
 --
 
 ALTER SEQUENCE heb412_gen_doc_id_seq OWNED BY heb412_gen_doc.id;
+
+
+--
+-- Name: heb412_gen_plantillahcm; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE heb412_gen_plantillahcm (
+    id integer NOT NULL,
+    ruta character varying(2047) NOT NULL,
+    descripcion character varying(2047),
+    fuente character varying(1023),
+    licencia character varying(1023),
+    vista character varying(127) NOT NULL,
+    nombremenu character varying(127) NOT NULL,
+    filainicial integer NOT NULL
+);
+
+
+--
+-- Name: heb412_gen_plantillahcm_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE heb412_gen_plantillahcm_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_plantillahcm_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE heb412_gen_plantillahcm_id_seq OWNED BY heb412_gen_plantillahcm.id;
 
 
 --
@@ -795,7 +865,21 @@ ALTER TABLE ONLY heb412_gen_campohc ALTER COLUMN id SET DEFAULT nextval('heb412_
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY heb412_gen_campoplantillahcm ALTER COLUMN id SET DEFAULT nextval('heb412_gen_campoplantillahcm_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY heb412_gen_doc ALTER COLUMN id SET DEFAULT nextval('heb412_gen_doc_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_plantillahcm ALTER COLUMN id SET DEFAULT nextval('heb412_gen_plantillahcm_id_seq'::regclass);
 
 
 --
@@ -853,11 +937,27 @@ ALTER TABLE ONLY heb412_gen_campohc
 
 
 --
+-- Name: heb412_gen_campoplantillahcm_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_campoplantillahcm
+    ADD CONSTRAINT heb412_gen_campoplantillahcm_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: heb412_gen_doc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY heb412_gen_doc
     ADD CONSTRAINT heb412_gen_doc_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: heb412_gen_plantillahcm_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_plantillahcm
+    ADD CONSTRAINT heb412_gen_plantillahcm_pkey PRIMARY KEY (id);
 
 
 --
@@ -1005,6 +1105,13 @@ ALTER TABLE ONLY usuario
 
 
 --
+-- Name: index_heb412_gen_doc_on_tdoc_type_and_tdoc_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_heb412_gen_doc_on_tdoc_type_and_tdoc_id ON heb412_gen_doc USING btree (tdoc_type, tdoc_id);
+
+
+--
 -- Name: index_usuario_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1063,6 +1170,14 @@ ALTER TABLE ONLY heb412_gen_campohc
 
 ALTER TABLE ONLY heb412_gen_doc
     ADD CONSTRAINT fk_rails_2dd6d3dac3 FOREIGN KEY (dirpapa) REFERENCES heb412_gen_doc(id);
+
+
+--
+-- Name: fk_rails_e0e38e0782; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY heb412_gen_campoplantillahcm
+    ADD CONSTRAINT fk_rails_e0e38e0782 FOREIGN KEY (plantillahcm_id) REFERENCES heb412_gen_plantillahcm(id);
 
 
 --
@@ -1183,6 +1298,6 @@ ALTER TABLE ONLY sip_ubicacion
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150503120915'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150707164448'), ('20150710114451'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20151020203421'), ('20160519195544'), ('20161009111443'), ('20161010152631'), ('20161026110802'), ('20161027233011');
+INSERT INTO schema_migrations (version) VALUES ('20150413160156'), ('20150413160157'), ('20150413160158'), ('20150413160159'), ('20150416074423'), ('20150503120915'), ('20150510125926'), ('20150521181918'), ('20150528100944'), ('20150707164448'), ('20150710114451'), ('20150717101243'), ('20150724003736'), ('20150803082520'), ('20150809032138'), ('20151020203421'), ('20160519195544'), ('20161009111443'), ('20161010152631'), ('20161026110802'), ('20161027233011'), ('20161103080156'), ('20161103081041'), ('20161103083352');
 
 

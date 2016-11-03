@@ -15,5 +15,5 @@
 #   inflect.acronym 'RESTful'
 # end
 ActiveSupport::Inflector.inflections do |inflect|
-	#inflect.irregular 'actosjr', 'actosjr'
+	inflect.irregular 'plantillahcm', 'plantillahcm'
 end

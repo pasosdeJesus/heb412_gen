@@ -1,3 +1,4 @@
 $("#ruta").html("<%= @ruta%>");
 $("#nuevo_ruta").val("<%= File.join("arch", @ruta) %>");
+$("#nueva_ruta").val("<%= File.join("arch", @ruta) %>");
 $("#contenido").html("<%= escape_javascript(render('heb412_gen/sisarch/index_contenido')) %>");
