@@ -1,0 +1,33 @@
+<%- model_class = Heb412Gen::Plantillahcm -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= Heb412Gen::Plantillahcm.human_attribute_name(:ruta) %>:</strong></dt>
+  <dd><%= @plantillahcm.ruta if @plantillahcm.ruta%></dd>
+  <dt><strong><%= Heb412Gen::Plantillahcm.human_attribute_name(:fuente) %>:</strong></dt>
+  <dd><%= @plantillahcm.fuente if @plantillahcm.fuente %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+    heb412_gen.sisini_path, :class => 'btn'  
+  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+    heb412_gen.edit_plantillahcm_path(h @plantillahcm.id), :class => 'btn' 
+  %>
+  <%= link_to t('Probar generación'),
+    heb412_gen.plantillahcm_path(h @plantillahcm.id) + '/impreso', :class => 'btn',
+    :target => '_blank' 
+  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+    heb412_gen.plantillahcm_path(h @plantillahcm.id),
+    :method => 'delete',
+    :data => { :confirm => 
+      t('.confirm', :default => 
+        t("helpers.links.confirm", :default => '¿Seguro?')) 
+  },
+    :class => 'btn btn-danger' 
+  %>
+</div>

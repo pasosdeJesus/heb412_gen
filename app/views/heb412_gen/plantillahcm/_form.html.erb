@@ -1,0 +1,94 @@
+<!--% byebug %-->
+<%= simple_form_for @plantillahcm, 
+  :html => { :class => 'form-horizontal' } do |f| 
+%>
+
+  <div class="row">
+    <div id="campos" class="col-xs-offset-0 col-xs-12">
+
+      <%= render partial: 'sip/hogar/errores', locals: { f: f } %>
+
+      <% ods =[] 
+         Dir.chdir(Rails.application.config.x.ruta_sisarch) { 
+        ods= Dir.glob("**/*.ods") } %>
+
+      <%= f.input :ruta, 
+        collection: ods,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una incial'
+        } %>
+
+      <%= f.input :descripcion %> 
+      
+      <%= f.input :fuente,
+        input_html: {
+        "data-toggle" => 'tooltip',
+        "title" => 'URL o referencia para dar crédito'
+      } %> 
+
+      <%= f.input :licencia,
+        input_html: {
+        "data-toggle" => 'tooltip',
+        "title" => 'URL a la licencia, requerido si el documento se va a publicar'
+      } %> 
+
+      <%= f.input :vista, 
+        collection: ::Ability::acciones_plantillas.keys,
+        include_blank: false,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Desde que parte de la aplicación se podrá llenar la plantilla'
+        } %>
+
+      <%= f.input :nombremenu,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Nombre de esta plantilla para humanos'
+        } %>
+
+      <%= f.input :filainicial,
+         input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro'
+        } %>
+
+      <div id="campos">
+        <table border=1 width="100%">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Columna</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="campoplantillahcm">
+            <%= f.simple_fields_for :campoplantillahcm do |c| %>
+              <%= render 'campoplantillahcm', :f => c %>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="links">
+          <%= link_to_add_association 'Añadir Campo', f, 
+            :campoplantillahcm,
+            :"data-association-insertion-node" => "tbody#campoplantillahcm", 
+            :"data-association-insertion-method" => "append", 
+            partial: 'campoplantillahcm',
+            :class => 'btn-primary' %>
+        </div>
+      </div>
+
+      <div class="form-actions abajocentrado">
+        <%= f.button :submit, :class => 'btn-primary' %>
+
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+          heb412_gen.sisini_path, :class => 'btn' 
+        %>
+      </div>
+
+    </div> <!-- class="col-sm-offset-0 col-sm-7 col-md-8" -->
+  
+  </div> <!-- row -->
+
+<% end %>
