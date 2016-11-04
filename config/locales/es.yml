@@ -3,9 +3,16 @@ es:
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
   activerecord:
+    models:
+      "heb412_gen/plantillahcm":
+        one: Plantilla para hoja de calculo con múltiples registros
+        other: Plantillas para hoja de calculo con múltiples registros
     attributes:
       "heb412_gen/doc":
         nombremenu: Nombre por presentar en aplicación
         tipodoc: Tipo de documento
+        filainicial: Fila inicial
+      "heb412_gen/plantillahcm":
+        nombremenu: Nombre por presentar en aplicación
         filainicial: Fila inicial
 

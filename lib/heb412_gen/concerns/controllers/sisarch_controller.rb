@@ -51,8 +51,16 @@ module Heb412Gen
               return
             end
             logger.debug "~ ruta=#{@ruta}"
+            if Rails.application.config.x.heb412_ruta.nil? ||
+              Rails.application.config.x.heb412_ruta.to_s == "{}"
+              flash[:error] = 
+                "No existe variable Rails.application.config.x.heb412_ruta"
+              redirect_to '/'
+              return
+            end
             if !File.exists? Rails.application.config.x.heb412_ruta
-              flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
+                flash[:error] = 
+                  "No se ha creado #{Rails.application.config.x.heb412_ruta}"
               redirect_to '/'
               return
             end

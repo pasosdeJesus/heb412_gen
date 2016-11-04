@@ -10,6 +10,7 @@ basado en sip:
 Para incluirlo en su aplicación rails:
 1. Agregue las gemas necesarias en Gemfile:
 
+gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 gem 'font-awesome-rails'
 gem 'chosen'
 
