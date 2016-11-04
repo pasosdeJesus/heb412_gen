@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 966848fbfc2253ed5e8bdebf567bd21ac9a5183f
+  revision: 762547c5c3013e667b82b219e6cc0b1812e88761
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -70,7 +70,6 @@ GEM
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     builder (3.2.2)
-    byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (1.15.0)
     chosen-rails (1.5.2)
@@ -116,7 +115,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.1.0)
+    devise-i18n (1.1.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -236,7 +235,7 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (3.6.0)
+    twitter_cldr (4.0.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -246,7 +245,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (3.3.1)
+    web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       debug_inspector
@@ -262,7 +261,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   cocoon!
