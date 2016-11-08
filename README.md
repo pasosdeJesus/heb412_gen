@@ -25,3 +25,8 @@ config.heb412_ruta = Rails.root.join('public', 'heb412')
    app/views/layouts/application:
 <%= menu_item "Nube", heb412_gen.sisini_path %>
 
+5. Configure rutas en config/routes.rb
+	mount Heb412Gen::Engine => "/", as: 'heb412_gen'
+
+6. Si hace falta agregue en su application_helper.rb
+	include FontAwesome::Rails::IconHelper 
