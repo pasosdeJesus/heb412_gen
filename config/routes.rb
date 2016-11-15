@@ -20,7 +20,8 @@ Heb412Gen::Engine.routes.draw do
 
 
   namespace :admin do
-    ::Ability.tablasbasicas.each do |t|
+    ab = ::Ability.new
+    ab.tablasbasicas.each do |t|
       if (t[0] == "Heb412Gen") 
         c = t[1].pluralize
         resources c.to_sym, 
