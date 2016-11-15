@@ -9,4 +9,6 @@ Hebreos 4:12
 Favor ver créditos completos en 
 	https://github.com/pasosdeJesus/heb412/blob/master/CREDITOS.md
 
+Logo es foto de dominio público de Peggy Marco disponible en:
+	https://pixabay.com/es/nubes-cielo-nube-nubes-oscuras-1473311/
 
