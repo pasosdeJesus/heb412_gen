@@ -134,7 +134,7 @@ module Heb412Gen
               @doc.campohc.each do |c|
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r=#{r}"
-                hoja[fila, col] = fila.to_s+" - " +col.to_s + " - " + 
+                hoja[fila, col] = fila.to_s + " - " + col.to_s + " - " + 
                   c.nombrecampo
               end
               fila += 1
