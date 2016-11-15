@@ -1,8 +1,7 @@
 # encoding: UTF-8
 class Ability  < Heb412Gen::Ability
 
-  # Ver documentacion de este metodo en 
-  #   spec/dummy/app/models/sip/ability del motor sip
+  # Autorizacion con CanCanCan
   def initialize(usuario = nil)
     # Sin autenticación puede consultarse información geográfica 
 
