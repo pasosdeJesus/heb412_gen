@@ -1,7 +1,8 @@
 <tr class='nested-fields'>
   <td>
+    <% ab = ::Ability.new %>
     <%= f.input :nombrecampo,
-      collection: Ability::acciones_plantillas['Listado de casos'][:campos],
+      collection: ab.acciones_plantillas['Listado de casos'][:campos],
       label: false
     %>
   </td>

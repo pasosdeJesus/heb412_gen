@@ -33,8 +33,9 @@
         "title" => 'URL a la licencia, requerido si el documento se va a publicar'
       } %> 
 
+      <% ab = ::Ability.new %>
       <%= f.input :vista, 
-        collection: ::Ability::acciones_plantillas.keys,
+        collection: ab.acciones_plantillas.keys,
         include_blank: false,
         input_html: {
           "data-toggle" => 'tooltip',

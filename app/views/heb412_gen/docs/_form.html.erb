@@ -36,8 +36,10 @@
         "title" => 'URL o referencia para dar crédito'
       } %> 
 
+      <% ab = ::Ability.new
+        acp = ab.acciones_plantillas %>
       <%= f.input :vista, 
-        collection: ::Ability::acciones_plantillas.keys,
+        collection: acp.keys,
         include_blank: false,
         input_html: {
           "data-toggle" => 'tooltip',

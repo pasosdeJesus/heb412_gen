@@ -12,14 +12,14 @@ Para incluirlo en su aplicación rails:
 
 gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 gem 'font-awesome-rails'
-gem 'chosen'
+gem 'chosen-rails'
 
 2. Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 mkdir public/heb412/
 
 3. Configure esa ruta en su aplicación en config/application.rb con
-config.heb412_ruta = Rails.root.join('public', 'heb412')
+config.x.heb412_ruta = Rails.root.join('public', 'heb412')
 
 4. Agregue un menú o enlaces a los urls de , por ejemplo en
    app/views/layouts/application:
