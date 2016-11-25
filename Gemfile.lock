@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 891aeadcfccf1eb3069c3493cc5fa48fde33d490
+  revision: 795d491dbf70f50cc35c3a9be4e6d39aa904fa30
   specs:
     sip (2.0.b1)
       bootstrap-datepicker-rails
@@ -88,7 +88,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.11.1)
     colorize (0.8.1)
     commonjs (0.2.7)
     compass (1.0.3)
@@ -164,7 +164,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.19.0)
-    puma (3.6.0)
+    puma (3.6.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -235,7 +235,7 @@ GEM
       execjs (>= 2.2.2, >= 2.2)
       less-rails (>= 2.5.0)
       railties (>= 3.1)
-    twitter_cldr (4.0.0)
+    twitter_cldr (4.1.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
