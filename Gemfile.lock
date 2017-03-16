@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1a1999ab0a202c296d7d2d9092d2c0fac3a4a751
+  revision: 22931da655c3ab887753f4f95662f37d08e9cab5
   specs:
     sip (2.0.b2)
       bootstrap-datepicker-rails
@@ -108,7 +108,7 @@ GEM
       sprockets (< 4.0)
     concurrent-ruby (1.0.5)
     debug_inspector (0.0.2)
-    devise (4.2.0)
+    devise (4.2.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -162,8 +162,8 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.19.0)
-    puma (3.7.1)
+    pg (0.20.0)
+    puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -239,7 +239,7 @@ GEM
       tzinfo
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.1.5)
+    uglifier (3.1.7)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
