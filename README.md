@@ -10,24 +10,34 @@ basado en sip:
 Para incluirlo en su aplicación rails:
 1. Agregue las gemas necesarias en Gemfile:
 ```
-gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
-gem 'font-awesome-rails'
-gem 'chosen-rails'
+	gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+	gem 'font-awesome-rails'
+	gem 'chosen-rails'
 ```
 
 2. Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
-mkdir public/heb412/
+```
+	mkdir public/heb412/
+```
 
-3. Configure esa ruta en su aplicación en config/application.rb con
-config.x.heb412_ruta = Rails.root.join('public', 'heb412')
+3. Configure esa ruta en su aplicación en ```config/application.rb``` con
+```
+	config.x.heb412_ruta = Rails.root.join('public', 'heb412')
+```
 
 4. Agregue un menú o enlaces a los urls de , por ejemplo en
-   app/views/layouts/application:
-<%= menu_item "Nube", heb412_gen.sisini_path %>
+   ```app/views/layouts/application```:
+```
+	<%= menu_item "Nube", heb412_gen.sisini_path %>
+```
 
-5. Configure rutas en config/routes.rb
+5. Configure rutas en ```config/routes.rb```
+```
 	mount Heb412Gen::Engine => "/", as: 'heb412_gen'
+```
 
-6. Si hace falta agregue en su application_helper.rb
+6. Si hace falta agregue en su ```app/helpers/application_helper.rb```
+```
 	include FontAwesome::Rails::IconHelper 
+```
