@@ -111,7 +111,7 @@ module Heb412Gen
                 #byebug
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{r[c.nombrecampo]}"
-                hoja[fila, col] = r[c.nombrecampo]
+                hoja[fila, col] = r[c.nombrecampo].to_s
               end
               fila += 1
             end 
