@@ -9,10 +9,11 @@ basado en sip:
 
 Para incluirlo en su aplicación rails:
 1. Agregue las gemas necesarias en Gemfile:
-
-	gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
-	gem 'font-awesome-rails'
-	gem 'chosen-rails'
+```
+gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+gem 'font-awesome-rails'
+gem 'chosen-rails'
+```
 
 2. Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
