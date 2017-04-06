@@ -9,6 +9,9 @@ Heb412Gen::Engine.routes.draw do
   post "sis/nueva", to: "sisarch#nueva_carpeta", as: :nueva_carpeta
   post "sis/nuevo", to: "sisarch#nuevo_archivo", as: :nuevo_archivo
 
+  get "plantillahcm/pintacampos" => "plantillahcm#pintacampos", 
+    as: :plantillahcm_pintacampos
+
   resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' },  
     only: [:edit, :update, :new, :create, :destroy, :show]
   resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
@@ -17,7 +20,6 @@ Heb412Gen::Engine.routes.draw do
   
   get "plantillahcm/:id/impreso" => "plantillahcm#impreso", 
     as: :plantillahcm_impresa
-
 
   namespace :admin do
     ab = ::Ability.new

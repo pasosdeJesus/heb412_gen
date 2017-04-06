@@ -1,8 +1,19 @@
 <tr class='nested-fields'>
   <td>
-    <% ab = ::Ability.new %>
+    <% 
+        ab = ::Ability.new 
+        col = [['','']]
+        if defined?(vista) && !vista.nil?
+          col = ab.campos_plantillas[vista][:campos]
+        elsif defined?(@vista) && !@vista.nil? 
+          col = ab.campos_plantillas[@vista][:campos] 
+        elsif defined?(ab.campos_plantillas['Usuario'])
+          col = ab.campos_plantillas['Usuario'][:campos] 
+        end
+        puts "OJO campoplantillahcm. col=#{col.to_s}"
+    %>
     <%= f.input :nombrecampo,
-      collection: ab.acciones_plantillas['Listado de casos'][:campos],
+      collection: col,
       label: false
     %>
   </td>

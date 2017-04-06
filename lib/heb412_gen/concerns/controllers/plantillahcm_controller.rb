@@ -14,10 +14,42 @@ module Heb412Gen
           before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
                                          :show, :impreso]
 
+          @vista= nil
+          attr_accessor :form_f
+
+          # Vuelve a pintar asociación de campos con base en elección 
+          # de controlador
+          def pintacampos
+            @plantillahcm = Heb412Gen::Plantillahcm.new
+            if params[:vista]
+              vista = Sip::Ubicacion.connection.quote_string(
+                params[:vista] ).strip
+              ab = ::Ability.new
+              if ab.campos_plantillas[vista]
+                @plantillahcm.vista = vista 
+                @vista = vista
+                respond_to do |format|
+                  format.html {
+                    render partial: 'form_divcampos_plantillahcm',
+                      layout: false, locals: { vista: @vista }
+                  }
+                  format.js {
+                    render partial: 'form_divcampos_plantillahcm',
+                      layout: false, locals: { vista: @vista }
+                  }
+
+                end
+              end
+            end
+          end
+          
+
           # GET /plantillahcm/nueva
           def new
             authorize! :edit, Heb412Gen::Doc
             @plantillahcm = Heb412Gen::Plantillahcm.new
+            @plantillahcm.vista = 'Usuario'
+            @vista = nil
           end
 
           # Completa @plantillahcm ya guardado. Debe terminar guardando.
@@ -65,12 +97,13 @@ module Heb412Gen
           # PATCH/PUT /plantillahcm/1.json
           def update
             authorize! :edit, Heb412Gen::Doc
+            @vista = @plantillahcm.vista
             respond_to do |format|
               if @plantillahcm.update(plantillahcm_params)
                 ordena_plantillahcm
                 format.html { 
                   redirect_to @plantillahcm, 
-                  notice: 'Plantilla para hoja de cálculo con múltiples registros actualizada.' 
+                    notice: 'Plantilla para hoja de cálculo con múltiples registros actualizada.' 
                 }
                 format.json { render :show, status: :ok, 
                               location: @plantillahcm }

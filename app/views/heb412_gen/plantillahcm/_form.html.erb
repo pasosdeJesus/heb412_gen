@@ -1,7 +1,14 @@
-<!--% byebug %-->
 <%= simple_form_for @plantillahcm, 
   :html => { :class => 'form-horizontal' } do |f| 
 %>
+
+
+  <% controller.form_f = f %>
+  <script>
+    <% ab = ::Ability.new %>
+    root = window;
+    root.campos_plantillas=<%= raw(ab.campos_plantillas.to_json) %>
+  </script>
 
   <div class="row">
     <div id="campos" class="col-xs-offset-0 col-xs-12">
@@ -33,10 +40,16 @@
         "title" => 'URL a la licencia, requerido si el documento se va a publicar'
       } %> 
 
-      <% ab = ::Ability.new %>
+      <% 
+          ab = ::Ability.new
+          cord = ab.campos_plantillas.keys.map { |n| 
+            ['Listado de ' + n.to_s.pluralize, n.to_s] }
+          cord.sort! { |x,y| x[1] <=> y[1] }
+      %>
       <%= f.input :vista, 
-        collection: ab.acciones_plantillas.keys,
+        collection: cord,
         include_blank: false,
+        selected: @plantillahcm.vista.nil? ? 'Usuario' : @plantillahcm.vista,
         input_html: {
           "data-toggle" => 'tooltip',
           "title" => 'Desde que parte de la aplicación se podrá llenar la plantilla'
@@ -54,30 +67,9 @@
           "title" => 'Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro'
         } %>
 
-      <div id="campos">
-        <table border=1 width="100%">
-          <thead>
-            <tr>
-              <th>Campo</th>
-              <th>Columna</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody id="campoplantillahcm">
-            <%= f.simple_fields_for :campoplantillahcm do |c| %>
-              <%= render 'campoplantillahcm', :f => c %>
-            <% end %>
-          </tbody>
-        </table>
-
-        <div class="links">
-          <%= link_to_add_association 'Añadir Campo', f, 
-            :campoplantillahcm,
-            :"data-association-insertion-node" => "tbody#campoplantillahcm", 
-            :"data-association-insertion-method" => "append", 
-            partial: 'campoplantillahcm',
-            :class => 'btn-primary' %>
-        </div>
+      <div id="divcampos">
+        <%= render partial: 'divcampos_plantillahcm', 
+          locals: {f: f, vista: f.object.vista } %>
       </div>
 
       <div class="form-actions abajocentrado">

@@ -25,6 +25,11 @@
     return false
 
 @heb412_gen_prepara_eventos_comunes = (root) ->
+  if window.location.href.match(/\/plantillahcm\//)
+    $(document).on('change', '#plantillahcm_vista', (e) -> 
+      return sip_envia_ajax_datos_ruta_y_pinta('plantillahcm/pintacampos',
+        'vista=' + $(this).val(), '#gen_divcampos', '#divcampos')
+    )
 
   return
 
