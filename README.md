@@ -41,4 +41,7 @@ debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 ```
 	include FontAwesome::Rails::IconHelper 
 ```
-7. Agregue en el archivo app/models/ability.rb la relación de campos que un controlador puede dar a una plantilla. por ejemplo:
+
+7. Agregue en el archivo ```app/models/ability.rb``` la relación de campos 
+   que un controlador puede dar a una plantilla. por ejemplo:
+
