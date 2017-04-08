@@ -143,8 +143,12 @@ module Heb412Gen
               plantillahcm.campoplantillahcm.each do |c|
                 #byebug
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
-                puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{r[c.nombrecampo]}"
-                hoja[fila, col] = r[c.nombrecampo].to_s
+                v = r[c.nombrecampo.to_sym].nil? ?
+                  r[c.nombrecampo].to_s :
+                  r[c.nombrecampo.to_sym].to_s 
+
+                puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
+                hoja[fila, col] = v
               end
               fila += 1
             end 
@@ -169,7 +173,6 @@ module Heb412Gen
               end
               fd << reg
             end 
-
             n = Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(
               @plantillahcm, fd)
             send_file n, x_sendfile: true
@@ -197,7 +200,8 @@ module Heb412Gen
               :campoplantillahcm_attributes => [
                 :id,
                 :nombrecampo,
-                :columna
+                :columna,
+                :_destroy
               ]
             )
           end

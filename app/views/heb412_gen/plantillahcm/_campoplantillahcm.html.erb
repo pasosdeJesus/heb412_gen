@@ -2,13 +2,14 @@
   <td>
     <% 
         ab = ::Ability.new 
-        col = [['','']]
-        if defined?(vista) && !vista.nil?
-          col = ab.campos_plantillas[vista][:campos]
-        elsif defined?(@vista) && !@vista.nil? 
-          col = ab.campos_plantillas[@vista][:campos] 
-        elsif defined?(ab.campos_plantillas['Usuario'])
-          col = ab.campos_plantillas['Usuario'][:campos] 
+        v = defined?(vista) ? vista : 
+          defined?(@vista) ? @vista :
+          defined?(f.object.plantillahcm.vista) ? f.object.plantillahcm.vista :
+          defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
+        if v.nil?
+          col = [['','']]
+        else
+          col = ab.campos_plantillas[v][:campos]
         end
         puts "OJO campoplantillahcm. col=#{col.to_s}"
     %>

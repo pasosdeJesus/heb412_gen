@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  #s.add_dependency "rails"
-  #s.add_dependency "sip"
+  s.add_runtime_dependency "sip"
+  s.add_runtime_dependency "rspreadsheet"
+  s.add_runtime_dependency "chosen-rails"
+  s.add_runtime_dependency "font-awesome-rails"
 end

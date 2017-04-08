@@ -16,10 +16,11 @@
   if nplantilla > 0 
     f = $("form[action$='" + idform + "']")
     d = f.serialize()
+    d += '&idplantilla=' +  nplantilla
     d += '&commit=Enviar'
     root =  window;
     sip_arregla_puntomontaje(root)
-    e = root.puntomontaje + rutagenera + nplantilla + '?' + d
+    e = root.puntomontaje + rutagenera + '.ods?' + d
     $(elema).attr('href', e)
   else 
     return false
