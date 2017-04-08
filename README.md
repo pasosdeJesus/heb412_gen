@@ -1,7 +1,7 @@
 # Motor Heb412 para manejar nube de documentos y plantillas por llenar (hojas de cálculo .ods y documentos .odt)
 [![Esado Construcción](https://api.travis-ci.org/pasosdeJesus/heb412_gen.svg?branch=master)](https://travis-ci.org/pasosdeJesus/heb412_gen) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/heb412_gen/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/heb412_gen) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/heb412_gen/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/heb412_gen) [![security](https://hakiri.io/github/pasosdeJesus/heb412_gen/master.svg)](https://hakiri.io/github/pasosdeJesus/heb412_gen/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/heb412_gen.svg)](https://gemnasium.com/pasosdeJesus/heb412_gen) 
 
-Este es un motor de Heb412 para manejar nube de documentos y plantillas
+Este es un motor de Heb412 para manejar nube de documentos y plantillas ods y odt
 
 Aplican practicamente las mismas instrucciones de otros motores genérico
 basados en sip, ver por ejemeplo:
@@ -85,10 +85,13 @@ En el momento está completa la implementación del primero
     end
 ```
 
-4.2 Cree una entrada en el menú que permite acceder a la funcionalidad
+4.2 De permiso a un usuario para manejar plantillas:
+	can :manage, Heb412Gen::Doc
+
+4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
     de definir una plantilla
 
-4.3 La vista index del controlador que generará plantillas debe tener un 
+4.4 La vista index del controlador que generará plantillas debe tener un 
     filtro como formulario.  Agregue a este filtro un selector para las 
     posibles plantillas y un botón para generarlas por ejemplo:
  
@@ -123,7 +126,7 @@ En el momento está completa la implementación del primero
       </div> <!-- row -->
     <% end %> 
 
-4.3 El controlador en su método index debe filtrar los datos de acuerdo
+4.5 El controlador en su método index debe filtrar los datos de acuerdo
     a los parámetros y responder al formato ods utilizando el parametro
     idplantilla que contendrá la identificación de la plantilla por llenar
     y generar.  
@@ -161,11 +164,6 @@ En el momento está completa la implementación del primero
               }
 
 
- La sugerencia es hacer una vista materializada que incluya
-    la información que se requiere y que comience con los datos filtrados.
-    En tal caso se puede usar la función 
-    Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd
-    que recibe la plantilla por usar y los registros (esta función
-    supone que coinciden los nombres de campos de pl con los de
-    las columnas registros.)
+  La sugerencia es hacer una vista materializada que incluya la información que 
+  se requiere y que comience con los datos filtrados por index.
 
