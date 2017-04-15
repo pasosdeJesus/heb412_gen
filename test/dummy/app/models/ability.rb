@@ -26,7 +26,7 @@ class Ability  < Heb412Gen::Ability
         can :manage, Sip::Ubicacion
         can :manage, Heb412Gen::Doc
         can :manage, Sip::Persona
-        can :manage, Usuario
+        can :manage, ::Usuario
         can :manage, :tablasbasicas
         tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

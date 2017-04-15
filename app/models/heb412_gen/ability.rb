@@ -12,6 +12,7 @@ module Heb412Gen
           ['Sip', 'municipio'],
           ['Sip', 'clase'],
           ['Sip', 'fuenteprensa'],
+          ['Sip', 'grupo'],
           #    ['Sip', 'etiqueta'],
           ['Sip', 'oficina'],
           ['Sip', 'tclase'],
