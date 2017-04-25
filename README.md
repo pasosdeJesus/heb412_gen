@@ -17,11 +17,11 @@ Para incluirlo en su aplicación rails que ya usa sip:
 ```
 
 2. Incluya el motor javascript en su app/assets/javascript/application.js
-   por ejemplo después de //= require sip/motor agregue:
+   por ejemplo después de ```//= require sip/motor``` agregue:
 ```
 //= require heb412_gen/motor
 ```
-   y despúes de sip_prepara_eventos_comunes(root); agregue:
+   y despúes de ```sip_prepara_eventos_comunes...``` agregue:
 ```
 heb412_gen_prepara_eventos_comunes(root);
 ```
