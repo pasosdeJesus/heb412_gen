@@ -17,13 +17,16 @@ Para incluirlo en su aplicación rails que ya usa sip:
 ```
 
 2. Incluya el motor javascript en su app/assets/javascript/application.js
-   por ejemplo después de //= require sip/motor agregue:
-
-//= require heb412_gen/motor	
+   por ejemplo después de //= require sip/motor agregue:
+```
+//= require heb412_gen/motor
+```
    y despúes de sip_prepara_eventos_comunes(root); agregue:
+```
 heb412_gen_prepara_eventos_comunes(root);
+```
 
-3. Configure su aplicación para proveer Nube mediante heb412_gen:
+3. Configure su aplicación para proveer Nube mediante ```heb412_gen```:
 
 3.1 Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
