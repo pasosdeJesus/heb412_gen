@@ -99,7 +99,7 @@ En el momento está completa la implementación del primero
     algo  como:
 ```
  <% if can? :manage, Heb412Gen::Doc %>
-   <%= menu_item "Definir plantilla listado en hoja de calculo",   
+   <%= menu_item "Nueva plantilla para listado en hoja de calculo",   
        heb412_gen.new_plantillahcm_path %>
  <% end %>
 ```
