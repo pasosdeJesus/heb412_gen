@@ -76,7 +76,7 @@ En el momento está completa la implementación del primero
         campos: [
           'id', 'fecha', 'oficina', 'responsable', 'nombre', 
           'tipos_de_actividad', 'areas', 'subareas', 'convenios_financieros',
-          'objetivo', 'poblacion', 'anexos'
+          'objetivo', 'poblacion'
         ],
         controlador: 'Cor1440Gen::ActividadesController'
       }
