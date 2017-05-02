@@ -89,15 +89,17 @@ En el momento está completa la implementación del primero
 ```
 
 4.2 De permiso a un usuario para manejar plantillas:
+```
 	can :manage, Heb412Gen::Doc
+```
 
 4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
     de definir una plantilla
 
-4.4 La vista index del controlador que generará plantillas debe tener un 
+4.4 La vista ```index``` del controlador que llenará plantillas debe tener un 
     filtro como formulario.  Agregue a este filtro un selector para las 
     posibles plantillas y un botón para generarlas por ejemplo:
- 
+ ```
 <%= simple_form_for :filtro,
   { remote: true,
     url: sivel2_gen.envia_casos_filtro_path,
@@ -128,18 +130,20 @@ En el momento está completa la implementación del primero
         </div>
       </div> <!-- row -->
     <% end %> 
+```
 
-4.5 El controlador en su método index debe filtrar los datos de acuerdo
-    a los parámetros y responder al formato ods utilizando el parametro
-    idplantilla que contendrá la identificación de la plantilla por llenar
+4.5 El controlador en su método ```index``` debe filtrar los datos de acuerdo
+    a los parámetros y responder al formato ODS utilizando el parametro
+    ```idplantilla``` que contendrá la identificación de la plantilla por llenar
     y generar.  
     Debe asegurar que los datos resultantes que pasa a la función
-    Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd
-    se pueden recorrer con each y que cada registro (objeto) tendra los 
-    campos declarados en app/models/ability.rb.
-    Por ejemplo si los campos declarados en app/models/ability 
-    coinciden con los campos del modelo Activdad:
+    ```Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd```
+    se pueden recorrer con ```each``` y que cada registro (objeto) tendra los 
+    campos declarados en ```app/models/ability.rb```.
+    Por ejemplo si los campos declarados en ```app/models/ability.rb``` 
+    coinciden con los campos del modelo ```Actividad```:
 
+```
 	@actividades = Actividad.all
 	# se filtra de acuerdo a param y se eligen con nombres
 	...
@@ -150,9 +154,8 @@ En el momento está completa la implementación del primero
 		format.json { # API
 		}
               format.ods { # Se solicitó llenar plantilla
-                if params[:idplantilla].nil? 
-                  head :no_content 
-                elsif params[:idplantilla].to_i <= 0
+                if params[:idplantilla].nil? or
+		  params[:idplantilla].to_i <= 0
                   head :no_content 
                 elsif Heb412Gen::Plantillahcm.where(
                     id: params[:idplantilla].to_i).take.nil?
@@ -165,8 +168,10 @@ En el momento está completa la implementación del primero
                   send_file n, x_sendfile: true
                 end
               }
+```
 
-
-  La sugerencia es hacer una vista materializada que incluya la información que 
-  se requiere y que comience con los datos filtrados por index.
+  Cuando la información por usar en la plantilla sea compleja y requiera
+  tiempo para generarse, la sugerencia es en el caso ```format.ods``` hacer una 
+  vista materializada que incluya la información que  se requiere y 
+  que comience con los datos filtrados por index.
 
