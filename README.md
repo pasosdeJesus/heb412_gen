@@ -58,9 +58,9 @@ debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 4. Configure su aplicación para utilizar los llenadores de plantillas
 
 Se planean 3 tipos de llenadores de plantillas:
-- Para llenar una plantilla ODS con datos como los de un index
-- Para llenar una plantilla ODS con datos como los de un show
-- Para llenar una plantilla ODT con datos como los de un show
+- Para llenar una plantilla ODS con datos de un listado (vista index)
+- Para llenar una plantilla ODS con datos de un resumen (vista show)
+- Para llenar una plantilla ODT con datos de un resumen (vista show)
 
 En el momento está completa la implementación del primero
 
