@@ -94,7 +94,15 @@ En el momento está completa la implementación del primero
 ```
 
 4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
-    de definir una plantilla
+    de definir una plantilla. Por ejemplo en 
+    ```app/views/layouts/application.html.erb```
+    algo  como:
+```
+ <% if can? :manage, Heb412Gen::Doc %>
+   <%= menu_item "Definir plantilla listado en hoja de calculo",   
+       heb412_gen.new_plantillahcm_path %>
+ <% end %>
+```
 
 4.4 La vista ```index``` del controlador que llenará plantillas debe tener un 
     filtro como formulario.  Agregue a este filtro un selector para las 
