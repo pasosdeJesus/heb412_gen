@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 84da85e89fb2a346edd26df9e44a2184f5c927bf
+  revision: 1a5bb96fcdd7f37cfad309bffa0b2260dd0a583d
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -239,7 +239,7 @@ GEM
     tilt (2.0.7)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
+    turbolinks-source (5.0.1)
     twitter-bootstrap-rails (4.0.0)
       actionpack (~> 5.0, >= 5.0.1)
       execjs (~> 2.7)
