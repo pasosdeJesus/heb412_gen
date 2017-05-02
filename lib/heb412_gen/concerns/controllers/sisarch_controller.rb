@@ -47,7 +47,7 @@ module Heb412Gen
           # Ver carpeta
           def index
             if !limpia_ruta(params[:ruta])
-              redirect_to '/'
+              redirect_to Rails.config Rails.configuration.relative_url_root
               return
             end
             logger.debug "~ ruta=#{@ruta}"
@@ -55,13 +55,13 @@ module Heb412Gen
               Rails.application.config.x.heb412_ruta.to_s == "{}"
               flash[:error] = 
                 "No existe variable Rails.application.config.x.heb412_ruta"
-              redirect_to '/'
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             if !File.exists? Rails.application.config.x.heb412_ruta
                 flash[:error] = 
                   "No se ha creado #{Rails.application.config.x.heb412_ruta}"
-              redirect_to '/'
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             rr = Rails.application.config.x.heb412_ruta.join(
@@ -72,7 +72,7 @@ module Heb412Gen
               arr = rr.join(ar)
               if !File.exists?(arr)
                 flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
-                redirect_to '/'
+                redirect_to Rails.configuration.relative_url_root
                 return
               end
               send_file arr, x_sendfile: true
@@ -87,7 +87,7 @@ module Heb412Gen
           def nueva_carpeta
             if !limpia_ruta(params[:nueva][:ruta]) ||
               params[:nueva][:nombre].nil?
-              redirect_to '/'
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             nombre = params[:nueva][:nombre]
@@ -105,7 +105,7 @@ module Heb412Gen
           def nuevo_archivo
             if !limpia_ruta(params[:nuevo][:ruta]) ||
               params[:nuevo][:archivo].nil?
-              redirect_to '/'
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             nombre = params[:nuevo][:archivo].original_filename

@@ -6,7 +6,7 @@
           defined?(@vista) ? @vista :
           defined?(f.object.plantillahcm.vista) ? f.object.plantillahcm.vista :
           defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
-        if v.nil?
+        if v.nil? || ab.campos_plantillas[v].nil?
           col = [['','']]
         else
           col = ab.campos_plantillas[v][:campos]
