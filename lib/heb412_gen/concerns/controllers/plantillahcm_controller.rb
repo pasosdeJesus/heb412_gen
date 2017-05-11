@@ -123,7 +123,7 @@ module Heb412Gen
             @plantillahcm.destroy
             respond_to do |format|
               format.html { 
-                redirect_to plantillahcms_url, 
+                redirect_to Rails.configuration.relative_url_root,
                   notice: 'Plantillahcm eliminado.' 
               }
               format.json { head :no_content }
