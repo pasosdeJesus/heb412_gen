@@ -4,7 +4,8 @@
         ab = ::Ability.new 
         v = defined?(vista) ? vista : 
           defined?(@vista) ? @vista :
-          defined?(f.object.plantillahcm.vista) ? f.object.plantillahcm.vista :
+          defined?(f.object.plantillahcm.vista) ? 
+          f.object.plantillahcm.vista :
           defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
         if v.nil? || ab.campos_plantillas[v].nil?
           col = [['','']]
