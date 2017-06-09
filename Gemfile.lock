@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 89216f90ce26f4249f13328d6146a89eeb2f75d9
+  revision: 3b730f2e9f6226b90ebbf18589de83e3fdf7ea63
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -263,7 +263,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    will_paginate (3.1.5)
+    will_paginate (3.1.6)
 
 PLATFORMS
   ruby
