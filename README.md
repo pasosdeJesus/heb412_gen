@@ -54,6 +54,8 @@ debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 ```
 	include FontAwesome::Rails::IconHelper 
 ```
+Notará que hace falta si al correr el servidor de prueba recibe un error como 
+```undefined method `fa_icon' for #<#<Class:0x0009d035bb1610>:0x0009cfe0b333a0>```
 
 4. Configure su aplicación para utilizar los llenadores de plantillas
 
