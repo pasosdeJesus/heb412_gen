@@ -86,8 +86,6 @@ group :test do
 
   gem 'simplecov'
   # Envia resultados de pruebas desde travis a codeclimate
-  gem "codeclimate-test-reporter"
-
 end 
 
 group :development do
