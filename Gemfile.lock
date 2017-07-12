@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8304285647d133645db4f39303809596d44d367f
+  revision: 9b2865435b06c1ec4eaacd476431abde67fd36ef
   specs:
     sip (2.0.b3)
       bootstrap-datepicker-rails
@@ -11,7 +11,7 @@ GIT
       devise-i18n
       jquery-rails
       jquery-ui-rails
-      minitest (= 5.10.1)
+      minitest
       paperclip
       rails
       rails-i18n
@@ -154,7 +154,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
-    minitest (5.10.1)
+    minitest (5.10.2)
     multi_json (1.12.1)
     nio4r (2.1.0)
     nokogiri (1.8.0)
