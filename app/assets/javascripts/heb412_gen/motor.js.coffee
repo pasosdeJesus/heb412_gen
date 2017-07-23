@@ -5,16 +5,20 @@
 
 
 # Pone parametros de formulario en enlace para generar plantilla
-@heb412_gen_completa_generarp = (elema, idselplantilla, idform, rutagenera) ->
-  #elema=this de boton Generar
-  #idselplantilla='#filtro_disgenera' id del campo de seleccion de plantilla
-  #idform='/casos/filtro' id del formulario cuyos valores se extraeran
-  #rutagenera='casos/genera/' ruta por cargar con id de plantilla elegida y valores de formulario
-
+# @elema this de boton Generar
+# @idselplantilla id del campo de seleccion de plantilla
+# @idruta ruta del formulario (e.g '/casos/filtro') si se deja
+#   en blanco se usa el mas cercano a elema
+# @rutagenera ruta por cargar con id e plantilla y valors del 
+#   formulario e.g 'casos/genera/'
+@heb412_gen_completa_generarp = (elema, idselplantilla, idruta, rutagenera) ->
   nplantilla = parseInt($(idselplantilla).val())
 
   if nplantilla > 0 
-    f = $("form[action$='" + idform + "']")
+    if idruta == null
+      f = $(elema).closest('form')
+    else
+      f = $("form[action$='" + idruta + "']")
     d = f.serialize()
     d += '&idplantilla=' +  nplantilla
     d += '&commit=Enviar'
