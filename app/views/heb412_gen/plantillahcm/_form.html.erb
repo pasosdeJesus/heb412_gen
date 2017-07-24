@@ -27,6 +27,8 @@
         } %>
 
       <%= f.input :descripcion %> 
+
+      <%= render partial: 'form_complemento1', locals: { f: f } %> 
       
       <%= f.input :fuente,
         input_html: {

@@ -190,13 +190,13 @@ module Heb412Gen
           # Never trust parameters from the scary internet, only allow the white list through.
           def plantillahcm_params
             params.require(:plantillahcm).permit(
-              :ruta,
               :descripcion,
+              :filainicial,
               :fuente,
               :licencia,
-              :vista,
               :nombremenu, 
-              :filainicial,
+              :ruta,
+              :vista,
               :campoplantillahcm_attributes => [
                 :id,
                 :nombrecampo,
