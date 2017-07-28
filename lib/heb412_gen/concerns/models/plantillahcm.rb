@@ -21,7 +21,8 @@ module Heb412Gen
           validates :licencia, length: { maximum: 1023 }
           validates :vista, presence: true, length: { maximum: 127}
           validates :nombremenu, presence: true, length: { maximum: 127}
-          validates :filainicial, presence: true
+          validates :filainicial, presence: true, numericality: { 
+            only_integer: true, greater_than: 0}
 
         end # included
 
