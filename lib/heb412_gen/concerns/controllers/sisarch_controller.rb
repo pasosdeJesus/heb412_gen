@@ -147,7 +147,7 @@ module Heb412Gen
             rr2 = rr1.join(nombre)
             logger.debug "~ por eliminar archivo rr2=#{rr2.to_s}"
 
-            file.delete(rr2)
+            File.delete(rr2)
             presenta_contenido(rr1, false)
           end
  
