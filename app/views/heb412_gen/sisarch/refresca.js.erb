@@ -3,5 +3,8 @@ $("#nuevo_ruta").val("<%= File.join("arch", @ruta) %>");
 $("#nueva_ruta").val("<%= File.join("arch", @ruta) %>");
 $("#contenido").html("<%= escape_javascript(render('heb412_gen/sisarch/index_contenido')) %>");
 $('#nueva_nombre').val('');
-window.location.pathname = "<%= File.join(Rails.configuration.relative_url_root, 
-                                          'sis/arch', @ruta) %>";
+<% if @modhistorial %>
+  window.location.pathname = "<%= File.join(
+    Rails.configuration.relative_url_root, 
+    'sis/arch', @ruta) %>";
+<% end %>

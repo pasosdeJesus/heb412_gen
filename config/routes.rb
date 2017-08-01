@@ -8,6 +8,8 @@ Heb412Gen::Engine.routes.draw do
 
   post "sis/nueva", to: "sisarch#nueva_carpeta", as: :nueva_carpeta
   post "sis/nuevo", to: "sisarch#nuevo_archivo", as: :nuevo_archivo
+  post "sis/eliminararc", to: "sisarch#eliminar_archivo", as: :eliminar_archivo
+  post "sis/eliminardir", to: "sisarch#eliminar_directorio", as: :eliminar_directorio
 
   get "plantillahcm/pintacampos" => "plantillahcm#pintacampos", 
     as: :plantillahcm_pintacampos

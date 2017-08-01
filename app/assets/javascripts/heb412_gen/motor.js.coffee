@@ -29,6 +29,33 @@
   else 
     return false
 
+@heb412_gen_eliminar_archivo = (urlelim) ->
+   el = document.createElement('a');
+   el.href = urlelim
+   rnarc = el.pathname.replace(/^\/sis\//, '') + '/' + el.search.substr(10)
+   ub = rnarc.lastIndexOf('/')
+   if ub < 0
+     return false
+   rarc = rnarc.substr(0, ub)
+   narc = rnarc.substr(ub+1)
+   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
+     {ruta: rarc, arc: narc}, '', '', 'POST', 'script')
+
+@heb412_gen_eliminar_directorio = (urlelim) ->
+   el = document.createElement('a');
+   el.href = urlelim
+   debugger
+   rnarc = el.pathname.replace(/^\/sis\//, '') 
+   ub = rnarc.lastIndexOf('/')
+   if ub < 0
+     return false
+   rarc = rnarc.substr(0, ub)
+   ndir = rnarc.substr(ub+1)
+   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
+     {ruta: rarc, dir: ndir}, '', '', 'POST', 'script')
+
+
+
 @heb412_gen_prepara_eventos_comunes = (root) ->
   if window.location.href.match(/\/plantillahcm\//)
     $(document).on('change', '#plantillahcm_vista', (e) -> 
@@ -74,17 +101,19 @@
   )
   
   $("#heb412_mcarc").click((e) ->
+    root = window
+    sip_arregla_puntomontaje(root)
     t = Date.now()
     d = -1
-    if (window.heb412_mcarc_t)
+    if (root.heb412_mcarc_t)
       d = (t - root.heb412_mcarc_t)/1000
     # NO se permite mas de un envio en 2 segundos 
     if (d == -1 || d > 2)
-      window.heb412_mcarc_t = t
+      root.heb412_mcarc_t = t
       switch e.target.id
-        when "descargar" then window.heb412_mcarc_descarga.click()
+        when "descargar" then root.heb412_mcarc_descarga.click()
         when "renombrar" then alert("renombrado archivo!")
-        when "eliminar" then alert("eliminado archivo!")
+        when "eliminar" then heb412_gen_eliminar_archivo(root.heb412_mcarc_descarga.href)
         when "permisos" then alert("estableciendo establecidos!")
     return false
   )
@@ -100,7 +129,7 @@
       switch e.target.id
         when "abrir" then window.heb412_mcdir_enlace.click()
         when "renombrar" then alert("renombrado directorio!")
-        when "eliminar" then alert("eliminado directorio!")
+        when "eliminar" then heb412_gen_eliminar_directorio(root.heb412_mcdir_enlace.href)
         when "permisos" then alert("estableciendo permisos a directorio!")
   )
 

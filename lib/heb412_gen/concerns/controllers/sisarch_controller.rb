@@ -5,9 +5,15 @@ module Heb412Gen
     module Controllers
       module SisarchController
 
+        # En general todas las funciones esperan un paramétro con el
+        # directorio (ruta) del archivo y otro con el nombre.
         extend ActiveSupport::Concern
 
         included do
+
+          def sanea_nombre(nombre)
+            return nombre.gsub(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/, '')
+          end
 
           # Establece @ruta
           def limpia_ruta(ruta)
@@ -17,12 +23,13 @@ module Heb412Gen
             @ruta = ruta.sub(/^arch\/?/, '/')
             @ruta.gsub!('\.\.+', '.')
             @ruta.gsub!('//', '/')
+            @ruta.gsub(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/, '')
             return true
           end
 
           # Presenta contenido de una ruta real que corresponde a @ruta
           # Supone que @ruta ya está definido
-          def presenta_contenido(rr)
+          def presenta_contenido(rr, modhistorial = true)
             @dir = []
             Dir.foreach(rr.to_s) do |a|
               if a == '.'
@@ -38,6 +45,7 @@ module Heb412Gen
                 estado: File::Stat.new(rr.join(a).to_s)
               }
             end
+            @modhistorial = modhistorial
             respond_to do |format|
               format.html { render layout: 'application' }
               format.js { render 'heb412_gen/sisarch/refresca' }
@@ -47,7 +55,7 @@ module Heb412Gen
           # Ver carpeta
           def index
             if !limpia_ruta(params[:ruta])
-              redirect_to Rails.config Rails.configuration.relative_url_root
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             logger.debug "~ ruta=#{@ruta}"
@@ -68,7 +76,7 @@ module Heb412Gen
               "./" + @ruta)
             logger.debug "~ rr=#{rr.to_s}/"
             if params[:descarga]
-              ar = params[:descarga].gsub(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/, '')
+              ar = params[:descarga].gsub(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/, '')
               arr = rr.join(ar)
               if !File.exists?(arr)
                 flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
@@ -78,7 +86,7 @@ module Heb412Gen
               send_file arr, x_sendfile: true
               return
             else
-              presenta_contenido rr
+              presenta_contenido(rr, true)
             end
           end
 
@@ -90,15 +98,15 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            nombre = params[:nueva][:nombre]
-            nombre.gsub!(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ]/, '')
+            nombre = sanea_nombre(params[:nueva][:nombre])
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(nombre)
             logger.debug "~ rr2=#{rr2.to_s}/"
             FileUtils.mkdir rr2.to_s,  mode: 0700
-            presenta_contenido rr1
+            @heb412_modhistorial = false
+            presenta_contenido(rr1, false)
           end
           
           # Crear archivo
@@ -108,8 +116,7 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            nombre = params[:nuevo][:archivo].original_filename
-            nombre.gsub!(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/, '')
+            nombre = sanea_nombre(params[:nuevo][:archivo].original_filename)
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
@@ -121,11 +128,46 @@ module Heb412Gen
               file.write(io.read)
             end
             #presenta_contenido rr1
+            @heb412_modhistorial = false
             nurl = File.join(Rails.configuration.relative_url_root, 'sis/arch/',
                              @ruta)
             redirect_to nurl
           end
  
+          # eliminar archivo
+          def eliminar_archivo
+            if params[:arc].nil? || params[:ruta].nil? || 
+              !limpia_ruta(params[:ruta]) 
+              redirect_to rails.configuration.relative_url_root
+              return
+            end
+            nombre = sanea_nombre(params[:arc])
+            rr1 = Rails.application.config.x.heb412_ruta.join(
+              "./#{@ruta}")
+            rr2 = rr1.join(nombre)
+            logger.debug "~ por eliminar archivo rr2=#{rr2.to_s}"
+
+            file.delete(rr2)
+            presenta_contenido(rr1, false)
+          end
+ 
+           # eliminar directorio
+          def eliminar_directorio
+            if params[:dir].nil? || params[:ruta].nil? || 
+              !limpia_ruta(params[:ruta]) 
+              redirect_to rails.configuration.relative_url_root
+              return
+            end
+            dir = sanea_nombre(params[:dir])
+            rr1 = Rails.application.config.x.heb412_ruta.join(
+              "./#{@ruta}")
+            rr2 = rr1.join(dir)
+            logger.debug "~ por eliminar directorio rr2=#{rr2.to_s}"
+
+            FileUtils.rmdir(rr2)
+            presenta_contenido(rr1, false)
+          end
+            
           private
           # Use callbacks to share common setup or constraints between actions.
           def set_sisarch
