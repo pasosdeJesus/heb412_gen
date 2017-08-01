@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+require 'cgi'
+
 module Heb412Gen
   module Concerns
     module Controllers
@@ -7,12 +9,22 @@ module Heb412Gen
 
         # En general todas las funciones esperan un paramétro con el
         # directorio (ruta) del archivo y otro con el nombre.
+        # Los directorios no aceptan espacio, los archivos si
         extend ActiveSupport::Concern
 
         included do
 
-          def sanea_nombre(nombre)
-            return nombre.gsub(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/, '')
+          # Nombre de archivo o directorio
+          # conesp permitir espacios?
+          def sanea_nombre(nombre, conesp=true)
+            c = CGI::unescape(nombre)
+            if conesp 
+              re = /[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/
+            else
+              re = /[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/
+            end
+            r = c.gsub(re, '')
+            return r
           end
 
           # Establece @ruta
@@ -98,7 +110,7 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            nombre = sanea_nombre(params[:nueva][:nombre])
+            nombre = sanea_nombre(params[:nueva][:nombre], false)
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
@@ -158,7 +170,7 @@ module Heb412Gen
               redirect_to rails.configuration.relative_url_root
               return
             end
-            dir = sanea_nombre(params[:dir])
+            dir = sanea_nombre(params[:dir], false)
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(dir)
