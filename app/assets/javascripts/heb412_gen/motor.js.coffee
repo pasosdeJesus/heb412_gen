@@ -44,7 +44,6 @@
 @heb412_gen_eliminar_directorio = (urlelim) ->
    el = document.createElement('a');
    el.href = urlelim
-   debugger
    rnarc = el.pathname.replace(/^\/sis\//, '') 
    ub = rnarc.lastIndexOf('/')
    if ub < 0
