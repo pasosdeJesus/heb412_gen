@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Ability  < Heb412Gen::Ability
 
+  def acciones_plantillas
+  end
+
   # Autorizacion con CanCanCan
   def initialize(usuario = nil)
     # Sin autenticación puede consultarse información geográfica 

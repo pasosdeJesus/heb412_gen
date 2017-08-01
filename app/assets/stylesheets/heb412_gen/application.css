@@ -46,8 +46,46 @@
 	color: #468847;
 	text-align: left;
 }
-
 ul.heb412 {
 	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+div.heb412_menucontextual ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+div.heb412_menucontextual li {
+	list-style: none;
+}
+
+div.heb412_menucontextual li a:hover {
+	box-shadow: 150px 0 0 0 #9E9B9B inset;
+}
+
+div.heb412_menucontextual li a {
+	line-height: 1em;
+	font-size: 0.8em;
+	text-align: center;
+	cursor:pointer;
+	padding: 6px;
+	color: black;
+	display: block;
+	text-decoration: none;
+}
+
+
+div.heb412_menucontextual {
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+	/*width:150px;*/
+	position:absolute;  
+	background: white;
+	border:1px solid #E3E3E3;
+	z-index: 999999;
 }
 

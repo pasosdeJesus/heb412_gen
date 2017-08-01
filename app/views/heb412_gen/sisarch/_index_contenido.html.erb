@@ -1,21 +1,29 @@
 <ul class='heb412'>
   <% @dir.each do |a| %>
-    <li>
       <% url = File.join(
         Rails.configuration.relative_url_root,
         "/sis/arch", a[:ruta]) %>
-      <% if a[:estado].ftype == "directory" %>
-        <%= link_to url, remote: true do %>
-          <%= fa_icon 'folder', text: a[:nombre] %>
-        <% end %>
+      <% if a[:estado].ftype == "directory" && a[:nombre] == '..' %>
+        <li class='heb412_ndir'>
+          <%= link_to url, remote: true do %>
+            <%= fa_icon 'folder', text: a[:nombre] %>
+          <% end %>
+        </li>
+      <% elsif a[:estado].ftype == "directory" && a[:nombre] != '..' %>
+        <li class='heb412_ndir heb412_directorio'>
+          <%= link_to url, remote: true do %>
+            <%= fa_icon 'folder', text: a[:nombre] %>
+          <% end %>
+        </li>
       <% else %>
-        <%= fa_icon 'file' %> <%= a[:nombre] %>
-        <%= link_to File.dirname(url).to_s + '?descarga=' +
-          File.basename(url).to_s, target: '_blank' do %>
-          <%= fa_icon 'cloud-download' %>
-        <% end %>
+        <li class='heb412_archivo'>
+          <%= fa_icon 'file' %> <%= a[:nombre] %>
+          <%= link_to File.dirname(url).to_s + '?descarga=' +
+            File.basename(url).to_s, target: '_blank' do %>
+            <%= fa_icon 'cloud-download' %>
+          <% end %>
+        </li>
       <% end %>
-    </li>
   <% end %>
 </ul>
 

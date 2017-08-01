@@ -39,7 +39,7 @@
       <% ab = ::Ability.new
         acp = ab.acciones_plantillas %>
       <%= f.input :vista, 
-        collection: acp.keys,
+        collection: acp.nil? ? [] : acp.keys,
         include_blank: false,
         input_html: {
           "data-toggle" => 'tooltip',

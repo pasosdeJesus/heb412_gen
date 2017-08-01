@@ -1,9 +1,9 @@
 <tr class='nested-fields'>
   <td>
-    <% ab = ::Ability.new %>
+    <% ab = ::Ability.new.acciones_plantillas %>
     <%= f.input :nombrecampo,
-      collection: ab.acciones_plantillas['Listado de casos'][
-        :campos],
+      collection: ab.nil? ? [] : 
+        ab['Listado de casos'][:campos],
       label: false
     %>
   </td>

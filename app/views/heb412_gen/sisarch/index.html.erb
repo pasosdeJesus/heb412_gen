@@ -1,51 +1,71 @@
 
 <h1 id="ruta"><%= @ruta if @ruta %></h1>
 
-<div id="contenido">
-  <%= render partial: 'index_contenido' %>
-</div>
-
-  <div class="container">
-    <div class="row">
-      <%= simple_form_for :nueva, 
-        { remote: true,
-          url: heb412_gen.nueva_carpeta_path,
-          method: "post" } do |f| %>
-
-          <div class="col-md-offset-0 col-md-3"> 
-            <%= f.input :nombre,
-              label: false,
-              placeholder: 'Nombre' %>
-            <%= f.input :ruta, 
-              as: :hidden, 
-              input_html: {
-                value: "arch/#{@ruta}"
-              } 
-            %>
-        </div>
-        <div class="col-md-offset-0 col-md-2"> 
-          <%= f.button :submit, 'Nueva carpeta', class: 'btn btn-default' %>
-        </div>
-      <% end %>
-    </div> <!-- row -->
-    <div class="row">
-      <%= simple_form_for :nuevo, 
-        { url: heb412_gen.nuevo_archivo_path,
-          method: "post" } do |f| %>
-          <div class="col-md-offset-0 col-md-3"> 
-            <%= f.input :archivo, as: :file,
-              label: false
-            %>
-            <%= f.input :ruta, 
-              as: :hidden, 
-              input_html: {
-                value: "arch/#{@ruta}"
-              } 
-            %>
-        </div>
-        <div class="col-md-offset-0 col-md-2"> 
-          <%= f.button :submit, 'Subir archivo', class: 'btn btn-default' %>
-        </div>
-      <% end %>
-    </div>
+<div class="container">
+  <div id="contenido">
+    <%= render partial: 'index_contenido' %>
   </div>
+
+  <div class="row">
+    <%= simple_form_for :nueva, 
+      { remote: true,
+        url: heb412_gen.nueva_carpeta_path,
+        method: "post" } do |f| %>
+
+        <div class="col-md-offset-0 col-md-3"> 
+          <%= f.input :nombre,
+            label: false,
+            placeholder: 'Nombre' %>
+          <%= f.input :ruta, 
+            as: :hidden, 
+            input_html: {
+              value: "arch/#{@ruta}"
+            } 
+          %>
+      </div>
+      <div class="col-md-offset-0 col-md-2"> 
+        <%= f.button :submit, 'Nueva carpeta', class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div> <!-- row -->
+  <div class="row">
+    <%= simple_form_for :nuevo, 
+      { url: heb412_gen.nuevo_archivo_path,
+        method: "post" } do |f| %>
+        <div class="col-md-offset-0 col-md-3"> 
+          <%= f.input :archivo, as: :file,
+            label: false
+          %>
+        <%= f.input :ruta, 
+          as: :hidden, 
+          input_html: {
+            value: "arch/#{@ruta}"
+          } 
+        %>
+      </div>
+      <div class="col-md-offset-0 col-md-2"> 
+        <%= f.button :submit, 'Subir archivo', class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div> <!--row -->
+
+  <div id="heb412_mcarc" class="heb412_menucontextual">
+    <ul>
+      <li><a id="descargar">Descargar</a></li>
+      <li><a id="renombrar">Renombrar</a></li>
+      <li><a id="eliminar">Eliminar</a></li>
+      <li> <a id="permisos">Establecer Permisos</a></li>
+    </ul>
+  </div>
+
+
+  <div id="heb412_mcdir" class='heb412_menucontextual'>
+    <ul>
+      <li><a id="abrir">Abrir</a></li>
+      <li><a id="renombrar">Renombrar</a></li>
+      <li><a id="eliminar">Eliminar</a></li>
+      <li> <a id="permisos">Establecer Permisos</a></li>
+    </ul>
+  </div>
+
+</div>
