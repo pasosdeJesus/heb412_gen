@@ -10,9 +10,11 @@ module Heb412Gen
         included do
           include ActionView::Helpers::AssetUrlHelper
           include Sip::FormatoFechaHelper
+          include Sip::ModeloHelper
   
           before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
                                          :show, :impreso]
+          load_and_authorize_resource  class: Heb412Gen::Doc
 
           @vista= nil
           attr_accessor :form_f
@@ -42,7 +44,15 @@ module Heb412Gen
               end
             end
           end
-          
+
+          def clase
+            'Heb412Gen::Plantillahcm'
+          end
+
+          def atributos_show
+            ["id", "ruta", "descripcion", "fuente", "licencia", "vista", 
+             "nombremenu", "filainicial"]
+          end
 
           # GET /plantillahcm/nueva
           def new

@@ -14,8 +14,8 @@ Heb412Gen::Engine.routes.draw do
   get "plantillahcm/pintacampos" => "plantillahcm#pintacampos", 
     as: :plantillahcm_pintacampos
 
-  resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' },  
-    only: [:edit, :update, :new, :create, :destroy, :show]
+  resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }#,  
+#    only: [:edit, :update, :new, :create, :destroy, :show, :index]
   resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
 
   get "docs/:id/impreso" => "docs#impreso", as: :impreso

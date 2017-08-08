@@ -41,6 +41,8 @@ module Heb412Gen
 
           # Presenta contenido de una ruta real que corresponde a @ruta
           # Supone que @ruta ya está definido
+          # modhistorial indica si la ruta debe agregarse al historial de
+          # navegación del navegador que emplea el usuario
           def presenta_contenido(rr, modhistorial = true)
             @dir = []
             Dir.foreach(rr.to_s) do |a|
@@ -50,11 +52,14 @@ module Heb412Gen
               if @ruta == "/" && a == ".."
                 next
               end
-              puts "a=#{a}"
+              ruta_sa = File.join(@ruta, a).to_s
+              puts "a=#{a}, ruta_sa=#{ruta_sa}"
               @dir << {
                 nombre: a,
-                ruta: File.join(@ruta,  a).to_s,
-                estado: File::Stat.new(rr.join(a).to_s)
+                ruta: ruta_sa,
+                estado: File::Stat.new(rr.join(a).to_s),
+                plantillashcm: Heb412Gen::Plantillahcm.where(
+                  ruta: ruta_sa[1..-1]).pluck(:id, :vista, :nombremenu)
               }
             end
             @modhistorial = modhistorial

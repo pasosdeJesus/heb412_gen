@@ -28,6 +28,7 @@ class Ability  < Heb412Gen::Ability
       when Ability::ROLADMIN
         can :manage, Sip::Ubicacion
         can :manage, Heb412Gen::Doc
+        can :manage, Heb412Gen::Plantillahcm
         can :manage, Sip::Persona
         can :manage, ::Usuario
         can :manage, :tablasbasicas

@@ -5,8 +5,8 @@ es:
   activerecord:
     models:
       "heb412_gen/plantillahcm":
-        one: Plantilla para hoja de calculo con múltiples registros
-        other: Plantillas para hoja de calculo con múltiples registros
+        one: Plantilla para listado en hoja de cálculo
+        other: Plantillas para listados en hojas de cálculo
     attributes:
       "heb412_gen/doc":
         nombremenu: Nombre por presentar en aplicación

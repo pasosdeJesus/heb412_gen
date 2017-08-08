@@ -22,6 +22,11 @@
             File.basename(url).to_s, target: '_blank' do %>
             <%= fa_icon 'cloud-download' %>
           <% end %>
+          <% a[:plantillashcm].each do |v| %>
+            <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
+              <%= fa_icon 'table' %>
+            <% end %>
+          <% end %>
         </li>
       <% end %>
   <% end %>
