@@ -60,6 +60,7 @@ module Heb412Gen
             @plantillahcm = Heb412Gen::Plantillahcm.new
             @plantillahcm.vista = 'Usuario'
             @vista = nil
+            render :new, layout: 'layouts/application'
           end
 
           # Completa @plantillahcm ya guardado. Debe terminar guardando.
@@ -151,7 +152,6 @@ module Heb412Gen
             fila = plantillahcm.filainicial
             fd.each do |r|
               plantillahcm.campoplantillahcm.each do |c|
-                #byebug
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
                 v = r[c.nombrecampo.to_sym].nil? ?
                   r[c.nombrecampo].to_s :
