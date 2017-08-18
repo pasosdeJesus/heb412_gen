@@ -9,7 +9,6 @@ module Heb412Gen
 
         # En general todas las funciones esperan un paramétro con el
         # directorio (ruta) del archivo y otro con el nombre.
-        # Los directorios no aceptan espacio, los archivos si
         extend ActiveSupport::Concern
 
         included do
@@ -115,7 +114,7 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            nombre = sanea_nombre(params[:nueva][:nombre], false)
+            nombre = sanea_nombre(params[:nueva][:nombre])
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
@@ -175,7 +174,7 @@ module Heb412Gen
               redirect_to rails.configuration.relative_url_root
               return
             end
-            dir = sanea_nombre(params[:dir], false)
+            dir = sanea_nombre(params[:dir])
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(dir)
