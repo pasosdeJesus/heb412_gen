@@ -23,9 +23,18 @@
             <%= fa_icon 'cloud-download' %>
           <% end %>
           <% a[:plantillashcm].each do |v| %>
-            <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
-              <%= fa_icon 'table' %>
+            <% if current_ability.campos_plantillas[v[1]][:ruta] %>
+              <% r = Rails.configuration.relative_url_root + 
+                current_ability.campos_plantillas[v[1]][:ruta] %>
+              <%= link_to r do %>
+                <%= fa_icon 'table' %>
+              <% end %>
             <% end %>
+            <% if can? :edit, Heb412Gen::Plantillahcm %>
+              <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
+                <%= fa_icon 'gears' %>
+              <% end %>
+            <%end %>
           <% end %>
         </li>
       <% end %>

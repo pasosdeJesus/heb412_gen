@@ -37,7 +37,8 @@ module Heb412Gen
         campos: [
           'id', 'nusuario', 'nombres', 'apellidos'
         ],
-        controlador: '::UsuariosController'
+        controlador: '::UsuariosController',
+        ruta: '/usuarios'
       }
     }
           
