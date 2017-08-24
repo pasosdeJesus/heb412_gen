@@ -30,29 +30,30 @@
     return false
 
 @heb412_gen_eliminar_archivo = (urlelim) ->
-   el = document.createElement('a');
-   el.href = urlelim
-   rnarc = el.pathname.replace(/^\/sis\//, '') + '/' + el.search.substr(10)
-   ub = rnarc.lastIndexOf('/')
-   if ub < 0
-     return false
-   rarc = rnarc.substr(0, ub)
-   narc = rnarc.substr(ub+1)
-   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
-     {ruta: rarc, arc: narc}, '', '', 'POST', 'script')
+  el = document.createElement('a');
+  el.href = urlelim
+  debugger
+  rnarc = el.pathname.replace(/^.*\/sis\//, '') + '/' + el.search.substr(10)
+  ub = rnarc.lastIndexOf('/')
+  if ub < 0
+    return false
+  rarc = rnarc.substr(0, ub)
+  narc = rnarc.substr(ub+1)
+  sip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
+    {ruta: rarc, arc: narc}, '', '', 'POST', 'script')
 
 @heb412_gen_eliminar_directorio = (urlelim) ->
-   el = document.createElement('a');
-   el.href = urlelim
-   rnarc = el.pathname.replace(/^\/sis\//, '') 
-   ub = rnarc.lastIndexOf('/')
-   if ub < 0
-     return false
-   rarc = rnarc.substr(0, ub)
-   ndir = rnarc.substr(ub+1)
-   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
-     {ruta: rarc, dir: ndir}, '', '', 'POST', 'script')
-
+  el = document.createElement('a');
+  el.href = urlelim
+  debugger
+  rnarc = el.pathname.replace(/^.*\/sis\//, '') 
+  ub = rnarc.lastIndexOf('/')
+  if ub < 0
+    return false
+  rarc = rnarc.substr(0, ub)
+  ndir = rnarc.substr(ub+1)
+  sip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
+    {ruta: rarc, dir: ndir}, '', '', 'POST', 'script')
 
 
 @heb412_gen_prepara_eventos_comunes = (root) ->
