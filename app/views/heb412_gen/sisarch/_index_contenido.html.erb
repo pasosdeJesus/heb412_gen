@@ -23,7 +23,9 @@
             <%= fa_icon 'cloud-download' %>
           <% end %>
           <% a[:plantillashcm].each do |v| %>
-            <% if current_ability.campos_plantillas[v[1]][:ruta] %>
+            <% if current_ability && current_ability.campos_plantillas &&
+                 current_ability.campos_plantillas[v[1]] &&
+                 current_ability.campos_plantillas[v[1]][:ruta] %>
               <% r = File.join(Rails.configuration.relative_url_root,
                 current_ability.campos_plantillas[v[1]][:ruta]) %>
               <%= link_to r do %>
