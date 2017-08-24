@@ -154,7 +154,7 @@ module Heb412Gen
           def eliminar_archivo
             if params[:arc].nil? || params[:ruta].nil? || 
               !limpia_ruta(params[:ruta]) 
-              redirect_to rails.configuration.relative_url_root
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             nombre = sanea_nombre(params[:arc])
@@ -171,7 +171,7 @@ module Heb412Gen
           def eliminar_directorio
             if params[:dir].nil? || params[:ruta].nil? || 
               !limpia_ruta(params[:ruta]) 
-              redirect_to rails.configuration.relative_url_root
+              redirect_to Rails.configuration.relative_url_root
               return
             end
             dir = sanea_nombre(params[:dir])
