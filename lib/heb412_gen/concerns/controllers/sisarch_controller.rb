@@ -44,7 +44,8 @@ module Heb412Gen
           # navegación del navegador que emplea el usuario
           def presenta_contenido(rr, modhistorial = true)
             @dir = []
-            Dir.foreach(rr.to_s) do |a|
+            eo = Dir.entries(rr.to_s).sort
+            eo.each do |a|
               if a == '.'
                 next
               end
