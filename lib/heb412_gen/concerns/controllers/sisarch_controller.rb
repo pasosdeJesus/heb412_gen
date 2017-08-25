@@ -62,15 +62,21 @@ module Heb412Gen
               }
             end
             @modhistorial = modhistorial
-            respond_to do |format|
-              format.html { render layout: 'application' }
-              format.js { render 'heb412_gen/sisarch/refresca' }
+            if request.env['HTTP_ACCEPT'].index('text/javascript')
+              render 'heb412_gen/sisarch/refresca'
+            else
+                render layout: 'application' 
             end
           end
 
           # Ver carpeta
           def index
-            if !limpia_ruta(params[:ruta])
+            # Ignoramos el reconocimiento de parametros de rails
+            # pues busca poner formato con base en extensión
+            rp = URI.decode(request.path)
+            ir = rp.index(params[:ruta])
+            ruta = rp[ir..-1]
+            if !limpia_ruta(ruta)
               redirect_to Rails.configuration.relative_url_root
               return
             end
