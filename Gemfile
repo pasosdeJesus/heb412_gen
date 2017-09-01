@@ -12,7 +12,6 @@ gem 'colorize'
 # Use SCSS for stylesheets
 gem 'sass'
 gem 'sass-rails'
-gem 'compass-rails'
 
 gem 'chosen-rails'
 
