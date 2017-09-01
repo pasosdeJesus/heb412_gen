@@ -17,7 +17,7 @@ before_install:
         - psql -c 'CREATE DATABASE heb412gen_pru;' -U postgres
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET row_security.*;//g" db/structure.sql.conlock >db/structure.sql
+        - sed -e "s/SET lock_timeout = 0;//g;s/SET row_security.*;//g;s/.*idle_in_transaction_session_timeout.*//g" db/structure.sql.conlock >db/structure.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sip:indices
