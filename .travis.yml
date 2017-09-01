@@ -4,8 +4,6 @@ rvm:
 notifications:
         email: false
 script: bundle exec rails test -b
-after_success:
-        - CODECLIMATE_REPO_TOKEN= bundle exec codeclimate-test-reporter
 addons:
         postgresql: "9.6"
 env:
