@@ -32,8 +32,6 @@ module Dummy
 
     config.x.heb412_ruta = Rails.root.join('public', 'heb412')
 
-    #FactoryGirl.definition_file_paths << Pathname.new("../factories") 
-    #FactoryGirl.definition_file_paths.uniq! 
-    #FactoryGirl.find_definitions
+    config.web_console.whitelisted_ips = '190.27.122.155'
   end
 end

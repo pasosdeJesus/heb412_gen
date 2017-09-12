@@ -73,7 +73,7 @@ gem 'rspreadsheet'
 gem "tzinfo"
 
 # Motor de sistemas de información estilo Pasos de Jesús
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git", branch: :us_modelo
 #gem 'sip', path: '../sip'
 
 group :development, :test do
