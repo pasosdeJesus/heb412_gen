@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 3b4135a5ae893ada1033875bd3c54cd85f9ed053
+  revision: bd6e059b145da9cab2445bec23354bdc0bf61046
   branch: us_modelo
   specs:
     sip (2.0.b4)
@@ -206,7 +206,7 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
-    simplecov (0.15.0)
+    simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
