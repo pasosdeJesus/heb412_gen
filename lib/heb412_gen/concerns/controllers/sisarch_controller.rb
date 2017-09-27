@@ -72,6 +72,7 @@ module Heb412Gen
 
           # Ver carpeta
           def index
+            authorize! :read, Heb412Gen::Doc
             # Ignoramos el reconocimiento de parametros de rails
             # pues busca poner formato con base en extensión
             rp = URI.decode(request.path)
@@ -116,6 +117,7 @@ module Heb412Gen
 
           # Crear carpeta
           def nueva_carpeta
+            authorize! :manage, Heb412Gen::Doc
             if !limpia_ruta(params[:nueva][:ruta]) ||
               params[:nueva][:nombre].nil?
               redirect_to Rails.configuration.relative_url_root
@@ -134,6 +136,7 @@ module Heb412Gen
           
           # Crear archivo
           def nuevo_archivo
+            authorize! :manage, Heb412Gen::Doc
             if !limpia_ruta(params[:nuevo][:ruta]) ||
               params[:nuevo][:archivo].nil?
               redirect_to Rails.configuration.relative_url_root
@@ -159,6 +162,7 @@ module Heb412Gen
  
           # eliminar archivo
           def eliminar_archivo
+            authorize! :manage, Heb412Gen::Doc
             if params[:arc].nil? || params[:ruta].nil? || 
               !limpia_ruta(params[:ruta]) 
               redirect_to Rails.configuration.relative_url_root
@@ -176,6 +180,7 @@ module Heb412Gen
  
            # eliminar directorio
           def eliminar_directorio
+            authorize! :manage, Heb412Gen::Doc
             if params[:dir].nil? || params[:ruta].nil? || 
               !limpia_ruta(params[:ruta]) 
               redirect_to Rails.configuration.relative_url_root
