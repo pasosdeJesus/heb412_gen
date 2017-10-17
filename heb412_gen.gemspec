@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "rspreadsheet"
   s.add_runtime_dependency "chosen-rails"
   s.add_runtime_dependency "font-awesome-rails"
+  s.add_runtime_dependency "redcarpet"
 end
