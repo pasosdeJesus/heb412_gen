@@ -205,7 +205,6 @@ module Heb412Gen
 
           def actleeme
             authorize! :manage, Heb412Gen::Doc
-            byebug
             if params[:actleeme].nil? || params[:actleeme][:ruta].nil? || 
               !limpia_ruta(params[:actleeme][:ruta]) 
               redirect_to Rails.configuration.relative_url_root
