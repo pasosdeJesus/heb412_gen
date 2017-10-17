@@ -43,6 +43,7 @@ module Heb412Gen
           # modhistorial indica si la ruta debe agregarse al historial de
           # navegación del navegador que emplea el usuario
           def presenta_contenido(rr, modhistorial = true)
+            @leeme = nil
             @dir = []
             eo = Dir.entries(rr.to_s).sort
             eo.each do |a|
@@ -52,12 +53,17 @@ module Heb412Gen
               if @ruta == "/" && a == ".."
                 next
               end
+              estadof = File::Stat.new(rr.join(a).to_s)
+              if a == 'LEEME.md' && estadof.ftype == 'file'
+                @leeme = File.read(rr.join(a))
+                next
+              end
               ruta_sa = File.join(@ruta, a).to_s
               puts "a=#{a}, ruta_sa=#{ruta_sa}"
               @dir << {
                 nombre: a,
                 ruta: ruta_sa,
-                estado: File::Stat.new(rr.join(a).to_s),
+                estado: estadof,
                 plantillashcm: Heb412Gen::Plantillahcm.where(
                   ruta: ruta_sa[1..-1]).pluck(:id, :vista, :nombremenu)
               }
@@ -66,7 +72,7 @@ module Heb412Gen
             if request.env['HTTP_ACCEPT'].index('text/javascript')
               render 'heb412_gen/sisarch/refresca'
             else
-                render layout: 'application' 
+              render layout: 'application' 
             end
           end
 
@@ -156,8 +162,8 @@ module Heb412Gen
             end
             #presenta_contenido rr1
             @heb412_modhistorial = false
-            nurl = File.join(Rails.configuration.relative_url_root, 'sis/arch/',
-                             @ruta)
+            nurl = File.join(Rails.configuration.relative_url_root, 
+                             'sis/arch/', @ruta)
             redirect_to nurl
           end
  
@@ -195,6 +201,28 @@ module Heb412Gen
 
             FileUtils.rmdir(rr2)
             presenta_contenido(rr1, false)
+          end
+
+          def actleeme
+            authorize! :manage, Heb412Gen::Doc
+            byebug
+            if params[:actleeme].nil? || params[:actleeme][:ruta].nil? || 
+              !limpia_ruta(params[:actleeme][:ruta]) 
+              redirect_to Rails.configuration.relative_url_root
+              return
+            end
+            rr1 = Rails.application.config.x.heb412_ruta.join(
+              "./#{@ruta}")
+            rr2 = rr1.join('LEEME.md')
+            logger.debug "~ por remplazar LEEME.md rr2=#{rr2.to_s}"
+            File.open(rr2.to_s, 'w') { |file| 
+              file.write(params[:actleeme][:leeme]) 
+            }
+
+            @heb412_modhistorial = false
+            nurl = File.join(Rails.configuration.relative_url_root, 
+                             'sis/arch/', @ruta)
+            redirect_to nurl
           end
             
           private

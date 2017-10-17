@@ -49,6 +49,32 @@
         </div>
       <% end %>
     </div> <!--row -->
+
+    <div class="row">
+      <%= simple_form_for :actleeme, 
+        { url: heb412_gen.actleeme_path,
+          method: "post" } do |f| %>
+          <div class="col-md-offset-0 col-md-7"> 
+            <%= f.input :leeme, as: :text,
+              label: false,
+              input_html: {
+                value: @leeme
+              }
+            %>
+          <%= f.input :ruta, 
+            as: :hidden, 
+            input_html: {
+              value: "arch/#{@ruta}"
+            } 
+          %>
+        </div>
+        <div class="col-md-offset-0 col-md-2"> 
+          <%= f.button :submit, 'Guardar descripción', 
+            class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div> <!--row -->
+
   <% end %>
 
   <div id="heb412_mcarc" class="heb412_menucontextual">

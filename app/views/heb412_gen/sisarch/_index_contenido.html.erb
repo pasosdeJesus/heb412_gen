@@ -1,45 +1,65 @@
-<ul class='heb412'>
-  <% @dir.each do |a| %>
-      <% url = File.join(
-        Rails.configuration.relative_url_root,
-        "/sis/arch", a[:ruta]) %>
-      <% if a[:estado].ftype == "directory" && a[:nombre] == '..' %>
-        <li class='heb412_ndir'>
-          <%= link_to url, remote: true do %>
-            <%= fa_icon 'folder', text: a[:nombre] %>
-          <% end %>
-        </li>
-      <% elsif a[:estado].ftype == "directory" && a[:nombre] != '..' %>
-        <li class='heb412_ndir heb412_directorio'>
-          <%= link_to url, remote: true do %>
-            <%= fa_icon 'folder', text: a[:nombre] %>
-          <% end %>
-        </li>
-      <% else %>
-        <li class='heb412_archivo'>
-          <%= fa_icon 'file' %> <%= a[:nombre] %>
-          <%= link_to File.dirname(url).to_s + '?descarga=' +
-            File.basename(url).to_s, target: '_blank' do %>
-            <%= fa_icon 'cloud-download' %>
-          <% end %>
-          <% a[:plantillashcm].each do |v| %>
-            <% if current_ability && current_ability.campos_plantillas &&
-                 current_ability.campos_plantillas[v[1]] &&
-                 current_ability.campos_plantillas[v[1]][:ruta] %>
-              <% r = File.join(Rails.configuration.relative_url_root,
-                current_ability.campos_plantillas[v[1]][:ruta]) %>
-              <%= link_to r do %>
-                <%= fa_icon 'table' %>
+<div class="row">
+  <div class="col-md-8">
+    <ul class='heb412'>
+      <% @dir.each do |a| %>
+          <% url = File.join(
+            Rails.configuration.relative_url_root,
+            "/sis/arch", a[:ruta]) %>
+          <% if a[:estado].ftype == "directory" && a[:nombre] == '..' %>
+            <li class='heb412_ndir'>
+              <%= link_to url, remote: true do %>
+                <%= fa_icon 'folder', text: a[:nombre] %>
               <% end %>
-            <% end %>
-            <% if can? :edit, Heb412Gen::Plantillahcm %>
-              <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
-                <%= fa_icon 'gears' %>
+            </li>
+          <% elsif a[:estado].ftype == "directory" && a[:nombre] != '..' %>
+            <li class='heb412_ndir heb412_directorio'>
+              <%= link_to url, remote: true do %>
+                <%= fa_icon 'folder', text: a[:nombre] %>
               <% end %>
-            <%end %>
+            </li>
+          <% else %>
+            <li class='heb412_archivo'>
+              <%= fa_icon 'file' %> <%= a[:nombre] %>
+              <%= link_to File.dirname(url).to_s + '?descarga=' +
+                File.basename(url).to_s, target: '_blank' do %>
+                <%= fa_icon 'cloud-download' %>
+              <% end %>
+              <% a[:plantillashcm].each do |v| %>
+                <% if current_ability && current_ability.campos_plantillas &&
+                     current_ability.campos_plantillas[v[1]] &&
+                     current_ability.campos_plantillas[v[1]][:ruta] %>
+                  <% r = File.join(Rails.configuration.relative_url_root,
+                    current_ability.campos_plantillas[v[1]][:ruta]) %>
+                  <%= link_to r do %>
+                    <%= fa_icon 'table' %>
+                  <% end %>
+                <% end %>
+                <% if can? :edit, Heb412Gen::Plantillahcm %>
+                  <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
+                    <%= fa_icon 'gears' %>
+                  <% end %>
+                <%end %>
+              <% end %>
+            </li>
           <% end %>
-        </li>
       <% end %>
-  <% end %>
-</ul>
+    </ul>
+  </div>
 
+  <div class="col-md-4">
+    <% if @leeme %> 
+      <% @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, {
+        autolink: true,
+        space_after_headers: true,
+        fenced_code_blocks: true,
+        underline: true,
+        highlight: true,
+        footnotes: true,
+        tables: true }) %>
+      <% c = @markdown.render(@leeme).html_safe %>
+      <%= c %>
+    <% end %>
+
+  </div>
+      
+</div>
