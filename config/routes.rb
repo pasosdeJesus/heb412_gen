@@ -15,6 +15,9 @@ Heb412Gen::Engine.routes.draw do
   get "plantillahcm/pintacampos" => "plantillahcm#pintacampos", 
     as: :plantillahcm_pintacampos
 
+  get "plantillashcm" => "plantillahcm#index", 
+    as: :plantillashcm
+
   resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }#,  
 #    only: [:edit, :update, :new, :create, :destroy, :show, :index]
   resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]

@@ -17,7 +17,6 @@ module Heb412Gen
             reject_if: :all_blank
 
           validates :ruta, presence: true, length: { maximum: 2047 }
-          validates :descripcion, length: { maximum: 2047 }
           validates :fuente, length: { maximum: 1023 }
           validates :licencia, length: { maximum: 1023 }
           validates :vista, presence: true, length: { maximum: 127}
@@ -26,6 +25,12 @@ module Heb412Gen
             only_integer: true, greater_than: 0}
 
         end # included
+
+        class_methods do 
+          def modelos_path
+            'plantillashcm_path'
+          end
+        end
 
       end
     end

@@ -50,8 +50,16 @@ module Heb412Gen
           end
 
           def atributos_show
-            ["id", "ruta", "descripcion", "fuente", "licencia", "vista", 
+            ["id", "ruta", "fuente", "licencia", "vista", 
              "nombremenu", "filainicial"]
+          end
+
+          def atributos_index
+            ["id", "vista", "nombremenu", "ruta", "licencia", "filainicial"]
+          end
+
+          def index_reordenar(c)
+            c.reorder([:vista, :nombremenu])
           end
 
           # GET /plantillahcm/nueva
@@ -200,7 +208,6 @@ module Heb412Gen
           # Never trust parameters from the scary internet, only allow the white list through.
           def plantillahcm_params
             params.require(:plantillahcm).permit(
-              :descripcion,
               :filainicial,
               :fuente,
               :licencia,
