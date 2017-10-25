@@ -31,10 +31,11 @@ module Heb412Gen
             if ruta.nil? || !ruta.starts_with?('arch')
               return false
             end
-            @ruta = ruta.sub(/^arch\/?/, '/')
+            @ruta = CGI::unescape(ruta)
+            @ruta.sub!(/^arch\/?/, '/')
             @ruta.gsub!('\.\.+', '.')
             @ruta.gsub!('//', '/')
-            @ruta.gsub(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/, '')
+            @ruta.gsub!(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/, '')
             return true
           end
 
@@ -135,7 +136,7 @@ module Heb412Gen
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(nombre)
-            logger.debug "~ rr2=#{rr2.to_s}/"
+            logger.debug "~ rr1=#{rr1.to_s}, rr2=#{rr2.to_s}/"
             FileUtils.mkdir rr2.to_s,  mode: 0700
             @heb412_modhistorial = false
             presenta_contenido(rr1, false)
@@ -149,6 +150,7 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
+            byebug
             nombre = sanea_nombre(params[:nuevo][:archivo].original_filename)
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
@@ -179,7 +181,7 @@ module Heb412Gen
             rr1 = Rails.application.config.x.heb412_ruta.join(
               "./#{@ruta}")
             rr2 = rr1.join(nombre)
-            logger.debug "~ por eliminar archivo rr2=#{rr2.to_s}"
+            logger.debug "~ por eliminar archivo rr1=#{rr1.to_s}, rr2=#{rr2.to_s}"
 
             File.delete(rr2)
             presenta_contenido(rr1, false)
