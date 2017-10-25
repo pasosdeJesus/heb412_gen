@@ -13,14 +13,26 @@ module Heb412Gen
 
         included do
 
+          def er_buen_nombre
+            /[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/
+          end
+
+          def er_buen_nombre_conesp
+            /[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/
+          end
+
+          def er_buen_nombre_conesp_conbarra
+            /[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/
+          end
+
           # Nombre de archivo o directorio
           # conesp permitir espacios?
           def sanea_nombre(nombre, conesp=true)
             c = CGI::unescape(nombre)
             if conesp 
-              re = /[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/
+              re = er_buen_nombre_conesp
             else
-              re = /[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ.]/
+              re = er_buen_nombre
             end
             r = c.gsub(re, '')
             return r
@@ -35,7 +47,7 @@ module Heb412Gen
             @ruta.sub!(/^arch\/?/, '/')
             @ruta.gsub!('\.\.+', '.')
             @ruta.gsub!('//', '/')
-            @ruta.gsub!(/[^0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/, '')
+            @ruta.gsub!(er_buen_nombre_conesp_conbarra, '')
             return true
           end
 
@@ -108,7 +120,7 @@ module Heb412Gen
               "./" + @ruta)
             logger.debug "~ rr=#{rr.to_s}/"
             if params[:descarga]
-              ar = params[:descarga].gsub(/[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .]/, '')
+              ar = params[:descarga].gsub(er_buen_nombre_conesp, '')
               arr = rr.join(ar)
               if !File.exists?(arr)
                 flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
