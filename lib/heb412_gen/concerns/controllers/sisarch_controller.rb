@@ -150,7 +150,6 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            byebug
             nombre = sanea_nombre(params[:nuevo][:archivo].original_filename)
 
             rr1 = Rails.application.config.x.heb412_ruta.join(
