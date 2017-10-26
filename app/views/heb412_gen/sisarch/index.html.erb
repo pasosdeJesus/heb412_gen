@@ -80,7 +80,9 @@
   <div id="heb412_mcarc" class="heb412_menucontextual">
     <ul>
       <li><a id="descargar">Descargar</a></li>
-      <li><a id="eliminar">Eliminar</a></li>
+      <% if can?(:destroy, Heb412Gen::Doc) %>
+        <li><a id="eliminar">Eliminar</a></li>
+      <% end %>
     </ul>
   </div>
 
@@ -88,7 +90,9 @@
   <div id="heb412_mcdir" class='heb412_menucontextual'>
     <ul>
       <li><a id="abrir">Abrir</a></li>
-      <li><a id="eliminar">Eliminar</a></li>
+      <% if can?(:destroy, Heb412Gen::Doc) %>
+        <li><a id="eliminar">Eliminar</a></li>
+      <% end %>
     </ul>
   </div>
 
