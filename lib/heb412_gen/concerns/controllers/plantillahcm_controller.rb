@@ -99,7 +99,6 @@ module Heb412Gen
           # POST /plantillahcm
           # POST /plantillahcm.json
           def create
-            byebug
             authorize! :edit, Heb412Gen::Plantillahcm
             @plantillahcm = Heb412Gen::Plantillahcm.new(plantillahcm_params)
             if !@plantillahcm.nombremenu && @plantillahcm.ruta
