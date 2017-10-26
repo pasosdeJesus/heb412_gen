@@ -14,7 +14,7 @@ module Heb412Gen
   
           before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
                                          :show, :impreso]
-          load_and_authorize_resource  class: Heb412Gen::Doc
+          load_and_authorize_resource  class: Heb412Gen::Plantillahcm
 
           @vista= nil
           attr_accessor :form_f
@@ -64,7 +64,7 @@ module Heb412Gen
 
           # GET /plantillahcm/nueva
           def new
-            authorize! :edit, Heb412Gen::Doc
+            authorize! :edit, Heb412Gen::Plantillahcm
             @plantillahcm = Heb412Gen::Plantillahcm.new
             @plantillahcm.vista = 'Usuario'
             @vista = nil
@@ -99,7 +99,8 @@ module Heb412Gen
           # POST /plantillahcm
           # POST /plantillahcm.json
           def create
-            authorize! :edit, Heb412Gen::Doc
+            byebug
+            authorize! :edit, Heb412Gen::Plantillahcm
             @plantillahcm = Heb412Gen::Plantillahcm.new(plantillahcm_params)
             if !@plantillahcm.nombremenu && @plantillahcm.ruta
               @plantillahcm.nombremenu = File.basename(@plantillahcm.ruta)
@@ -109,13 +110,13 @@ module Heb412Gen
 
           # GET /plantillahcm/1/edit
           def edit
-            authorize! :edit, Heb412Gen::Doc
+            authorize! :edit, Heb412Gen::Plantillahcm
           end
 
           # PATCH/PUT /plantillahcm/1
           # PATCH/PUT /plantillahcm/1.json
           def update
-            authorize! :edit, Heb412Gen::Doc
+            authorize! :edit, Heb412Gen::Plantillahcm
             @vista = @plantillahcm.vista
             respond_to do |format|
               if @plantillahcm.update(plantillahcm_params)
@@ -138,7 +139,7 @@ module Heb412Gen
           # DELETE /plantillahcms/1
           # DELETE /plantillahcms/1.json
           def destroy
-            authorize! :edit, Heb412Gen::Doc
+            authorize! :edit, Heb412Gen::Plantillahcm
             @plantillahcm.destroy
             respond_to do |format|
               format.html { 
