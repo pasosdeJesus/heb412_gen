@@ -9,17 +9,22 @@ module Heb412Gen
         included do
 
           belongs_to :plantillahcm, class_name: '::Heb412Gen::Plantillahcm',
-            foreign_key: 'plantillahcm_id'
+            foreign_key: 'plantillahcm_id', validate: true
 
           validates :nombrecampo, 
             uniqueness: { scope: :plantillahcm_id, 
-                          message: "no puede haber campos repetidos"
-          } 
+                          message: "no puede haber campos repetidos" },
+                          presence: true,
+                          allow_blank: false,
+                          length: { minimum: 1}
 
           validates :columna, 
             uniqueness: { scope: :plantillahcm_id, 
-                          message: "no puede haber columnas repetidas"
-          } 
+                          message: "no puede haber columnas repetidas" },
+                          presence: true,
+                          allow_blank: false,
+                          length: { minimum: 1}
+          
 
         end # included
 

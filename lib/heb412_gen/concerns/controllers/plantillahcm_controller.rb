@@ -160,6 +160,7 @@ module Heb412Gen
             fila = plantillahcm.filainicial
             fd.each do |r|
               plantillahcm.campoplantillahcm.each do |c|
+                next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
                 v = r[c.nombrecampo.to_sym].nil? ?
                   r[c.nombrecampo].to_s :
