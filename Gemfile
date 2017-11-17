@@ -69,6 +69,7 @@ gem "paperclip"#, "~> 4.1"
 
 gem 'libxml-ruby'
 gem 'rspreadsheet'
+gem 'rubyzip', '~>1.2'
 
 
 # Zonas horarias
