@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f44c1298d7feb37978f2275eb48b076a94fb8db7
+  revision: b40a8edc45da1aa7da13e08aaabbfa2b97b713a8
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -74,7 +74,7 @@ GEM
       railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
-    cancancan (2.1.1)
+    cancancan (2.1.2)
     chosen-rails (1.5.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
@@ -155,9 +155,9 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
-    puma (3.10.0)
+    puma (3.11.0)
     rack (2.0.3)
-    rack-test (0.7.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
