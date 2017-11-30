@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 991375a45e9c06523caa60903f10488f0a86e9aa
+  revision: 6f05d1cd900fb942870cc86f01cb4b372f8eb7b5
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
