@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 54241e90fbac50da24d701ed7fa1d31b49f47df2
+  revision: e3131062bc4f0c9495af04eeb70441060da323fb
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -75,7 +75,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (2.1.2)
-    chosen-rails (1.5.2)
+    chosen-rails (1.8.2)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
@@ -144,7 +144,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
-    nio4r (2.1.0)
+    nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
@@ -242,7 +242,7 @@ GEM
       tzinfo
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.0.2)
+    uglifier (4.1.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
