@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e3131062bc4f0c9495af04eeb70441060da323fb
+  revision: bd854ffdeb3b0fb600ad42d3d66709d38cc272e2
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -242,7 +242,7 @@ GEM
       tzinfo
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.1.0)
+    uglifier (4.1.1)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
