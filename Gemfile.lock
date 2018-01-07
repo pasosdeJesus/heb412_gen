@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: bd854ffdeb3b0fb600ad42d3d66709d38cc272e2
+  revision: 8da4ee70f82d5b41d66cfa621360a625a0c5ce28
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -197,7 +197,7 @@ GEM
       andand (~> 1.3)
       rubyzip (~> 1.1)
     rubyzip (1.2.1)
-    sass (3.5.4)
+    sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
