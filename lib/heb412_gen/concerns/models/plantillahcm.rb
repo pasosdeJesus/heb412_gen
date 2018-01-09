@@ -24,6 +24,9 @@ module Heb412Gen
           validates :filainicial, presence: true, numericality: { 
             only_integer: true, greater_than: 0}
 
+          def modelos_path
+            'plantillashcm_path'
+          end
         end # included
 
         class_methods do 
