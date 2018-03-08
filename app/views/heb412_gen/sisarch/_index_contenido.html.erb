@@ -5,13 +5,13 @@
           <% url = File.join(
             Rails.configuration.relative_url_root,
             "/sis/arch", a[:ruta]) %>
-          <% if a[:estado].ftype == "directory" && a[:nombre] == '..' %>
+          <% if a[:estado] && a[:estado].ftype == "directory" && a[:nombre] == '..' %>
             <li class='heb412_ndir'>
               <%= link_to url, remote: true do %>
                 <%= fa_icon 'folder', text: a[:nombre] %>
               <% end %>
             </li>
-          <% elsif a[:estado].ftype == "directory" && a[:nombre] != '..' %>
+          <% elsif a[:estado] && a[:estado].ftype == "directory" && a[:nombre] != '..' %>
             <li class='heb412_ndir heb412_directorio'>
               <%= link_to url, remote: true do %>
                 <%= fa_icon 'folder', text: a[:nombre] %>
@@ -20,9 +20,11 @@
           <% else %>
             <li class='heb412_archivo'>
               <%= fa_icon 'file' %> <%= a[:nombre] %>
-              <%= link_to File.dirname(url).to_s + '?descarga=' +
-                File.basename(url).to_s, target: '_blank' do %>
-                <%= fa_icon 'cloud-download' %>
+              <% if a[:estado] %>
+                <%= link_to File.dirname(url).to_s + '?descarga=' +
+                  File.basename(url).to_s, target: '_blank' do %>
+                  <%= fa_icon 'cloud-download' %>
+                <% end %>
               <% end %>
               <% a[:plantillashcm].each do |v| %>
                 <% if current_ability && current_ability.campos_plantillas &&

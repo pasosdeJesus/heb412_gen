@@ -66,7 +66,13 @@ module Heb412Gen
               if @ruta == "/" && a == ".."
                 next
               end
-              estadof = File::Stat.new(rr.join(a).to_s)
+              # Puede haber cambios en sistema de archivos entre el Dir.entries 
+              # y este punto (por ejemplo al genera hoja de calculo podría
+              # renombrar muy rapido)
+              estadof = nil
+              if File.exist?(rr.join(a).to_s)
+                estadof = File::Stat.new(rr.join(a).to_s)
+              end
               if a == 'LEEME.md' && estadof.ftype == 'file'
                 @leeme = File.read(rr.join(a))
                 next

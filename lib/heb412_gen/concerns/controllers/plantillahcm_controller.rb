@@ -158,6 +158,7 @@ module Heb412Gen
             libro = Rspreadsheet.open(ruta)
             hoja = libro.worksheets(1)
             fila = plantillahcm.filainicial
+            total = fd.count
             fd.each do |r|
               plantillahcm.campoplantillahcm.each do |c|
                 next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
@@ -170,6 +171,7 @@ module Heb412Gen
                 hoja[fila, col] = v
               end
               fila += 1
+              yield(total, fila - plantillahcm.filainicial) if block_given?
             end 
 
             n=File.join('/tmp', File.basename(plantillahcm.ruta))
