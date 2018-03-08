@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 317a3b10510f089a486144c47c57cd0729cfd712
+  revision: d952d00ce9ebd1712a0e98002463102a64ae6a83
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -100,10 +100,10 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.6.0)
+    devise-i18n (1.6.1)
       devise (>= 4.4)
     docile (1.1.5)
-    erubi (1.7.0)
+    erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
     font-awesome-rails (4.7.0.3)
@@ -155,9 +155,9 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
     pg (0.21.0)
-    puma (3.11.2)
+    puma (3.11.3)
     rack (2.0.4)
-    rack-test (0.8.2)
+    rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
       actioncable (= 5.1.5)
@@ -186,7 +186,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
