@@ -6,7 +6,7 @@
     <%= render partial: 'index_contenido' %>
   </div>
 
-  <% if can? :edit, Heb412Gen::Doc %>
+  <% if can? :create, Heb412Gen::Doc %>
     <div class="row">
       <%= simple_form_for :nueva, 
         { remote: true,
