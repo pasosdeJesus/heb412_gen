@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 916f6c010b55bb426f2d0cc4cdb390a279d8ef3e
+  revision: 5251feede4dcd9cb206c90ea3ccc35c181fb52d1
   specs:
     sip (2.0.b4)
       bootstrap-datepicker-rails
@@ -152,7 +152,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (0.21.0)
+    pg (1.0.0)
     puma (3.11.3)
     rack (2.0.4)
     rack-test (0.8.3)
@@ -275,7 +275,7 @@ DEPENDENCIES
   jquery-ui-rails
   libxml-ruby
   paperclip
-  pg (~> 0.21)
+  pg
   puma
   rails (~> 5.1.0)
   redcarpet
