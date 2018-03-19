@@ -12,12 +12,12 @@ env:
 before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
-        - sudo /etc/init.d/postgresql start 9.3
+        - sudo /etc/init.d/postgresql start 9.6
         - cd test/dummy
         - psql -c 'CREATE DATABASE heb412gen_pru;' -U postgres
         - bundle install
-        - cp db/structure.sql db/structure.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET row_security.*;//g;s/.*idle_in_transaction_session_timeout.*//g" db/structure.sql.conlock >db/structure.sql
+        - cp db/structure.sql db/structure.sql.copia
+        - sed -e "s/provider = libc,//g" db/structure.sql.copia >db/structure.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sip:indices
