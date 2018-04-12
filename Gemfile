@@ -2,7 +2,10 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
+
+gem 'bootsnap', '>=1.1.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'#, '~> 0.21'
 # Use Puma as the app server
@@ -76,7 +79,7 @@ gem 'rubyzip', '~>1.2'
 gem "tzinfo"
 
 # Motor de sistemas de información estilo Pasos de Jesús
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git", branch: 'rails5.2'
 #gem 'sip', path: '../sip'
 
 group :development, :test do
