@@ -110,6 +110,7 @@ module Heb412Gen
           # GET /plantillahcm/1/edit
           def edit
             authorize! :edit, Heb412Gen::Plantillahcm
+            render :edit, layout: 'layouts/application'
           end
 
           # PATCH/PUT /plantillahcm/1
@@ -150,7 +151,7 @@ module Heb412Gen
           end
 
           # Llena una plantilla para multiples registros
-          # a partir de una fuente de datos (tabla o vista)
+          # a partir de una fuente de datos (tabla, vista o arreglo de objetos)
           def self.llena_plantilla_multiple_fd(plantillahcm, fd)
             ruta = File.join(Rails.application.config.x.heb412_ruta, 
                              plantillahcm.ruta).to_s
