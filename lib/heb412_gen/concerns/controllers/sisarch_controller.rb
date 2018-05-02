@@ -25,7 +25,8 @@ module Heb412Gen
             /[^-0-9A-Za-záéíóú_ÁÉÍÓÚñÑüÜ .\/]/
           end
 
-          # Nombre de archivo o directorio
+          # Sanea nombre de archivo o directorio, elimina espacios al comienzo 
+          #   y final
           # conesp permitir espacios?
           def sanea_nombre(nombre, conesp=true)
             c = CGI::unescape(nombre)
@@ -35,6 +36,7 @@ module Heb412Gen
               re = er_buen_nombre
             end
             r = c.gsub(re, '')
+            r = r.strip
             return r
           end
 
