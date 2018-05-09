@@ -12,6 +12,10 @@ es:
         nombremenu: Nombre por presentar en aplicación
         tipodoc: Tipo de documento
         filainicial: Fila inicial
+      "heb412_gen/plantilladoc":
+        Plantilladoc: Plantilla documento para un registro
+        Plantillasdoc: Plantillas documento para un registro
+        nombremenu: Nombre por presentar en aplicación
       "heb412_gen/plantillahcm":
         nombremenu: Nombre por presentar en aplicación
         filainicial: Fila inicial

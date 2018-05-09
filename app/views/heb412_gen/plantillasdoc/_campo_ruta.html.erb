@@ -1,0 +1,12 @@
+<% odt =[] %>
+<% Dir.chdir(Rails.application.config.x.heb412_ruta) do %>
+  <%   odt= Dir.glob("**/*.odt") %>
+<% end %>
+
+<%= f.input :ruta, 
+  collection: odt,
+  input_html: {
+    "data-toggle" => 'tooltip',
+    "title" => 'Plantilla, debe ser documento (odt) con campos por llenar entre paréntesis cuadrados'
+  } %>
+

@@ -20,6 +20,9 @@ Heb412Gen::Engine.routes.draw do
 
   resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }#,  
 #    only: [:edit, :update, :new, :create, :destroy, :show, :index]
+
+  resources :plantillasdoc, path_names: { new: 'nueva', edit: 'edita' }
+
   resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
 
   get "docs/:id/impreso" => "docs#impreso", as: :impreso

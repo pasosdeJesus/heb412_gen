@@ -17,10 +17,14 @@
     <% if !current_usuario.nil? %>
       <%= drop_down "Documentos" do %>
         <%= menu_item "Nube", heb412_gen.sisini_path %>
-        <%= menu_item "Definir plantilla hoja de calculo para múltiples registros", 
+        <%= menu_item "Definir plantilla hoja de calculo para múltiples registros (HCM)", 
           heb412_gen.new_plantillahcm_path %>
-        <%= menu_item "Lista de plantillas asociadas", 
+        <%= menu_item "Lista de plantillas HCM asociadas", 
           heb412_gen.plantillashcm_path %>
+        <%= menu_item "Definir plantilla documento para un registro", 
+          heb412_gen.new_plantilladoc_path %>
+        <%= menu_item "Lista de plantillas documento", 
+          heb412_gen.plantillasdoc_path %>
       <% end %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
