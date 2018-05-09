@@ -34,9 +34,19 @@ module Heb412Gen
       end
     end
 
+    # Prepara lista de plantillas disponibles en base de datos 
+    # para este controlador
+    def show_plantillas
+      @plantillas = [['', '']]
+      if vistas_manejadas.length > 0
+        @plantillas = Heb412Gen::Plantilladoc.
+          where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
+          map {|p| [p.nombremenu, p.id]}
+      end
+    end
+
     # Genera vista limitando a los registros que recibe
     def vista_listado_ods(vista, registros)
-
       return registros
     end
 
