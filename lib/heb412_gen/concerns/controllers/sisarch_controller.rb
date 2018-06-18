@@ -60,7 +60,10 @@ module Heb412Gen
           def presenta_contenido(rr, modhistorial = true)
             @leeme = nil
             @dir = []
-            eo = Dir.entries(rr.to_s).sort
+            cotejador = TwitterCldr::Collation::Collator.new(
+              Rails.configuration.i18n.default_locale)
+            eo = Dir.entries(rr.to_s).sort {|x,y| 
+               cotejador.compare(x, y) }
             eo.each do |a|
               if a == '.'
                 next
