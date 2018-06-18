@@ -90,5 +90,58 @@ module Heb412Gen
       }
     end
 
+
+
+    def fichaimp
+      @registro = @basica = clase.constantize.find(params[:id])
+      puts params
+      narchivo = ''
+      report = genera_odf(params[:idplantilla].to_i, narchivo)
+      # El enlace en la vista debe tener data-turbolinks=false
+      send_data report.generate,
+        type: 'application/vnd.oasis.opendocument.text',
+        disposition: 'attachment',
+        filename: narchivo
+    end
+
+    def fichapdf
+      @registro = @basica = clase.constantize.find(params[:id])
+      narchivo = ''
+      report = genera_odf(params[:idplantilla].to_i, narchivo)
+      nase = narchivo.split(".")[0]
+      report.generate("/tmp/#{narchivo}")
+      if File.exist?("/tmp/#{nase}.pdf")
+        File.delete("/tmp/#{nase}.pdf")
+      end
+      res = `libreoffice --headless --convert-to pdf "/tmp/#{narchivo}" --outdir /tmp/`
+      puts "OJO res=#{res}, narchivo=#{narchivo}, nase=#{nase}"
+      if File.exist?("/tmp/#{nase}.pdf")
+        send_file "/tmp/#{nase}.pdf",
+        type: 'application/pdf',
+          disposition: 'attachment',
+          filename: nase + '.pdf'
+      else
+        flash.now[:error] = "No se encontró el archivo /tmp/#{nase}.pdf"
+        redirect_to main_app.root_path
+      end
+    end
+
+    def genera_odf(plantilla_id, narchivo)
+      plantilla = Heb412Gen::Plantilladoc.find(plantilla_id)
+      if !plantilla
+        return
+      end
+      narchivo << File.basename(plantilla.ruta)
+      report = ODFReport::Report.new(
+        "#{Rails.root}/public/heb412/#{plantilla.ruta}") do |r|
+        cn = current_ability.campos_plantillas[plantilla.vista][:campos]
+        cn.each do |s|
+          r.add_field(s, @registro.presenta(s))
+        end
+      end
+
+      return report
+    end
+
   end
 end
