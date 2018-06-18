@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5c41174525d66a077a7183232e70ed82dae0198d
+  revision: 0d274503dbf29674db84dd5d421f3a3b17ab5ccd
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -178,7 +178,7 @@ GEM
     msgpack (1.2.4)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     paperclip (6.0.0)
