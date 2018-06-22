@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0d274503dbf29674db84dd5d421f3a3b17ab5ccd
+  revision: d22b153f0e9774e14a791227950e8b11d58931ca
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -233,7 +233,7 @@ GEM
     simplecov-html (0.10.2)
     spring (2.0.2)
       activesupport (>= 4.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -259,7 +259,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.11)
+    uglifier (4.1.12)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)
