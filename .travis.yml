@@ -15,6 +15,9 @@ env:
                 - CC_TEST_REPORTER_ID=25b2e6c40bbd457e1569bff1c83e9a461986bdfa180cf6049090dd6ac358bdd2
 
 before_install: 
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
         - sudo /etc/init.d/postgresql start 9.6
