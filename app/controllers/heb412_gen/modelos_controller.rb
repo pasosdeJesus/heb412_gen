@@ -138,6 +138,12 @@ module Heb412Gen
         cn.each do |s|
           r.add_field(s, @registro.presenta(s))
         end
+        @registro.valorcampoact.each do |vc|
+          n = vc.campoact.actividadtipo.nombre + "_" + vc.campoact.nombrecampo
+          n = n.upcase.gsub(/[^A-Z0-9ÁÉÍÓÚÜÑ]/, '_')
+          puts "Posible campo #{n} -> #{vc.valor}"
+          r.add_field(n, vc.valor)
+        end
       end
 
       return report
