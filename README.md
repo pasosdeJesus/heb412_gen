@@ -77,8 +77,8 @@ En el momento está completa la implementación del primero
       'Actividad' => { 
         campos: [
           'id', 'fecha', 'oficina', 'responsable', 'nombre', 
-          'tipos_de_actividad', 'areas', 'subareas', 'convenios_financieros',
-          'objetivo', 'poblacion'
+          'areas', 'subareas', 'convenios_financieros', 
+          'actividades_de_convenio', 'objetivo', 'poblacion'
         ],
         controlador: 'Cor1440Gen::ActividadesController'
       }
@@ -107,8 +107,11 @@ En el momento está completa la implementación del primero
 ```
 
 4.4 La vista ```index``` del controlador que llenará plantillas debe tener un 
-    filtro como formulario.  Agregue a este filtro un selector para las 
-    posibles plantillas y un botón para generarlas por ejemplo:
+    filtro como formulario.  Para eso haga el controlador descendiente
+    de Heb412Gen::ModelosController (en lugar de Sip::ModelosController)
+    cuya vista index ya lo incluye.
+
+    En caso de que esté manejando su propia vista index debe ser del estilo:
  ```
 <%= simple_form_for :filtro,
   { remote: true,
@@ -142,43 +145,13 @@ En el momento está completa la implementación del primero
     <% end %> 
 ```
 
-4.5 El controlador en su método ```index``` debe filtrar los datos de acuerdo
-    a los parámetros y responder al formato ODS utilizando el parametro
-    ```idplantilla``` que contendrá la identificación de la plantilla por llenar
-    y generar.  
-    Debe asegurar que los datos resultantes que pasa a la función
-    ```Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd```
-    se pueden recorrer con ```each``` y que cada registro (objeto) tendra los 
-    campos declarados en ```app/models/ability.rb```.
-    Por ejemplo si los campos declarados en ```app/models/ability.rb``` 
-    coinciden con los campos del modelo ```Actividad```:
-
-```
-	@actividades = Actividad.all
-	# se filtra de acuerdo a param y se eligen con nombres
-	...
-	respond_to do |format|
-		format.html { # Lo que necesita 
-...
-		}
-		format.json { # API
-		}
-              format.ods { # Se solicitó llenar plantilla
-                if params[:idplantilla].nil? or
-		  params[:idplantilla].to_i <= 0
-                  head :no_content 
-                elsif Heb412Gen::Plantillahcm.where(
-                    id: params[:idplantilla].to_i).take.nil?
-                  head :no_content 
-                else
-                  pl = Heb412Gen::Plantillahcm.find(
-                    params[:idplantilla].to_i)
-                  n = Heb412Gen::PlantillahcmController.
-                    llena_plantilla_multiple_fd(pl, @actividades)
-                  send_file n, x_sendfile: true
-                end
-              }
-```
+4.5 La forma de generar cada campo que especifique en la plantilla a partir
+    de los campos de la base de datos la puede hacer de dos formas
+    (1) en el controlador sobrecargando la función cons_a_fd que convierte 
+      los registros de la consulta en un arreglo de objetos.
+    (2) haciendo que la función presenta del modelo asociado al controlador
+      retorne la información que requiere cuando el atributo sea un campo
+      de la plantilla.
 
   Cuando la información por usar en la plantilla sea compleja y requiera
   tiempo para generarse, la sugerencia es en el caso ```format.ods``` hacer una 
