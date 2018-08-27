@@ -4,12 +4,18 @@ module Heb412Gen
   class ModelosController < Sip::ModelosController
 
     # Deserializa para enviar a ActiveJobs
-    def self.cons_a_fd(cons)
+    def cons_a_fd(cons, colvista = [])
       l = []
       cons.each do |r|
         f = {}
-        r.class.columns.map(&:name).each do |c|
-          f[c] = r[c].to_s
+        #colmod = r.class.columns.map(&:name)
+        #colmod.each do |c|
+        #  f[c] = r[c].to_s
+        #end
+        #colexcvista =  colvista-colmod
+        #colexcvista.each do |c|
+        colvista.each do |c|
+          f[c] = r.presenta(c).to_s
         end
         l << f
       end
@@ -72,14 +78,14 @@ module Heb412Gen
             FileUtils.touch(narch + '.ods-0')
             flash[:notice] = "Se programó la generación del archivo " +
               "#{rarch}.ods, por favor refresque hasta verlo generado"
-
             @vista = vista_listado_ods(pl.vista, @registros)
             rutaurl = File.join(heb412_gen.sisini_path, 
                                 '/generados').to_s
             if @vista.class == Array
               fd = @vista
             else
-              fd = Heb412Gen::ModelosController.cons_a_fd(@vista)
+              fd = cons_a_fd(@vista, 
+                             pl.campoplantillahcm.map(&:nombrecampo))
             end
             Heb412Gen::GeneraodsJob.perform_later(
               pl.id, fd, narch)
