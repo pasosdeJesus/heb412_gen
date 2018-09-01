@@ -52,7 +52,11 @@ module Heb412Gen
     end
 
     # Genera vista limitando a los registros que recibe
-    def vista_listado_ods(vista, registros)
+    def self.vista_listado(plant, ids, modelo, narch, 
+                busfechainicio_ini, busfechainicio_fin,
+                busfechacierre_ini, busfechacierre_fin)
+      registros = modelo.where(id: ids)
+
       return registros
     end
 
@@ -68,27 +72,46 @@ module Heb412Gen
           pl = Heb412Gen::Plantillahcm.find(
             params[:idplantilla].to_i)
           if vistas_manejadas.include?(pl.vista)
-            rarch = File.join('/generados/',
-                              File.basename(pl.ruta, '.ods').to_s + 
-                              "-" + 
-                              DateTime.now.strftime('%Y%m%d%H%M%S')).to_s
+            rarch = File.join(
+              '/generados/', File.basename(pl.ruta, '.ods').to_s + 
+              "-" + DateTime.now.strftime('%Y%m%d%H%M%S')).to_s
             narch = File.join(Rails.application.config.x.heb412_ruta, 
                               rarch)
             puts "narch=#{narch}"
             FileUtils.touch(narch + '.ods-0')
             flash[:notice] = "Se programó la generación del archivo " +
               "#{rarch}.ods, por favor refresque hasta verlo generado"
-            @vista = vista_listado_ods(pl.vista, @registros)
+            ids = @registros.map(&:id)
             rutaurl = File.join(heb412_gen.sisini_path, 
                                 '/generados').to_s
-            if @vista.class == Array
-              fd = @vista
-            else
-              fd = cons_a_fd(@vista, 
-                             pl.campoplantillahcm.map(&:nombrecampo))
+
+            busfechainicio_ini = nil
+            if params[:filtro][:busfechainicio_localizadaini] && 
+              params[:filtro][:busfechainicio_localizadaini] != ''
+              busfechainicio_ini = params[:filtro][:busfechainicio_localizadaini] 
+            end
+
+            busfechainicio_fin = nil
+            if params[:filtro][:busfechainicio_localizadafin] && 
+              params[:filtro][:busfechainicio_localizadafin] != ''
+              busfechainicio_fin = params[:filtro][:busfechainicio_localizadafin] 
+            end
+
+            busfechacierre_ini = nil
+            if params[:filtro][:busfechacierre_localizadaini] && 
+              params[:filtro][:busfechacierre_localizadaini] != ''
+              busfechacierre_ini = params[:filtro][:busfechacierre_localizadaini] 
+            end
+
+            busfechacierre_fin = nil
+            if params[:filtro][:busfechacierre_localizadafin] && 
+              params[:filtro][:busfechacierre_localizadafin] != ''
+              busfechacierre_fin = params[:filtro][:busfechacierre_localizadafin] 
             end
             Heb412Gen::GeneraodsJob.perform_later(
-              pl.id, fd, narch)
+              pl.id, @registros.take.class.name, self.class.name, ids, narch,
+              busfechainicio_ini, busfechainicio_fin,
+              busfechacierre_ini, busfechacierre_fin)
             redirect_to rutaurl, format: 'html'
             #return
           end
