@@ -52,9 +52,9 @@ module Heb412Gen
     end
 
     # Genera vista limitando a los registros que recibe
-    def self.vista_listado(plant, ids, modelo, narch, 
-                busfechainicio_ini, busfechainicio_fin,
-                busfechacierre_ini, busfechacierre_fin)
+    # parsimp es hash sencillo con algunos de los params de la solicitud: 
+    # {nombre1: valor1, nombre2: valor2...}
+    def self.vista_listado(plant, ids, modelo, narch, parsimp)
       registros = modelo.where(id: ids)
 
       return registros
@@ -85,33 +85,37 @@ module Heb412Gen
             rutaurl = File.join(heb412_gen.sisini_path, 
                                 '/generados').to_s
 
-            busfechainicio_ini = nil
+            parsimp = {}
+            parsimp[:busfechainicio_ini] = nil
             if params[:filtro][:busfechainicio_localizadaini] && 
               params[:filtro][:busfechainicio_localizadaini] != ''
-              busfechainicio_ini = params[:filtro][:busfechainicio_localizadaini] 
+              parsimp[:busfechainicio_ini] = 
+                params[:filtro][:busfechainicio_localizadaini] 
             end
 
-            busfechainicio_fin = nil
+            parsimp[:busfechainicio_fin] = nil
             if params[:filtro][:busfechainicio_localizadafin] && 
               params[:filtro][:busfechainicio_localizadafin] != ''
-              busfechainicio_fin = params[:filtro][:busfechainicio_localizadafin] 
+              parsimp[:busfechainicio_fin] = 
+                params[:filtro][:busfechainicio_localizadafin] 
             end
 
-            busfechacierre_ini = nil
+            parsimp[:busfechacierre_ini] = nil
             if params[:filtro][:busfechacierre_localizadaini] && 
               params[:filtro][:busfechacierre_localizadaini] != ''
-              busfechacierre_ini = params[:filtro][:busfechacierre_localizadaini] 
+              parsimp[:busfechacierre_ini] = 
+                params[:filtro][:busfechacierre_localizadaini] 
             end
 
-            busfechacierre_fin = nil
+            parsimp[:busfechacierre_fin] = nil
             if params[:filtro][:busfechacierre_localizadafin] && 
               params[:filtro][:busfechacierre_localizadafin] != ''
-              busfechacierre_fin = params[:filtro][:busfechacierre_localizadafin] 
+              parsimp[:busfechacierre_fin] = 
+                params[:filtro][:busfechacierre_localizadafin] 
             end
             Heb412Gen::GeneraodsJob.perform_later(
               pl.id, @registros.take.class.name, self.class.name, ids, narch,
-              busfechainicio_ini, busfechainicio_fin,
-              busfechacierre_ini, busfechacierre_fin)
+              parsimp)
             redirect_to rutaurl, format: 'html'
             #return
           end
