@@ -165,8 +165,11 @@ module Heb412Gen
                 next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
                 v = r[c.nombrecampo.to_sym].nil? ?
-                  r[c.nombrecampo].to_s :
-                  r[c.nombrecampo.to_sym].to_s 
+                  r[c.nombrecampo] :
+                  r[c.nombrecampo.to_sym]
+                if !v.is_a? Integer
+                  v = v.to_s
+                end
 
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
                 hoja[fila, col] = v

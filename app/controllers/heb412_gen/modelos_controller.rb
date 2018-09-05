@@ -4,18 +4,22 @@ module Heb412Gen
   class ModelosController < Sip::ModelosController
 
     # Deserializa para enviar a ActiveJobs
-    def cons_a_fd(cons, colvista = [])
+    def self.cons_a_fd(cons, colvista = [])
       l = []
       cons.each do |r|
         f = {}
-        #colmod = r.class.columns.map(&:name)
-        #colmod.each do |c|
-        #  f[c] = r[c].to_s
-        #end
-        #colexcvista =  colvista-colmod
-        #colexcvista.each do |c|
         colvista.each do |c|
-          f[c] = r.presenta(c).to_s
+          v = ''
+          if r.respond_to?(:presenta)
+            v = r.presenta(c)
+          elsif !r[c].nil?
+            v = r[c]
+          end
+          if v.is_a? Integer
+            f[c] = v
+          else
+            f[c] = v.to_s
+          end
         end
         l << f
       end

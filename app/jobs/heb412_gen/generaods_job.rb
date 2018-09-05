@@ -38,7 +38,7 @@ module Heb412Gen
       if vista.class == Array
         fd = vista
       else
-        fd = cons_a_fd(vista, plant.campoplantillahcm.map(&:nombrecampo))
+        fd = controlador.cons_a_fd(vista, plant.campoplantillahcm.map(&:nombrecampo))
       end
       ultp = 0
       n = Heb412Gen::PlantillahcmController.
