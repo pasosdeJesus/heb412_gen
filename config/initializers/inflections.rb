@@ -16,5 +16,6 @@
 # end
 ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'plantillahcm', 'plantillahcm'
+	inflect.irregular 'plantillahcr', 'plantillahcr'
 	inflect.irregular 'plantilladoc', 'plantillasdoc'
 end

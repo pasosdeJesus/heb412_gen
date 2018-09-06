@@ -1,0 +1,81 @@
+<%= simple_form_for @plantillahcr, 
+  :html => { :class => 'form-horizontal' } do |f| 
+%>
+
+  <% controller.form_f = f %>
+  <script>
+    <% ab = ::Ability.new %>
+    root = window;
+    root.campos_plantillas=<%= raw(ab.campos_plantillas.to_json) %>
+  </script>
+
+  <div class="row">
+    <div id="campos" class="col-xs-offset-0 col-xs-12">
+
+      <%= render partial: 'sip/hogar/errores', locals: { f: f } %>
+
+      <% ods =[] 
+         Dir.chdir(Rails.application.config.x.heb412_ruta) { 
+        ods= Dir.glob("**/*.ods") } %>
+
+      <%= f.input :ruta, 
+        collection: ods,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Plantilla, debe ser hoja de cálculo (ods)'
+        } %>
+
+      <%= render partial: 'form_complemento1', locals: { f: f } %> 
+      
+      <%= f.input :fuente,
+        input_html: {
+        "data-toggle" => 'tooltip',
+        "title" => 'URL o referencia para dar crédito'
+      } %> 
+
+      <%= f.input :licencia,
+        input_html: {
+        "data-toggle" => 'tooltip',
+        "title" => 'URL a la licencia, requerido si el documento ' +
+          'se va a publicar'
+      } %> 
+
+      <% 
+          ab = ::Ability.new
+          cord = ab.campos_plantillas.keys.map { |n| 
+            ['Resumen de ' + n.to_s.pluralize, n.to_s] }
+          cord.sort! { |x,y| x[1] <=> y[1] }
+      %>
+      <%= f.input :vista, 
+        collection: cord,
+        include_blank: false,
+        selected: @plantillahcr.vista.nil? ? 'Usuario' : @plantillahcr.vista,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Desde que parte de la aplicación se podrá llenar'
+        } %>
+
+      <%= f.input :nombremenu,
+        input_html: {
+          "data-toggle" => 'tooltip',
+          "title" => 'Nombre de esta plantilla para humanos'
+        } %>
+
+      <div id="divcampos">
+        <%= render partial: 'divcampos_plantillahcr', 
+          locals: {f: f, vista: f.object.vista } %>
+      </div>
+
+      <div class="form-actions abajocentrado">
+        <%= f.button :submit, 'Actualizar', :class => 'btn-primary' %>
+
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+          heb412_gen.sisini_path, :class => 'btn' 
+        %>
+      </div>
+
+    </div> <!-- class="col-sm-offset-0 col-sm-7 col-md-8" -->
+  
+  </div> <!-- row -->
+
+<% end %>

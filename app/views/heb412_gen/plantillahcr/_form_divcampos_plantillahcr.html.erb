@@ -1,0 +1,6 @@
+<%= simple_form_for @plantillahcr do |f|  %>
+  <div id="gen_divcampos">
+    <%= render partial: 'divcampos_plantillahcr', 
+      locals: {f: f, vista: @vista} %>
+  </div>
+<% end %>

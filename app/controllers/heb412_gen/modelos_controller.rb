@@ -37,6 +37,7 @@ module Heb412Gen
     # para este controlador
     def index_plantillas
       @plantillas = [['', '']]
+      @plantillasunr = [['', '']]
       if vistas_manejadas.length > 0
         @plantillas = Heb412Gen::Plantillahcm.
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
@@ -51,7 +52,10 @@ module Heb412Gen
       if vistas_manejadas.length > 0
         @plantillas = Heb412Gen::Plantilladoc.
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
-          map {|p| [p.nombremenu, p.id]}
+          map {|p| [p.nombremenu, 'D' + p.id.to_s]}
+        @plantillas += Heb412Gen::Plantillahcm.
+          where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
+          map {|p| [p.nombremenu, 'H' + p.id.to_s]}
       end
     end
 

@@ -1,0 +1,27 @@
+<table border=1 width="100%">
+  <thead>
+    <tr>
+      <th>Campo</th>
+      <th>Fila</th>
+      <th>Columna</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="campoplantillahcr">
+    <%= f.simple_fields_for :campoplantillahcr do |c| %>
+      <%= render partial: 'campoplantillahcr', 
+        locals: {f: c, vista: vista} %>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="links">
+  <%= link_to_add_association 'Añadir Campo', f, 
+    :campoplantillahcr,
+    :"data-association-insertion-node" => "tbody#campoplantillahcr", 
+    :"data-association-insertion-method" => "append", 
+    partial: 'campoplantillahcr',
+    :class => 'btn-primary' 
+  %>
+</div>

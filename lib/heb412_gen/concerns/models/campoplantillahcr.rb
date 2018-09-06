@@ -3,13 +3,13 @@
 module Heb412Gen
   module Concerns
     module Models
-      module Campoplantillahcm
+      module Campoplantillahcr
         extend ActiveSupport::Concern
 
         included do
 
-          belongs_to :plantillahcm, class_name: '::Heb412Gen::Plantillahcm',
-            foreign_key: 'plantillahcm_id', validate: true
+          belongs_to :plantillahcr, class_name: '::Heb412Gen::Plantillahcr',
+            foreign_key: 'plantillahcr_id', validate: true
 
           validates :nombrecampo, 
             presence: true,
@@ -18,13 +18,17 @@ module Heb412Gen
 
           validates :columna, 
             uniqueness: { 
-            scope: :plantillahcm_id, 
-            message: "no puede haber columnas repetidas" },
+            scope: [:plantillahcr_id, :fila], 
+            message: "no puede haber celdas repetidas" },
             presence: true,
             allow_blank: false,
             length: { minimum: 1}
-          
 
+          validates :fila, 
+            presence: true,
+            allow_blank: false,
+            numericality: { greater_than: 0}
+         
         end # included
 
       end

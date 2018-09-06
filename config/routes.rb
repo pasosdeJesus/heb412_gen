@@ -18,8 +18,15 @@ Heb412Gen::Engine.routes.draw do
   get "plantillashcm" => "plantillahcm#index", 
     as: :plantillashcm
 
-  resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }#,  
-#    only: [:edit, :update, :new, :create, :destroy, :show, :index]
+  get "plantillahcr/pintacampos" => "plantillahcr#pintacampos", 
+    as: :plantillahcr_pintacampos
+
+  get "plantillashcr" => "plantillahcr#index", 
+    as: :plantillashcr
+
+  resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }
+
+  resources :plantillahcr, path_names: { new: 'nueva', edit: 'edita' }
 
   resources :plantillasdoc, path_names: { new: 'nueva', edit: 'edita' }
 
@@ -29,6 +36,9 @@ Heb412Gen::Engine.routes.draw do
   
   get "plantillahcm/:id/impreso" => "plantillahcm#impreso", 
     as: :plantillahcm_impresa
+
+  get "plantillahcr/:id/impreso" => "plantillahcr#impreso", 
+    as: :plantillahcr_impresa
 
   namespace :admin do
     ab = ::Ability.new

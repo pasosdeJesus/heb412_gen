@@ -1,0 +1,9 @@
+# encoding: UTF-8
+
+require 'heb412_gen/concerns/models/campoplantillahcr'
+
+module Heb412Gen
+  class Campoplantillahcr < ActiveRecord::Base
+    include Heb412Gen::Concerns::Models::Campoplantillahcr
+  end
+end
