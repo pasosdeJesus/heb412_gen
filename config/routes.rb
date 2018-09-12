@@ -40,6 +40,12 @@ Heb412Gen::Engine.routes.draw do
   get "plantillahcr/:id/impreso" => "plantillahcr#impreso", 
     as: :plantillahcr_impresa
 
+  get "/usuarios/:id/fichaimp" => "/usuarios#fichaimp", 
+    as: :usuario_fichaimp
+  
+  get "/usuarios/:id/fichapdf" => "/usuarios#fichapdf", 
+    as: :usuario_fichapdf
+
   namespace :admin do
     ab = ::Ability.new
     ab.tablasbasicas.each do |t|

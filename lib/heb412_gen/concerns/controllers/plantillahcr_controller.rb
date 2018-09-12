@@ -174,9 +174,16 @@ module Heb412Gen
                 !c.fila ||
                 !c.nombrecampo || c.nombrecampo == ''
               col = (('A'..'CZ').to_a.find_index(c.columna))+1
-              v = fd[c.nombrecampo.to_sym].nil? ?
-                fd[c.nombrecampo] :
-                fd[c.nombrecampo.to_sym]
+              if fd.respond_to?(:presenta)
+                v = fd.presenta(c.nombrecampo)
+              elsif fd.respond_to?(c.nombrecampo.to_sym)
+                v = fd.send(c.nombrecampo.to_sym)
+                if v.respond_to?(:presenta_nombre)
+                  v = v.presenta_nombre
+                end
+              else
+                v = fd[c.nombrecampo] 
+              end
               if !v.is_a? Integer
                 v = v.to_s
               end
@@ -191,7 +198,7 @@ module Heb412Gen
 
             return n
             #send_file n, x_sendfile: true
-              #type: 'application/vnd.oasis.openplantillahcrument.text',
+              #type: 'application/vnd.oasis.opendocument.text',
               #disposition: 'attachment',
               #filename: 'elnombre.ods'
 

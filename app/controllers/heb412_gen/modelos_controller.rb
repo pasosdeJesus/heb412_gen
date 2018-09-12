@@ -52,10 +52,10 @@ module Heb412Gen
       if vistas_manejadas.length > 0
         @plantillas = Heb412Gen::Plantilladoc.
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
-          map {|p| [p.nombremenu, 'D' + p.id.to_s]}
-        @plantillas += Heb412Gen::Plantillahcm.
+          map {|p| [p.nombremenu, "#{p.id.to_s}.odt"]}
+        @plantillas += Heb412Gen::Plantillahcr.
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
-          map {|p| [p.nombremenu, 'H' + p.id.to_s]}
+          map {|p| [p.nombremenu, "#{p.id.to_s}.ods"]}
       end
     end
 
@@ -132,29 +132,44 @@ module Heb412Gen
     end
 
 
-
     def fichaimp
       @registro = @basica = clase.constantize.find(params[:id])
       puts params
       narchivo = ''
-      report = genera_odf(params[:idplantilla].to_i, narchivo)
+      tipomime = ''
+      npl = params[:idplantilla].to_i
+      if !params[:format] || params[:format] == 'odt'
+        reporte_a = genera_odt(npl, narchivo)
+        tipomime = 'application/vnd.oasis.opendocument.text'
+      elsif params[:format] == 'ods'
+        reporte_a = genera_ods(npl, narchivo)
+        tipomime = 'application/vnd.oasis.opendocument.spreadsheet'
+      end
       # El enlace en la vista debe tener data-turbolinks=false
-      send_data report.generate,
-        type: 'application/vnd.oasis.opendocument.text',
-        disposition: 'attachment',
-        filename: narchivo
+      if reporte_a == ''
+        flash.now[:error] = "Problemas al generar plantilla #{npl}"
+      else
+        send_file reporte_a, #x_sendfile: true,
+          type: tipomime,
+          disposition: 'attachment',
+          filename: narchivo
+      end
     end
+
 
     def fichapdf
       @registro = @basica = clase.constantize.find(params[:id])
       narchivo = ''
-      report = genera_odf(params[:idplantilla].to_i, narchivo)
+      if !params[:format] || params[:format] == 'odt'
+        reporte_a = genera_odt(params[:idplantilla].to_i, narchivo)
+      elsif params[:format] == 'ods'
+        reporte_a = genera_ods(params[:idplantilla].to_i, narchivo)
+      end
       nase = narchivo.split(".")[0]
-      report.generate("/tmp/#{narchivo}")
       if File.exist?("/tmp/#{nase}.pdf")
         File.delete("/tmp/#{nase}.pdf")
       end
-      res = `libreoffice --headless --convert-to pdf "/tmp/#{narchivo}" --outdir /tmp/`
+      res = `libreoffice --headless --convert-to pdf "#{reporte_a}" --outdir /tmp/`
       puts "OJO res=#{res}, narchivo=#{narchivo}, nase=#{nase}"
       if File.exist?("/tmp/#{nase}.pdf")
         send_file "/tmp/#{nase}.pdf",
@@ -167,28 +182,49 @@ module Heb412Gen
       end
     end
 
-    def genera_odf(plantilla_id, narchivo)
+
+    def genera_odt(plantilla_id, narchivo)
       plantilla = Heb412Gen::Plantilladoc.find(plantilla_id)
-      if !plantilla
-        return
+      if !plantilla || !plantilla.ruta || plantilla.ruta == ''
+        return ''
       end
       narchivo << File.basename(plantilla.ruta)
-      report = ODFReport::Report.new(
+      report = ::ODFReport::Report.new(
         "#{Rails.root}/public/heb412/#{plantilla.ruta}") do |r|
         cn = current_ability.campos_plantillas[plantilla.vista][:campos]
         cn.each do |s|
           r.add_field(s, @registro.presenta(s))
         end
-        @registro.valorcampoact.each do |vc|
-          n = vc.campoact.actividadtipo.nombre + "_" + vc.campoact.nombrecampo
-          n = n.upcase.gsub(/[^A-Z0-9ÁÉÍÓÚÜÑ]/, '_')
-          puts "Posible campo #{n} -> #{vc.valor}"
-          r.add_field(n, vc.valor)
+        if @registro.respond_to?(:valorcampoact)
+          @registro.valorcampoact.each do |vc|
+            n = vc.campoact.actividadtipo.nombre + "_" + vc.campoact.nombrecampo
+            n = n.upcase.gsub(/[^A-Z0-9ÁÉÍÓÚÜÑ]/, '_')
+            puts "Posible campo #{n} -> #{vc.valor}"
+            r.add_field(n, vc.valor)
+          end
         end
       end
 
-      return report
+      ngen =File.join('/tmp', File.basename(plantilla.ruta))
+      #byebug
+      report.generate(ngen.to_s)
+
+      return ngen
     end
+
+
+    def genera_ods(plantilla_id, narchivo)
+      plantilla = Heb412Gen::Plantillahcr.find(plantilla_id)
+      if !plantilla
+        return
+      end
+      narchivo << File.basename(plantilla.ruta)
+      ngen = Heb412Gen::PlantillahcrController.llena_plantilla_fd(
+        plantilla, @registro)
+
+      return ngen
+    end
+
 
   end
 end
