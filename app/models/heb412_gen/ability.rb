@@ -35,14 +35,18 @@ module Heb412Gen
     CAMPOS_PLANTILLAS_PROPIAS = {
       'Usuario' => {
         campos: [
-          'created_at',
+          'actualizacion',
+          'condensado_de_clave', 
+          'creacion',
+          'correo', 
           'descripcion',
-          'email', 
+          'fechacreacion',
+          'fechadeshabilitacion',
           'id', 
+          'idioma',
           'nombre', 
           'nusuario', 
-          'rol',
-          'updated_at'
+          'rol'
         ],
         controlador: '::UsuariosController',
         ruta: '/usuarios'
