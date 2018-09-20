@@ -9,13 +9,15 @@
 # @idselplantilla id del campo de seleccion de plantilla
 # @idruta ruta del formulario (e.g '/casos/filtro') si se deja
 #   en blanco se usa el mas cercano a elema
-# @rutagenera ruta por cargar con id e plantilla y valors del 
+# @rutagenera ruta por cargar con id de plantilla y valores del 
 #   formulario e.g 'casos/genera/'
-@heb412_gen_completa_generarp = (elema, idselplantilla, idruta, rutagenera) ->
+@heb412_gen_completa_generarp = (elema, idselplantilla, idruta, rutagenera,
+  formato = 'ods') ->
 
-  formato = 'ods'
+  #formato = 'ods'
   p = $(idselplantilla).val().split('.')
   nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
+  debugger
   if p.length == 2
     if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt'
       nplantilla = ''

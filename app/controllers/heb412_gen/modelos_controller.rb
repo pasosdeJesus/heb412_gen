@@ -68,66 +68,73 @@ module Heb412Gen
       return registros
     end
 
+    def programa_generacion_listado(params, extension)
+      if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
+        head :no_content 
+      elsif Heb412Gen::Plantillahcm.where(
+        id: params[:idplantilla].to_i).take.nil?
+        head :no_content 
+      else
+        pl = Heb412Gen::Plantillahcm.find(
+          params[:idplantilla].to_i)
+        if vistas_manejadas.include?(pl.vista)
+          rarch = File.join(
+            '/generados/', File.basename(pl.ruta, '.ods').to_s + 
+            "-" + DateTime.now.strftime('%Y%m%d%H%M%S')).to_s
+          narch = File.join(Rails.application.config.x.heb412_ruta, 
+                            rarch)
+          puts "narch=#{narch}"
+          FileUtils.touch(narch + "#{extension}-0")
+          flash[:notice] = "Se programó la generación del archivo " +
+            "#{rarch}#{extension}, por favor refresque hasta verlo generado"
+          ids = @registros.map(&:id)
+          rutaurl = File.join(heb412_gen.sisini_path, 
+                              '/generados').to_s
+
+          parsimp = {}
+          parsimp[:busfechainicio_ini] = nil
+          if params[:filtro][:busfechainicio_localizadaini] && 
+            params[:filtro][:busfechainicio_localizadaini] != ''
+            parsimp[:busfechainicio_ini] = 
+              params[:filtro][:busfechainicio_localizadaini] 
+          end
+
+          parsimp[:busfechainicio_fin] = nil
+          if params[:filtro][:busfechainicio_localizadafin] && 
+            params[:filtro][:busfechainicio_localizadafin] != ''
+            parsimp[:busfechainicio_fin] = 
+              params[:filtro][:busfechainicio_localizadafin] 
+          end
+
+          parsimp[:busfechacierre_ini] = nil
+          if params[:filtro][:busfechacierre_localizadaini] && 
+            params[:filtro][:busfechacierre_localizadaini] != ''
+            parsimp[:busfechacierre_ini] = 
+              params[:filtro][:busfechacierre_localizadaini] 
+          end
+
+          parsimp[:busfechacierre_fin] = nil
+          if params[:filtro][:busfechacierre_localizadafin] && 
+            params[:filtro][:busfechacierre_localizadafin] != ''
+            parsimp[:busfechacierre_fin] = 
+              params[:filtro][:busfechacierre_localizadafin] 
+          end
+          Heb412Gen::GeneralistadoJob.perform_later(
+            pl.id, @registros.take.class.name, self.class.name, ids, narch,
+            parsimp, extension)
+          redirect_to rutaurl, format: 'html'
+          #return
+        end
+      end
+    end
+
     # Sobrecarga de Sip 
     def index_otros_formatos(format, params)
       format.ods {
-        if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
-          head :no_content 
-        elsif Heb412Gen::Plantillahcm.where(
-          id: params[:idplantilla].to_i).take.nil?
-          head :no_content 
-        else
-          pl = Heb412Gen::Plantillahcm.find(
-            params[:idplantilla].to_i)
-          if vistas_manejadas.include?(pl.vista)
-            rarch = File.join(
-              '/generados/', File.basename(pl.ruta, '.ods').to_s + 
-              "-" + DateTime.now.strftime('%Y%m%d%H%M%S')).to_s
-            narch = File.join(Rails.application.config.x.heb412_ruta, 
-                              rarch)
-            puts "narch=#{narch}"
-            FileUtils.touch(narch + '.ods-0')
-            flash[:notice] = "Se programó la generación del archivo " +
-              "#{rarch}.ods, por favor refresque hasta verlo generado"
-            ids = @registros.map(&:id)
-            rutaurl = File.join(heb412_gen.sisini_path, 
-                                '/generados').to_s
-
-            parsimp = {}
-            parsimp[:busfechainicio_ini] = nil
-            if params[:filtro][:busfechainicio_localizadaini] && 
-              params[:filtro][:busfechainicio_localizadaini] != ''
-              parsimp[:busfechainicio_ini] = 
-                params[:filtro][:busfechainicio_localizadaini] 
-            end
-
-            parsimp[:busfechainicio_fin] = nil
-            if params[:filtro][:busfechainicio_localizadafin] && 
-              params[:filtro][:busfechainicio_localizadafin] != ''
-              parsimp[:busfechainicio_fin] = 
-                params[:filtro][:busfechainicio_localizadafin] 
-            end
-
-            parsimp[:busfechacierre_ini] = nil
-            if params[:filtro][:busfechacierre_localizadaini] && 
-              params[:filtro][:busfechacierre_localizadaini] != ''
-              parsimp[:busfechacierre_ini] = 
-                params[:filtro][:busfechacierre_localizadaini] 
-            end
-
-            parsimp[:busfechacierre_fin] = nil
-            if params[:filtro][:busfechacierre_localizadafin] && 
-              params[:filtro][:busfechacierre_localizadafin] != ''
-              parsimp[:busfechacierre_fin] = 
-                params[:filtro][:busfechacierre_localizadafin] 
-            end
-            Heb412Gen::GeneraodsJob.perform_later(
-              pl.id, @registros.take.class.name, self.class.name, ids, narch,
-              parsimp)
-            redirect_to rutaurl, format: 'html'
-            #return
-          end
-        end
+        programa_generacion_listado(params, '.ods')
+      }
+      format.pdf {
+        programa_generacion_listado(params, '.pdf')
       }
     end
 

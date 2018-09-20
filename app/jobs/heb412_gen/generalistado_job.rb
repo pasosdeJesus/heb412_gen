@@ -1,6 +1,6 @@
 # encoding: utf-8
 module Heb412Gen
-  class GeneraodsJob < ApplicationJob
+  class GeneralistadoJob < ApplicationJob
     queue_as :default
  
     # Llena plantilla hoja de calculo con id idplantilla
@@ -13,8 +13,9 @@ module Heb412Gen
     # 1. crear una vista en la base de datos --si no se especifica se
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
-    def perform(idplantilla, cmodelo, ccontrolador, ids, narch, parsimp)
-      puts "Inicio de generación de plantilla #{idplantilla}, con modelo #{cmodelo}, controlador #{ccontrolador}, cantidad de ids #{ids.length}, en #{narch}"
+    def perform(idplantilla, cmodelo, ccontrolador, ids, narch, parsimp,
+                extension)
+      puts "Inicio de generación de plantilla #{idplantilla}, con modelo #{cmodelo}, controlador #{ccontrolador}, cantidad de ids #{ids.length}, en #{narch}#{extension}"
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = ccontrolador.constantize
       modelo = cmodelo.constantize
@@ -38,7 +39,8 @@ module Heb412Gen
       if vista.class == Array
         fd = vista
       else
-        fd = controlador.cons_a_fd(vista, plant.campoplantillahcm.map(&:nombrecampo))
+        fd = controlador.cons_a_fd(vista, 
+                                   plant.campoplantillahcm.map(&:nombrecampo))
       end
       ultp = 0
       n = Heb412Gen::PlantillahcmController.
@@ -48,12 +50,25 @@ module Heb412Gen
           p = 100*i/t
         end
         if p != ultp
-          FileUtils.mv(narch + ".ods-#{ultp}", narch + ".ods-#{p}")
+          FileUtils.mv("#{narch}#{extension}-#{ultp}", 
+                       "#{narch}#{extension}-#{p}")
           ultp = p
         end
       end
-      FileUtils.rm(narch + ".ods-#{ultp}")
-      FileUtils.mv(n, narch + '.ods')
+      FileUtils.rm("#{narch}#{extension}-#{ultp}")
+      if extension == '.ods'
+        FileUtils.mv(n, "#{narch}#{extension}")
+      elsif extension == '.pdf'
+        if File.exist?("#{n}.pdf")
+          File.delete("#{n}.pdf")
+        end
+        dir = File.dirname(narch)
+        bn = File.basename(narch)
+        FileUtils.mv(n, "/tmp/#{bn}")
+        res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
+        puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
+        File.delete("/tmp/#{bn}")
+      end
       puts "Fin de generación de plantilla #{idplantilla} en #{narch}"
     end
 

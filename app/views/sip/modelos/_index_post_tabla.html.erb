@@ -14,18 +14,36 @@
   </div>
 
   <div class="col-sm-offset-1 col-sm-3">
-    <% oppres = [['', '']] %>  
-    <% oppres += @plantillas if @plantillas %>
-    <%= f.input :disgenera, collection: oppres, 
-      label: false, include_blank: false %>
+    <% if @plantillas && @plantillas.count > 0 %>
+      <% oppres = [['', '']] %>  
+      <% oppres += @plantillas if @plantillas %>
+      <%= f.input :disgenera, collection: oppres, 
+        label: false, include_blank: false %>
+    <% end %>
   </div>
 
   <div class="col-sm-2">
-    <%= link_to t('Llenar y generar'), 
-      '#',
-      class: 'btn', 
-      onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
+    <% if @plantillas && @plantillas.count > 0 %>
+      <%= link_to t('.imprimir', :default => 'Generar documento'), 
+        '#', class: 'btn', 
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',
       \'#{clase.demodulize.pluralize.downcase}\')" %>
+      <%= link_to t('.pdf', :default => 'Generar PDF'), '#', class: 'btn', 
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
+      \'/#{clase.demodulize.pluralize.downcase}\',
+      \'#{clase.demodulize.pluralize.downcase}\', \'pdf\')" %>
+
+
+        <!--%= link_to t('.imprimir', :default => 'Generar documemto'),  
+          '#', class: 'btn', 
+          onclick: "heb412_gen_completa_generarp(this, " +
+          "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichaimp\')" %-->
+        <!-- %= link_to t('.pdf', :default => 'Generar PDF'),
+          '#', class: 'btn', 
+          onclick: "heb412_gen_completa_generarp(this, " +
+          "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichapdf\')" %-->
+      <% end %>
+
   </div>
 </div>
