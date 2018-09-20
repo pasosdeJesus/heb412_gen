@@ -11,6 +11,7 @@
           col = [['','']]
         else
           col = ab.campos_plantillas[v][:campos]
+          col = col.localize(:es).sort.to_a
         end
         puts "OJO campoplantillahcr. col=#{col.to_s}"
     %>
@@ -19,13 +20,14 @@
       label: false %>
   </td>
   <td>
-    <%= f.input :fila, label: false %>
-  </td>
-  <td>
     <%= f.input :columna,
       collection: ('A'..'CZ').to_a,
       label: false
     %>
+  </td>
+
+  <td>
+    <%= f.input :fila, label: false %>
   </td>
   <td>
     <%= f.input :id, as: :hidden %>
