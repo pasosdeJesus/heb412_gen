@@ -1,6 +1,6 @@
 <% if @registro && @registro.vista %>
   <p>
-  En la plantilla emplee los campos:
+  En la plantilla puede emplear los campos:
   <blockquote>
     <% ab = ::Ability.new %>
     <% ab.campos_plantillas[@registro.vista][:campos].each do |c| %>
