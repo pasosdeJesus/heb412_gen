@@ -1,0 +1,11 @@
+<% if @registro && @registro.vista %>
+  <p>
+  En la plantilla emplee los campos:
+  <blockquote>
+    <% ab = ::Ability.new %>
+    <% ab.campos_plantillas[@registro.vista][:campos].each do |c| %>
+      [<%= c.upcase %>]
+    <% end %>
+  </blockquote>
+  </p>
+<% end %>
