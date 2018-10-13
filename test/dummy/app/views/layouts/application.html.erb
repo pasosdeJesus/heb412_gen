@@ -10,7 +10,8 @@
   <%= menu_group do %>
     <% if !current_usuario.nil? %>
       <!--%= menu_item "Examinar", heb412_gen.examinar_path %-->
-      <%= menu_item "Nueva Entrada", heb412_gen.new_doc_path %>
+      <%= menu_item "Personas", sip.personas_path %>
+      <%= menu_item "Actores Sociales", sip.actoressociales_path %>
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>

@@ -59,12 +59,16 @@ Notará que hace falta si al correr el servidor de prueba recibe un error como
 
 4. Configure su aplicación para utilizar los llenadores de plantillas
 
-Se planean 3 tipos de llenadores de plantillas:
-- Para llenar una plantilla ODS con datos de un listado (vista index)
-- Para llenar una plantilla ODS con datos de un resumen (vista show)
-- Para llenar una plantilla ODT con datos de un resumen (vista show)
+Hay 3 tipos de llenadores de plantillas:
+- Para llenar una plantilla ODS con datos de un listado (vista index),
+  que se supone puede demorarse en generar una conjunto grande de datos
 
-En el momento está completa la implementación del primero
+- Para llenar una plantilla ODS con datos de un resumen (vista show), 
+  que suponemos se genera rápido.
+
+- Para llenar una plantilla ODT con datos de un resumen (vista show),
+  que suponemos se genera rápido.
+
 
 4.1 Agregue en el archivo ```app/models/ability.rb``` la relación de campos 
    que un controlador puede dar a una plantilla en la función
@@ -90,9 +94,20 @@ En el momento está completa la implementación del primero
     end
 ```
 
-4.2 De permiso a un usuario para manejar plantillas:
+4.2 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
+  para manejar plantillas:
 ```
 	can :manage, Heb412Gen::Doc
+	can :manage, Heb412Gen::Plantillahcm
+	can :manage, Heb412Gen::Plantillahcr
+	can :manage, Heb412Gen::Plantilladoc
+```
+  y a usuarios que necesiten generarlas por lo menos de lectura
+```
+	can :read, Heb412Gen::Doc
+	can :manage, Heb412Gen::Plantillahcm
+	can :manage, Heb412Gen::Plantillahcr
+	can :manage, Heb412Gen::Plantilladoc
 ```
 
 4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
@@ -100,13 +115,14 @@ En el momento está completa la implementación del primero
     ```app/views/layouts/application.html.erb```
     algo  como:
 ```
- <% if can? :manage, Heb412Gen::Doc %>
+ <% if can? :manage, Heb412Gen::Plantillahcm %>
    <%= menu_item "Nueva plantilla para listado en hoja de calculo",   
        heb412_gen.new_plantillahcm_path %>
  <% end %>
 ```
 
-4.4 La vista ```index``` del controlador que llenará plantillas debe tener un 
+4.4 Para genrar un listado, la vista ```index``` del controlador que 
+    llenará plantillas debe tener un 
     filtro como formulario.  Para eso haga el controlador descendiente
     de Heb412Gen::ModelosController (en lugar de Sip::ModelosController)
     cuya vista index ya lo incluye.
@@ -144,17 +160,39 @@ En el momento está completa la implementación del primero
       </div> <!-- row -->
     <% end %> 
 ```
+    ESte método por omisión generará el ODS en la carpeta generados de la nube.
 
-4.5 La forma de generar cada campo que especifique en la plantilla a partir
-    de los campos de la base de datos la puede hacer de dos formas
-    (1) en el controlador sobrecargando la función cons_a_fd que convierte 
-      los registros de la consulta en un arreglo de objetos.
-    (2) haciendo que la función presenta del modelo asociado al controlador
-      retorne la información que requiere cuando el atributo sea un campo
-      de la plantilla.
+4.5 La vista show se comportará de manera análoga pero generará en línea 
+    bien el .ods o bien el .odt
 
-  Cuando la información por usar en la plantilla sea compleja y requiera
-  tiempo para generarse, la sugerencia es en el caso ```format.ods``` hacer una 
-  vista materializada que incluya la información que  se requiere y 
-  que comience con los datos filtrados por index.
+4.6 Puede ajustar la forma de presentar algunos campos bien en la función
+    `presenta` del modelo asociado al controlador o bien creando en el 
+    modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
+    en https://github.com/pasosdeJesus/sip/blob/master/lib/sip/concerns/models/persona.rb  
+    Por ejemplo una función `presenta(atr)` sobrecargada para presentar
+    sigla de un tipo de documento en lugar del nombre cuando el campo
+    solicitado es `tdoc`:
+```
+          def presenta(atr)
+            case atr.to_s
+            when 'nacionalde'
+              nacionalde ? nacional.nombre : ''
+            when 'tdoc'
+              self.tdocumento.sigla if self.tdocumento
+            else
+              presenta_gen(atr)
+            end
+          end
+```
+    Y la función auxiliar `presenta_fechanac`.
+    
+4.7 Si requiere manejar varias hojas de una hoja de cálculo o cambios
+    mayores a la forma de llenar plantillas sugerimos sobrecargar en
+    el controlador la función self.vista_listado que será llamada
+    por la tarea que genera el ODS en la carpeta generados y que puede
+    bien alistar los registros por llenar automáticamente de forma
+    uniforme en una hoja de cálculo o generar directamente el ODS.  
+    Puede ver un ejemplo en 
+      https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
+
 

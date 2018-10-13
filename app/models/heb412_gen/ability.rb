@@ -6,20 +6,7 @@ module Heb412Gen
 
     def tablasbasicas 
       Sip::Ability::BASICAS_PROPIAS + 
-        Heb412Gen::Ability::BASICAS_PROPIAS - [
-          ['Sip', 'pais'],
-          ['Sip', 'departamento'],
-          ['Sip', 'municipio'],
-          ['Sip', 'clase'],
-          ['Sip', 'fuenteprensa'],
-          ['Sip', 'grupo'],
-          #    ['Sip', 'etiqueta'],
-          ['Sip', 'oficina'],
-          ['Sip', 'tclase'],
-          ['Sip', 'tdocumento'],
-          ['Sip', 'trelacion'],
-          ['Sip', 'tsitio']
-      ] 
+        Heb412Gen::Ability::BASICAS_PROPIAS
     end
 
 
@@ -33,6 +20,49 @@ module Heb412Gen
     # Hereda tablasbasicas_prio de sip
 
     CAMPOS_PLANTILLAS_PROPIAS = {
+      'Actorsocial' => {
+        campos: [
+          'actualizado_en',
+          'anotaciones',
+          'creado_en',
+          'direccion',
+          'fax',
+          'id', 
+          'nombre',
+          'pais',
+          'sectores',
+          'telefono', 
+          'web'
+        ],
+        controlador: '::ActoressocialesController',
+        ruta: '/actoressociales'
+      },
+
+      'Persona' => {
+        campos: [
+          'actualizado_en',
+          'apellidos',
+          'anionac', 
+          'clase',
+          'creado_en',
+          'departamento',
+          'dianac',
+          'fechanac_localizada',
+          'id',
+          'mesnac',
+          'municipio',
+          'nacionalde',
+          'numerodocumento', 
+          'nombres', 
+          'pais', 
+          'sexo', 
+          'tdoc',
+          'tdocumento',
+        ],
+        controlador: '::PersonasController',
+        ruta: '/personas'
+      },
+
       'Usuario' => {
         campos: [
           'actualizacion',

@@ -43,7 +43,9 @@
       <% 
           ab = ::Ability.new
           cord = ab.campos_plantillas.keys.map { |n| 
-            ['Listado de ' + n.to_s.pluralize, n.to_s] }
+            ['Listado de ' + 
+             Heb412Gen::Plantillahcm.human_attribute_name(n.to_s.pluralize), 
+              n.to_s] }
           cord.sort! { |x,y| x[1] <=> y[1] }
       %>
       <%= f.input :vista, 
