@@ -64,6 +64,9 @@ module Heb412Gen
     # {nombre1: valor1, nombre2: valor2...}
     def self.vista_listado(plant, ids, modelo, narch, parsimp)
       registros = modelo.where(id: ids)
+      if self.respond_to?(:index_reordenar)
+        registros = self.index_reordenar(registros)
+      end
 
       return registros
     end

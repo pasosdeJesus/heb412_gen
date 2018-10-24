@@ -33,7 +33,7 @@ module Heb412Gen
       else
         # Si no usamos los registros con las ids dadas para hacer
         # un ActiveModel
-        vista = Heb412Gen::PlantillahcmController.vista_listado(
+        vista = Heb412Gen::ModelosController.vista_listado(
           plant, ids, modelo, narch, parsimp)
       end
       if vista.class == Array
