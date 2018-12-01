@@ -59,6 +59,16 @@ module Heb412Gen
       end
     end
 
+    # Ordenamiento de hojas de cálculo generadas desde el listado (vista index)
+    def self.index_reordenar(registros)
+      registros.reorder([:id])
+    end
+
+    # Ordenamiento del listado (vista index)
+    def index_reordenar(registros)
+      self.class.name.constantize.index_reordenar(registros)
+    end
+
     # Genera vista limitando a los registros que recibe
     # parsimp es hash sencillo con algunos de los params de la solicitud: 
     # {nombre1: valor1, nombre2: valor2...}
