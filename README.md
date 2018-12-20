@@ -14,6 +14,7 @@ Para incluirlo en su aplicación rails que ya usa sip:
 	gem 'font-awesome-rails'
 	gem 'chosen-rails'
 	gem 'rspreadsheet'
+	gem 'redcarpet'
 ```
 
 2. Incluya el motor javascript en su app/assets/javascript/application.js
