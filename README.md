@@ -129,8 +129,8 @@ Hay 3 tipos de llenadores de plantillas:
     filtro como formulario.  Para eso haga el controlador descendiente
     de Heb412Gen::ModelosController (en lugar de Sip::ModelosController)
     cuya vista index ya lo incluye.
-
     En caso de que esté manejando su propia vista index debe ser del estilo:
+
  ```
 <%= simple_form_for :filtro,
   { remote: true,
@@ -163,7 +163,7 @@ Hay 3 tipos de llenadores de plantillas:
       </div> <!-- row -->
     <% end %> 
 ```
-    ESte método por omisión generará el ODS en la carpeta generados de la nube.
+Este método por omisión generará el ODS en la carpeta generados de la nube.
 
 4.5 La vista show se comportará de manera análoga pero generará en línea 
     bien el .ods o bien el .odt
@@ -187,7 +187,7 @@ Hay 3 tipos de llenadores de plantillas:
             end
           end
 ```
-    Y la función auxiliar `presenta_fechanac`.
+Y la función auxiliar `presenta_fechanac`.
     
 4.7 Si requiere manejar varias hojas de una hoja de cálculo o cambios
     mayores a la forma de llenar plantillas sugerimos sobrecargar en
