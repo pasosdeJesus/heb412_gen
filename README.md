@@ -6,7 +6,7 @@
 Este es un motor de Heb412 para manejar nube de documentos y plantillas ods y odt
 
 Aplican practicamente las mismas instrucciones de otros motores genérico
-basados en sip, ver por ejemeplo:
+basados en sip, ver por ejemplo:
 	https://github.com/pasosdeJesus/sal7711_gen
 
 Para incluirlo en su aplicación rails que ya usa sip:
