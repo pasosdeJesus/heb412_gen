@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
     root 'sip/hogar#index'
-    mount Heb412Gen::Engine, at: "/", as: "heb412_gen"
-    mount Sip::Engine, at: "/", as: "sip"
+    mount Heb412Gen::Engine, at: "/heb412", as: "heb412_gen"
+    mount Sip::Engine, at: "/heb412", as: "sip"
 
     namespace :admin do
       ab = ::Ability.new
