@@ -25,7 +25,7 @@
 
   <div class="col-sm-2">
     <% if @plantillas && @plantillas.count > 0 %>
-      <%= link_to t('.imprimir', :default => 'Generar documento'), 
+      <%= link_to t('.imprimir', :default => 'Generar ODS'), 
         '#', class: 'btn', 
         onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',
