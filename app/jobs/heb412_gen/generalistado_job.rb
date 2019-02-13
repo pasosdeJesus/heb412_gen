@@ -68,6 +68,17 @@ module Heb412Gen
         res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
         puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
         File.delete("/tmp/#{bn}")
+
+      elsif extension == '.xlsx'
+        if File.exist?("#{n}.xlsx")
+          File.delete("#{n}.xlsx")
+        end
+        dir = File.dirname(narch)
+        bn = File.basename(narch)
+        FileUtils.mv(n, "/tmp/#{bn}")
+        res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir}`
+        puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
+        File.delete("/tmp/#{bn}")
       end
       puts "Fin de generación de plantilla #{idplantilla} en #{narch}"
     end

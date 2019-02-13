@@ -30,6 +30,10 @@
         onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',
       \'#{clase.demodulize.pluralize.downcase}\')" %>
+      <%= link_to t('.xlsx', :default => 'Generar XLSX'), '#', class: 'btn', 
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
+      \'/#{clase.demodulize.pluralize.downcase}\',
+      \'#{clase.demodulize.pluralize.downcase}\', \'xlsx\')" %>
       <%= link_to t('.pdf', :default => 'Generar PDF'), '#', class: 'btn', 
         onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',

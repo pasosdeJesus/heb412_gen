@@ -149,6 +149,12 @@ module Heb412Gen
       format.pdf {
         programa_generacion_listado(params, '.pdf')
       }
+      format.xlsx {
+        programa_generacion_listado(params, '.xlsx')
+      }
+      format.docx {
+        programa_generacion_listado(params, '.docx')
+      }
     end
 
 
