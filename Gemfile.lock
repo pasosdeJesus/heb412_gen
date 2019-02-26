@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f9f6648d9de717919f81ebca9aef2de1eef370b8
+  revision: 50a60137c2099ddf41a1ef57420ebc956a1f760f
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -76,7 +76,7 @@ GEM
     bcrypt (3.1.12)
     bigdecimal (1.4.3)
     bindex (0.5.0)
-    bootsnap (1.4.0)
+    bootsnap (1.4.1)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
@@ -127,7 +127,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.1.0)
+    json (2.2.0)
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.8.0)
