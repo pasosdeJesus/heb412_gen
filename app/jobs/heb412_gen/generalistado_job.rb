@@ -19,6 +19,7 @@ module Heb412Gen
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = ccontrolador.constantize
       modelo = cmodelo.constantize
+      #byebug
       if controlador.respond_to?(:vista_listado)
         # Damos oportunidad de crear una vista si conviene
         vista = controlador.vista_listado(
