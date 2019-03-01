@@ -23,7 +23,7 @@ module Heb412Gen
       if controlador.respond_to?(:vista_listado)
         # Damos oportunidad de crear una vista si conviene
         vista = controlador.vista_listado(
-          plant, ids, modelo, narch, parsimp)
+          plant, ids, modelo, narch, parsimp, extension)
         if vista == nil
           # Suponemos que ya generó hoja de cálculo
           return
