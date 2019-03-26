@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b724d044f46e43b2dbb9be05599920817bf3e827
+  revision: d9bf2f935c94267cddb19aa6842c150e7164bcf0
   specs:
     sip (2.0.b5)
       bootstrap-datepicker-rails
@@ -76,7 +76,7 @@ GEM
     bcrypt (3.1.12)
     bigdecimal (1.4.3)
     bindex (0.5.0)
-    bootsnap (1.4.1)
+    bootsnap (1.4.2)
       msgpack (~> 1.0)
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
@@ -100,7 +100,7 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
-    devise (4.6.1)
+    devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -154,7 +154,7 @@ GEM
     msgpack (1.2.9)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.10.1)
+    nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
     odf-report (0.6.0)
       nokogiri (>= 1.5.0)
