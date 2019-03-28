@@ -24,9 +24,8 @@ module Heb412Gen
         # Damos oportunidad de crear una vista si conviene
         vista = controlador.vista_listado(
           plant, ids, modelo, narch, parsimp, extension)
-        if vista == nil
+        if vista.class == String
           # Suponemos que ya generó hoja de cálculo
-          return
         end
         # Podría dar un arreglo con registros de los cuales extraer
         # la información --empleando los nombres de campos apropiados
@@ -37,26 +36,30 @@ module Heb412Gen
         vista = Heb412Gen::ModelosController.vista_listado(
           plant, ids, modelo, narch, parsimp)
       end
-      if vista.class == Array
-        fd = vista
+      if vista.class == String
+        n = vista
       else
-        fd = controlador.cons_a_fd(vista, 
-                                   plant.campoplantillahcm.map(&:nombrecampo))
-      end
-      ultp = 0
-      n = Heb412Gen::PlantillahcmController.
-        llena_plantilla_multiple_fd(plant, fd) do |t, i|
-        p = 0
-        if t>0
-          p = 100*i/t
+        if vista.class == Array
+          fd = vista
+        else
+          fd = controlador.cons_a_fd(vista, 
+                                     plant.campoplantillahcm.map(&:nombrecampo))
         end
-        if p != ultp
-          FileUtils.mv("#{narch}#{extension}-#{ultp}", 
-                       "#{narch}#{extension}-#{p}")
-          ultp = p
+        ultp = 0
+        n = Heb412Gen::PlantillahcmController.
+          llena_plantilla_multiple_fd(plant, fd) do |t, i|
+          p = 0
+          if t>0
+            p = 100*i/t
+          end
+          if p != ultp
+            FileUtils.mv("#{narch}#{extension}-#{ultp}", 
+                         "#{narch}#{extension}-#{p}")
+                         ultp = p
+          end
         end
+        FileUtils.rm("#{narch}#{extension}-#{ultp}")
       end
-      FileUtils.rm("#{narch}#{extension}-#{ultp}")
       if extension == '.ods'
         FileUtils.mv(n, "#{narch}#{extension}")
       elsif extension == '.pdf'
