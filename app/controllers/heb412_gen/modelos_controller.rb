@@ -72,7 +72,7 @@ module Heb412Gen
     # Genera vista limitando a los registros que recibe
     # parsimp es hash sencillo con algunos de los params de la solicitud: 
     # {nombre1: valor1, nombre2: valor2...}
-    def self.vista_listado(plant, ids, modelo, narch, parsimp)
+    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension)
       registros = modelo.where(id: ids)
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
