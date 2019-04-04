@@ -27,6 +27,10 @@ module Heb412Gen
           def modelos_path
             'plantillashcm_path'
           end
+
+          def presenta_nombre
+            nombremenu
+          end
         end # included
 
         class_methods do 
