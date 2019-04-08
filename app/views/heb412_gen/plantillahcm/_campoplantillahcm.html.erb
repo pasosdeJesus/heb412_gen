@@ -1,23 +1,12 @@
 <tr class='nested-fields'>
   <td>
-    <% 
-        ab = ::Ability.new 
-        v = defined?(vista) ? vista : 
-          defined?(@vista) ? @vista :
-          defined?(f.object.plantillahcm.vista) ? 
-          f.object.plantillahcm.vista :
-          defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
-        if v.nil? || ab.campos_plantillas[v].nil?
-          col = [['','']]
-        else
-          col = ab.campos_plantillas[v][:campos]
-        end
-        puts "OJO campoplantillahcm. col=#{col.to_s}"
-    %>
-    <%= f.input :nombrecampo,
-      collection: col,
-      label: false
-    %>
+    <% if defined?(vista) %>
+      <%= render partial: 'campo_nombrecampo', 
+        locals: {f: f, vista: vista} %>
+    <% else %>
+      <%= render partial: 'campo_nombrecampo', 
+        locals: {f: f} %>
+    <% end %>
   </td>
   <td>
     <%= f.input :columna,
