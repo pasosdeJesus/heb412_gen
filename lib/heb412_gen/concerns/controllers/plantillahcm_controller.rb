@@ -164,6 +164,7 @@ module Heb412Gen
               plantillahcm.campoplantillahcm.each do |c|
                 next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
                 col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                byebug
                 v = r[c.nombrecampo.to_sym].nil? ?
                   r[c.nombrecampo] :
                   r[c.nombrecampo.to_sym]
