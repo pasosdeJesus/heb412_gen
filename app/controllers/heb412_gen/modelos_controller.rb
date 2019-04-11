@@ -3,6 +3,11 @@
 module Heb412Gen
   class ModelosController < Sip::ModelosController
 
+    # Interpreta campos que tienen punto por ejemplo caracterizacion.nivel
+    def self.valor_campo_compuesto(registro, campo)
+      "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
+    end
+
     # Deserializa para enviar a ActiveJobs
     def self.cons_a_fd(cons, colvista = [])
       l = []
@@ -10,7 +15,9 @@ module Heb412Gen
         f = {}
         colvista.each do |c|
           v = ''
-          if r.respond_to?(:presenta)
+          if c.include?('.')
+            v = self.valor_campo_compuesto(r, c)
+          elsif r.respond_to?(:presenta)
             v = r.presenta(c)
           elsif !r[c].nil?
             v = r[c]
