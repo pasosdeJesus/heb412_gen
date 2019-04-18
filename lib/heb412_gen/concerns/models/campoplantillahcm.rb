@@ -14,7 +14,9 @@ module Heb412Gen
           validates :nombrecampo, 
             presence: true,
             allow_blank: false,
-            length: { minimum: 1}
+            length: { minimum: 1, maximum: 183}
+          # El máximo es para permitir formulario.camposm.valor con 
+          # cada parte de 60 caracteres
 
           validates :columna, 
             uniqueness: { 
