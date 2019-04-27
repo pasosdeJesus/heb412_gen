@@ -8,9 +8,9 @@
         locals: {f: f} %>
     <% end %>
   </td>
-  <td>
+  <td> 
     <%= f.input :columna,
-      collection: ('A'..'CZ').to_a,
+      collection: ('A'..Heb412Gen::ApplicationHelper::MAXCOL).to_a,  # AMJ es máximo en gnumeric
       label: false
     %>
   </td>

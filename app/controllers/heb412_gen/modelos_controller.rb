@@ -8,6 +8,28 @@ module Heb412Gen
       "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
     end
 
+    def importa_dato_gen(datosent, menserror, registro = nil, opciones = {})
+      if registro == nil
+        registro = clase.constantize.new
+      elsif registro.class.to_s != clase
+        menserror = "El controlador #{self.class.to_s} no puede importar #{registro.class.to_s} en #{self.clase}"
+      end
+     
+      return registro.importa(datosent, menserror, opciones)
+    end
+
+    # Crea o completa un registro del modelo manejado por el controlador
+    # @param datoent Diccionario con datos de entrada
+    # @param registro Objeto del modelo manejado por el controlador parcialmente lleno o por crear o ubicar? (si es nil).
+    # @param menserro colchon de errores
+    # @param opciones opciones para la importación
+    # Si logra crear/ubicar  y completar el registro con los datos que 
+    # van en datosent retorna el objeto modificado,  de lo contrario retorna 
+    # nil y aumenta errores en menserror.
+    def importa_dato(datosent, menserror, registro = nil, opciones = {})
+      return importa_dato_gen(datosent, menserror, registro, opciones)
+    end
+
     # Deserializa para enviar a ActiveJobs
     def self.cons_a_fd(cons, colvista = [])
       l = []

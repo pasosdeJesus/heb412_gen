@@ -107,7 +107,8 @@ module Heb412Gen
             fd.each do |r|
               doc.campohc.each do |c|
                 #byebug
-                col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                col = (Heb412Gen::ApplicationHelper::RANGOCOL.
+                       find_index(c.columna))+1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{r[c.nombrecampo]}"
                 hoja[fila, col] = r[c.nombrecampo]
               end
@@ -132,7 +133,8 @@ module Heb412Gen
             fila = @doc.filainicial
             (1..3).each do |r|
               @doc.campohc.each do |c|
-                col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                col = (Heb412Gen::ApplicationHelper::RANGOCOL.
+                       find_index(c.columna))+1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r=#{r}"
                 hoja[fila, col] = fila.to_s + " - " + col.to_s + " - " + 
                   c.nombrecampo

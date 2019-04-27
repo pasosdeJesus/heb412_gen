@@ -48,7 +48,7 @@ module Heb412Gen
           'actualizado_en',
           'apellidos',
           'anionac', 
-          'clase',
+          'centro_poblado',
           'creado_en',
           'departamento',
           'dianac',
@@ -64,7 +64,7 @@ module Heb412Gen
           'tdoc',
           'tdocumento',
         ],
-        controlador: '::PersonasController',
+        controlador: 'Sip::PersonasController',
         ruta: '/personas'
       },
 

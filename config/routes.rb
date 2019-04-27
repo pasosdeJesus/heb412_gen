@@ -18,6 +18,11 @@ Heb412Gen::Engine.routes.draw do
   get "plantillashcm" => "plantillahcm#index", 
     as: :plantillashcm
 
+  get "plantillashcm/importadatos" => "plantillahcm#importadatos", 
+    as: :plantillashcm_importadatos
+  post "plantillashcm/importadatos" => "plantillahcm#importadatos", 
+    as: :plantillashcm_envia_importadatos
+
   get "plantillahcr/pintacampos" => "plantillahcr#pintacampos", 
     as: :plantillahcr_pintacampos
 

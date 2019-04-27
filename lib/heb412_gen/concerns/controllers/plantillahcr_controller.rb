@@ -173,7 +173,8 @@ module Heb412Gen
               next if !c.columna || c.columna =='' || 
                 !c.fila ||
                 !c.nombrecampo || c.nombrecampo == ''
-              col = (('A'..'CZ').to_a.find_index(c.columna))+1
+              col = Heb412Gen::ApplicationHelper::RANGOCOL.
+                find_index(c.columna))+1
               if fd.respond_to?(:presenta)
                 v = fd.presenta(c.nombrecampo)
               elsif fd.respond_to?(c.nombrecampo.to_sym)

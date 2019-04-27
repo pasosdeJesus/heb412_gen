@@ -163,7 +163,7 @@ module Heb412Gen
             fd.each do |r|
               plantillahcm.campoplantillahcm.each do |c|
                 next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
-                col = (('A'..'CZ').to_a.find_index(c.columna))+1
+                col = (Heb412Gen::ApplicationHelper::RANGOCOL.find_index(c.columna))+1
                 v = r[c.nombrecampo.to_sym].nil? ?
                   r[c.nombrecampo] :
                   r[c.nombrecampo.to_sym]
@@ -189,6 +189,161 @@ module Heb412Gen
 
           end
 
+
+          def self.convierte_a_extension_esperada(nfuente, ndest, extension)
+            if extension == '.ods'
+              FileUtils.mv(nfuente, "#{ndest}#{extension}")
+            elsif extension == '.pdf'
+              if File.exist?("#{nfuente}.pdf")
+                File.delete("#{nfuente}.pdf")
+              end
+              dir = File.dirname(ndest)
+              bn = File.basename(ndest)
+              FileUtils.mv(nfuente, "/tmp/#{bn}")
+              res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
+              puts "OJO res=#{res}, nfuente=#{nfuente}, dir=#{dir}, bn=#{bn}"
+              File.delete("/tmp/#{bn}")
+
+            elsif extension == '.xlsx'
+              if File.exist?("#{nfuente}.xlsx")
+                File.delete("#{nfuente}.xlsx")
+              end
+              dir = File.dirname(ndest)
+              bn = File.basename(ndest)
+              FileUtils.mv(nfuente, "/tmp/#{bn}")
+              res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir}`
+              puts "OJO res=#{res}, nfuente=#{nfuente}, dir=#{dir}, bn=#{bn}"
+              File.delete("/tmp/#{bn}")
+            end
+            puts "Fin de generación de #{ndest}"
+          end
+
+          def self.fila_en_blanco(hoja, numfila, maxcol)
+            col='A'
+            while hoja[numfila, col].nil? && col<=maxcol
+              col=col.next
+            end
+            return col > maxcol
+          end
+
+          # Llena una plantilla para multiples registros
+          # a partir de errores en un archivo con la misma plantilla que
+          # intenta importar
+          def self.llena_plantilla_multiple_importadatos(plantillahcm, 
+                                                         controlador,
+                                                         modelo,
+                                                         narchent)
+            rutasal = File.join(Rails.application.config.x.heb412_ruta, 
+                             plantillahcm.ruta).to_s
+            puts "rutaent=#{rutasal}"
+            librosal = Rspreadsheet.open(rutasal)
+            hojasal = librosal.worksheets(1)
+
+            filainicial = plantillahcm.filainicial
+
+            filasal = filainicial
+
+            libroent = Rspreadsheet.open(narchent)
+            hojaent = libroent.worksheets(1)
+      
+            colerror = "A"
+            if plantillahcm.campoplantillahcm.count > 0 
+              pc = plantillahcm.campoplantillahcm.pluck(:columna).map {|l|
+                Heb412Gen::ApplicationHelper::RANGOCOL.
+                  find_index(l)
+              }
+              colerror = Heb412Gen::ApplicationHelper::RANGOCOL[pc.max + 1]
+            end
+              
+            puts "colerror=#{colerror}"
+            # En total calculamos total de filas en archivo de entrada
+            total = filainicial
+            if self.fila_en_blanco(hojaent, total, colerror)
+              puts "No hay datos"
+              # No hay datos
+              return
+            end
+            total2 = filainicial + 1
+            
+            while !self.fila_en_blanco(hojaent, total2, colerror)
+              total = total2
+              total2 *= 2
+            end
+            puts "total2=#{total2}"
+
+            # Invariante hojaent.row[total] esta lleno 
+            # y hojaent[total2] esta vacio
+            while total < total2 
+              m = (total + total2) / 2
+              if total == m
+                break
+              elsif self.fila_en_blanco(hojaent, m, colerror)
+                total2 = m
+              else
+                total = m
+              end
+            end
+
+            filaent = 0 
+            puts "total=#{total}"
+            hojaent.rows.each do |fila|
+              filaent += 1
+              puts "filaent=#{filaent}, fila[1]=#{fila[1]}"
+              if filaent < filainicial
+                next 
+              end
+              if self.fila_en_blanco(hojaent, filaent, colerror)
+                break
+              end
+              dreg = {}
+              plantillahcm.campoplantillahcm.each do |c|
+                if !c.columna || c.columna =='' || !c.nombrecampo || 
+                  c.nombrecampo == ''
+                  next
+                end
+                dreg[c.nombrecampo.to_sym] = fila[c.columna]
+                # Aqui podrían ponerse ayudadores generales para la
+                # conversión dependiendo del tipo del campo
+              end
+              # Ayudadores particulares y el que sabe como crear el 
+              # registro en la base de datos
+              menserror = ''
+              registro = controlador.importa_dato(dreg.clone, menserror)
+              if !registro.nil? && menserror = ''
+                if registro.validate()
+                  registro.save
+                  if registro.errors.messages
+                    menserror << " " + registro.errors.messages.to_s
+                  end
+                end
+              end
+              if menserror != ''
+                plantillahcm.campoplantillahcm.each do |c|
+                  if !c.columna || c.columna == '' || !c.nombrecampo || 
+                    c.nombrecampo == ''
+                    next
+                  end
+                  v = dreg[c.nombrecampo.to_sym]
+                  if !v.is_a? Integer
+                    v = v.to_s
+                  end
+                  col = (Heb412Gen::ApplicationHelper::RANGOCOL.
+                         find_index(c.columna))+1
+                  hojasal[filasal, col] = v
+                end
+                hojasal[filasal, colerror] = menserror
+                filasal += 1
+              end
+              yield(total, filaent - plantillahcm.filainicial) if block_given?
+            end 
+
+            n=File.join('/tmp', File.basename(plantillahcm.ruta))
+            librosal.save(n)
+
+            return n
+          end
+
+
           def impreso
             fd = []
             (1..3).each do |nr|
@@ -204,6 +359,69 @@ module Heb412Gen
               #type: 'application/vnd.oasis.openplantillahcmument.text',
               #disposition: 'attachment',
               #filename: 'elnombre.ods'
+          end
+
+          def importadatos
+            if params && params[:filtro] &&
+              params[:filtro][:plantillahcm_id] && params[:filtro][:archivo]
+
+              if params[:filtro][:plantillahcm_id].to_i <= 0 
+                puts "Id de plantilla no valido #{params[:filtro][:plantillahcm_id]}"
+                head :no_content 
+                return
+              end
+              if Heb412Gen::Plantillahcm.where(
+                id: params[:filtro][:plantillahcm_id].to_i).take.nil?
+                head :no_content 
+                  puts "No se encuentra plantilla #{params[:filtro][:plantillahcm_id]}"
+                return
+              end
+
+              nombre = Heb412Gen::ApplicationHelper.
+                sanea_nombre(params[:filtro][:archivo].original_filename)
+
+              rr1 = Rails.application.config.x.heb412_ruta.join("./generados/")
+              rr2 = rr1.join(nombre)
+              logger.debug "~ rr2=#{rr2.to_s}"
+              io = params[:filtro][:archivo]
+              File.open(rr2, 'wb') do |file|
+                file.write(io.read)
+              end
+
+              pl = Heb412Gen::Plantillahcm.
+                find(params[:filtro][:plantillahcm_id].to_i)
+              ab = current_ability ? current_ability : ::Ability.new
+              if ab.campos_plantillas[pl.vista].nil?
+                head :no_content 
+                puts "No se puede manejar vista #{pl.vista}"
+                return
+              end
+              controlador = ab.campos_plantillas[pl.vista][:controlador].
+                constantize
+              authorize! :edit, controlador.new.clase.constantize
+              rarch = File.join(
+                '/generados/', File.basename(nombre, '.ods').to_s + 
+                "-" + DateTime.now.strftime('%Y%m%d%H%M%S')
+              ).to_s
+              narch = File.join(Rails.application.config.x.heb412_ruta, 
+                                rarch)
+              puts "narch=#{narch}"
+              extension = '.ods'
+              FileUtils.touch(narch + "#{extension}-0")
+              flash[:notice] = 
+                "Se programó la generación del archivo con problemas de 
+                   importación #{rarch}#{extension}, por favor refresque 
+                   hasta verlo generado, después examine los errores que 
+                   indique, solucionelos e importelo."
+              rutaurl = File.join(heb412_gen.sisini_path, 
+                                  '/generados').to_s
+
+              Heb412Gen::ImportalistadoJob.perform_later(
+                pl.id, controlador.to_s, rr2.to_s, narch, extension)
+              redirect_to rutaurl, format: 'html'
+              return
+            end
+            render 'importadatos', layout: 'application'
           end
 
           private
