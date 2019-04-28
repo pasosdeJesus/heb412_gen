@@ -261,7 +261,7 @@ module Heb412Gen
             if self.fila_en_blanco(hojaent, total, colerror)
               puts "No hay datos"
               # No hay datos
-              return
+              #return
             end
             total2 = filainicial + 1
             
