@@ -309,7 +309,7 @@ module Heb412Gen
               # registro en la base de datos
               menserror = ''
               registro = controlador.importa_dato(dreg.clone, menserror)
-              if !registro.nil? && menserror = ''
+              if !registro.nil? && menserror == ''
                 if registro.validate()
                   registro.save
                   if registro.errors.messages
