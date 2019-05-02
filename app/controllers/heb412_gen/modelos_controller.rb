@@ -8,26 +8,36 @@ module Heb412Gen
       "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
     end
 
-    def importa_dato_gen(datosent, menserror, registro = nil, opciones = {})
+    def importa_dato_gen(datosent, datossal, menserror, registro = nil, opciones = {})
       if registro == nil
         registro = clase.constantize.new
       elsif registro.class.to_s != clase
-        menserror = "El controlador #{self.class.to_s} no puede importar #{registro.class.to_s} en #{self.clase}"
+        menserror << "  El controlador #{self.class.to_s} no puede " +
+          "importar #{registro.class.to_s} en #{self.clase}."
       end
-     
-      return registro.importa(datosent, menserror, opciones)
+    
+      r = registro.importa(datosent, datossal, menserror, opciones)
+      return r
     end
 
+
     # Crea o completa un registro del modelo manejado por el controlador
-    # @param datoent Diccionario con datos de entrada
+    # @param datosent Diccionario con datos de entrada
+    # @param datossal Diccionario con datos de salida complementarios al registro principal retornado
     # @param registro Objeto del modelo manejado por el controlador parcialmente lleno o por crear o ubicar? (si es nil).
-    # @param menserro colchon de errores
+    # @param menserror colchon de errores
     # @param opciones opciones para la importación
     # Si logra crear/ubicar  y completar el registro con los datos que 
     # van en datosent retorna el objeto modificado,  de lo contrario retorna 
     # nil y aumenta errores en menserror.
-    def importa_dato(datosent, menserror, registro = nil, opciones = {})
-      return importa_dato_gen(datosent, menserror, registro, opciones)
+    def importa_dato(datosent, datossal, menserror, registro = nil, opciones = {})
+      return importa_dato_gen(datosent, datossal, menserror, registro, opciones)
+    end
+
+    # Complementar importa_dato salvando en base otros datos datossal que
+    # requerían que el registro fuese salvado primero
+    def complementa_importa_dato(registro, datossal, menserror, opciones = {})
+      registro.complementa_importa(datossal, menserror, opciones)
     end
 
     # Deserializa para enviar a ActiveJobs

@@ -302,16 +302,30 @@ module Heb412Gen
                   next
                 end
                 dreg[c.nombrecampo.to_sym] = fila[c.columna]
+                if fila[c.columna] && fila[c.columna].class.to_s == 'Float' &&
+                  fila[c.columna] == fila[c.columna].to_i
+                  dreg[c.nombrecampo.to_sym] = fila[c.columna].to_i
+                else
+                  dreg[c.nombrecampo.to_sym] = fila[c.columna]
+                end
                 # Aqui podrían ponerse ayudadores generales para la
                 # conversión dependiendo del tipo del campo
               end
               # Ayudadores particulares y el que sabe como crear el 
               # registro en la base de datos
               menserror = ''
-              registro = controlador.importa_dato(dreg.clone, menserror)
+              datossal = {}
+              registro = controlador.importa_dato(dreg.clone, datossal, menserror)
               if !registro.nil? && menserror == ''
                 if registro.validate()
                   registro.save
+                  if registro.errors.messages && 
+                    registro.errors.messages.count > 0
+                    menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
+                  end
+                  controlador.complementa_importa_dato(
+                    registro, datossal, menserror)
+                else
                   if registro.errors.messages
                     menserror << " " + registro.errors.messages.to_s
                   end
