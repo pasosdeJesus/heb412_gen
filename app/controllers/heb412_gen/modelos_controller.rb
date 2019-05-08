@@ -36,8 +36,10 @@ module Heb412Gen
 
     # Complementar importa_dato salvando en base otros datos datossal que
     # requerían que el registro fuese salvado primero
-    def complementa_importa_dato(registro, datossal, menserror, opciones = {})
-      registro.complementa_importa(datossal, menserror, opciones)
+    def complementa_importa_dato(registro, ulteditor_id, datossal, 
+                                 menserror, opciones = {})
+      puts "OJO complementa_importa_dato, ulteditor_id=#{ulteditor_id}"
+      registro.complementa_importa(ulteditor_id, datossal, menserror, opciones)
     end
 
     # Deserializa para enviar a ActiveJobs

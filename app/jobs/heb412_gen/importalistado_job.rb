@@ -14,8 +14,8 @@ module Heb412Gen
     # 1. crear una vista en la base de datos --si no se especifica se
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
-    def perform(idplantilla, nomcontrolador, narchent, narcherr, extension)
-      puts "Inicio de generación de plantilla #{idplantilla} con nomcontrolador #{nomcontrolador}, importando de #{narchent} escribiendo errores en #{narcherr} con extensión #{extension}"
+    def perform(idplantilla, nomcontrolador, narchent, narcherr, extension, ulteditor_id)
+      puts "Inicio de generación de plantilla #{idplantilla} con nomcontrolador #{nomcontrolador}, importando de #{narchent} escribiendo errores en #{narcherr} con extensión #{extension} ulteditor_id es #{ulteditor_id}"
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = nomcontrolador.constantize.new
       modelo = controlador.clase
@@ -25,7 +25,7 @@ module Heb412Gen
       ultp = 0
       n = Heb412Gen::PlantillahcmController.
         llena_plantilla_multiple_importadatos(
-          plant, controlador, modelo, narchent) do |t, i|
+          plant, controlador, modelo, narchent, ulteditor_id) do |t, i|
         p = 0
         if t>0
           p = 100*i/t

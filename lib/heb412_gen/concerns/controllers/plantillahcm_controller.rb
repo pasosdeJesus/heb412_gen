@@ -229,12 +229,17 @@ module Heb412Gen
           # Llena una plantilla para multiples registros
           # a partir de errores en un archivo con la misma plantilla que
           # intenta importar
-          def self.llena_plantilla_multiple_importadatos(plantillahcm, 
-                                                         controlador,
-                                                         modelo,
-                                                         narchent)
+          # @param plantillahcm Plantilla
+          # @param controlador Debe corresponder a la plantilla
+          # @param modelo debe corresponder al controlador
+          # @param narchent Nombre del archivo por importar
+          # @param ulteditor_id identificacion de usuario que importa
+          def self.llena_plantilla_multiple_importadatos(
+            plantillahcm, controlador, modelo, narchent, ulteditor_id)
+
+            puts "self.llena_plantilla. ulteditor_id=#{ulteditor_id}"
             rutasal = File.join(Rails.application.config.x.heb412_ruta, 
-                             plantillahcm.ruta).to_s
+                                plantillahcm.ruta).to_s
             puts "rutaent=#{rutasal}"
             librosal = Rspreadsheet.open(rutasal)
             hojasal = librosal.worksheets(1)
@@ -315,7 +320,8 @@ module Heb412Gen
               # registro en la base de datos
               menserror = ''
               datossal = {}
-              registro = controlador.importa_dato(dreg.clone, datossal, menserror)
+              registro = controlador.importa_dato(dreg.clone, datossal, 
+                                                  menserror)
               if !registro.nil? && menserror == ''
                 if registro.validate()
                   registro.save
@@ -323,8 +329,9 @@ module Heb412Gen
                     registro.errors.messages.count > 0
                     menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
                   end
+                  puts "Por llamanar controlador.complementa_importa_dato con ulteditor_id=#{ulteditor_id}"
                   controlador.complementa_importa_dato(
-                    registro, datossal, menserror)
+                    registro, ulteditor_id, datossal, menserror)
                 else
                   if registro.errors.messages
                     menserror << " " + registro.errors.messages.to_s
@@ -431,7 +438,8 @@ module Heb412Gen
                                   '/generados').to_s
 
               Heb412Gen::ImportalistadoJob.perform_later(
-                pl.id, controlador.to_s, rr2.to_s, narch, extension)
+                pl.id, controlador.to_s, rr2.to_s, narch, extension, 
+                current_usuario.id)
               redirect_to rutaurl, format: 'html'
               return
             end
