@@ -53,6 +53,7 @@ module Heb412Gen
           'departamento',
           'dianac',
           'fechanac_localizada',
+          'fechanac',
           'id',
           'mesnac',
           'municipio',
