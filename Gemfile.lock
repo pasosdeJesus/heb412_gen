@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 812fcdd47ec5ee0451a76b80ded7030ea60efa25
+  revision: 7697ccd348beb2827076d427b52f0304fc0d71a8
   branch: rails6
   specs:
     sip (2.0.b5)
@@ -125,7 +125,7 @@ GEM
     docile (1.3.1)
     erubi (1.8.0)
     execjs (2.7.0)
-    ffi (1.10.0)
+    ffi (1.11.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)

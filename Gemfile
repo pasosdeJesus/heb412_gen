@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-#gem "rails", '~> 5.2.0'
 # Resuelve problema con minitest y 5.2.0
 gem "rails", '~> 6.0.0.rc1'
 
