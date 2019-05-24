@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 4cc04f789f0a19939b812210e33b8e5ed6363cb2
+  revision: c0f502a0235fbca573649b5565e0c15b97529e32
   branch: rails6
   specs:
     sip (2.0.b5)
@@ -223,7 +223,7 @@ GEM
     rspreadsheet (0.4.5)
       andand (~> 1.3)
       rubyzip (~> 1.1)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
