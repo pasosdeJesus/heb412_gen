@@ -18,7 +18,7 @@ gem 'colorize'
 gem 'sass'
 gem 'sass-rails'
 
-gem 'chosen-rails'
+gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 'several-fixes'
 
 gem 'redcarpet'
 

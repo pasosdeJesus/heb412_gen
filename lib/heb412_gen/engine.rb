@@ -1,6 +1,5 @@
 # encoding: UTF-8
 
-require 'heb412_gen/engine'
 require 'font-awesome-rails'
 
 module Heb412Gen
