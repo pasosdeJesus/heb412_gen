@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c42f4b6128c4e2f7889ea7c7c8767210d4d8b76d
+  revision: b32f6cc8f1ae58f83a7ddb20041d8357b716fa1e
   specs:
     sip (2.0.b6)
       bootstrap-datepicker-rails
@@ -225,7 +225,7 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-    rspreadsheet (0.4.7)
+    rspreadsheet (0.4.8)
       andand (~> 1.3)
       rubyzip (~> 1.1)
     rubyzip (1.2.3)
@@ -285,7 +285,7 @@ GEM
       activemodel (>= 6.0.0.a)
       bindex (>= 0.4.0)
       railties (>= 6.0.0.a)
-    webpacker (4.0.2)
+    webpacker (4.0.3)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
