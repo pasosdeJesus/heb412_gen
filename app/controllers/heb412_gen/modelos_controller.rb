@@ -262,9 +262,10 @@ module Heb412Gen
         cn.each do |s|
           r.add_field(s, @registro.presenta(s))
         end
-        if @registro.respond_to?(:valorcampoact)
-          @registro.valorcampoact.each do |vc|
-            n = vc.campoact.actividadtipo.nombre + "_" + vc.campoact.nombrecampo
+        if @registro.respond_to?(:respuestafor) && 
+          @registro.respuestafor.respond_to?(:valorcampo) && 
+          @registro.respuestafor.valorcampo.each do |vc|
+            n = vc.campo.actividadtipo.nombre + "_" + vc.campo.nombre
             n = n.upcase.gsub(/[^A-Z0-9ÁÉÍÓÚÜÑ]/, '_')
             puts "Posible campo #{n} -> #{vc.valor}"
             r.add_field(n, vc.valor)
