@@ -8,6 +8,12 @@ module Heb412Gen
         include Sip::Modelo
 
         included do
+          has_and_belongs_to_many :formulario, 
+            class_name: 'Mr519Gen::Formulario', 
+            foreign_key: 'plantillahcr_id',
+            association_foreign_key: 'formulario_id',
+            join_table: 'heb412_gen_formulario_plantillahcr'
+
           has_many :campoplantillahcr, 
             class_name: '::Heb412Gen::Campoplantillahcr',
             foreign_key: 'plantillahcr_id', validate: true, 

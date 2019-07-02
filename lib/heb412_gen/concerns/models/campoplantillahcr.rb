@@ -28,7 +28,11 @@ module Heb412Gen
             presence: true,
             allow_blank: false,
             numericality: { greater_than: 0}
-         
+
+          def presenta_nombre
+            nombrecampo
+          end         
+
         end # included
 
       end

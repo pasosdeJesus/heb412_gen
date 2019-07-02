@@ -1,0 +1,12 @@
+<% ods =[] 
+Dir.chdir(Rails.application.config.x.heb412_ruta) { 
+  ods= Dir.glob("**/*.ods") } 
+%>
+
+<%= f.input :ruta, 
+  collection: ods,
+  input_html: {
+  "data-toggle" => 'tooltip',
+  "title" => 'Plantilla, debe ser hoja de cálculo (ods)'
+} %>
+

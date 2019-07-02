@@ -87,6 +87,10 @@ gem "tzinfo"
 gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 #gem 'sip', path: '../sip'
 
+# Motor de formularios
+gem 'mr519_gen', git: "https://github.com/pasosdeJesus/mr519_gen.git"
+#gem 'mr519_gen', path: '../mr519_gen'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   #gem 'byebug', platform: :mri
