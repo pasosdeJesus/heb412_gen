@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 Rails.application.routes.draw do
-  scope '/heb412/' do 
+  scope 'heb412' do 
 
     devise_scope :usuario do
       get 'sign_out' => 'devise/sessions#destroy'
@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
     root 'sip/hogar#index'
-    mount Heb412Gen::Engine, at: "/heb412", as: "heb412_gen"
-    mount Sip::Engine, at: "/heb412", as: "sip"
 
     namespace :admin do
       ab = ::Ability.new
@@ -30,4 +28,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  mount Heb412Gen::Engine, at: "/heb412", as: "heb412_gen"
+  mount Mr519Gen::Engine, at: "/mr519", as: "mr519_gen"
+  mount Sip::Engine, at: "/heb412", as: "sip"
 end

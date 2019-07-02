@@ -16,6 +16,8 @@
 # end
 ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'plantillahcm', 'plantillahcm'
+  # Toca agregar ruta post crea_plantillahcm_path
 	inflect.irregular 'plantillahcr', 'plantillahcr'
+  # Toca agregar ruta post crea_plantillahcr_path
 	inflect.irregular 'plantilladoc', 'plantillasdoc'
 end

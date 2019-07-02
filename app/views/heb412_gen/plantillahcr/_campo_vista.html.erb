@@ -1,0 +1,15 @@
+<% 
+  ab = ::Ability.new
+  cord = ab.campos_plantillas.keys.map { |n| 
+    ['Resumen de ' + n.to_s.pluralize, n.to_s] 
+  }
+  cord.sort! { |x,y| x[1] <=> y[1] }
+%>
+<%= f.input :vista, 
+  collection: cord,
+  include_blank: false,
+  selected: @plantillahcr.vista.nil? ? 'Usuario' : @plantillahcr.vista,
+  input_html: {
+  "data-toggle" => 'tooltip',
+  "title" => 'Desde que parte de la aplicación se podrá llenar'
+} %>

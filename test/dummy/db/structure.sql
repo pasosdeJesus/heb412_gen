@@ -297,6 +297,36 @@ ALTER SEQUENCE public.heb412_gen_doc_id_seq OWNED BY public.heb412_gen_doc.id;
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.heb412_gen_formulario_plantillahcr (
+    id bigint NOT NULL,
+    plantillahcr_id integer,
+    formulario_id integer
+);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.heb412_gen_formulario_plantillahcr_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.heb412_gen_formulario_plantillahcr_id_seq OWNED BY public.heb412_gen_formulario_plantillahcr.id;
+
+
+--
 -- Name: heb412_gen_plantilladoc; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -394,6 +424,198 @@ CREATE SEQUENCE public.heb412_gen_plantillahcr_id_seq
 --
 
 ALTER SEQUENCE public.heb412_gen_plantillahcr_id_seq OWNED BY public.heb412_gen_plantillahcr.id;
+
+
+--
+-- Name: mr519_gen_campo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_campo (
+    id bigint NOT NULL,
+    nombre character varying(512) NOT NULL,
+    ayudauso character varying(1024),
+    tipo integer DEFAULT 1 NOT NULL,
+    obligatorio boolean,
+    formulario_id integer NOT NULL,
+    nombreinterno character varying(60)
+);
+
+
+--
+-- Name: mr519_gen_campo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_campo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_campo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_campo_id_seq OWNED BY public.mr519_gen_campo.id;
+
+
+--
+-- Name: mr519_gen_encuestausuario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_encuestausuario (
+    id bigint NOT NULL,
+    usuario_id integer NOT NULL,
+    formulario_id integer,
+    fecha date,
+    fechainicio date NOT NULL,
+    fechafin date,
+    respuestafor_id integer
+);
+
+
+--
+-- Name: mr519_gen_encuestausuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_encuestausuario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_encuestausuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_encuestausuario_id_seq OWNED BY public.mr519_gen_encuestausuario.id;
+
+
+--
+-- Name: mr519_gen_formulario; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_formulario (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    nombreinterno character varying(60)
+);
+
+
+--
+-- Name: mr519_gen_formulario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_formulario_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_formulario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_formulario_id_seq OWNED BY public.mr519_gen_formulario.id;
+
+
+--
+-- Name: mr519_gen_opcioncs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_opcioncs (
+    id bigint NOT NULL,
+    campo_id integer NOT NULL,
+    nombre character varying(1024) NOT NULL,
+    valor character varying(60) NOT NULL
+);
+
+
+--
+-- Name: mr519_gen_opcioncs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_opcioncs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_opcioncs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_opcioncs_id_seq OWNED BY public.mr519_gen_opcioncs.id;
+
+
+--
+-- Name: mr519_gen_respuestafor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_respuestafor (
+    id bigint NOT NULL,
+    formulario_id integer,
+    fechaini date NOT NULL,
+    fechacambio date NOT NULL
+);
+
+
+--
+-- Name: mr519_gen_respuestafor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_respuestafor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_respuestafor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_respuestafor_id_seq OWNED BY public.mr519_gen_respuestafor.id;
+
+
+--
+-- Name: mr519_gen_valorcampo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mr519_gen_valorcampo (
+    id bigint NOT NULL,
+    campo_id integer NOT NULL,
+    valor character varying(5000),
+    respuestafor_id integer NOT NULL,
+    valorjson json
+);
+
+
+--
+-- Name: mr519_gen_valorcampo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mr519_gen_valorcampo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mr519_gen_valorcampo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mr519_gen_valorcampo_id_seq OWNED BY public.mr519_gen_valorcampo.id;
 
 
 --
@@ -1188,6 +1410,13 @@ ALTER TABLE ONLY public.heb412_gen_doc ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr ALTER COLUMN id SET DEFAULT nextval('public.heb412_gen_formulario_plantillahcr_id_seq'::regclass);
+
+
+--
 -- Name: heb412_gen_plantilladoc id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1206,6 +1435,48 @@ ALTER TABLE ONLY public.heb412_gen_plantillahcm ALTER COLUMN id SET DEFAULT next
 --
 
 ALTER TABLE ONLY public.heb412_gen_plantillahcr ALTER COLUMN id SET DEFAULT nextval('public.heb412_gen_plantillahcr_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_campo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_campo ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_campo_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_encuestausuario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestausuario ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_encuestausuario_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_formulario id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_formulario ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_formulario_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_opcioncs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_opcioncs ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_opcioncs_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_respuestafor id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_respuestafor ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_respuestafor_id_seq'::regclass);
+
+
+--
+-- Name: mr519_gen_valorcampo id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_valorcampo ALTER COLUMN id SET DEFAULT nextval('public.mr519_gen_valorcampo_id_seq'::regclass);
 
 
 --
@@ -1329,6 +1600,14 @@ ALTER TABLE ONLY public.heb412_gen_doc
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcr heb412_gen_formulario_plantillahcr_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT heb412_gen_formulario_plantillahcr_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: heb412_gen_plantilladoc heb412_gen_plantilladoc_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1350,6 +1629,54 @@ ALTER TABLE ONLY public.heb412_gen_plantillahcm
 
 ALTER TABLE ONLY public.heb412_gen_plantillahcr
     ADD CONSTRAINT heb412_gen_plantillahcr_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_campo mr519_gen_campo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_campo
+    ADD CONSTRAINT mr519_gen_campo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_encuestausuario mr519_gen_encuestausuario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestausuario
+    ADD CONSTRAINT mr519_gen_encuestausuario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_formulario mr519_gen_formulario_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_formulario
+    ADD CONSTRAINT mr519_gen_formulario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_opcioncs mr519_gen_opcioncs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_opcioncs
+    ADD CONSTRAINT mr519_gen_opcioncs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_respuestafor mr519_gen_respuestafor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_respuestafor
+    ADD CONSTRAINT mr519_gen_respuestafor_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mr519_gen_valorcampo mr519_gen_valorcampo_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_valorcampo
+    ADD CONSTRAINT mr519_gen_valorcampo_pkey PRIMARY KEY (id);
 
 
 --
@@ -1619,11 +1946,35 @@ ALTER TABLE ONLY public.sip_municipio
 
 
 --
+-- Name: mr519_gen_encuestausuario fk_rails_1b24d10e82; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestausuario
+    ADD CONSTRAINT fk_rails_1b24d10e82 FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr fk_rails_1bdf79898c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT fk_rails_1bdf79898c FOREIGN KEY (plantillahcr_id) REFERENCES public.heb412_gen_plantillahcr(id);
+
+
+--
 -- Name: heb412_gen_campohc fk_rails_1e5f26c999; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.heb412_gen_campohc
     ADD CONSTRAINT fk_rails_1e5f26c999 FOREIGN KEY (doc_id) REFERENCES public.heb412_gen_doc(id);
+
+
+--
+-- Name: mr519_gen_encuestausuario fk_rails_2cb09d778a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestausuario
+    ADD CONSTRAINT fk_rails_2cb09d778a FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
 
 
 --
@@ -1651,6 +2002,22 @@ ALTER TABLE ONLY public.sip_actorsocial
 
 
 --
+-- Name: mr519_gen_opcioncs fk_rails_656b4a3ca7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_opcioncs
+    ADD CONSTRAINT fk_rails_656b4a3ca7 FOREIGN KEY (campo_id) REFERENCES public.mr519_gen_campo(id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcr fk_rails_696d27d6f5; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
+    ADD CONSTRAINT fk_rails_696d27d6f5 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
 -- Name: sip_grupo_usuario fk_rails_734ee21e62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1672,6 +2039,30 @@ ALTER TABLE ONLY public.sip_actorsocial
 
 ALTER TABLE ONLY public.sip_actorsocial_persona
     ADD CONSTRAINT fk_rails_7c335482f6 FOREIGN KEY (actorsocial_id) REFERENCES public.sip_actorsocial(id);
+
+
+--
+-- Name: mr519_gen_respuestafor fk_rails_805efe6935; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_respuestafor
+    ADD CONSTRAINT fk_rails_805efe6935 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
+-- Name: mr519_gen_valorcampo fk_rails_819cf17399; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_valorcampo
+    ADD CONSTRAINT fk_rails_819cf17399 FOREIGN KEY (campo_id) REFERENCES public.mr519_gen_campo(id);
+
+
+--
+-- Name: mr519_gen_valorcampo fk_rails_8bb7650018; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_valorcampo
+    ADD CONSTRAINT fk_rails_8bb7650018 FOREIGN KEY (respuestafor_id) REFERENCES public.mr519_gen_respuestafor(id);
 
 
 --
@@ -1699,11 +2090,27 @@ ALTER TABLE ONLY public.sip_actorsocial_sectoractor
 
 
 --
+-- Name: mr519_gen_campo fk_rails_a186e1a8a0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_campo
+    ADD CONSTRAINT fk_rails_a186e1a8a0 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
 -- Name: heb412_gen_campoplantillahcm fk_rails_e0e38e0782; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.heb412_gen_campoplantillahcm
     ADD CONSTRAINT fk_rails_e0e38e0782 FOREIGN KEY (plantillahcm_id) REFERENCES public.heb412_gen_plantillahcm(id);
+
+
+--
+-- Name: mr519_gen_encuestausuario fk_rails_eccb6f9972; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mr519_gen_encuestausuario
+    ADD CONSTRAINT fk_rails_eccb6f9972 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
 
 
 --
@@ -1888,12 +2295,33 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180921120954'),
 ('20181011104537'),
 ('20181012110629'),
+('20181213103204'),
+('20181218165548'),
+('20181218165559'),
+('20181218215222'),
+('20181219085236'),
+('20181227093834'),
+('20181227094559'),
+('20181227095037'),
+('20181227100523'),
+('20181227114431'),
+('20181227210510'),
 ('20190109125417'),
 ('20190110191802'),
+('20190208103518'),
+('20190322102311'),
+('20190326150948'),
 ('20190331111015'),
 ('20190401175521'),
+('20190406141156'),
+('20190406164301'),
 ('20190418011743'),
+('20190418014012'),
+('20190418123920'),
+('20190426125052'),
 ('20190426125420'),
-('20190612111043');
+('20190605143420'),
+('20190612111043'),
+('20190625140232');
 
 

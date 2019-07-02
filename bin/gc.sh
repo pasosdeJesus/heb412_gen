@@ -13,6 +13,7 @@ function cableado {
 }
 
 cableado sip
+cableado mr519_gen
 
 grep "^ *gem *.debugger*" Gemfile > /dev/null 2> /dev/null
 if (test "$?" = "0") then {
