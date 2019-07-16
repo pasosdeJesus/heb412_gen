@@ -53,6 +53,10 @@ gem "twitter-bootstrap-rails"
 gem "bootstrap-datepicker-rails"
 gem "font-awesome-rails"
 
+# Facilita elegir colores en tema
+gem 'pick-a-color-rails'
+gem 'tiny-color-rails'
+
 # Formularios simples 
 gem "simple_form"
 
@@ -84,11 +88,11 @@ gem 'rubyzip', '~>1.2'
 gem "tzinfo"
 
 # Motor de sistemas de información estilo Pasos de Jesús
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
+gem 'sip', git: "https://github.com/pasosdeJesus/sip.git", branch: :temas
 #gem 'sip', path: '../sip'
 
 # Motor de formularios
-gem 'mr519_gen', git: "https://github.com/pasosdeJesus/mr519_gen.git"
+gem 'mr519_gen', git: "https://github.com/pasosdeJesus/mr519_gen.git", branch: :temas
 #gem 'mr519_gen', path: '../mr519_gen'
 
 group :development, :test do
