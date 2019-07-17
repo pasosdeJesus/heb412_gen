@@ -53,6 +53,10 @@ gem "twitter-bootstrap-rails"
 gem "bootstrap-datepicker-rails"
 gem "font-awesome-rails"
 
+# Facilita elegir colores en tema
+gem 'pick-a-color-rails'
+gem 'tiny-color-rails'
+
 # Formularios simples 
 gem "simple_form"
 
