@@ -18,7 +18,7 @@
   p = $(idselplantilla).val().split('.')
   nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
   if p.length == 2
-    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat'
+    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat' && p[1] != 'json'
       nplantilla = ''
     else
       formato = p[1]
