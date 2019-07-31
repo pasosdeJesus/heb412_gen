@@ -78,7 +78,7 @@ debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 Notará que hace falta si al correr el servidor de prueba recibe un error como 
 ```undefined method `fa_icon' for #<#<Class:0x0009d035bb1610>:0x0009cfe0b333a0>```
 
-## 3. Configure su aplicación para utilizar los llenadores de plantillas
+## 3. Configure su aplicación para utilizar llenadores de plantillas
 
 Hay 3 tipos de llenadores de plantillas:
 - Para llenar una plantilla ODS con datos de un listado (vista index),
@@ -222,5 +222,5 @@ Si requiere manejar varias hojas de una hoja de cálculo o cambios
     Puede ver un ejemplo en 
       https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
 
-## 4. Configure importación de información
+## 4. Configure su aplicación para importar información
 
