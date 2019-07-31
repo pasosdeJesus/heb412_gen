@@ -117,7 +117,8 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
     end
 ```
 
-### 3.2 Permiso para manejar y llenar plantillas
+### 3.2 Permisos para gestionar y/o para llenar plantillas
+
 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
   para manejar plantillas:
 ```
@@ -134,7 +135,7 @@ En `app/models/ability.rb` de permiso a un usuario (digamos administrador)
 	can :manage, Heb412Gen::Plantilladoc
 ```
 
-### 3.3 Permita al administrador gestionar plantillas
+### 3.3 Menú para gestionar plantillas
 
 Cree una entrada en el menú que permite acceder a la funcionalidad
     de definir una plantilla. Por ejemplo en 
@@ -147,14 +148,17 @@ Cree una entrada en el menú que permite acceder a la funcionalidad
  <% end %>
 ```
 
-### 3.4 Configure vista `index` que llenará listado .ods
+### 3.4 Configure una vista `index` que llenará un listado .ods
 
-Para genrar un listado, la vista ```index``` del controlador que 
+Para generar un listado, la vista ```index``` del controlador que 
     llenará plantillas debe tener un 
-    filtro como formulario.  Para eso haga el controlador descendiente
-    de Heb412Gen::ModelosController (en lugar de Sip::ModelosController)
-    cuya vista index ya lo incluye.
-    En caso de que esté manejando su propia vista index debe ser del estilo:
+    filtro como formulario.  
+    Esto ya ocurre con controladores descendientes
+    de `Sip::ModelosController` con la vista por omisión de `sip`, así que bastará
+que más bien los haga descendientes de
+    `Heb412Gen::ModelosController`.
+
+En caso de que esté manejando su propia vista index debe ser del estilo:
 
  ```
 <%= simple_form_for :filtro,
@@ -188,7 +192,7 @@ Para genrar un listado, la vista ```index``` del controlador que
       </div> <!-- row -->
     <% end %> 
 ```
-Este método por omisión generará el ODS en la carpeta generados de la nube.
+Este método por omisión generará el `.ods` en la carpeta generados de la nube.
 
 ### 3.5 Configure vista `show` que llenará plantillas .ods u .odt
 
