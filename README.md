@@ -12,9 +12,9 @@ basados en sip, ver por ejemplo:
 
 Las funcionalidades que provee al momento de este escrito son:
 
-1 Nube de documentos
-2 Exportación de información
-2.1 Expotación de un sólo registro a una plantilla .ods
+1. Nube de documentos
+2. Exportación de información
+2.1. Expotación de un sólo registro a una plantilla .ods
 2.2 Exportación de un sólo registro a una plantilla .odt
 2.3 Exportación de un conjunto de registros a una plantilla .ods (estilo listado)
 3. Importación de información
