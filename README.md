@@ -91,7 +91,9 @@ Hay 3 tipos de llenadores de plantillas:
   que suponemos se genera rápido.
 
 
-### 3.1 Agregue en el archivo `app/models/ability.rb` la relación de campos 
+### 3.1 Relacione campos exportables/importables
+
+Agregue en el archivo `app/models/ability.rb` la relación de campos 
    que un controlador puede dar a una plantilla en la función
    ```campos_plantillas```. Por ejemplo el modelo Actividad con controlador 
     Cor1440Gen::ActividadesControlador podría publicar disponibilidad
@@ -115,7 +117,8 @@ Hay 3 tipos de llenadores de plantillas:
     end
 ```
 
-### 3.2 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
+### 3.2 Permiso para manejar y llenar plantillas
+En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
   para manejar plantillas:
 ```
 	can :manage, Heb412Gen::Doc
@@ -131,7 +134,9 @@ Hay 3 tipos de llenadores de plantillas:
 	can :manage, Heb412Gen::Plantilladoc
 ```
 
-### 3.3 Cree una entrada en el menú que permite acceder a la funcionalidad
+### 3.3 Permita al administrador gestionar plantillas
+
+Cree una entrada en el menú que permite acceder a la funcionalidad
     de definir una plantilla. Por ejemplo en 
     ```app/views/layouts/application.html.erb```
     algo  como:
@@ -142,7 +147,9 @@ Hay 3 tipos de llenadores de plantillas:
  <% end %>
 ```
 
-### 3.4 Para genrar un listado, la vista ```index``` del controlador que 
+### 3.4 Configure vista `index` que llenará listado .ods
+
+Para genrar un listado, la vista ```index``` del controlador que 
     llenará plantillas debe tener un 
     filtro como formulario.  Para eso haga el controlador descendiente
     de Heb412Gen::ModelosController (en lugar de Sip::ModelosController)
@@ -183,7 +190,7 @@ Hay 3 tipos de llenadores de plantillas:
 ```
 Este método por omisión generará el ODS en la carpeta generados de la nube.
 
-### 3.5 Vista show
+### 3.5 Configure vista `show` que llenará plantillas .ods u .odt
 
 La vista show se comportará de manera análoga pero generará en línea 
     bien el .ods o bien el .odt
@@ -211,7 +218,7 @@ Puede ajustar la forma de presentar algunos campos bien en la función
 ```
 Y la función auxiliar `presenta_fechanac`.
     
-### 3.7 Generación de hojas de cálculo no estándar
+### 3.7 Generación de un listado en un .ods no estándar
 
 Si requiere manejar varias hojas de una hoja de cálculo o cambios
     mayores a la forma de llenar plantillas sugerimos sobrecargar en
