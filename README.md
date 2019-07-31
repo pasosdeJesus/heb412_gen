@@ -10,7 +10,17 @@ Aplican practicamente las mismas instrucciones de otros motores genérico
 basados en sip, ver por ejemplo:
 	https://github.com/pasosdeJesus/sal7711_gen
 
-Para incluirlo en su aplicación rails que ya usa sip:
+Las funcionalidades que provee al momento de este escrito son:
+1. Nube de documentos
+2. Exportación de información
+2.1 Expotación de un sólo registro a una plantilla .ods
+2.2 Exportación de un sólo registro a una plantilla .odt
+2.3 Exportación de un conjunto de registros a una plantilla .ods (estilo listado)
+3. Importación de información
+3.1 Importación de un conjunto de registros desde un listado .ods 
+
+La exportación e importación requieren la previa configuración de la nube.
+
 ## 1. Configure gemas, javascript y base de datos
 
 ```
@@ -172,10 +182,14 @@ Hay 3 tipos de llenadores de plantillas:
 ```
 Este método por omisión generará el ODS en la carpeta generados de la nube.
 
-### 3.5 La vista show se comportará de manera análoga pero generará en línea 
+### 3.5 Vista show
+
+La vista show se comportará de manera análoga pero generará en línea 
     bien el .ods o bien el .odt
 
-### 3.6 Puede ajustar la forma de presentar algunos campos bien en la función
+### 3.6 Ajuste presentación de campos
+
+Puede ajustar la forma de presentar algunos campos bien en la función
     `presenta` del modelo asociado al controlador o bien creando en el 
     modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
     en https://github.com/pasosdeJesus/sip/blob/master/lib/sip/concerns/models/persona.rb  
@@ -196,7 +210,9 @@ Este método por omisión generará el ODS en la carpeta generados de la nube.
 ```
 Y la función auxiliar `presenta_fechanac`.
     
-### 3.7 Si requiere manejar varias hojas de una hoja de cálculo o cambios
+### 3.7 Generación de hojas de cálculo no estándar
+
+Si requiere manejar varias hojas de una hoja de cálculo o cambios
     mayores a la forma de llenar plantillas sugerimos sobrecargar en
     el controlador la función self.vista_listado que será llamada
     por la tarea que genera el ODS en la carpeta generados y que puede
@@ -205,4 +221,5 @@ Y la función auxiliar `presenta_fechanac`.
     Puede ver un ejemplo en 
       https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
 
+## 4. Configure importación de información
 
