@@ -3,14 +3,15 @@
 
 ![Logo de heb412_gen](https://raw.githubusercontent.com/pasosdeJesus/heb412_gen/master/test/dummy/app/assets/images/logo.jpg)
 
-Este es un motor de Heb412 para manejar nube de documentos y plantillas ods y odt
+Este es el motor principal de la aplicación (https://github.com/pasosdeJesus/heb412)[Heb412] 
+que maneja una nube de documentos y plantillas ods y odt
 
 Aplican practicamente las mismas instrucciones de otros motores genérico
 basados en sip, ver por ejemplo:
 	https://github.com/pasosdeJesus/sal7711_gen
 
 Para incluirlo en su aplicación rails que ya usa sip:
-1. Agregue las gemas necesarias en Gemfile:
+# 1. Configure la aplicación para usar este motor:9¿
 ```
 	gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 	gem 'font-awesome-rails'
@@ -19,7 +20,7 @@ Para incluirlo en su aplicación rails que ya usa sip:
 	gem 'redcarpet'
 ```
 
-2. Incluya el motor javascript en su app/assets/javascript/application.js
+# 2. Incluya el motor javascript en su app/assets/javascript/application.js
    por ejemplo después de ```//= require sip/motor``` agregue:
 ```
 //= require heb412_gen/motor
@@ -29,38 +30,38 @@ Para incluirlo en su aplicación rails que ya usa sip:
 heb412_gen_prepara_eventos_comunes(root);
 ```
 
-3. Configure su aplicación para proveer Nube mediante ```heb412_gen```:
+# 3. Configure su aplicación para proveer Nube mediante ```heb412_gen```:
 
-3.1 Cree un directorio que será la raíz del sistema de archivos y que
+## 3.1 Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 ```
 	mkdir public/heb412/
 ```
 
-3.2 Configure esa ruta en su aplicación en ```config/application.rb``` con
+## 3.2 Configure esa ruta en su aplicación en ```config/application.rb``` con
 ```
 	config.x.heb412_ruta = Rails.root.join('public', 'heb412')
 ```
 
-3.3 Agregue un menú o enlaces a los urls de la nube por ejemplo en
+## 3.3 Agregue un menú o enlaces a los urls de la nube por ejemplo en
    ```app/views/layouts/application```:
 ```
 	<%= menu_item "Nube", heb412_gen.sisini_path %>
 ```
 
-3.4 Configure rutas en ```config/routes.rb```
+## 3.4 Configure rutas en ```config/routes.rb```
 ```
 	mount Heb412Gen::Engine, at: '/', as: 'heb412_gen'
 ```
 
-3.5 Si hace falta agregue en su ```app/helpers/application_helper.rb```
+## 3.5 Si hace falta agregue en su ```app/helpers/application_helper.rb```
 ```
 	include FontAwesome::Rails::IconHelper 
 ```
 Notará que hace falta si al correr el servidor de prueba recibe un error como 
 ```undefined method `fa_icon' for #<#<Class:0x0009d035bb1610>:0x0009cfe0b333a0>```
 
-4. Configure su aplicación para utilizar los llenadores de plantillas
+# 4. Configure su aplicación para utilizar los llenadores de plantillas
 
 Hay 3 tipos de llenadores de plantillas:
 - Para llenar una plantilla ODS con datos de un listado (vista index),
@@ -73,7 +74,7 @@ Hay 3 tipos de llenadores de plantillas:
   que suponemos se genera rápido.
 
 
-4.1 Agregue en el archivo ```app/models/ability.rb``` la relación de campos 
+## 4.1 Agregue en el archivo ```app/models/ability.rb``` la relación de campos 
    que un controlador puede dar a una plantilla en la función
    ```campos_plantillas```. Por ejemplo el modelo Actividad con controlador 
     Cor1440Gen::ActividadesControlador podría publicar disponibilidad
@@ -97,7 +98,7 @@ Hay 3 tipos de llenadores de plantillas:
     end
 ```
 
-4.2 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
+## 4.2 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
   para manejar plantillas:
 ```
 	can :manage, Heb412Gen::Doc
@@ -113,7 +114,7 @@ Hay 3 tipos de llenadores de plantillas:
 	can :manage, Heb412Gen::Plantilladoc
 ```
 
-4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
+## 4.3 Cree una entrada en el menú que permite acceder a la funcionalidad
     de definir una plantilla. Por ejemplo en 
     ```app/views/layouts/application.html.erb```
     algo  como:
