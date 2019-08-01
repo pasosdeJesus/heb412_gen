@@ -91,13 +91,13 @@ Hay 3 tipos de llenadores de plantillas:
   que suponemos se genera rápido.
 
 
-### 3.1 Relacione campos exportables/importables
+### 3.1 Relacione disponibilidad de campos exportables/importables
 
 Agregue en el archivo `app/models/ability.rb` la relación de campos 
    que un controlador puede dar a una plantilla en la función
-   ```campos_plantillas```. Por ejemplo el modelo Actividad con controlador 
-    Cor1440Gen::ActividadesControlador podría publicar disponibilidad
-    de campos id, fecha y otros así:
+   ```campos_plantillas```. Por ejemplo el modelo `Actividad` con controlador 
+    `Cor1440Gen::ActividadesController` que se presenta en la ruta `/actividades`
+    podría publicar disponibilidad de campos `id`, `fecha` y otros así:
 
 ```
     CAMPOS_PLANTILLAS_PROPIAS = {
@@ -107,7 +107,8 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
           'areas', 'subareas', 'convenios_financieros', 
           'actividades_de_convenio', 'objetivo', 'poblacion'
         ],
-        controlador: 'Cor1440Gen::ActividadesController'
+        controlador: 'Cor1440Gen::ActividadesController',
+	ruta: '/actividades'
       }
     }
 
@@ -116,6 +117,7 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
         clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
     end
 ```
+Vea un ejemplo más completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>
 
 ### 3.2 Permisos para gestionar y/o para llenar plantillas
 
