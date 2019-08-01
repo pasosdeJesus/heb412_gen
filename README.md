@@ -152,15 +152,33 @@ Cree una entrada en el menú que permite acceder a la funcionalidad
 
 ### 3.4 Configure una vista `index` que llenará un listado .ods
 
-Para generar un listado, la vista ```index``` del controlador que 
-    llenará plantillas debe tener un 
-    filtro como formulario.  
-    Esto ya ocurre con controladores descendientes
-    de `Sip::ModelosController` con la vista por omisión de `sip`, así que bastará
-que más bien los haga descendientes de
-    `Heb412Gen::ModelosController`.
+Será simple cuando el controlador sea descendiente de `Sip::ModelosController`
+y emplee la función por omisión `index` y la respectiva vista automática pues en tal caso basta que
+haga el controlador descendiente de `Heb412Gen::ModelosController` y que añada
+la función `vistas_manejadas` con un listado de las vistas que el controlador maneja
+de entre las referenciadas por la función `campos_plantillas` de `ability.rb`.  
 
-En caso de que esté manejando su propia vista index debe ser del estilo:
+Por ejemplo:
+```
+...
+  class ActoressocialesController < Heb412Gen::ModelosController
+...
+    def vistas_manejadas
+      ['Actorsocial']
+    end
+...
+```
+
+Después debe inicar la aplicación y un administrador debe gestionar una o
+varias plantillas en listado  `.ods` para la vista en cuestión.
+
+Después de esto, cunado un usuario con permiso de lectura de las plantillas ingrese 
+a la vista, en la parte inferior verá un 
+control para generar el listado en formato ODS o XLSX.  Cuanod eliga la plantilla
+y pulse en el botón será dirigido a la carpeta `generados` de la nube donde podrá
+ver el porcentaje de progreso en la generación y recargar hasta que termine el proceso.
+
+En caso de que esté manejando su propia vista index debe tener un filtro como formulario y debe ser del siguiente estilo:
 
  ```
 <%= simple_form_for :filtro,
