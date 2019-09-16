@@ -70,7 +70,7 @@ Si esto no basta para su caso puede que le sirva la descripción que sigue.
   tarea en segundo plano para llenar la plantilla.
 
 - La función por omisión `programa_generacion_listados(params, extension)` 
-  emplea la variable `@registros` (típica de un index de un controlador descendiente
+  emplea la variable `@registros` (típica de un `index` de un controlador descendiente
   de `Sip::ModelosController`) y los parámetros para llenar la plantilla
   con la extensión dada.
   Antes de lanzar la tarea prepara una copia de la plantilla en un archivo

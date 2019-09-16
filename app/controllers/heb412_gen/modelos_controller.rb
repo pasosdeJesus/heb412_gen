@@ -110,11 +110,20 @@ module Heb412Gen
       self.class.name.constantize.index_reordenar(registros)
     end
 
-    # Genera vista limitando a los registros que recibe
-    # parsimp es hash sencillo con algunos de los params de la solicitud: 
+    # Genera "vista" de registros por exportar, 
+    # limitando a los registros cuyas identificaciones ids recibe así
+    # como a parametros parsimp.
+    # @param plant Id de plantilla
+    # @param ids Ids de registros
+    # @param modelo Modelo de cada registro
+    # @param narch Nombre de archivo que se generará
+    # @param parsimp es hash sencillo con algunos de los params de la solicitud: 
     # {nombre1: valor1, nombre2: valor2...}
-    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension)
-      registros = modelo.where(id: ids)
+    # @param extension Extensión por generar .ods, .xlsx
+    # @param símbolo con el campo de los ids
+    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension, 
+                           campoid = :id)
+      registros = modelo.where(campoid => ids)
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
       end
@@ -124,7 +133,8 @@ module Heb412Gen
 
     # Prepara y lanza tarea en segundo plano para llenar una plantilla
     # con cierta extensión
-    def programa_generacion_listado(params, extension)
+    # @param extension es etensión de formato por generar comenznado con .
+    def programa_generacion_listado(params, extension, campoid = :id)
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
         head :no_content 
       elsif Heb412Gen::Plantillahcm.where(
@@ -143,7 +153,7 @@ module Heb412Gen
           FileUtils.touch(narch + "#{extension}-0")
           flash[:notice] = "Se programó la generación del archivo " +
             "#{rarch}#{extension}, por favor refresque hasta verlo generado"
-          ids = @registros.map(&:id)
+          ids = @registros.map(&campoid)
           rutaurl = File.join(heb412_gen.sisini_path, 
                               '/generados').to_s
 
@@ -177,11 +187,12 @@ module Heb412Gen
           end
           Heb412Gen::GeneralistadoJob.perform_later(
             pl.id, @registros.take.class.name, self.class.name, ids, narch,
-            parsimp, extension)
+            parsimp, extension, campoid)
           redirect_to rutaurl, format: 'html'
-          #return
+          return
         end
       end
+      redirect_to main_app.root_path, format: 'html'
     end
 
     # Sobrecarga de Sip 
