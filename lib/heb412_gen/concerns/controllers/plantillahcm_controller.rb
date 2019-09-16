@@ -151,8 +151,11 @@ module Heb412Gen
           end
 
           # Llena una plantilla para multiples registros
-          # a partir de una fuente de datos (tabla, vista o arreglo de objetos)
-          def self.llena_plantilla_multiple_fd(plantillahcm, fd)
+          #   a partir de una fuente de datos (tabla, vista o arreglo 
+          #   de objetos)
+          # @param nomcontrolador es cadena con nombre de controlador
+          def self.llena_plantilla_multiple_fd(plantillahcm, fd, 
+                                               nomcontrolador = nil)
             ruta = File.join(Rails.application.config.x.heb412_ruta, 
                              plantillahcm.ruta).to_s
             puts "ruta=#{ruta}"
@@ -164,14 +167,23 @@ module Heb412Gen
               plantillahcm.campoplantillahcm.each do |c|
                 next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
                 col = (Heb412Gen::ApplicationHelper::RANGOCOL.find_index(c.columna))+1
-                v = r[c.nombrecampo.to_sym].nil? ?
-                  r[c.nombrecampo] :
-                  r[c.nombrecampo.to_sym]
+                if r[c.nombrecampo].nil? && 
+                  r[c.nombrecampo.to_sym].nil? && 
+                  nomcontrolador != nil && 
+                  nomcontrolador.constantize.respond_to?(
+                    :presenta_valorcampo)
+                  nomcontrolador.constantize.presenta_valorcampo(
+                    r, c.nombrecampo.to_sym)
+                else
+                  v = r[c.nombrecampo.to_sym].nil? ?
+                    r[c.nombrecampo] :
+                    r[c.nombrecampo.to_sym]
+                end
                 if !v.is_a? Integer
                   v = v.to_s
                 end
 
-                puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
+                puts "fila=#{fila}, col=#{col}, c.nombrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
                 hoja[fila, col] = v
               end
               fila += 1

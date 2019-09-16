@@ -42,7 +42,7 @@ module Heb412Gen
       registro.complementa_importa(ulteditor_id, datossal, menserror, opciones)
     end
 
-    # Deserializa para enviar a ActiveJobs
+    # Deserializa para enviar a ActiveJob
     def self.cons_a_fd(cons, colvista = [])
       l = []
       cons.each do |r|
