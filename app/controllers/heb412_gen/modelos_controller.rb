@@ -3,7 +3,7 @@
 module Heb412Gen
   class ModelosController < Sip::ModelosController
 
-    # Interpreta campos que tienen punto por ejemplo caracterizacion.nivel
+    # Interpreta campos que tienen punto por ejemplo formulario.campo
     def self.valor_campo_compuesto(registro, campo)
       "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
     end
@@ -42,7 +42,7 @@ module Heb412Gen
       registro.complementa_importa(ulteditor_id, datossal, menserror, opciones)
     end
 
-    # Deserializa para enviar a ActiveJobs
+    # Deserializa para enviar a ActiveJob
     def self.cons_a_fd(cons, colvista = [])
       l = []
       cons.each do |r|
@@ -122,6 +122,8 @@ module Heb412Gen
       return registros
     end
 
+    # Prepara y lanza tarea en segundo plano para llenar una plantilla
+    # con cierta extensión
     def programa_generacion_listado(params, extension)
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
         head :no_content 
