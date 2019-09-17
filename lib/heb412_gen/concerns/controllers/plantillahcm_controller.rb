@@ -328,7 +328,7 @@ module Heb412Gen
                     registro.errors.messages.count > 0
                     menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
                   end
-                  puts "Por llamanar controlador.complementa_importa_dato con ulteditor_id=#{ulteditor_id}"
+                  puts "Por llamar controlador.complementa_importa_dato con ulteditor_id=#{ulteditor_id}"
                   controlador.complementa_importa_dato(
                     registro, ulteditor_id, datossal, menserror)
                 else
