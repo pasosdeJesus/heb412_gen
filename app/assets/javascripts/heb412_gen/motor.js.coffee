@@ -32,7 +32,7 @@
     d += '&commit=Enviar'
     root =  window;
     sip_arregla_puntomontaje(root)
-    if root.puntomontaje != '/' || rutagenera[0] != '/'
+    if (root.puntomontaje != '/' || rutagenera[0] != '/') && rutagenera.substring(0, root.puntomontaje.length) != root.puntomontaje
       rutagenera = root.puntomontaje + rutagenera
     e = rutagenera + '.' + formato + '?' + d
     $(elema).attr('href', e)
