@@ -22,8 +22,6 @@ gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 
 
 gem 'redcarpet'
 
-gem 'odf-report'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -79,9 +77,14 @@ gem 'twitter_cldr'
 # Maneja adjuntos
 gem "paperclip"#, "~> 4.1"
 
+gem 'rubyzip', '>= 2.0'
+
+# Genera ODT
+gem 'odf-report', git: 'https://github.com/vtamara/odf-report.git', branch: 'rubyzip-1.3'
+
+# Genera ODS
 gem 'libxml-ruby'
-gem 'rspreadsheet'
-gem 'rubyzip', '~>1.2'
+gem 'rspreadsheet', git: 'https://github.com/vtamara/rspreadsheet.git', branch: 'rubyzip-1.3'
 
 
 # Zonas horarias
@@ -113,7 +116,5 @@ group :development do
 
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
-
-  gem 'pry'
 end
 
