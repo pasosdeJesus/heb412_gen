@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 module Heb412Gen
   class GeneralistadoJob < ApplicationJob
     queue_as :default

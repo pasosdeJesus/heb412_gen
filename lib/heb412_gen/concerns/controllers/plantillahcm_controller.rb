@@ -11,7 +11,12 @@ module Heb412Gen
           include ActionView::Helpers::AssetUrlHelper
           include Sip::FormatoFechaHelper
           include Sip::ModeloHelper
-  
+
+          if ($".select {|x| x =~ /\/zip-/}.count > 0)
+            raise StandardError("Conflicto entre rubyzip y zip. " +
+              "Eliminar gema zip")
+          end
+
           before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
                                          :show, :impreso]
           load_and_authorize_resource  class: Heb412Gen::Plantillahcm
