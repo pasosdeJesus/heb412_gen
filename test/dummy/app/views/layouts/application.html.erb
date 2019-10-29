@@ -7,50 +7,70 @@
 <% end %>
 
 <% content_for :menu do %>
-  <%= menu_group do %>
+  <ul class="navbar-nav mr-auto">
     <% if !current_usuario.nil? %>
       <!--%= menu_item "Examinar", heb412_gen.examinar_path %-->
-      <%= menu_item "Personas", sip.personas_path %>
-      <%= menu_item "Actores Sociales", sip.actoressociales_path %>
+      <%= link_to "Personas", sip.personas_path,
+        class: 'dropdown-item' %>
+      <%= link_to "Actores Sociales", sip.actoressociales_path,
+        class: 'dropdown-item' %>
     <% end %>
-  <% end %>
-  <%= menu_group :pull => :right do %>
+  </ul>
+  <ul class="navbar-nav mr-auto navbar-right">
     <% if !current_usuario.nil? %>
-      <%= drop_down "Documentos" do %>
-        <%= menu_item "Nube", heb412_gen.sisini_path %>
-        <%= menu_item "Definir plantilla hoja de calculo para múltiples registros (HCM)", 
-          heb412_gen.new_plantillahcm_path %>
-        <%= menu_item "Lista de plantillas HCM asociadas", 
-          heb412_gen.plantillashcm_path %>
-
-        <%= menu_item "Definir plantilla hoja de calculo para un registros (HCR)", 
-          heb412_gen.new_plantillahcr_path %>
-        <%= menu_item "Lista de plantillas HCR asociadas", 
-          heb412_gen.plantillashcr_path %>
-
-        <%= menu_item "Definir plantilla documento para un registro", 
-          heb412_gen.new_plantilladoc_path %>
-        <%= menu_item "Lista de plantillas documento", 
-          heb412_gen.plantillasdoc_path %>
-      <% end %>
-      <%= drop_down "Administrar" do %>
-        <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
-        <% if current_usuario.rol == Ability::ROLADMIN %>
-          <%= menu_item "Usuarios", main_app.usuarios_path %>
-        <% end %>
-        <% if can? :manage, Mr519Gen::Formulario %>
-          <%= menu_item "Formularios", mr519_gen.formularios_path %>
-        <% end %>
-        <% if current_usuario.rol == Ability::ROLADMIN %>
-          <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
-        <% end %>
-      <% end %>
-      <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Nube", heb412_gen.sisini_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Definir plantilla hoja de calculo para múltiples registros (HCM)", 
+            heb412_gen.new_plantillahcm_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Lista de plantillas HCM asociadas", 
+            heb412_gen.plantillashcm_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Definir plantilla hoja de calculo para un registros (HCR)", 
+            heb412_gen.new_plantillahcr_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Lista de plantillas HCR asociadas", 
+            heb412_gen.plantillashcr_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Definir plantilla documento para un registro", 
+            heb412_gen.new_plantilladoc_path,
+            class: 'dropdown-item' %>
+          <%= link_to "Lista de plantillas documento", 
+            heb412_gen.plantillasdoc_path,
+            class: 'dropdown-item' %>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Clave", main_app.editar_registro_usuario_path,
+            class: 'dropdown-item' %>
+          <% if current_usuario.rol == Ability::ROLADMIN %>
+            <%= link_to "Usuarios", main_app.usuarios_path,
+              class: 'dropdown-item' %>
+          <% end %>
+          <% if can? :manage, Mr519Gen::Formulario %>
+            <%= link_to "Formularios", mr519_gen.formularios_path,
+              class: 'dropdown-item' %>
+          <% end %>
+          <% if current_usuario.rol == Ability::ROLADMIN %>
+            <%= link_to "Tablas Básicas", sip.tablasbasicas_path,
+              class: 'dropdown-item' %>
+          <% end %>
+        </div>
+      </li>
+      <%= link_to "Salir #{current_usuario.nusuario}", main_app.sign_out_path,
+        class: 'dropdown-item' %>
     <% else %>
-      <%= menu_item "Acerca de", '/acercade' %>
-      <%= menu_item "Iniciar Sesión", main_app.new_usuario_session_path %> 
+      <%= link_to "Acerca de", '/acercade',
+        class: 'dropdown-item' %>
+      <%= link_to "Iniciar Sesión", main_app.new_usuario_session_path,
+        class: 'dropdown-item' %>
     <% end %>
-  <% end %>
+  </ul>
 <% end %>
 
 <% content_for :footer do %>

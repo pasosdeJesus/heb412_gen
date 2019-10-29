@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require heb412_gen/application.css
+ *= require bootstrap/dist/css/bootstrap.css
  *= require_self
  */

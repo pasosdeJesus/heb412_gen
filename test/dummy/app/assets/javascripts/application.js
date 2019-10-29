@@ -13,6 +13,5 @@
 //= require heb412_gen/application
 //= require jquery
 //= require chosen-jquery
-//= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
