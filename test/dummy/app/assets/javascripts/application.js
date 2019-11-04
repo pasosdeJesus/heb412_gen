@@ -11,7 +11,4 @@
 // about supported directives.
 //
 //= require heb412_gen/application
-//= require jquery
-//= require chosen-jquery
-//= require turbolinks
 //= require_tree .

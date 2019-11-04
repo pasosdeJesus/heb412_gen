@@ -13,11 +13,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'cancancan' # Roles
 
-gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', branch: 'several-fixes'
-
 gem 'coffee-rails', '~> 4.2'
-
-gem 'colorize'
 
 gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', branch: 'new_id_with_ajax' # Formularios anidados (algunos con ajax)
 
@@ -25,14 +21,9 @@ gem 'devise' # Autenticación
 
 gem 'devise-i18n'
 
-gem 'font-awesome-rails'
-
 gem 'jbuilder', '~> 2.5'
 
-gem 'jquery-rails'
-
-gem 'jquery-ui-rails'
-
+gem 'jquery-ui-rails' 
 
 gem 'libxml-ruby'
 
@@ -54,21 +45,15 @@ gem 'rspreadsheet' # Genera ODS
 
 gem 'rubyzip', '>= 2.0'
 
-gem 'sass'
-
-gem 'sass-rails'
+gem 'sassc-rails'
 
 gem 'simple_form' # Formularios simples 
 
 gem 'tiny-color-rails'
 
-gem 'turbolinks'
-
 gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
-
-gem 'uglifier', '>= 1.3.0'
 
 gem 'webpacker'
 
@@ -80,18 +65,20 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4
-#gem 'sip', path: '../sip'
+#  git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4
+   path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :bs4
-#gem 'mr519_gen', path: '../mr519_gen'
+#  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :bs4
+   path: '../mr519_gen'
 
 
 group :development, :test do
 
   #gem 'byebug', platform: :mri
  
+  gem 'colorize'
+
 end
 
 
