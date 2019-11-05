@@ -5,8 +5,6 @@ git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 gemspec
 
 
-gem 'bcrypt'
-
 gem 'bootsnap'
 
 gem 'bootstrap-datepicker-rails'
@@ -37,7 +35,7 @@ gem 'pick-a-color-rails'# Facilita elegir colores en tema
 
 gem 'puma'
 
-gem 'rails', '~> 6.0.0.rc1'
+gem 'rails', '~> 6.0.0'
 
 gem 'redcarpet'
 
@@ -65,12 +63,12 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-#  git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4
-   path: '../sip'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :bs4
+#   path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-#  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :bs4
-   path: '../mr519_gen'
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :bs4
+#   path: '../mr519_gen'
 
 
 group :development, :test do
