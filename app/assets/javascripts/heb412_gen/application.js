@@ -16,13 +16,13 @@
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
-	var root;
-	root = typeof exports !== "undefined" && exports !== null ? 
-		exports : window;
-	sip_prepara_eventos_comunes(root);
-	/* Formato fecha manejado por sip */
-	mr519_gen_prepara_eventos_comunes(root);
-	heb412_gen_prepara_eventos_comunes(root);
+  var root;
+  root = typeof exports !== "undefined" && exports !== null ? 
+    exports : window;
+  sip_prepara_eventos_comunes(root);
+  /* Formato fecha manejado por sip */
+  mr519_gen_prepara_eventos_comunes(root);
+  heb412_gen_prepara_eventos_comunes(root);
 });
 
 

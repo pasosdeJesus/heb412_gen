@@ -7,75 +7,56 @@
 <% end %>
 
 <% content_for :menu do %>
-  <ul class="navbar-nav mr-auto">
+  <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-      <!--%= menu_item "Examinar", heb412_gen.examinar_path %-->
-      <%= link_to "Personas", sip.personas_path,
-        class: 'dropdown-item' %>
-      <%= link_to "Actores Sociales", sip.actoressociales_path,
-        class: 'dropdown-item' %>
+        <%= opcion_menu "Actores sociales", sip.actoressociales_path %>
+        <%= opcion_menu "Personas", sip.personas_path %>
     <% end %>
-  </ul>
-  <ul class="navbar-nav mr-auto navbar-right">
+  <% end %>
+  <%= grupo_menus empuja: :derecha do %>
     <% if !current_usuario.nil? %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Nube", heb412_gen.sisini_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Definir plantilla hoja de calculo para múltiples registros (HCM)", 
-            heb412_gen.new_plantillahcm_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Lista de plantillas HCM asociadas", 
-            heb412_gen.plantillashcm_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Definir plantilla hoja de calculo para un registros (HCR)", 
-            heb412_gen.new_plantillahcr_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Lista de plantillas HCR asociadas", 
-            heb412_gen.plantillashcr_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Definir plantilla documento para un registro", 
-            heb412_gen.new_plantilladoc_path,
-            class: 'dropdown-item' %>
-          <%= link_to "Lista de plantillas documento", 
-            heb412_gen.plantillasdoc_path,
-            class: 'dropdown-item' %>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Clave", main_app.editar_registro_usuario_path,
-            class: 'dropdown-item' %>
-          <% if current_usuario.rol == Ability::ROLADMIN %>
-            <%= link_to "Usuarios", main_app.usuarios_path,
-              class: 'dropdown-item' %>
-          <% end %>
-          <% if can? :manage, Mr519Gen::Formulario %>
-            <%= link_to "Formularios", mr519_gen.formularios_path,
-              class: 'dropdown-item' %>
-          <% end %>
-          <% if current_usuario.rol == Ability::ROLADMIN %>
-            <%= link_to "Tablas Básicas", sip.tablasbasicas_path,
-              class: 'dropdown-item' %>
-          <% end %>
-        </div>
-      </li>
-      <%= link_to "Salir #{current_usuario.nusuario}", main_app.sign_out_path,
-        class: 'dropdown-item' %>
+      <%= despliega_abajo "Documentos" do %>
+        <%= opcion_menu "Nube", heb412_gen.sisini_path, desplegable: true %>
+        <% if can? :manage, ::Heb412Gen::Plantillahcm %>
+          <%= opcion_menu "Plantillas para listados en hojas de calculo",
+            heb412_gen.plantillashcm_path, desplegable: true %>
+        <% end %>
+        <% if can? :manage, ::Heb412Gen::Plantillahcr %>
+          <%= opcion_menu "Plantillas para un registro en hoja de calculo",
+            heb412_gen.plantillashcr_path, desplegable: true %>
+        <% end %>
+        <% if can? :manage, ::Heb412Gen::Plantilladoc %>
+          <%= opcion_menu "Plantillas para un registro en documento",
+            heb412_gen.plantillasdoc_path, desplegable: true %>
+        <% end %>
+      <% end %>
+      <%= despliega_abajo "Administrar" do %>
+        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, desplegable: true %>
+        <%= opcion_menu "Copia de respaldo cifrada", sip.respaldo7z_path, desplegable: true %>
+        <%= opcion_menu "Usuarios", main_app.usuarios_path, desplegable: true %>
+        <% if can? :manage, Mr519Gen::Formulario %>
+          <%= opcion_menu "Formularios", mr519_gen.formularios_path, 
+            desplegable: true %>
+        <% end %>
+        <% if current_usuario.rol == Ability::ROLADMIN %>
+          <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path,
+            desplegable: true %>
+        <% end %>
+        <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, desplegable: true %>
+      <% end %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
-      <%= link_to "Acerca de", '/acercade',
-        class: 'dropdown-item' %>
-      <%= link_to "Iniciar Sesión", main_app.new_usuario_session_path,
-        class: 'dropdown-item' %>
+      <%= opcion_menu "Acerca de", '/acercade' %>
+      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path %>
     <% end %>
-  </ul>
+  <% end %>
 <% end %>
 
 <% content_for :footer do %>
   <p><span class='derechos'>Dominio Público de acuerdo a Legislación Colombiana<br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2016. 
+    Desarrollado por 
+    <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 
+    2019. 
   </span></p>
 <% end %>
 

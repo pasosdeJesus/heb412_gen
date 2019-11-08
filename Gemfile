@@ -7,8 +7,6 @@ gemspec
 
 gem 'bootsnap'
 
-gem 'bootstrap-datepicker-rails'
-
 gem 'cancancan' # Roles
 
 gem 'coffee-rails', '~> 4.2'
@@ -21,8 +19,6 @@ gem 'devise-i18n'
 
 gem 'jbuilder', '~> 2.5'
 
-gem 'jquery-ui-rails' 
-
 gem 'libxml-ruby'
 
 gem 'odf-report' # Genera ODT
@@ -30,8 +26,6 @@ gem 'odf-report' # Genera ODT
 gem 'paperclip' # Maneja adjuntos
 
 gem 'pg'
-
-gem 'pick-a-color-rails'# Facilita elegir colores en tema
 
 gem 'puma'
 
@@ -46,8 +40,6 @@ gem 'rubyzip', '>= 2.0'
 gem 'sassc-rails'
 
 gem 'simple_form' # Formularios simples 
-
-gem 'tiny-color-rails'
 
 gem 'twitter_cldr' # ICU con CLDR
 
