@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 25f418dda2a3335c82ff8c7cfc327f6566c40d48
+  revision: ed3f9bc48ab8a7cd0735298e6be35177b81e4c02
   branch: bs4
   specs:
     mr519_gen (0.2.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9727e4069ba33cbc18661091f1ddefd3478f01ec
+  revision: 1948527aba96b4f42b2e2649119c4a662fa00dea
   branch: bs4
   specs:
     sip (2.0.b7)
@@ -106,7 +106,6 @@ GEM
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.3)
-    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
     chosen-rails (1.9.0)
@@ -279,7 +278,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  byebug
   cancancan
   cocoon!
   coffee-rails (~> 4.2)
