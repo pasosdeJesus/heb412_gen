@@ -32,7 +32,7 @@
       url: heb412_gen.nuevo_archivo_path,
       method: "post" } do |f| %>
       <div class="row">
-        <div class="col-md-offset-0 col-md-3"> 
+        <div class="offset-md-0 col-md-3"> 
           <%= f.input :archivo, as: :file, label: false %>
           <%= f.input :ruta, 
             as: :hidden, 
@@ -40,7 +40,7 @@
               value: "arch/#{@ruta}"
             } %>
         </div>
-        <div class="col-md-offset-0 col-md-2"> 
+        <div class="offset-md-0 col-md-2"> 
           <%= f.button :submit, 'Subir archivo', class: 'btn btn-default' %>
         </div>
       </div> <!--row -->
@@ -50,7 +50,7 @@
       url: heb412_gen.actleeme_path,
       method: "post" } do |f| %>
       <div class="row">
-        <div class="col-md-offset-0 col-md-7"> 
+        <div class="offset-md-0 col-md-7"> 
           <%= f.input :leeme, as: :text,
             label: false,
             input_html: {
@@ -63,7 +63,7 @@
               value: "arch/#{@ruta}"
             } %>
         </div>
-        <div class="col-md-offset-0 col-md-2"> 
+        <div class="offset-md-0 col-md-2"> 
           <%= f.button :submit, 'Guardar descripción', 
             class: 'btn btn-default' 
           %>
