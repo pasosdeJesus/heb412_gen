@@ -1,7 +1,8 @@
 <div class="row">
 
   <div class="col-sm-4">
-    <%= will_paginate @registros, { param_name: :pagina }  %>
+    <%= will_paginate @registros, { param_name: :pagina,
+      class: 'page-link'}  %>
   </div>
 
   <div class="col-sm-2">
@@ -13,8 +14,7 @@
     <% end %>
   </div>
 
-  <div class="col-sm-offset-1 col-sm-3">
-    <% #byebug %>
+  <div class="offset-sm-1 col-sm-3">
     <% if @plantillas && @plantillas.count > 0 %>
       <% oppres = [['', '']] %>  
       <% oppres += @plantillas if @plantillas %>

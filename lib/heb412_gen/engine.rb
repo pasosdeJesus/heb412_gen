@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-require 'font-awesome-rails'
-
 module Heb412Gen
   class Engine < ::Rails::Engine
     isolate_namespace Heb412Gen

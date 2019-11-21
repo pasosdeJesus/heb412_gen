@@ -2,7 +2,6 @@
 module Heb412Gen
   module ApplicationHelper
 
-    include ::FontAwesome::Rails::IconHelper
     include Sip::PaginacionAjaxHelper
 
     MAXCOL = 'AMJ' # Máxima en gnumeric

@@ -8,13 +8,13 @@
           <% if a[:estado] && a[:estado].ftype == "directory" && a[:nombre] == '..' %>
             <li class='heb412_ndir'>
               <%= link_to url, remote: true do %>
-                <%= fa_icon 'folder', text: a[:nombre] %>
+                <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
               <% end %>
             </li>
           <% elsif a[:estado] && a[:estado].ftype == "directory" && a[:nombre] != '..' %>
             <li class='heb412_ndir heb412_directorio'>
               <%= link_to url, remote: true do %>
-                <%= fa_icon 'folder', text: a[:nombre] %>
+                <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
               <% end %>
             </li>
           <% else %>

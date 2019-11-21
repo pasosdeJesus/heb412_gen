@@ -7,69 +7,69 @@
   </div>
 
   <% if can? :create, Heb412Gen::Doc %>
-    <div class="row">
-      <%= simple_form_for :nueva, { remote: true,
-        url: heb412_gen.nueva_carpeta_path,
-        method: "post" } do |f| %>
-        <div class="col-md-offset-0 col-md-3"> 
+    <%= simple_form_for :nueva, { 
+      remote: true,
+      url: heb412_gen.nueva_carpeta_path,
+      method: "post" } do |f| %>
+      <div class="row">
+        <div class="col"> 
           <%= f.input :nombre,
             label: false,
-            placeholder: 'Nombre' 
-          %>
+            placeholder: 'Nombre' %>
           <%= f.input :ruta, 
             as: :hidden, 
             input_html: {
-            value: "arch/#{@ruta}"
-          } %>
+              value: "arch/#{@ruta}"
+            } %>
         </div>
-        <div class="col-md-offset-0 col-md-2"> 
+        <div class="col"> 
           <%= f.button :submit, 'Nueva carpeta', class: 'btn btn-default' %>
         </div>
-      <% end %>
-    </div> <!-- row -->
+      </div> <!-- row -->
+    <% end %>
 
-    <div class="row">
-      <%= simple_form_for :nuevo, { url: heb412_gen.nuevo_archivo_path,
-        method: "post" } do |f| 
-      %>
-        <div class="col-md-offset-0 col-md-3"> 
+    <%= simple_form_for :nuevo, { 
+      url: heb412_gen.nuevo_archivo_path,
+      method: "post" } do |f| %>
+      <div class="row">
+        <div class="offset-md-0 col-md-3"> 
           <%= f.input :archivo, as: :file, label: false %>
           <%= f.input :ruta, 
             as: :hidden, 
             input_html: {
-            value: "arch/#{@ruta}"
-          } %>
+              value: "arch/#{@ruta}"
+            } %>
         </div>
-        <div class="col-md-offset-0 col-md-2"> 
+        <div class="offset-md-0 col-md-2"> 
           <%= f.button :submit, 'Subir archivo', class: 'btn btn-default' %>
         </div>
-      <% end %>
-    </div> <!--row -->
+      </div> <!--row -->
+    <% end %>
 
-    <div class="row">
-      <%= simple_form_for :actleeme, { url: heb412_gen.actleeme_path,
-        method: "post" } do |f| 
-      %>
-        <div class="col-md-offset-0 col-md-7"> 
+    <%= simple_form_for :actleeme, { 
+      url: heb412_gen.actleeme_path,
+      method: "post" } do |f| %>
+      <div class="row">
+        <div class="offset-md-0 col-md-7"> 
           <%= f.input :leeme, as: :text,
             label: false,
             input_html: {
-            value: @leeme,
-            rows: 15
-          } %>
+              value: @leeme,
+              rows: 15
+            } %>
           <%= f.input :ruta, 
             as: :hidden, 
             input_html: {
-            value: "arch/#{@ruta}"
-          } %>
+              value: "arch/#{@ruta}"
+            } %>
         </div>
-        <div class="col-md-offset-0 col-md-2"> 
+        <div class="offset-md-0 col-md-2"> 
           <%= f.button :submit, 'Guardar descripción', 
             class: 'btn btn-default' 
           %>
         </div>
-      <% end %>
-    </div> <!--row -->
+      </div> <!--row -->
+    <% end %>
 
   <% end %>
 
