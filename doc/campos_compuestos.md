@@ -15,7 +15,7 @@ Estos datos compuestos pueden servir para exportar y para importar información.
 ### Agregar funcionalidad a controladores descendientes de Heb412Gen::ModelosController
 
 En un controlador que ya llene plantillas siendo descendiente de
-Heb412Gen::ModelosController pueden manejarse así:
+`Heb412Gen::ModelosController` pueden manejarse así:
 
 1. Modificando tablas y modelos para darle sentido al campo compuesto
    asociando uno o más formularios a cada registro que maneja el controlador.
@@ -76,12 +76,11 @@ Si esto no basta para su caso puede que le sirva la descripción que sigue.
   Antes de lanzar la tarea prepara una copia de la plantilla en un archivo
   por llenar, extrae la lista de identificaciones  de `@registros`
   y ejecuta en segundo plano el llenado llamando la tarea
-  Heb412Gen::GeneralistadoJob
+  `Heb412Gen::GeneralistadoJob`
 
-- La tarea Heb412Gen::GeneralistadoJob.perform(plantilla_id, nomclase,
-    nomcontrolador, ids, narch, parsimp, extension)
+- La tarea `Heb412Gen::GeneralistadoJob.perform(plantilla_id, nomclase,nomcontrolador, ids, narch, parsimp, extension)`
   recibe mediante el método `vista_listado` del controlado que recibe (o 
-  en su defecto de Heb412Gen::ModelosController), bien la plantilla llena o bien 
+  en su defecto de `Heb412Gen::ModelosController`), bien la plantilla llena o bien 
   datos para llenarla.
   Si recibe datos para llenarla, y si nos son arreglo los convierte a arreglo 
   mediante la función `self.cons_a_fd(cons, colvista)` del controlador que 
@@ -91,13 +90,13 @@ Si esto no basta para su caso puede que le sirva la descripción que sigue.
   función.
 
 - Por su parte es por omisión durante la conversión a arreglo que hace
-  self.cons_a_fd(cons, colvista) que puede modificarse más lo que se
+  `self.cons_a_fd(cons, colvista)` que puede modificarse más lo que se
   presentará.  La función por omisión convierte cada dato de manera condicional asi:
-  - Si es campo compuesto (por tener .) llama la función del controlado 
+  - Si es campo compuesto (por tener `.`) llama la función del controlado 
     `valor_campo_compuesto(registro, campo)`
   - Si el registro tiene método presenta lo usa pasando el nombre del campo
     como atributo --y es fácil sobrecargar ese método en el modelo.
-  - Si no tenía método presenta (por ejemplo si la fuente de registros es una vista)
+  - Si no tenía método `presenta` (por ejemplo si la fuente de registros es una vista)
     trata de extraer el campo directo del registro.
 
 
