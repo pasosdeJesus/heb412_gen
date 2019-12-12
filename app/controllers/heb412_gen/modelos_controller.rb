@@ -79,7 +79,6 @@ module Heb412Gen
     def index_plantillas
       @plantillas = [['', '']]
       @plantillasunr = [['', '']]
-      byebug
       if vistas_manejadas.length > 0
         @plantillas = Heb412Gen::Plantillahcm.
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
