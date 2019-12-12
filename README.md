@@ -24,13 +24,20 @@ La exportación e importación requieren la previa configuración de la nube.
 
 ## 1. Configure gemas, javascript y base de datos
 
-```
-	gem 'heb412_gen', git: 'https://github.com/pasosdeJesus/heb412_gen.git'
-	gem 'font-awesome-rails'
-	gem 'chosen-rails'
+Este motor opera sobre [sip](https://github.com/pasosdeJesus/sip). 
+
+En su Gemfile asegure tener:
+
+```	
 	gem 'rspreadsheet'
 	gem 'redcarpet'
+
+        gem 'sip', 
+          git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+	gem 'heb412_gen', 
+	  git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 ```
+
 
 Incluya el motor javascript en su `app/assets/javascript/application.js` 
    por ejemplo después de `//= require sip/motor` agregue:
@@ -71,13 +78,6 @@ debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 	mount Heb412Gen::Engine, at: '/', as: 'heb412_gen'
 ```
 
-### 2.5 Si hace falta agregue en su ```app/helpers/application_helper.rb```
-```
-	include FontAwesome::Rails::IconHelper 
-```
-Notará que hace falta si al correr el servidor de prueba recibe un error como 
-```undefined method `fa_icon' for #<#<Class:0x0009d035bb1610>:0x0009cfe0b333a0>```
-
 ## 3. Configure su aplicación para utilizar llenadores de plantillas
 
 Hay 3 tipos de llenadores de plantillas:
@@ -90,6 +90,7 @@ Hay 3 tipos de llenadores de plantillas:
 - Para llenar una plantilla ODT con datos de un resumen (vista show),
   que suponemos se genera rápido.
 
+El más desarrollado es el primero, que explicamos a continuación.
 
 ### 3.1 Relacione disponibilidad de campos exportables/importables
 
@@ -152,7 +153,7 @@ Cree una entrada en el menú que permite acceder a la funcionalidad
 
 ### 3.4 Configure una vista `index` que llenará un listado .ods
 
-Será simple cuando el controlador sea descendiente de `Sip::ModelosController`
+Será simple cuando inicialmente el controlador sea descendiente de `Sip::ModelosController`
 y emplee la función por omisión `index` y la respectiva vista automática pues en tal caso basta que
 haga el controlador descendiente de `Heb412Gen::ModelosController` y que añada
 la función `vistas_manejadas` con un listado de las vistas que el controlador maneja
@@ -172,13 +173,14 @@ Por ejemplo:
 Después debe inicar la aplicación y un administrador debe gestionar una o
 varias plantillas en listado  `.ods` para la vista en cuestión.
 
-Después de esto, cunado un usuario con permiso de lectura de las plantillas ingrese 
-a la vista, en la parte inferior verá un 
-control para generar el listado en formato ODS o XLSX.  Cuanod eliga la plantilla
-y pulse en el botón será dirigido a la carpeta `generados` de la nube donde podrá
-ver el porcentaje de progreso en la generación y recargar hasta que termine el proceso.
+Después de esto, cuando un usuario con permiso de lectura de las plantillas ingrese 
+a la vista, en la parte inferior verá un  control para generar el listado en formato ODS o XLSX.  
+Cuando elija la plantilla y pulse en el botón será dirigido a la carpeta `generados` 
+de la nube donde podrá ver el porcentaje de progreso en la generación y 
+recargar hasta que termine el proceso.
 
-En caso de que esté manejando su propia vista index debe tener un filtro como formulario y debe ser del siguiente estilo:
+En caso de que esté manejando su propia vista index debe tener un filtro como formulario 
+y debe ser del siguiente estilo:
 
  ```
 <%= simple_form_for :filtro,
@@ -214,12 +216,7 @@ En caso de que esté manejando su propia vista index debe tener un filtro como f
 ```
 Este método por omisión generará el `.ods` en la carpeta generados de la nube.
 
-### 3.5 Configure vista `show` que llenará plantillas .ods u .odt
-
-La vista show se comportará de manera análoga pero generará en línea 
-    bien el .ods o bien el .odt
-
-### 3.6 Ajuste presentación de campos
+### 3.5 Ajuste presentación de campos
 
 Puede ajustar la forma de presentar algunos campos bien en la función
     `presenta` del modelo asociado al controlador o bien creando en el 
@@ -242,7 +239,7 @@ Puede ajustar la forma de presentar algunos campos bien en la función
 ```
 Y la función auxiliar `presenta_fechanac`.
     
-### 3.7 Generación de un listado en un .ods no estándar
+### 3.6 Generación de un listado en un .ods no estándar
 
 Si requiere manejar varias hojas de una hoja de cálculo o cambios
     mayores a la forma de llenar plantillas sugerimos sobrecargar en
