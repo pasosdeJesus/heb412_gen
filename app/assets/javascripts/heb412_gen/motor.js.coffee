@@ -89,7 +89,10 @@
   )
   
   $(".heb412_directorio").bind("contextmenu", (e) ->
-    window.heb412_mcdir_enlace = e.target
+    if e.target.getAttribute('href') == null
+      window.heb412_mcdir_enlace = e.target.parentElement
+    else
+      window.heb412_mcdir_enlace = e.target
     $("#heb412_mcdir").css({'display':'block', 'left':e.pageX, 'top':e.pageY });
     return false;
   )
