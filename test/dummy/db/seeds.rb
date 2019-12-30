@@ -3,16 +3,14 @@
 conexion = ActiveRecord::Base.connection();
 
 # De motores
-Sip::carga_semillas_sql(conexion, 'sip', :datos)
-motor = ['heb412_gen', '../..']
+motor = ['sip', 'mr519_gen', '../..', nil]
 motor.each do |m|
     Sip::carga_semillas_sql(conexion, m, :cambios)
     Sip::carga_semillas_sql(conexion, m, :datos)
 end
 
-
-# Usuario para primer ingreso sal7711, sal7711
-conexion.execute("INSERT INTO usuario 
+# Usuario para primer ingreso heb412, heb412
+conexion.execute("INSERT INTO public.usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
 	VALUES ('heb412', 'heb412@localhost', 

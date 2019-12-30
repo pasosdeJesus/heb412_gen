@@ -3,14 +3,55 @@
 module Heb412Gen
   class ModelosController < Sip::ModelosController
 
-    # Deserializa para enviar a ActiveJobs
+    # Interpreta campos que tienen punto por ejemplo formulario.campo
+    def self.valor_campo_compuesto(registro, campo)
+      "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
+    end
+
+    def importa_dato_gen(datosent, datossal, menserror, registro = nil, opciones = {})
+      if registro == nil
+        registro = clase.constantize.new
+      elsif registro.class.to_s != clase
+        menserror << "  El controlador #{self.class.to_s} no puede " +
+          "importar #{registro.class.to_s} en #{self.clase}."
+      end
+    
+      r = registro.importa(datosent, datossal, menserror, opciones)
+      return r
+    end
+
+
+    # Crea o completa un registro del modelo manejado por el controlador
+    # @param datosent Diccionario con datos de entrada
+    # @param datossal Diccionario con datos de salida complementarios al registro principal retornado
+    # @param registro Objeto del modelo manejado por el controlador parcialmente lleno o por crear o ubicar? (si es nil).
+    # @param menserror colchon de errores
+    # @param opciones opciones para la importación
+    # Si logra crear/ubicar  y completar el registro con los datos que 
+    # van en datosent retorna el objeto modificado,  de lo contrario retorna 
+    # nil y aumenta errores en menserror.
+    def importa_dato(datosent, datossal, menserror, registro = nil, opciones = {})
+      return importa_dato_gen(datosent, datossal, menserror, registro, opciones)
+    end
+
+    # Complementar importa_dato salvando en base otros datos datossal que
+    # requerían que el registro fuese salvado primero
+    def complementa_importa_dato(registro, ulteditor_id, datossal, 
+                                 menserror, opciones = {})
+      puts "OJO complementa_importa_dato, ulteditor_id=#{ulteditor_id}"
+      registro.complementa_importa(ulteditor_id, datossal, menserror, opciones)
+    end
+
+    # Deserializa para enviar a ActiveJob
     def self.cons_a_fd(cons, colvista = [])
       l = []
       cons.each do |r|
         f = {}
         colvista.each do |c|
           v = ''
-          if r.respond_to?(:presenta)
+          if c.include?('.')
+            v = self.valor_campo_compuesto(r, c)
+          elsif r.respond_to?(:presenta)
             v = r.presenta(c)
           elsif !r[c].nil?
             v = r[c]
@@ -59,11 +100,30 @@ module Heb412Gen
       end
     end
 
-    # Genera vista limitando a los registros que recibe
-    # parsimp es hash sencillo con algunos de los params de la solicitud: 
+    # Ordenamiento de hojas de cálculo generadas desde el listado (vista index)
+    def self.index_reordenar(registros)
+      registros.reorder([:id])
+    end
+
+    # Ordenamiento del listado (vista index)
+    def index_reordenar(registros)
+      self.class.name.constantize.index_reordenar(registros)
+    end
+
+    # Genera "vista" de registros por exportar, 
+    # limitando a los registros cuyas identificaciones ids recibe así
+    # como a parametros parsimp.
+    # @param plant Id de plantilla
+    # @param ids Ids de registros
+    # @param modelo Modelo de cada registro
+    # @param narch Nombre de archivo que se generará
+    # @param parsimp es hash sencillo con algunos de los params de la solicitud: 
     # {nombre1: valor1, nombre2: valor2...}
-    def self.vista_listado(plant, ids, modelo, narch, parsimp)
-      registros = modelo.where(id: ids)
+    # @param extension Extensión por generar .ods, .xlsx
+    # @param símbolo con el campo de los ids
+    def self.vista_listado(plant, ids, modelo, narch, parsimp, extension, 
+                           campoid = :id)
+      registros = modelo.where(campoid => ids)
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
       end
@@ -71,7 +131,10 @@ module Heb412Gen
       return registros
     end
 
-    def programa_generacion_listado(params, extension)
+    # Prepara y lanza tarea en segundo plano para llenar una plantilla
+    # con cierta extensión
+    # @param extension es etensión de formato por generar comenznado con .
+    def programa_generacion_listado(params, extension, campoid = :id)
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
         head :no_content 
       elsif Heb412Gen::Plantillahcm.where(
@@ -90,7 +153,7 @@ module Heb412Gen
           FileUtils.touch(narch + "#{extension}-0")
           flash[:notice] = "Se programó la generación del archivo " +
             "#{rarch}#{extension}, por favor refresque hasta verlo generado"
-          ids = @registros.map(&:id)
+          ids = @registros.map(&campoid)
           rutaurl = File.join(heb412_gen.sisini_path, 
                               '/generados').to_s
 
@@ -124,11 +187,12 @@ module Heb412Gen
           end
           Heb412Gen::GeneralistadoJob.perform_later(
             pl.id, @registros.take.class.name, self.class.name, ids, narch,
-            parsimp, extension)
+            parsimp, extension, campoid)
           redirect_to rutaurl, format: 'html'
-          #return
+          return
         end
       end
+      redirect_to main_app.root_path, format: 'html'
     end
 
     # Sobrecarga de Sip 
@@ -138,6 +202,12 @@ module Heb412Gen
       }
       format.pdf {
         programa_generacion_listado(params, '.pdf')
+      }
+      format.xlsx {
+        programa_generacion_listado(params, '.xlsx')
+      }
+      format.docx {
+        programa_generacion_listado(params, '.docx')
       }
     end
 
@@ -205,9 +275,10 @@ module Heb412Gen
         cn.each do |s|
           r.add_field(s, @registro.presenta(s))
         end
-        if @registro.respond_to?(:valorcampoact)
-          @registro.valorcampoact.each do |vc|
-            n = vc.campoact.actividadtipo.nombre + "_" + vc.campoact.nombrecampo
+        if @registro.respond_to?(:respuestafor) && 
+          @registro.respuestafor.respond_to?(:valorcampo) && 
+          @registro.respuestafor.valorcampo.each do |vc|
+            n = vc.campo.actividadtipo.nombre + "_" + vc.campo.nombre
             n = n.upcase.gsub(/[^A-Z0-9ÁÉÍÓÚÜÑ]/, '_')
             puts "Posible campo #{n} -> #{vc.valor}"
             r.add_field(n, vc.valor)

@@ -18,10 +18,10 @@
   p = $(idselplantilla).val().split('.')
   nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
   if p.length == 2
-    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt'
+    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat' && p[1] != 'json'
       nplantilla = ''
     else
-      formato = p[1] 
+      formato = p[1]
   if nplantilla.length > 0 
     if idruta == null
       f = $(elema).closest('form')
@@ -32,7 +32,7 @@
     d += '&commit=Enviar'
     root =  window;
     sip_arregla_puntomontaje(root)
-    if root.puntomontaje != '/' || rutagenera[0] != '/'
+    if (root.puntomontaje != '/' || rutagenera[0] != '/') && rutagenera.substring(0, root.puntomontaje.length) != root.puntomontaje
       rutagenera = root.puntomontaje + rutagenera
     e = rutagenera + '.' + formato + '?' + d
     $(elema).attr('href', e)
@@ -89,7 +89,10 @@
   )
   
   $(".heb412_directorio").bind("contextmenu", (e) ->
-    window.heb412_mcdir_enlace = e.target
+    if e.target.getAttribute('href') == null
+      window.heb412_mcdir_enlace = e.target.parentElement
+    else
+      window.heb412_mcdir_enlace = e.target
     $("#heb412_mcdir").css({'display':'block', 'left':e.pageX, 'top':e.pageY });
     return false;
   )

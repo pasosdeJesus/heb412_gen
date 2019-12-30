@@ -1,8 +1,5 @@
 # encoding: UTF-8
 
-require 'heb412_gen/engine'
-require 'font-awesome-rails'
-
 module Heb412Gen
   class Engine < ::Rails::Engine
     isolate_namespace Heb412Gen
@@ -26,10 +23,6 @@ module Heb412Gen
 
     # Adaptado de http://guides.rubyonrails.org/engines.html
     config.to_prepare do |app|
-#      Dir.glob(Engine.root.to_s + "/app/decorators/**/*_decorator*.rb").each do |c|
-#        puts "engine decorator #{c}"
-#        require_dependency(c)
-#      end
       Dir.glob(Rails.root + "app/decorators/**/*_decorator*.rb").each do |c|
         require_dependency(c)
       end

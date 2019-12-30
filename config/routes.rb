@@ -2,7 +2,6 @@
 
 Heb412Gen::Engine.routes.draw do
 
-  #get "sisarch", to: "sisarch#index"
   get "sis/*ruta", to: "sisarch#index", as: :sisarch
   get "sis/arch", to: "sisarch#index", as: :sisini
 
@@ -18,11 +17,20 @@ Heb412Gen::Engine.routes.draw do
   get "plantillashcm" => "plantillahcm#index", 
     as: :plantillashcm
 
+  get "plantillashcm/importadatos" => "plantillahcm#importadatos", 
+    as: :plantillashcm_importadatos
+  post "plantillashcm/importadatos" => "plantillahcm#importadatos", 
+    as: :plantillashcm_envia_importadatos
+
   get "plantillahcr/pintacampos" => "plantillahcr#pintacampos", 
     as: :plantillahcr_pintacampos
 
   get "plantillashcr" => "plantillahcr#index", 
     as: :plantillashcr
+
+  post 'plantillahcm' => 'plantillahcm#create', as: :crea_plantillahcm
+
+  post 'plantillahcr' => 'plantillahcr#create', as: :crea_plantillahcr
 
   resources :plantillahcm, path_names: { new: 'nueva', edit: 'edita' }
 

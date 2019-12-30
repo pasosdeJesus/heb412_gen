@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 module Heb412Gen
   class GeneralistadoJob < ApplicationJob
     queue_as :default
@@ -14,7 +15,7 @@ module Heb412Gen
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
     def perform(idplantilla, cmodelo, ccontrolador, ids, narch, parsimp,
-                extension)
+                extension, campoid = :id)
       puts "Inicio de generación de plantilla #{idplantilla}, con modelo #{cmodelo}, controlador #{ccontrolador}, cantidad de ids #{ids.length}, en #{narch}#{extension}"
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = ccontrolador.constantize
@@ -22,10 +23,9 @@ module Heb412Gen
       if controlador.respond_to?(:vista_listado)
         # Damos oportunidad de crear una vista si conviene
         vista = controlador.vista_listado(
-          plant, ids, modelo, narch, parsimp)
-        if vista == nil
+          plant, ids, modelo, narch, parsimp, extension, campoid)
+        if vista.class == String
           # Suponemos que ya generó hoja de cálculo
-          return
         end
         # Podría dar un arreglo con registros de los cuales extraer
         # la información --empleando los nombres de campos apropiados
@@ -34,28 +34,32 @@ module Heb412Gen
         # Si no usamos los registros con las ids dadas para hacer
         # un ActiveModel
         vista = Heb412Gen::ModelosController.vista_listado(
-          plant, ids, modelo, narch, parsimp)
+          plant, ids, modelo, narch, parsimp, campoid)
       end
-      if vista.class == Array
-        fd = vista
+      if vista.class == String
+        n = vista
       else
-        fd = controlador.cons_a_fd(vista, 
-                                   plant.campoplantillahcm.map(&:nombrecampo))
-      end
-      ultp = 0
-      n = Heb412Gen::PlantillahcmController.
-        llena_plantilla_multiple_fd(plant, fd) do |t, i|
-        p = 0
-        if t>0
-          p = 100*i/t
+        if vista.class == Array
+          fd = vista
+        else
+          fd = controlador.cons_a_fd(vista, 
+                                     plant.campoplantillahcm.map(&:nombrecampo))
         end
-        if p != ultp
-          FileUtils.mv("#{narch}#{extension}-#{ultp}", 
-                       "#{narch}#{extension}-#{p}")
-          ultp = p
+        ultp = 0
+        n = Heb412Gen::PlantillahcmController.
+          llena_plantilla_multiple_fd(plant, fd) do |t, i|
+          p = 0
+          if t>0
+            p = 100*i/t
+          end
+          if p != ultp
+            FileUtils.mv("#{narch}#{extension}-#{ultp}", 
+                         "#{narch}#{extension}-#{p}")
+                         ultp = p
+          end
         end
+        FileUtils.rm("#{narch}#{extension}-#{ultp}")
       end
-      FileUtils.rm("#{narch}#{extension}-#{ultp}")
       if extension == '.ods'
         FileUtils.mv(n, "#{narch}#{extension}")
       elsif extension == '.pdf'
@@ -66,6 +70,17 @@ module Heb412Gen
         bn = File.basename(narch)
         FileUtils.mv(n, "/tmp/#{bn}")
         res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
+        puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
+        File.delete("/tmp/#{bn}")
+
+      elsif extension == '.xlsx'
+        if File.exist?("#{n}.xlsx")
+          File.delete("#{n}.xlsx")
+        end
+        dir = File.dirname(narch)
+        bn = File.basename(narch)
+        FileUtils.mv(n, "/tmp/#{bn}")
+        res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir}`
         puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
         File.delete("/tmp/#{bn}")
       end

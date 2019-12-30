@@ -18,8 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_runtime_dependency "sip"
+  s.add_runtime_dependency "mr519_gen"
   s.add_runtime_dependency "rspreadsheet"
-  s.add_runtime_dependency "chosen-rails"
-  s.add_runtime_dependency "font-awesome-rails"
   s.add_runtime_dependency "redcarpet"
 end

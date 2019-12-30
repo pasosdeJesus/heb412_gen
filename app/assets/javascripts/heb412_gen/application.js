@@ -11,16 +11,18 @@
 // about supported directives.
 //
 //= require sip/motor
+//= require mr519_gen/motor
 //= require heb412_gen/motor
 //= require_tree .
 
-$(document).on('turbolinks:load ready page:change', function() {
-	var root;
-	root = typeof exports !== "undefined" && exports !== null ? 
-		exports : window;
-	sip_prepara_eventos_comunes(root);
-	/* Formato fecha manejado por sip */
-	heb412_gen_prepara_eventos_comunes(root);
+document.addEventListener('turbolinks:load', function() {
+  var root;
+  root = typeof exports !== "undefined" && exports !== null ? 
+    exports : window;
+  sip_prepara_eventos_comunes(root);
+  /* Formato fecha manejado por sip */
+  mr519_gen_prepara_eventos_comunes(root);
+  heb412_gen_prepara_eventos_comunes(root);
 });
 
 

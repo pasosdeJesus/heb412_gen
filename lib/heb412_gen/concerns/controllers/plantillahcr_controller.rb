@@ -16,6 +16,11 @@ module Heb412Gen
                                          :show, :impreso]
           load_and_authorize_resource  class: Heb412Gen::Plantillahcr
 
+          def gencalse
+            'F'
+          end
+
+
           @vista= nil
           attr_accessor :form_f
 
@@ -55,6 +60,8 @@ module Heb412Gen
              :licencia, 
              :vista, 
              :nombremenu, 
+             :formulario,
+             :campoplantillahcr
             ]
           end
 
@@ -72,13 +79,13 @@ module Heb412Gen
           end
 
           # GET /plantillahcr/nueva
-          def new
-            authorize! :edit, Heb412Gen::Plantillahcr
-            @plantillahcr = Heb412Gen::Plantillahcr.new
-            @plantillahcr.vista = 'Usuario'
-            @vista = nil
-            render :new, layout: 'layouts/application'
-          end
+          #def new
+          #  authorize! :edit, Heb412Gen::Plantillahcr
+          #  @registro = @plantillahcr = Heb412Gen::Plantillahcr.new
+          #  @plantillahcr.vista = 'Usuario'
+          #  @vista = nil
+          #  render :new, layout: 'layouts/application'
+          #end
 
           # Completa @plantillahcr ya guardado. Debe terminar guardando.
           def ordena_plantillahcr
@@ -117,10 +124,10 @@ module Heb412Gen
           end
 
           # GET /plantillahcr/1/edit
-          def edit
-            authorize! :edit, Heb412Gen::Plantillahcr
-            render :edit, layout: 'layouts/application'
-          end
+          #def edit
+          #  authorize! :edit, Heb412Gen::Plantillahcr
+          #  render :edit, layout: 'layouts/application'
+          #end
 
           # PATCH/PUT /plantillahcr/1
           # PATCH/PUT /plantillahcr/1.json
@@ -173,7 +180,8 @@ module Heb412Gen
               next if !c.columna || c.columna =='' || 
                 !c.fila ||
                 !c.nombrecampo || c.nombrecampo == ''
-              col = (('A'..'CZ').to_a.find_index(c.columna))+1
+              col = Heb412Gen::ApplicationHelper::RANGOCOL.
+                find_index(c.columna)+1
               if fd.respond_to?(:presenta)
                 v = fd.presenta(c.nombrecampo)
               elsif fd.respond_to?(c.nombrecampo.to_sym)
@@ -220,12 +228,11 @@ module Heb412Gen
           private
           # Use callbacks to share common setup or constraints between actions.
           def set_plantillahcr
-            @plantillahcr = Plantillahcr.find(params[:id])
+            @registro = @plantillahcr = Plantillahcr.find(params[:id])
           end
 
-          # Never trust parameters from the scary internet, only allow the white list through.
-          def plantillahcr_params
-            params.require(:plantillahcr).permit(
+          def lista_params_heb412
+            [
               :fuente,
               :licencia,
               :nombremenu, 
@@ -237,8 +244,14 @@ module Heb412Gen
                 :columna,
                 :fila,
                 :_destroy
-              ]
-            )
+            ],
+              :formulario_ids => []
+            ]
+          end
+
+          # Never trust parameters from the scary internet, only allow the white list through.
+          def plantillahcr_params
+            params.require(:plantillahcr).permit(lista_params_heb412)
           end
         end
 

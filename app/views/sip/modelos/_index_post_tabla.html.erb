@@ -1,7 +1,8 @@
 <div class="row">
 
   <div class="col-sm-4">
-    <%= will_paginate @registros, { param_name: :pagina }  %>
+    <%= will_paginate @registros, { param_name: :pagina,
+      class: 'page-link'}  %>
   </div>
 
   <div class="col-sm-2">
@@ -14,8 +15,7 @@
     <% end %>
   </div>
 
-  <div class="col-sm-offset-1 col-sm-3">
-    <% #byebug %>
+  <div class="offset-sm-1 col-sm-3">
     <% if @plantillas && @plantillas.count > 0 %>
       <% oppres = [['', '']] %>  
       <% oppres += @plantillas if @plantillas %>
@@ -26,11 +26,15 @@
 
   <div class="col-sm-2">
     <% if @plantillas && @plantillas.count > 0 %>
-      <%= link_to t('.imprimir', :default => 'Generar documento'), 
+      <%= link_to t('.imprimir', :default => 'Generar ODS'), 
         '#', class: 'btn', 
         onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',
       \'#{clase.demodulize.pluralize.downcase}\')" %>
+      <%= link_to t('.xlsx', :default => 'Generar XLSX'), '#', class: 'btn', 
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
+      \'/#{clase.demodulize.pluralize.downcase}\',
+      \'#{clase.demodulize.pluralize.downcase}\', \'xlsx\')" %>
       <%= link_to t('.pdf', :default => 'Generar PDF'), '#', class: 'btn', 
         onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
       \'/#{clase.demodulize.pluralize.downcase}\',

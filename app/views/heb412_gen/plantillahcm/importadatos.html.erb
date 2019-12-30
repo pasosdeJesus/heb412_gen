@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>Importa datos de un listado en en una hoja de cálculo</h1>
+</div>
+
+<%= simple_form_for :filtro, 
+  { url: heb412_gen.plantillashcm_importadatos_path,
+    multipart: true } do |f| 
+  %>
+  <%= f.input :plantillahcm_id ,
+    collection: Heb412Gen::Plantillahcm.all,
+    value_method: :id,
+    label: "Plantilla para un listado en hoja de cálculo",
+    label_method: lambda {|p| "#{p.nombremenu}   (#{p.vista})" },
+    include_blank: '-- Plantilla'
+  %>
+  <%= f.input :archivo, 
+    as: :file, 
+    label: 'Archivo ODS',
+    accept: 'application/vnd.oasis.opendocument.spreadsheet'
+  %>
+
+  <%= render partial: 'importadatos_complemento_post', 
+    locals: { f: f } %>
+
+  <%= f.button :submit, 'Importar', class: 'btn btn-default' %>
+<% end %>
