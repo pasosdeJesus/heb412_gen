@@ -55,12 +55,26 @@ module Heb412Gen
           end
 
           def atributos_show
-            ["id", "ruta", "fuente", "licencia", "vista", 
-             "nombremenu", "filainicial"]
+            [ :id, 
+              :ruta, 
+              :fuente, 
+              :licencia, 
+              :vista, 
+              :nombremenu, 
+              :formulario, 
+              :filainicial
+            ]
           end
 
           def atributos_index
-            ["id", "vista", "nombremenu", "ruta", "licencia", "filainicial"]
+            [ :id, 
+              :vista, 
+              :nombremenu, 
+              :ruta, 
+              :licencia, 
+              :formulario, 
+              :filainicial
+            ]
           end
 
           def index_reordenar(c)
@@ -470,7 +484,8 @@ module Heb412Gen
                 :nombrecampo,
                 :columna,
                 :_destroy
-              ]
+              ],
+              :formulario_ids => []
             )
           end
         end

@@ -298,6 +298,16 @@ ALTER SEQUENCE public.heb412_gen_doc_id_seq OWNED BY public.heb412_gen_doc.id;
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcm; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.heb412_gen_formulario_plantillahcm (
+    formulario_id integer,
+    plantillahcm_id integer
+);
+
+
+--
 -- Name: heb412_gen_formulario_plantillahcr; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2244,6 +2254,14 @@ ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcr
 
 
 --
+-- Name: heb412_gen_formulario_plantillahcm fk_rails_6e214a7168; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
+    ADD CONSTRAINT fk_rails_6e214a7168 FOREIGN KEY (formulario_id) REFERENCES public.mr519_gen_formulario(id);
+
+
+--
 -- Name: sip_ubicacion fk_rails_6ed05ed576; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2401,6 +2419,14 @@ ALTER TABLE ONLY public.sip_actorsocial_sectoractor
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT fk_rails_fb09f016e4 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
+
+
+--
+-- Name: heb412_gen_formulario_plantillahcm fk_rails_fc3149fc44; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
+    ADD CONSTRAINT fk_rails_fc3149fc44 FOREIGN KEY (plantillahcm_id) REFERENCES public.heb412_gen_plantillahcm(id);
 
 
 --

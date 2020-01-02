@@ -7,31 +7,34 @@
           defined?(f.object.plantillahcr.vista) ? 
           f.object.plantillahcr.vista :
           defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
-        if v.nil? || ab.campos_plantillas[v].nil?
-          col = [['','']]
-        else
-          col = ab.campos_plantillas[v][:campos]
-        end
-        if f.object.plantillahcr
-          f.object.plantillahcr.formulario.each do |fr|
-            nf=fr.nombreinterno
-            puts "nf=#{nf}"
-            col |= ["#{nf}.ultimo_editor"]
-            col |= ["#{nf}.fecha_ultimaedicion"]
-            fr.campo.each do |c|
-              puts "c=#{c.nombreinterno}"
-              col |= ["#{nf}.#{c.nombreinterno}"]
-              if c.tipo == Mr519Gen::ApplicationHelper::SELECCIONMULTIPLE
-                c.opcioncs.each do |op|
-                  col |= ["#{nf}.#{c.nombreinterno}.#{op.valor}"]
-                end
-              end
-            end
-          end
-        end
-        col = col.localize(:es).sort.to_a
-        #col.sort!.uniq!
-        puts "OJO campoplantillahcm. col=#{col.to_s}"
+        col = Heb412Gen::CamposHelper.campos_vista(
+          v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
+          true)
+#        if v.nil? || ab.campos_plantillas[v].nil?
+#          col = [['','']]
+#        else
+#          col = ab.campos_plantillas[v][:campos]
+#        end
+#        if f.object.plantillahcr
+#          f.object.plantillahcr.formulario.each do |fr|
+#            nf=fr.nombreinterno
+#            puts "nf=#{nf}"
+#            col |= ["#{nf}.ultimo_editor"]
+#            col |= ["#{nf}.fecha_ultimaedicion"]
+#            fr.campo.each do |c|
+#              puts "c=#{c.nombreinterno}"
+#              col |= ["#{nf}.#{c.nombreinterno}"]
+#              if c.tipo == Mr519Gen::ApplicationHelper::SELECCIONMULTIPLE
+#                c.opcioncs.each do |op|
+#                  col |= ["#{nf}.#{c.nombreinterno}.#{op.valor}"]
+#                end
+#              end
+#            end
+#          end
+#        end
+#        col = col.localize(:es).sort.to_a
+#        #col.sort!.uniq!
+#        puts "OJO campoplantillahcm. col=#{col.to_s}"
     %>
     <%= f.input :nombrecampo,
       collection: col,
