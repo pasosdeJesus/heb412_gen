@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 7c58ec3bd80a1da4c4857e11cd4bb8d3b78657da
+  revision: d0a10ab95bb7537a2392afb563b27e5d9b791004
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: dcf52c2332dab979fb94977c0720c2f40293918d
+  revision: 32db02022eab4569985ec11c81d60db0aa68553d
   specs:
     sip (2.0.b7)
       cancancan
@@ -104,6 +104,7 @@ GEM
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.4)
+    byebug (11.0.1)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
     chosen-rails (1.9.0)
@@ -173,7 +174,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (1.2.0)
+    pg (1.2.1)
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
@@ -248,7 +249,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    twitter_cldr (5.2.0)
+    twitter_cldr (5.3.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
@@ -276,6 +277,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  byebug
   cancancan
   cocoon!
   coffee-rails (~> 4.2)

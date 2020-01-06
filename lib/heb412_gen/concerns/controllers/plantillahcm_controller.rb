@@ -470,9 +470,8 @@ module Heb412Gen
             @plantillahcm = Plantillahcm.find(params[:id])
           end
 
-          # Never trust parameters from the scary internet, only allow the white list through.
-          def plantillahcm_params
-            params.require(:plantillahcm).permit(
+          def lista_params_heb412
+            [
               :filainicial,
               :fuente,
               :licencia,
@@ -486,7 +485,13 @@ module Heb412Gen
                 :_destroy
               ],
               :formulario_ids => []
-            )
+            ]
+
+          end
+
+          # Never trust parameters from the scary internet, only allow the white list through.
+          def plantillahcm_params
+            params.require(:plantillahcm).permit(lista_params_heb412)
           end
         end
 

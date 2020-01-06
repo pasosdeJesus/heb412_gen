@@ -8,7 +8,10 @@
   if v.nil? || ab.campos_plantillas[v].nil?
     col = [['','']]
   else
-    col = ab.campos_plantillas[v][:campos]
+    col = Heb412Gen::CamposHelper.campos_vista(
+      v, f.object.plantillahcm ? f.object.plantillahcm.formulario : nil,
+      false)
+    #col = ab.campos_plantillas[v][:campos]
   end
 
   col = col.map(&:to_s).localize(:es).sort.to_a
