@@ -103,7 +103,8 @@
   )
             
   $(".heb412_menucontextual").mouseleave( () ->
-    $(".heb412_menucontextual").hide("fast");
+    # NO se requiere y al dejarlo no propaga bien cuando se elije Eliminar
+    # $(".heb412_menucontextual").hide("fast");
   )
   
   $(document).keydown( (e) ->
