@@ -15,6 +15,7 @@ module Heb412Gen
         col = ab.campos_plantillas[v][:campos]
       end
       if formularios
+        byebug
         formularios.each do |fr|
           nf=fr.nombreinterno
           if agrega_ult_ed
