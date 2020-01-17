@@ -7,7 +7,7 @@
           defined?(f.object.plantillahcr.vista) ? 
           f.object.plantillahcr.vista :
           defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
-        col = Heb412Gen::CamposHelper.campos_vista(
+        col = Heb412Gen::PlantillaHelper.campos_vista_formulario(
           v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
           true)
 #        if v.nil? || ab.campos_plantillas[v].nil?

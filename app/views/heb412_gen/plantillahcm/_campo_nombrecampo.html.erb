@@ -8,7 +8,7 @@
   if v.nil? || ab.campos_plantillas[v].nil?
     col = [['','']]
   else
-    col = Heb412Gen::CamposHelper.campos_vista(
+    col = Heb412Gen::PlantillaHelper.campos_vista_formulario(
       v, f.object.plantillahcm ? f.object.plantillahcm.formulario : nil,
       false)
     #col = ab.campos_plantillas[v][:campos]

@@ -1,21 +1,22 @@
 #encoding: UTF-8 
 
 module Heb412Gen
-  module CamposHelper
+  module PlantillaHelper
 
     # Recibe una vista, posibles formularios y retorna los campos usables
+    #   al generar una plantilla
     # @param v Vista
     # @param formularios Enumerable con formularios de los cuales sacar campos
     # @param agrega_ult_ed Agrega último editor
-    def campos_vista(v, formularios, agrega_ult_ed)
+    def campos_vista_formulario(v, formularios, agrega_ult_ed)
       ab = ::Ability.new
       if v.nil? || ab.campos_plantillas[v].nil?
         col = [['','']]
       else
         col = ab.campos_plantillas[v][:campos]
       end
-      if formularios
         byebug
+      if formularios
         formularios.each do |fr|
           nf=fr.nombreinterno
           if agrega_ult_ed
@@ -37,7 +38,7 @@ module Heb412Gen
       puts "OJO campoplantillahcm. col=#{col.to_s}"
       return col
     end 
-    module_function :campos_vista
+    module_function :campos_vista_formulario
 
   end
 end
