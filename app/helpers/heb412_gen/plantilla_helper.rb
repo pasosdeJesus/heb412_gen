@@ -15,7 +15,6 @@ module Heb412Gen
       else
         col = ab.campos_plantillas[v][:campos]
       end
-        byebug
       if formularios
         formularios.each do |fr|
           nf=fr.nombreinterno
@@ -34,7 +33,9 @@ module Heb412Gen
           end
         end
       end
+      byebug
       col = col.localize(:es).sort.to_a
+      byebug
       puts "OJO campoplantillahcm. col=#{col.to_s}"
       return col
     end 
