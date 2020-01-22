@@ -33,9 +33,7 @@ module Heb412Gen
           end
         end
       end
-      byebug
-      col = col.localize(:es).sort.to_a
-      byebug
+      col = col.localize(:es).to_a.map{|x| x.to_s}.sort
       puts "OJO campoplantillahcm. col=#{col.to_s}"
       return col
     end 
