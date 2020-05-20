@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: c5dea2c4d99c2f99b30e33b6b1401c5b060b28df
+  revision: 49c27313407a93634347babb9d0d6e05d4a60992
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 8e77b8936a50ee836808ec28f009e5e9dbfe2e03
+  revision: 61bc5e31d86722dc909dd423263035f1529ff5a1
   specs:
     sip (2.0.b10)
       cancancan
@@ -174,7 +174,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.3)
-    puma (4.3.4)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-proxy (0.6.5)
