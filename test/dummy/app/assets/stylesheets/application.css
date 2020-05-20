@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require heb412_gen/application.css
+ *= require mr519_gen/application.css
  *= require_self
  */

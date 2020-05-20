@@ -1,5 +1,5 @@
-const { environment } = require('@rails/webpacker')
 
+const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 
 environment.plugins.prepend(
@@ -8,6 +8,7 @@ environment.plugins.prepend(
          $: 'jquery',
           jQuery: 'jquery',
           jquery: 'jquery',
+          'window.jQuery': 'jquery',
           Popper: ['popper.js', 'default'],
         })
 )
