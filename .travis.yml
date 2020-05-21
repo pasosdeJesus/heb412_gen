@@ -41,3 +41,4 @@ script:
 
 after_script: 
         - ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
+
