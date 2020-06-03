@@ -29,7 +29,7 @@ gem 'pg'
 
 gem 'puma'
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 
 gem 'redcarpet'
 
