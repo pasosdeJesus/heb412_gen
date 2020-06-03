@@ -211,7 +211,6 @@ module Heb412Gen
       }
     end
 
-
     def fichaimp
       @registro = @basica = clase.constantize.find(params[:id])
       puts params
