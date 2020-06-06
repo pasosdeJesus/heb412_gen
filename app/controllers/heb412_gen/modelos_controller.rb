@@ -127,7 +127,6 @@ module Heb412Gen
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
       end
-
       return registros
     end
 
@@ -211,8 +210,13 @@ module Heb412Gen
       }
     end
 
+
+    # Responde a botón generar documento
     def fichaimp
-      @registro = @basica = clase.constantize.find(params[:id])
+      establece_registro
+      if !@registro
+        return
+      end
       puts params
       narchivo = ''
       tipomime = ''
@@ -235,9 +239,12 @@ module Heb412Gen
       end
     end
 
-
+    # Responde a botón generar PDF
     def fichapdf
-      @registro = @basica = clase.constantize.find(params[:id])
+      establece_registro
+      if !@registro
+        return
+      end
       narchivo = ''
       if !params[:format] || params[:format] == 'odt'
         reporte_a = genera_odt(params[:idplantilla].to_i, narchivo)
@@ -259,6 +266,18 @@ module Heb412Gen
         flash.now[:error] = "No se encontró el archivo /tmp/#{nase}.pdf"
         redirect_to main_app.root_path
       end
+
+    end
+
+    # Establece variable @registro (igual a @basica) 
+    # usada por fichaimp y fichapdf
+    def establece_registro
+      @registro = @basica = nil
+      if !params || !params[:id] ||
+          clase.constantize.where(id: params[:id]).count != 1
+        return
+      end
+      @registro = @basica = clase.constantize.find(params[:id])
     end
 
 
