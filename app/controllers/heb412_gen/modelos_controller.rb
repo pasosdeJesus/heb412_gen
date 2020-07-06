@@ -278,6 +278,8 @@ module Heb412Gen
         return
       end
       @registro = @basica = clase.constantize.find(params[:id])
+      c2 = clase.demodulize.underscore
+      eval "@#{c2} = @registro" 
     end
 
 
