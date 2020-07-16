@@ -342,10 +342,14 @@ module Heb412Gen
                                                   menserror)
               if !registro.nil? && menserror == ''
                 if registro.validate()
-                  registro.save
-                  if registro.errors.messages && 
-                    registro.errors.messages.count > 0
-                    menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
+                  begin
+                    registro.save
+                    if registro.errors.messages && 
+                        registro.errors.messages.count > 0
+                      menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
+                    end
+                  rescue
+                    menserror << " No se pudo guardar registro #{registro.id}"
                   end
                   puts "Por llamar controlador.complementa_importa_dato con ulteditor_id=#{ulteditor_id}"
                   controlador.complementa_importa_dato(
