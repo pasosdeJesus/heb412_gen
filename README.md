@@ -24,7 +24,7 @@ La exportación e importación requieren la previa configuración de la nube.
 
 ## 1. Configure gemas, javascript y base de datos
 
-Este motor opera sobre [sip](https://github.com/pasosdeJesus/sip). 
+Este motor opera sobre [sip](https://github.com/pasosdeJesus/sip) y [mr519_gen](https://github.com/pasosdeJesus/mr519_gen)
 
 En su Gemfile asegure tener:
 
@@ -34,6 +34,8 @@ En su Gemfile asegure tener:
 
         gem 'sip', 
           git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+	gem 'mr519_gen', 
+          git: 'https://github.com/pasosdeJesus/mr519_gen.git'
 	gem 'heb412_gen', 
 	  git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 ```
