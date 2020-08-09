@@ -25,6 +25,9 @@ module Heb412Gen
     # Sanea nombre de archivo o directorio, elimina espacios al comienzo 
     #   y final
     # conesp permitir espacios?
+    # Se recomienda tras llamar esta función, también llamar File.basename
+    # para evitar accesos por ejemplo a ../../../etc/passwd  o por ejemplo 
+    # a /etc/passwd
     def sanea_nombre(nombre, conesp=true)
       c = CGI::unescape(nombre)
       if conesp 
@@ -33,8 +36,6 @@ module Heb412Gen
         re = er_buen_nombre
       end
       r = c.gsub(re, '')
-      # Si comienza con ruta relativa la elimina
-      r = r.sub(/^(\.\.\/)*/ , '')
       r = r.strip
       return r
     end
