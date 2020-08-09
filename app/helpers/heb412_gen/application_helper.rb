@@ -33,6 +33,8 @@ module Heb412Gen
         re = er_buen_nombre
       end
       r = c.gsub(re, '')
+      # Si comienza con ruta relativa la elimina
+      r = r.sub(/^(\.\.\/)*/ , '')
       r = r.strip
       return r
     end
