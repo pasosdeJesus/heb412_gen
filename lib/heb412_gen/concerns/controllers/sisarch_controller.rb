@@ -103,6 +103,12 @@ module Heb412Gen
           # Ver carpeta
           def index
             authorize! :read, Heb412Gen::Doc
+            if current_usuario && 
+                ::Ability.respond_to?(:externo?) && ::Ability.externo?(current_usuario)
+              if request.path != "/sis/arch/generados"
+                return
+              end
+            end
             # Ignoramos el reconocimiento de parametros de rails
             # pues busca poner formato con base en extensión
             rp = URI.decode(request.path)
