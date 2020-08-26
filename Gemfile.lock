@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4c6a84360390814fa5b46714b8e4ec9f65d3aae9
+  revision: e046cb75e36f62d5d24644ac383e4390efb68955
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c635b831b71390b77816cda48a21276313bc0a8a
+  revision: 017d3ee2e9b7b0deed82ba05111147020613b279
   specs:
     sip (2.0.b10)
       cancancan
@@ -128,7 +128,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.1)
+    devise-i18n (1.9.2)
       devise (>= 4.7.1)
     docile (1.3.2)
     erubi (1.9.0)
@@ -235,7 +235,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
-    spring (2.1.0)
+    spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
