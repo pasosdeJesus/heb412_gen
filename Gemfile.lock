@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2dc27fd913116150a6980d60b1d40b7c9049e529
+  revision: 73ca20c925391be713ea8ad2d755fe06f517cc7c
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9e48233363e3552ea2e4eb64992fbbffd78c5ac5
+  revision: 2288291f0bc895af07f0c295324bcc9c8bc2631e
   specs:
     sip (2.0.b10)
       cancancan
@@ -99,7 +99,7 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     andand (1.3.3)
-    bcrypt (3.1.15)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -159,7 +159,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.2)
     msgpack (1.3.3)
-    nio4r (2.5.2)
+    nio4r (2.5.3)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     odf-report (0.7.2)
@@ -174,7 +174,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.3)
-    puma (4.3.5)
+    puma (4.3.6)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
