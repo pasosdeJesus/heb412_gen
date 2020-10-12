@@ -1,20 +1,14 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 0f502c824589ded9a63c73bd185e14ac758a8bce
+  revision: 1d4422c8472cfa3495599cb9aa5f4ed6e7e9ce80
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
       sip
 
 GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
-
-PATH
-  remote: ../sip
+  remote: https://github.com/pasosdeJesus/sip.git
+  revision: 4689617d47921b3373b31ce8d268379b634da629
   specs:
     sip (2.0.b10)
       cancancan
@@ -29,6 +23,13 @@ PATH
       simple_form
       twitter_cldr
       will_paginate
+
+GIT
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 088c8d9dcce7f51cf3a968398047eaac7a37718b
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
 
 PATH
   remote: .
