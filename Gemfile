@@ -74,7 +74,7 @@ end
 
 group :test do
 
-  gem 'simplecov'
+  gem 'simplecov', '<0.18'
 
 end 
 

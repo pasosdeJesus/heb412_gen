@@ -142,6 +142,7 @@ GEM
       activesupport (>= 5.0.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.3.1)
     libxml-ruby (3.2.0)
     loofah (2.7.0)
       crass (~> 1.0.2)
@@ -231,10 +232,11 @@ GEM
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.19.0)
+    simplecov (0.17.1)
       docile (~> 1.1)
-      simplecov-html (~> 0.11)
-    simplecov-html (0.12.3)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -297,7 +299,7 @@ DEPENDENCIES
   rubyzip (>= 2.0)
   sassc-rails
   simple_form
-  simplecov
+  simplecov (< 0.18)
   sip!
   spring
   twitter_cldr
