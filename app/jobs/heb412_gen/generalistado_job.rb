@@ -58,7 +58,6 @@ module Heb412Gen
                          ultp = p
           end
         end
-        FileUtils.rm("#{narch}#{extension}-#{ultp}")
       end
       if extension == '.ods'
         FileUtils.mv(n, "#{narch}#{extension}")
@@ -84,6 +83,7 @@ module Heb412Gen
         puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
         File.delete("/tmp/#{bn}")
       end
+      FileUtils.rm("#{narch}#{extension}-#{ultp}")
       puts "Fin de generación de plantilla #{idplantilla} en #{narch}"
     end
 
