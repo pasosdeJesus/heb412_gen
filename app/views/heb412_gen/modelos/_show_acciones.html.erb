@@ -9,7 +9,15 @@
            edit_modelo_path(@registro), :class => 'btn' %>
       <% end %>
     </div>
-    
+
+    <% rutamas = clase.pluralize.underscore + '/show_mas_acciones' %>
+    <% if lookup_context.find_all( rutamas, [], true).any? %>
+      <% # Hay un parcial %>
+      <%= render partial: rutamas %>
+    <% else %>
+      <%= render 'show_mas_acciones' %>
+    <% end %>
+
     <div class="col-sm-3">
       <% if can?(:read, @registro) && @plantillas && @plantillas.count > 0 %>
          <% oppres = @plantillas ? @plantillas : [['','']] %>
