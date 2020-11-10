@@ -124,6 +124,8 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
 ```
 Vea un ejemplo más completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>
 
+Si alguna plantilla sólo debe ser para un registro puede emplear el atributo ```solo_registro: true```.  Si una plantilla debe ser sólo para un listado emplee el atributo ```solo_multiple: true```.  Puede ver un ejemplo de este  último caso en <https://github.com/pasosdeJesus/sivel2_sjrcol/blob/master/app/models/ability.rb>
+
 ### 3.2 Permisos para gestionar y/o para llenar plantillas
 
 En `app/models/ability.rb` de permiso a un usuario (digamos administrador) 
