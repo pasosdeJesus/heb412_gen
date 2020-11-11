@@ -25,7 +25,7 @@
         } %>
 
       <%= render partial: 'form_complemento1', locals: { f: f } %> 
-      
+
       <%= f.input :fuente,
         input_html: {
         "data-toggle" => 'tooltip',
@@ -39,12 +39,13 @@
       } %> 
 
       <% 
-          ab = ::Ability.new
-          cord = ab.campos_plantillas.keys.map { |n| 
-            ['Listado de ' + 
+        ab = ::Ability.new
+        cord = ab.campos_plantillas.select{|l, v| !v[:solo_registro]}.
+          keys.map { |n| 
+          ['Listado de ' + 
              Heb412Gen::Plantillahcm.human_attribute_name(n.to_s.pluralize), 
               n.to_s] }
-          cord.sort! { |x,y| x[1] <=> y[1] }
+          cord.sort! { |x,y| x[0] <=> y[0] }
       %>
       <%= f.input :vista, 
         collection: cord,
