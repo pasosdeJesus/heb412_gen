@@ -94,7 +94,7 @@ Hay 3 tipos de llenadores de plantillas:
 - Para llenar una plantilla ODT con datos de un resumen (vista show),
   que suponemos se genera rápido.
 
-El más desarrollado es el primero, que explicamos a continuación.
+Los más desarrollados son los 2 primeros (de hecho recomendamos no usar el tercero).
 
 ### 3.1 Relacione disponibilidad de campos exportables/importables
 
@@ -255,6 +255,29 @@ Si requiere manejar varias hojas de una hoja de cálculo o cambios
     uniforme en una hoja de cálculo o generar directamente el ODS.  
     Puede ver un ejemplo en 
       https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
+
+### 3.7 Configure una vista `show` que llenará un registro en una hoja de cálculo .ods
+
+Es el mismo procedimiento que para la vista `index` pero las plantillas definidas se verán en la vista para la que se hayan definido en la parte inferior de la vista `show`.  
+
+### 3.8 Nombre de las vistas en los formularios de definición 
+
+En los formularios para definir una plantilla para un registro o para un listado,
+hay un campo `Vista` que presenta las diferentes llaves del diccionario retornado por
+`campos_plantillas`.
+
+Esas llaves se podrían remplazar por nombres que se definan en `config/locale/es.yml` dentro
+de `heb412_gen/plantillahcm` para plantillas de listados, y dentro de `heb412_gen/plantillahcr`
+para plantillas de registros. Recordando que no es necesario definir en `heb412_gen/plantillahcr`
+llaves de plantillas que sean solo para listados (i.e con `solo_multiple: true` en diccionario 
+retornado or `campos_plantillas`) y que en `heb412_gen/plantillahcm` no es necesario definir llaves
+para plantillas que sean sólo para un registro (i.e con con `solo_registro`).
+
+
+### 3.9 Detalles de implementación de generación de campos que provienen de subformularios
+
+Por ejemplo de formularios de caracterización o de subformularios incrustados por un tipo de actividad.
+Ver <https://github.com/pasosdeJesus/heb412_gen/blob/master/doc/campos_compuestos.md>
 
 ## 4. Configure su aplicación para importar información
 
