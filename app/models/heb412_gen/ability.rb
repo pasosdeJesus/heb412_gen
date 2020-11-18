@@ -35,7 +35,8 @@ module Heb412Gen
           'id', 
           'nombre',
           'pais',
-          'sectores',
+          Sip::Actorsocial.human_attribute_name(
+            :sectoresactores).downcase.gsub(' ', '_'),
           'telefono', 
           'web'
         ],

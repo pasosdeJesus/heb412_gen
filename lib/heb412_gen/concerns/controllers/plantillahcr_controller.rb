@@ -197,7 +197,7 @@ module Heb412Gen
               end
 
               puts "fila=#{c.fila}, col=#{col}, " +
-                "c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
+                "c.nombrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{v}"
               hoja[c.fila, col] = v
             end
 
