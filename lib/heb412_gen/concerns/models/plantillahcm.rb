@@ -37,6 +37,16 @@ module Heb412Gen
           def presenta_nombre
             nombremenu
           end
+
+          def presenta(atr)
+            case atr.to_sym
+            when :vista
+              Heb412Gen::Plantillahcm.human_attribute_name(self[atr].pluralize)
+            else
+              presenta_gen(atr)
+            end
+          end
+
         end # included
 
         class_methods do 

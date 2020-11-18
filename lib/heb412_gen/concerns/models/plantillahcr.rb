@@ -31,6 +31,17 @@ module Heb412Gen
           def modelos_path
             'plantillashcr_path'
           end
+
+          def presenta(atr)
+            case atr.to_sym
+            when :vista
+              Heb412Gen::Plantillahcr.human_attribute_name(self[atr])
+            else
+              presenta_gen(atr)
+            end
+          end
+
+
         end # included
 
         class_methods do 

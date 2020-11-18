@@ -17,8 +17,10 @@ es:
         Plantillasdoc: Plantillas documento para un registro
         nombremenu: Nombre por presentar en aplicación
       "heb412_gen/plantillahcm":
+        Actoressociales: Organizaciones sociales
         nombremenu: Nombre por presentar en aplicación
         filainicial: Fila inicial
       "heb412_gen/plantillahcr":
+        Actorsocial: Organización social
         nombremenu: Nombre por presentar en aplicación
 
