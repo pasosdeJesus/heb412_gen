@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2dc00d95d09570d5032871ac4ab53c53c434f748
+  revision: a172aa103937f6ed60ed0bef50bde00bbb566aa8
   specs:
     mr519_gen (0.2.0)
       rails (~> 6.0.0.rc1, >= 6.0.0.rc1)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1f339551a513c049900634a1bd382a494e7d889a
+  revision: d6623e3e1b0efa4b368071ed9562d776db560aec
   specs:
     sip (2.0.b10)
       cancancan
@@ -272,7 +272,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.0)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
