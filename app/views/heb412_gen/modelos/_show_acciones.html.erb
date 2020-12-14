@@ -28,7 +28,7 @@
 
     <div class="col-sm-3">
       <% if can?(:read, @registro) && @plantillas && @plantillas.count > 0 %>
-        <%= link_to t('.imprimir', :default => 'Generar documemto'),  
+        <%= link_to t('.imprimir', :default => 'Generar documento'),  
           '#', class: 'btn', 
           onclick: "heb412_gen_completa_generarp(this, " +
           "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichaimp\')" %>
