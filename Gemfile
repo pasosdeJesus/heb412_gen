@@ -55,11 +55,11 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git', branch: 'rails6.1'
+  git: 'https://github.com/pasosdeJesus/sip.git'
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: 'rails6.1'
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git'
 #   path: '../mr519_gen'
 
 
