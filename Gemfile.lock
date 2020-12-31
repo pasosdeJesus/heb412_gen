@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: eccc7e6dbb17e462fa1be834ecccaf679906dc20
+  revision: 7ff144a994ab632c10640ea3b3645b9507e2ff5b
   specs:
     mr519_gen (0.2.0)
       rails
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 705cdf550ad5b9604615dbda11130176cc69a28c
+  revision: 2077a936cb53302edcaaac778636145bc01bdce6
   specs:
     sip (2.0.b10)
       cancancan
@@ -109,7 +109,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
-    cancancan (3.2.0)
+    cancancan (3.2.1)
     chosen-rails (1.9.0)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
