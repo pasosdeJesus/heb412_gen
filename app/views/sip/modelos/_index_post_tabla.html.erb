@@ -1,8 +1,13 @@
 <div class="row">
 
   <div class="col-sm-4">
-    <%= will_paginate @registros, { param_name: :pagina,
-      class: 'page-link'}  %>
+    <% begin %>
+      <%= will_paginate @registros, { 
+        param_name: :pagina,
+        class: 'page-link'}  %>
+    <% rescue => e %>
+      Problemas presentando paginador (<%= e %>)
+    <% end %>
   </div>
 
   <div class="col-sm-2">
