@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b6d34d0ddb118f3d6814b08f3ca63fc58b02f524
+  revision: 2203570761bbb5155af62daa67e6d62ef25a0adc
   specs:
     mr519_gen (0.2.0)
       rails
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1fcf818f91196fcd6944067b963a032f5f5de444
+  revision: 35241f6728097c04ad6655c1702380896ce06352
   specs:
     sip (2.0.b10)
       cancancan
@@ -130,7 +130,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
-    docile (1.3.4)
+    docile (1.3.5)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.14.2)
@@ -144,7 +144,7 @@ GEM
       railties (>= 3.2.16)
     json (2.5.1)
     libxml-ruby (3.2.1)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
