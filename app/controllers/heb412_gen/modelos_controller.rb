@@ -3,11 +3,6 @@
 module Heb412Gen
   class ModelosController < Sip::ModelosController
 
-    # Interpreta campos que tienen punto por ejemplo formulario.campo
-    def self.valor_campo_compuesto(registro, campo)
-      "Sobrecargar self.valor_campo_compuesto en controlador de #{registro.class} para resolver #{campo}"
-    end
-
     def importa_dato_gen(datosent, datossal, menserror, registro = nil, opciones = {})
       if registro == nil
         registro = clase.constantize.new
@@ -49,10 +44,8 @@ module Heb412Gen
         f = {}
         colvista.each do |c|
           v = ''
-          if c.include?('.')
-            v = self.valor_campo_compuesto(r, c)
-          elsif r.respond_to?(:presenta)
-            v = r.presenta(c)
+          if r.respond_to?(:presenta)
+            v = r.presenta(c) # Debe manejar formu.campo
           elsif !r[c].nil?
             v = r[c]
           end
