@@ -33,17 +33,20 @@
     <% if @plantillas && @plantillas.count > 0 %>
       <%= link_to t('.imprimir', :default => 'Generar ODS'), 
         '#', class: 'btn', 
-        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
-      \'/#{clase.demodulize.pluralize.downcase}\',
-      \'#{clase.demodulize.pluralize.downcase}\')" %>
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',"\
+        "\'/#{clase.demodulize.pluralize.downcase}\',"\
+        "\'#{clase.demodulize.pluralize.downcase}\')",
+        target: '_blank' %>
       <%= link_to t('.xlsx', :default => 'Generar XLSX'), '#', class: 'btn', 
-        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
-      \'/#{clase.demodulize.pluralize.downcase}\',
-      \'#{clase.demodulize.pluralize.downcase}\', \'xlsx\')" %>
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',"\
+        "\'/#{clase.demodulize.pluralize.downcase}\',"\
+        "\'#{clase.demodulize.pluralize.downcase}\', \'xlsx\')",
+        target: '_blank' %>
       <%= link_to t('.pdf', :default => 'Generar PDF'), '#', class: 'btn', 
-        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',
-      \'/#{clase.demodulize.pluralize.downcase}\',
-      \'#{clase.demodulize.pluralize.downcase}\', \'pdf\')" %>
+        onclick: "heb412_gen_completa_generarp(this, \'#filtro_disgenera\',"\
+        "\'/#{clase.demodulize.pluralize.downcase}\',"\
+        "\'#{clase.demodulize.pluralize.downcase}\', \'pdf\')",
+        target: '_blank' %>
 
 
         <!--%= link_to t('.imprimir', :default => 'Generar documemto'),  
