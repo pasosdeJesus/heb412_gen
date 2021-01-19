@@ -39,5 +39,34 @@ module Heb412Gen
     end 
     module_function :campos_vista_formulario
 
+
+    # Dado el nombre de una columna de una hoja de cálculo retorna la siguiente
+    #
+    # Supone que el nombre de la columna usa el alfabeto en inglés y en 
+    # mayúsculas. Por ejemplo sigcol('A') es 'B', sigcol('Z') es 'AA'
+    def sigcol(col)
+      res = ''
+      i = col.length - 1
+      lleva = 1
+      while i>=0
+        if lleva == 1 && col[i] == 'Z'
+          res = 'A' + res
+          lleva = 1
+        elsif lleva == 1
+          c0 = col[i].ord + 1
+          res = c0.chr + res
+          lleva = 0
+        else
+          res = col[i] + res
+        end
+        i -=1
+      end
+      if lleva == 1
+        res = 'A' + res
+      end
+      return res
+    end
+    module_function :sigcol
+
   end
 end
