@@ -68,5 +68,36 @@ module Heb412Gen
     end
     module_function :sigcol
 
+    # Dado el nombre de una columna de una hoja de cálculo retorna la anterior
+    #
+    # Supone que el nombre de la columna usa el alfabeto en inglés y en 
+    # mayúsculas. Por ejemplo antcol('B') es 'A', antco('AA') es 'Z'
+    def antcol(col)
+      if col == ''
+        raise "No puede calcular antcol(nil)"
+      end
+      res = ''
+      i = col.length - 1
+      resta = 1
+      while i>=0
+        if resta == 1 && col[i] == 'A' && i == 0
+          # elimina saltando
+        elsif resta == 1 && col[i] == 'A'
+          res = 'Z' + res
+          resta = 1
+        elsif resta == 1
+          c0 = col[i].ord - 1
+          res = c0.chr + res
+          resta = 0
+        else
+          res = col[i] + res
+        end
+        i -=1
+      end
+      return res
+    end
+    module_function :antcol
+
+
   end
 end
