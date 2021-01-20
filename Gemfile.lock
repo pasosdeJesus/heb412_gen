@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9a6345e2f1091800eb5c64232969a25035040437
+  revision: ae19ccadecf6d545dc9a8ab087eb52c71c31c802
   specs:
     mr519_gen (0.2.0)
       rails
@@ -120,7 +120,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)

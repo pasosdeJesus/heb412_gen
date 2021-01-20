@@ -20,5 +20,14 @@ module Heb412Gen
       assert_equal 'ZZZ', antcol('AAAA')
     end
 
+    test 'compara_columnas' do
+      assert_equal -1, compara_columnas('A', 'B')
+      assert_equal 1, compara_columnas('B', 'A')
+      assert_equal 0, compara_columnas('A', 'A')
+      assert_equal -1, compara_columnas('AA', 'AC')
+      assert_equal 1, compara_columnas('AC', 'AA')
+      assert_equal 0, compara_columnas('AC', 'AC')
+    end
+
   end
 end
