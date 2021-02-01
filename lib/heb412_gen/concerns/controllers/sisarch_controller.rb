@@ -111,8 +111,7 @@ module Heb412Gen
             end
             # Ignoramos el reconocimiento de parametros de rails
             # pues busca poner formato con base en extensión
-            rp = URI.decode(request.path)
-            rp.force_encoding(Encoding::UTF_8)
+            rp = URI.decode_www_form_component(request.path, Encoding::UTF_8)
             ir = rp.index(params[:ruta])
             ruta = rp[ir..-1]
             if !limpia_ruta(ruta)
