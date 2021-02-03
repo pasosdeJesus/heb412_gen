@@ -28,10 +28,16 @@
 
     <div class="col-sm-3">
       <% if can?(:read, @registro) && @plantillas && @plantillas.count > 0 %>
-        <%= link_to t('.imprimir', :default => 'Generar documento'),  
+        <%= link_to t('.imprimir', :default => 'Generar ODS'),  
           '#', class: 'btn', 
-          onclick: "heb412_gen_completa_generarp(this, " +
-          "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichaimp\')" %>
+          onclick: "heb412_gen_completa_generarp(this, "\
+          "\'#genera_plantilla_id\', null, "\
+          "\'#{modelo_path(@registro)}/fichaimp\', 'ods')" %>
+        <%= link_to t('.imprimir', :default => 'Generar XLSX'),  
+          '#', class: 'btn', 
+          onclick: "heb412_gen_completa_generarp(this, "\
+          "\'#genera_plantilla_id\', null, "\
+          "\'#{modelo_path(@registro)}/fichaimp\', 'xlsx')" %>
         <%= link_to t('.pdf', :default => 'Generar PDF'),
           '#', class: 'btn', 
           onclick: "heb412_gen_completa_generarp(this, " +

@@ -38,3 +38,4 @@ test/dummy/public/heb412/
 test/dummy/node_modules/
 .byebug_history
 coverage
+test/dummy/public/

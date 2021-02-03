@@ -12,9 +12,9 @@
 # @rutagenera ruta por cargar con id de plantilla y valores del 
 #   formulario e.g 'casos/genera/'
 @heb412_gen_completa_generarp = (elema, idselplantilla, idruta, rutagenera,
-  formato = 'ods') ->
+  formatosalida = 'ods') ->
 
-  #formato = 'ods'
+  formato = formatosalida
   p = $(idselplantilla).val().split('.')
   nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
   if p.length == 2
@@ -29,12 +29,14 @@
       f = $("form[action$='" + idruta + "']")
     d = f.serialize()
     d += '&idplantilla=' +  nplantilla
+    d += '&formato=' +  formato
+    d += '&formatosalida=' +  formatosalida
     d += '&commit=Enviar'
     root =  window;
     sip_arregla_puntomontaje(root)
     if (root.puntomontaje != '/' || rutagenera[0] != '/') && rutagenera.substring(0, root.puntomontaje.length) != root.puntomontaje
       rutagenera = root.puntomontaje + rutagenera
-    e = rutagenera + '.' + formato + '?' + d
+    e = rutagenera + '.' + formatosalida + '?' + d
     $(elema).attr('href', e)
   else 
     return false

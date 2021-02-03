@@ -220,6 +220,9 @@ module Heb412Gen
       elsif params[:format] == 'ods'
         reporte_a = genera_ods(npl, narchivo)
         tipomime = 'application/vnd.oasis.opendocument.spreadsheet'
+      elsif params[:format] == 'xlsx'
+        reporte_a = genera_xlsx_de_ods(npl, narchivo)
+        tipomime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       end
       # El enlace en la vista debe tener data-turbolinks=false
       if reporte_a == ''
@@ -317,6 +320,23 @@ module Heb412Gen
         plantilla, @registro)
 
       return ngen
+    end
+
+    def genera_xlsx_de_ods(plantilla_id, narchivo)
+      plantilla = Heb412Gen::Plantillahcr.find(plantilla_id)
+      if !plantilla
+        return
+      end
+      narchivo << File.basename(plantilla.ruta.sub(/.ods$/, '.xlsx'))
+      ngen = Heb412Gen::PlantillahcrController.llena_plantilla_fd(
+        plantilla, @registro)
+      ngend = ngen.sub(/.ods$/, '.xlsx')
+      if File.exist?(ngend)
+        File.delete(ngend)
+      end
+
+      res = `libreoffice --headless --convert-to xlsx "#{ngen}" --outdir '/tmp'`
+      return ngend
     end
 
 
