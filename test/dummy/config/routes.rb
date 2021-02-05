@@ -1,7 +1,9 @@
 # encoding: UTF-8
 
 Rails.application.routes.draw do
-  scope '/heb412' do 
+
+  rutarel = ENV.fetch('RUTA_RELATIVA', 'heb412/')
+  scope rutarel do 
 
     devise_scope :usuario do
       get 'sign_out' => 'devise/sessions#destroy'
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
     namespace :admin do
       ab = ::Ability.new
       ab.tablasbasicas.each do |t|
-        if (t[0] == "") 
+        if (t[0] == '') 
           c = t[1].pluralize
           resources c.to_sym, 
             path_names: { new: 'nueva', edit: 'edita' }
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount Heb412Gen::Engine, at: "/heb412", as: "heb412_gen"
-  mount Mr519Gen::Engine, at: "/heb412", as: "mr519_gen"
-  mount Sip::Engine, at: "/heb412", as: "sip"
+  mount Heb412Gen::Engine, at: rutarel, as: 'heb412_gen'
+  mount Mr519Gen::Engine, at: rutarel, as: 'mr519_gen'
+  mount Sip::Engine, at: rutarel, as: 'sip'
 end

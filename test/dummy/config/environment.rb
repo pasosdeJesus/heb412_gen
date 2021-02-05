@@ -1,5 +1,6 @@
-# Load the Rails application.
-require_relative "application"
+require_relative 'application'
 
-# Initialize the Rails application.
+ActiveRecord::Base.pluralize_table_names=false
+
+# Inicializa la aplicación Rails
 Rails.application.initialize!

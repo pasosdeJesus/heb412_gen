@@ -29,8 +29,6 @@ gem 'paperclip' # Maneja adjuntos
 
 gem 'pg'
 
-gem 'puma'
-
 gem 'rails', '~> 6.0.3.4'
 
 gem 'redcarpet'
@@ -57,12 +55,12 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git'
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git'
-#   path: '../mr519_gen'
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :main
+  #path: '../mr519_gen'
 
 
 group :development, :test do
@@ -71,6 +69,7 @@ group :development, :test do
  
   gem 'colorize'
 
+  gem 'dotenv-rails'
 end
 
 
@@ -82,7 +81,8 @@ end
 
 
 group :development do
-  
+  gem 'puma'
+
   gem 'spring'
 
   gem 'web-console'
