@@ -29,13 +29,12 @@ module Dummy
 
     config.active_record.schema_format = :sql
 
-    config.x.formato_fecha = 'yyyy-mm-dd'
+    config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'yyyy-mm-dd')
 
-    config.x.url_colchon = 'colchon-articulos'
+    config.x.heb412_ruta = Pathname(ENV.fetch(
+      'HEB412_RUTA', Rails.root.join('public', 'heb412').to_s))
 
-    config.x.heb412_ruta = Rails.root.join('public', 'heb412')
-
-    config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
+    config.hosts << ENV.fetch('CONFIG_HOSTS', '127.0.0.1')
 
     #config.web_console.whitelisted_ips = '190.27.122.155'
   end

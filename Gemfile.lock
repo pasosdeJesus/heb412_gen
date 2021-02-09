@@ -9,8 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 7038c153e2a1fe5e85677a1d9fbc309087212057
-  branch: rails6.1
+  revision: c539e2bf8b916dce5aa90a3701170fca301b6cd5
+  branch: main
   specs:
     sip (2.0.b11)
       cancancan
