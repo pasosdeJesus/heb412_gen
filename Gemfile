@@ -29,7 +29,8 @@ gem 'paperclip' # Maneja adjuntos
 
 gem 'pg'
 
-gem 'rails', '~> 6.0.3.4'
+gem 'rails', #'~> 6.0.3.4'
+  git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'redcarpet'
 
