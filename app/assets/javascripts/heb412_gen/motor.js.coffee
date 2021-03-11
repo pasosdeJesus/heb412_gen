@@ -22,6 +22,8 @@
       nplantilla = ''
     else
       formato = p[1]
+      if formato = 'html'
+        formatosalida = 'html'
   if nplantilla.length > 0 
     if idruta == null
       f = $(elema).closest('form')
