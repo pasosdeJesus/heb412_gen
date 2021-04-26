@@ -228,10 +228,12 @@ module Heb412Gen
       if reporte_a == ''
         flash.now[:error] = "Problemas al generar plantilla #{npl}"
       else
+        puts "OJO reporte_a=#{reporte_a.to_s}, tipomime=#{tipomime.to_s}, "\
+          "narchivo=#{narchivo.to_s}"
         send_file reporte_a, #x_sendfile: true,
-          type: tipomime,
+          type: tipomime.to_s,
           disposition: 'attachment',
-          filename: narchivo
+          filename: narchivo.to_s
       end
     end
 
