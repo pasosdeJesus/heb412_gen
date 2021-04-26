@@ -225,7 +225,7 @@ module Heb412Gen
         tipomime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       end
       # El enlace en la vista debe tener data-turbolinks=false
-      if reporte_a == ''
+      if reporte_a.to_s == ''
         flash.now[:error] = "Problemas al generar plantilla #{npl}"
       else
         puts "OJO reporte_a=#{reporte_a.to_s}, tipomime=#{tipomime.to_s}, "\
