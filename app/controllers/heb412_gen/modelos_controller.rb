@@ -227,6 +227,7 @@ module Heb412Gen
       # El enlace en la vista debe tener data-turbolinks=false
       if reporte_a.to_s == ''
         flash.now[:error] = "Problemas al generar plantilla #{npl}"
+        redirect_to main_app.root_path
       else
         puts "OJO reporte_a=#{reporte_a.to_s}, tipomime=#{tipomime.to_s}, "\
           "narchivo=#{narchivo.to_s}"
