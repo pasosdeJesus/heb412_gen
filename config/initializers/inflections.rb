@@ -15,6 +15,7 @@
 #   inflect.acronym 'RESTful'
 # end
 ActiveSupport::Inflector.inflections do |inflect|
+	inflect.irregular 'carpetaexclusiva', 'carpetasexclusivas'
 	inflect.irregular 'plantillahcm', 'plantillahcm'
   # Toca agregar ruta post crea_plantillahcm_path
 	inflect.irregular 'plantillahcr', 'plantillahcr'

@@ -2,6 +2,12 @@
 
 Heb412Gen::Engine.routes.draw do
 
+  resources :carpetasexclusivas, 
+    path_names: { new: 'nuevo', edit: 'edita' }
+
+  resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
+
+  get "docs/:id/impreso" => "docs#impreso", as: :impreso
   get "sis/*ruta", to: "sisarch#index", as: :sisarch
   get "sis/arch", to: "sisarch#index", as: :sisini
 
@@ -38,10 +44,7 @@ Heb412Gen::Engine.routes.draw do
 
   resources :plantillasdoc, path_names: { new: 'nueva', edit: 'edita' }
 
-  resources :docs, path_names: { new: 'nuevo', edit: 'edita' }#,  only: [:edit, :update, :new, :create, :destroy]
 
-  get "docs/:id/impreso" => "docs#impreso", as: :impreso
-  
   get "plantillahcm/:id/impreso" => "plantillahcm#impreso", 
     as: :plantillahcm_impresa
 

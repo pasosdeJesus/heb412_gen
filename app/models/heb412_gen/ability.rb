@@ -2,6 +2,23 @@
 module Heb412Gen
 	class Ability  < Sip::Ability
 
+    ROLADMIN  = 1
+    #ROLINV    = 2
+    ROLDIR    = 3
+    #ROLCOOR   = 4
+    ROLOPERADOR = ROLANALI  = 5
+    #ROLSIST   = 6
+
+    ROLES = [
+      ["Administrador", ROLADMIN],  # 1
+      ["", 0], # 2
+      ["Directivo", ROLDIR], # 3
+      ["", 0], # 4
+      ["Operador", ROLOPERADOR], # 5
+      ["", 0], #6
+    ]
+
+
     BASICAS_PROPIAS = []
 
     def tablasbasicas 
@@ -9,10 +26,9 @@ module Heb412Gen
         Heb412Gen::Ability::BASICAS_PROPIAS
     end
 
-
     BASICAS_ID_NOAUTO = []
     # Hereda basicas_id_noauto de sip
-   
+
     NOBASICAS_INDSEQID =  [
       ['heb412_gen', 'campoplantillahcm'],
       ['heb412_gen', 'plantilladoc'],
@@ -20,7 +36,7 @@ module Heb412Gen
       ['heb412_gen', 'plantillahcr']
     ]
     # Hereda nobasicas_indice_seq_con_id de sip
-   
+
     BASICAS_PRIO = []
     # Hereda tablasbasicas_prio de sip
 
@@ -94,5 +110,29 @@ module Heb412Gen
       CAMPOS_PLANTILLAS_PROPIAS
     end
 
-	end
-end
+
+    # Autorizacion con CanCanCan
+    def initialize_heb412_gen(usuario = nil)
+      if !usuario || usuario.fechadeshabilitacion || !usuario.rol
+        return
+      end
+      can :read, Heb412Gen::Doc
+      can :read, Heb412Gen::Plantilladoc
+      can :read, Heb412Gen::Plantillahcm
+      can :read, Heb412Gen::Plantillahcr
+
+      case usuario.rol 
+      when Ability::ROLANALI
+
+      when Ability::ROLADMIN
+        can :manage, Heb412Gen::Carpetaexclusiva
+        can :manage, Heb412Gen::Doc
+        can :manage, Heb412Gen::Plantilladoc
+        can :manage, Heb412Gen::Plantillahcm
+        can :manage, Heb412Gen::Plantillahcr
+      end
+    end
+
+
+  end # class
+end   # module

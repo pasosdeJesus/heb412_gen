@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Ability  < Heb412Gen::Ability
 
+
   def acciones_plantillas
   end
 
@@ -12,27 +13,19 @@ class Ability  < Heb412Gen::Ability
     if !usuario || usuario.fechadeshabilitacion
       return
     end
+    initialize_heb412_gen(usuario)
     can :descarga_anexo, Sip::Anexo
     can :contar, Sip::Ubicacion
     can :buscar, Sip::Ubicacion
     can :lista, Sip::Ubicacion
     can :nuevo, Sip::Ubicacion
     if usuario && usuario.rol then
-      can :read, Heb412Gen::Doc
-      can :read, Heb412Gen::Plantilladoc
-      can :read, Heb412Gen::Plantillahcm
-      can :read, Heb412Gen::Plantillahcr
       case usuario.rol 
       when Ability::ROLANALI
         can :manage, Sip::Actorsocial
         can :manage, Sip::Persona
         can [:read, :new, :update, :create, :destroy], Sip::Ubicacion
       when Ability::ROLADMIN
-        can :manage, Heb412Gen::Doc
-        can :manage, Heb412Gen::Plantilladoc
-        can :manage, Heb412Gen::Plantillahcm
-        can :manage, Heb412Gen::Plantillahcr
-        
         can :manage, Mr519Gen::Formulario
 
         can :manage, Sip::Actorsocial
@@ -47,6 +40,7 @@ class Ability  < Heb412Gen::Ability
         end
       end
     end
+
   end
 
 end

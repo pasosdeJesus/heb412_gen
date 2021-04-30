@@ -17,6 +17,10 @@
     <% if !current_usuario.nil? %>
       <%= despliega_abajo "Documentos" do %>
         <%= opcion_menu "Nube", heb412_gen.sisini_path, desplegable: true %>
+        <% if can? :manage, ::Heb412Gen::Carpetaexclusiva %>
+          <%= opcion_menu "Carpetas exclusivas",
+            heb412_gen.carpetasexclusivas_path, desplegable: true %>
+        <% end %>
         <% if can? :manage, ::Heb412Gen::Plantillahcm %>
           <%= opcion_menu "Plantillas para listados en hojas de calculo",
             heb412_gen.plantillashcm_path, desplegable: true %>

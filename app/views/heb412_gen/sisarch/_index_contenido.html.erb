@@ -11,12 +11,16 @@
                 <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
               <% end %>
             </li>
-          <% elsif a[:estado] && a[:estado].ftype == "directory" && a[:nombre] != '..' %>
-            <li class='heb412_ndir heb412_directorio'>
-              <%= link_to url, remote: true do %>
-                <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
-              <% end %>
-            </li>
+          <% elsif a[:estado] && a[:estado].ftype == "directory" && 
+            a[:nombre] != '..' %>
+            <% if Heb412Gen::PermisosHelper.permiso_ver_leer(a[:ruta],
+                true, current_usuario) %>
+              <li class='heb412_ndir heb412_directorio'>
+                <%= link_to url, remote: true do %>
+                  <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
+                <% end %>
+              </li>
+            <% end %>
           <% else %>
             <li class='heb412_archivo'>
               <%= fa_icon 'file' %> <%= a[:nombre] %>

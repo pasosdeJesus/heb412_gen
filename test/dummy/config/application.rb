@@ -27,6 +27,11 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
+    config.railties_order = [:main_app, 
+                             Heb412Gen::Engine, Mr519Gen::Engine, 
+                             Sip::Engine, :all]
+
+
     config.active_record.schema_format = :sql
 
     config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'yyyy-mm-dd')
