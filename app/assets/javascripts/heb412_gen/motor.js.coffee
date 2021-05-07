@@ -24,6 +24,8 @@
       formato = p[1]
       if formato == 'html'
         formatosalida = 'html'
+      if formato == 'odt'
+        formatosalida = 'odt'
   if nplantilla.length > 0 
     if idruta == null
       f = $(elema).closest('form')
