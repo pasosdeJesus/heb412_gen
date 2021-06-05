@@ -5,8 +5,8 @@ es:
   activerecord:
     models:
       "heb412_gen/plantillahcm":
-        one: Plantilla para listado en hoja de cálculo
-        other: Plantillas para listados en hojas de cálculo
+        one: Plantilla para listado
+        other: Plantillas para listado
     attributes:
       "heb412_gen/doc":
         nombremenu: Nombre por presentar en aplicación
@@ -20,7 +20,15 @@ es:
         Actoressociales: Organizaciones sociales
         nombremenu: Nombre por presentar en aplicación
         filainicial: Fila inicial
+        plantillahcm: Plantilla para listado
+        plantillashcm: Plantillas para listado
+        Plantillahcm: Plantilla para listado
+        Plantillashcm: Plantillas para listado
       "heb412_gen/plantillahcr":
         Actorsocial: Organización social
         nombremenu: Nombre por presentar en aplicación
+        plantillahcr: Plantilla para registro
+        plantillashcr: Plantillas para registros
+        Plantillahcr: Plantilla para registro
+        Plantillashcr: Plantillas para registros
 
