@@ -13,8 +13,8 @@ module Heb412Gen
           include Sip::ModeloHelper
 
           if ($".select {|x| x =~ /\/zip-/}.count > 0)
-            raise StandardError("Conflicto entre rubyzip y zip. " +
-              "Eliminar gema zip")
+            raise "Conflicto entre rubyzip y zip. "\
+              "Eliminar gema zip"
           end
 
           before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
