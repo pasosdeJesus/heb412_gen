@@ -41,7 +41,7 @@ module Heb412Gen
     # Hereda tablasbasicas_prio de sip
 
     CAMPOS_PLANTILLAS_PROPIAS = {
-      'Actorsocial' => {
+      'Orgsocial' => {
         campos: [
           'actualizado_en',
           'anotaciones',
@@ -51,7 +51,7 @@ module Heb412Gen
           'id', 
           'nombre',
           'pais',
-          Sip::Actorsocial.human_attribute_name(
+          Sip::Orgsocial.human_attribute_name(
             :sectoresactores).downcase.gsub(' ', '_'),
           'telefono', 
           'web'
