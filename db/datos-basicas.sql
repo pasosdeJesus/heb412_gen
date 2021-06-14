@@ -2,7 +2,7 @@
 
 INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (10, 'plantillas/listado_usuarios.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Usuario', 'Listado completo de usuarios', 4);
 INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (12, 'plantillas/listado_personas.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Persona', 'Listado completo de personas', 4);
-INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (13, 'plantillas/listado_organizacionessociales.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Actorsocial', 'Listado completo de organizaciones sociales', 4);
+INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (13, 'plantillas/listado_organizacionessociales.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Orgsocial', 'Listado completo de organizaciones sociales', 4);
 
 
 SELECT pg_catalog.setval('public.heb412_gen_plantillahcm_id_seq', 100, true);

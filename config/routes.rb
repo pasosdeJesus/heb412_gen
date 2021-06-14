@@ -51,11 +51,11 @@ Heb412Gen::Engine.routes.draw do
   get "plantillahcr/:id/impreso" => "plantillahcr#impreso", 
     as: :plantillahcr_impresa
 
-  get "/actoressociales/:id/fichaimp" => "/sip/actoressociales#fichaimp", 
-    as: :actorsocial_fichaimp
+  get "/orgsociales/:id/fichaimp" => "/sip/orgsociales#fichaimp", 
+    as: :orgsocial_fichaimp
   
-  get "/actoressociales/:id/fichapdf" => "/sip/actoressociales#fichapdf", 
-    as: :actorsocial_fichapdf
+  get "/orgsociales/:id/fichapdf" => "/sip/orgsociales#fichapdf", 
+    as: :orgsocial_fichapdf
 
   get "/personas/:id/fichaimp" => "/sip/personas#fichaimp", 
     as: :persona_fichaimp

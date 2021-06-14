@@ -52,12 +52,12 @@ module Heb412Gen
           'nombre',
           'pais',
           Sip::Orgsocial.human_attribute_name(
-            :sectoresactores).downcase.gsub(' ', '_'),
+            :sectoresorgsocial).downcase.gsub(' ', '_'),
           'telefono', 
           'web'
         ],
-        controlador: '::ActoressocialesController',
-        ruta: '/actoressociales'
+        controlador: '::OrgsocialesController',
+        ruta: '/orgsociales'
       },
 
       'Persona' => {

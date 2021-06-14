@@ -17,7 +17,7 @@ es:
         Plantillasdoc: Plantillas documento para un registro
         nombremenu: Nombre por presentar en aplicación
       "heb412_gen/plantillahcm":
-        Actoressociales: Organizaciones sociales
+        Orgsociales: Organizaciones sociales
         nombremenu: Nombre por presentar en aplicación
         filainicial: Fila inicial
         plantillahcm: Plantilla para listado
@@ -25,7 +25,7 @@ es:
         Plantillahcm: Plantilla para listado
         Plantillashcm: Plantillas para listado
       "heb412_gen/plantillahcr":
-        Actorsocial: Organización social
+        Orgsocial: Organización social
         nombremenu: Nombre por presentar en aplicación
         plantillahcr: Plantilla para registro
         plantillashcr: Plantillas para registros

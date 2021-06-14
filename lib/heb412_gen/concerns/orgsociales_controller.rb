@@ -1,11 +1,11 @@
 # encoding: UTF-8
 
-require_dependency "sip/concerns/controllers/actoressociales_controller"
+require_dependency "sip/concerns/controllers/orgsociales_controller"
 
 module Heb412Gen
   module Concerns
     module Controllers
-      module ActoressocialesController
+      module OrgsocialesController
 
         extend ActiveSupport::Concern
 
@@ -14,13 +14,13 @@ module Heb412Gen
           include Sip::FormatoFechaHelper
           include Sip::ModeloHelper
 
-          include Sip::Concerns::Controllers::ActoressocialesController
+          include Sip::Concerns::Controllers::OrgsocialesController
  
           # La clase que incluya a este debe ser descendiente de
           # Heb412Gen::ModelosController
 
           def vistas_manejadas
-            ['Actorsocial']
+            ['Orgsocial']
           end
 
         end # included
