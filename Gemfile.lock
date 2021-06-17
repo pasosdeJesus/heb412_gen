@@ -1,6 +1,17 @@
 GIT
+  remote: https://github.com/kreeti/kt-paperclip.git
+  revision: 379d3a8ca990ce91baef7498bd74c8680c181c3c
+  specs:
+    kt-paperclip (7.0.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
+      mime-types
+      terrapin (~> 0.6.0)
+
+GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 917450e779fb99a1301e3426530e6cade614a7e8
+  revision: eca7e6327ccbf75038f94f0e31dcf9ee9077eb12
   branch: orgsocial
   specs:
     mr519_gen (0.2.0)
@@ -9,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d3d7f4fd197395da9e0b1844360ac7d3ce9a04f2
+  revision: 58657209237e46292be47e52f88565ddf2cf4cfc
   branch: orgsocial
   specs:
     sip (2.0.b11)
@@ -143,7 +154,7 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.8.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -300,11 +311,11 @@ DEPENDENCIES
   dotenv-rails
   heb412_gen!
   jbuilder (~> 2.5)
+  kt-paperclip!
   libxml-ruby
   mr519_gen!
   nokogiri (>= 1.11.1)
   odf-report
-  paperclip
   pg
   puma
   rails (~> 6.1)
