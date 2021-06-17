@@ -19,13 +19,14 @@ gem 'devise-i18n'
 
 gem 'jbuilder', '~> 2.5'
 
+gem 'kt-paperclip',                 # Anexos
+  git: 'https://github.com/kreeti/kt-paperclip.git'
+
 gem 'libxml-ruby'
 
 gem 'nokogiri', '>=1.11.1'
 
 gem 'odf-report' # Genera ODT
-
-gem 'paperclip' # Maneja adjuntos
 
 gem 'pg'
 
