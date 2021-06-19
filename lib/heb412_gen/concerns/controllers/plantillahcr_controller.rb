@@ -192,7 +192,7 @@ module Heb412Gen
               else
                 v = fd[c.nombrecampo] 
               end
-              if !v.is_a? Integer
+              if !v.is_a?(Integer) && !v.is_a?(Float)
                 v = v.to_s
               end
 
