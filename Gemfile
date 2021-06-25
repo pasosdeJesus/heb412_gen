@@ -47,7 +47,8 @@ gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
 
-gem 'webpacker'
+gem 'webpacker',#, '~> 5.4'       # Traduce y compila modulos Javascript
+  git: 'https://github.com/rails/webpacker'
 
 gem 'will_paginate' # Listados en páginas
 
