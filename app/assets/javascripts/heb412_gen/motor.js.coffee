@@ -53,7 +53,7 @@
   rarc = rnarc.substr(0, ub)
   narc = rnarc.substr(ub+1)
   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
-    {ruta: rarc, arc: narc}, '', '', 'POST', 'script')
+    {ruta: rarc, arc: narc}, '', '', 'POST', 'script', true)
 
 @heb412_gen_eliminar_directorio = (urlelim) ->
   el = document.createElement('a');
@@ -65,7 +65,7 @@
   rarc = rnarc.substr(0, ub)
   ndir = rnarc.substr(ub+1)
   sip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
-    {ruta: rarc, dir: ndir}, '', '', 'POST', 'script')
+    {ruta: rarc, dir: ndir}, '', '', 'POST', 'script', true)
 
 
 @heb412_gen_prepara_eventos_comunes = (root) ->
