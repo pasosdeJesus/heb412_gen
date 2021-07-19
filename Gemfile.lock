@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 6c4cca0bc7c5be235ec5fdebea247c6eacb3a884
+  revision: a5dd13dc79f73c309fb3e05e80e737cc1d0b6101
   branch: main
   specs:
     mr519_gen (0.2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 0a0992c47e3bee6873853627654cad85ab051620
+  revision: 9b97a4b70bc65f3eb1ef7d2f7cb9518318afd823
   branch: main
   specs:
     sip (2.0.b12)
@@ -283,7 +283,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
-    twitter_cldr (6.6.2)
+    twitter_cldr (6.7.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
