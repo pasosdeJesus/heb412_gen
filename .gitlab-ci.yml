@@ -48,6 +48,8 @@ test:
     - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
     - bin/rails db:drop db:create db:setup
     - bin/rails sip:indices
+    - yarn
+    - cd ../..
   script:
     - CONFIG_HOSTS=www.example.com bin/rails test
     #- CONFIG_HOSTS=127.0.0.1 bin/rails test:system
