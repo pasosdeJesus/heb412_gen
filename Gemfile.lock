@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: a41fa673b7c1b01629a560b7288e5f51beacec7d
+  revision: 563d87e5a729442db722aa901d655fe32cc07832
   branch: main
   specs:
     mr519_gen (0.2.1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e9ad2ec6e86800db83d7cd189abc397240cc2600
+  revision: 5f69b2b6b725a5febe46d2ec5287ed85f1f230b6
   branch: main
   specs:
     sip (2.0.b12)
@@ -294,7 +294,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   x86_64-openbsd
