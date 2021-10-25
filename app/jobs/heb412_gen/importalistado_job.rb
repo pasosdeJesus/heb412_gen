@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Heb412Gen
   class ImportalistadoJob < ApplicationJob
     queue_as :default

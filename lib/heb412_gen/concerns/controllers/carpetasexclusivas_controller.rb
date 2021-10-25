@@ -10,10 +10,6 @@ module Heb412Gen
           include Sip::FormatoFechaHelper
           include Sip::ModeloHelper
 
-          before_action :set_carpetaexclusiva, only: [:edit, :update, :destroy,
-                                         :show, :impreso]
-          load_and_authorize_resource  class: Heb412Gen::Carpetaexclusiva
-
           def gencalse
             'F'
           end

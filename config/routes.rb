@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 Heb412Gen::Engine.routes.draw do
 
   resources :carpetasexclusivas, 

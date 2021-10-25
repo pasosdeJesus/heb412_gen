@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'heb412_gen/concerns/models/campoplantillahcr'
 
 module Heb412Gen

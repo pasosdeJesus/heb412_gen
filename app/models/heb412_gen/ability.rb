@@ -1,6 +1,5 @@
-# encoding: UTF-8
 module Heb412Gen
-	class Ability  < Sip::Ability
+	class Ability  < Mr519Gen::Ability
 
     ROLADMIN  = 1
     #ROLINV    = 2
@@ -111,28 +110,31 @@ module Heb412Gen
     end
 
 
-    # Autorizacion con CanCanCan
+    # Se definen habilidades con cancancan
+    # Util en motores y aplicaciones de prueba
+    # En aplicaciones es mejor escribir completo el modelo de autorización
+    # para facilitar su análisis y evitar cambios inesperados al actualizar
+    # motores
+    # @usuario Usuario que hace petición
     def initialize_heb412_gen(usuario = nil)
-      if !usuario || usuario.fechadeshabilitacion || !usuario.rol
-        return
+      initialize_mr519_gen(usuario)
+
+      if usuario && usuario.rol
+        can :read, Heb412Gen::Doc
+        can :read, Heb412Gen::Plantilladoc
+        can :read, Heb412Gen::Plantillahcm
+        can :read, Heb412Gen::Plantillahcr
+
+        case usuario.rol 
+        when Ability::ROLANALI
+        when Ability::ROLADMIN
+          can :manage, Heb412Gen::Doc
+          can :manage, Heb412Gen::Plantilladoc
+          can :manage, Heb412Gen::Plantillahcm
+          can :manage, Heb412Gen::Plantillahcr
+        end
       end
-      can :read, Heb412Gen::Doc
-      can :read, Heb412Gen::Plantilladoc
-      can :read, Heb412Gen::Plantillahcm
-      can :read, Heb412Gen::Plantillahcr
-
-      case usuario.rol 
-      when Ability::ROLANALI
-
-      when Ability::ROLADMIN
-        can :manage, Heb412Gen::Carpetaexclusiva
-        can :manage, Heb412Gen::Doc
-        can :manage, Heb412Gen::Plantilladoc
-        can :manage, Heb412Gen::Plantillahcm
-        can :manage, Heb412Gen::Plantillahcr
-      end
-    end
-
+    end # initialize_heb412_gen
 
   end # class
 end   # module

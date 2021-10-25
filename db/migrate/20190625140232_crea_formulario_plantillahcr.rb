@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class CreaFormularioPlantillahcr < ActiveRecord::Migration[6.0]
   def change
     create_table :heb412_gen_formulario_plantillahcr do |t|

@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Heb412Gen
   module Concerns
     module Controllers
@@ -16,10 +14,6 @@ module Heb412Gen
             raise "Conflicto entre rubyzip y zip. "\
               "Eliminar gema zip"
           end
-
-          before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
-                                         :show, :impreso]
-          load_and_authorize_resource  class: Heb412Gen::Plantillahcm
 
           @vista= nil
           attr_accessor :form_f

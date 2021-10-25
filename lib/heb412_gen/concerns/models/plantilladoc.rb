@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Heb412Gen
   module Concerns
     module Models

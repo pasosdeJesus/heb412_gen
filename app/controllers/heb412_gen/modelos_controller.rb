@@ -1,8 +1,8 @@
-# encoding: UTF-8
-
 module Heb412Gen
   class ModelosController < Sip::ModelosController
 
+    # Sin control de autorización porquue es usada por otras clases
+    # que si lo deben implementar
     def importa_dato_gen(datosent, datossal, menserror, registro = nil, opciones = {})
       if registro == nil
         registro = clase.constantize.new

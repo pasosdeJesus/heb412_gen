@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sip/concerns/controllers/personas_controller'
 
 class Sip::PersonasController < Heb412Gen::ModelosController

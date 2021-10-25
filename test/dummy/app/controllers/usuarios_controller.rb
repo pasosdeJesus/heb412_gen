@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sip/concerns/controllers/usuarios_controller'
 
 class UsuariosController < Heb412Gen::ModelosController

@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Heb412Gen
   module Concerns
     module Controllers
@@ -12,10 +10,6 @@ module Heb412Gen
           include Sip::FormatoFechaHelper
           include Sip::ModeloHelper
           helper ::ApplicationHelper
-
-          before_action :set_plantilladoc, 
-            only: [:show, :edit, :update, :destroy]
-          load_and_authorize_resource  class: Heb412Gen::Plantilladoc
 
           def clase 
             "Heb412Gen::Plantilladoc"

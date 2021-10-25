@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Heb412Gen
   module Concerns
     module Controllers
@@ -10,9 +8,6 @@ module Heb412Gen
         included do
           include ActionView::Helpers::AssetUrlHelper
           include Sip::FormatoFechaHelper
-  
-          before_action :set_doc, only: [:edit, :update, :destroy, 
-                                         :show, :impreso]
 
           # GET /docs/new
           def new

@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Heb412Gen
   module Concerns
     module Controllers
@@ -12,10 +10,6 @@ module Heb412Gen
           include Sip::FormatoFechaHelper
           include Sip::ModeloHelper
   
-          before_action :set_plantillahcr, only: [:edit, :update, :destroy, 
-                                         :show, :impreso]
-          load_and_authorize_resource  class: Heb412Gen::Plantillahcr
-
           def gencalse
             'F'
           end
