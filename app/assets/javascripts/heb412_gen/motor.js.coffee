@@ -13,16 +13,15 @@
 #   formulario e.g 'casos/genera/'
 @heb412_gen_completa_generarp = (elema, idselplantilla, idruta, rutagenera,
   formatosalida = 'ods') ->
-
   formato = formatosalida
   p = $(idselplantilla).val().split('.')
   nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
   if p.length == 2
-    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat' && p[1] != 'json'
+    if p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat' && p[1] != 'json' && p[1] != 'csv'
       nplantilla = ''
     else
       formato = p[1]
-      if formato == 'html' || formato == 'odt' || formato == 'xrlat' || formato == 'json'
+      if formato == 'html' || formato == 'odt' || formato == 'xrlat' || formato == 'json' || formato == 'csv'
         formatosalida = formato
   if nplantilla.length > 0 
     if idruta == null
