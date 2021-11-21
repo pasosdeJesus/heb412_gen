@@ -60,24 +60,36 @@ bin/rails db:migrate
 
 ## 2. Configure su aplicación para proveer Nube
 
-### 2.1 Cree un directorio que será la raíz del sistema de archivos y que
+### 2.1 Directorio
+Cree un directorio que será la raíz del sistema de archivos y que
 debe poder ser escrito por el usuario que ejecute la aplicación, e.g
 ```
 	mkdir public/heb412/
 ```
 
-### 2.2 Configure esa ruta en su aplicación en ```config/application.rb``` con
+### 2.2 Configurar directorio en aplicación
+Configure esa ruta en su aplicación en ```config/application.rb``` con
 ```
-	config.x.heb412_ruta = Rails.root.join('public', 'heb412')
+	config.x.heb412_ruta = Pathname(                                             
+          ENV.fetch('HEB412_RUTA', Rails.root.join('public', 'heb412').to_s)         
+        )   
+```
+y en su archivo `.env` algo como:
+```
+if (test "$HEB412_RUTA" = "") then {                                             
+  export HEB412_RUTA=${DIRAP}/public/heb412                                      
+} fi;  
 ```
 
-### 2.3 Agregue un menú o enlaces a los urls de la nube por ejemplo en
+### 2.3 Menú
+Agregue un menú o enlaces a los urls de la nube por ejemplo en
    ```app/views/layouts/application```:
 ```
 	<%= menu_item "Nube", heb412_gen.sisini_path %>
 ```
 
-### 2.4 Configure rutas en ```config/routes.rb```
+### 2.4 Configurar rutas
+En ```config/routes.rb```
 ```
 	mount Heb412Gen::Engine, at: '/', as: 'heb412_gen'
 ```
@@ -124,7 +136,9 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
 ```
 Vea un ejemplo más completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>
 
-Si alguna plantilla sólo debe ser para un registro puede emplear el atributo ```solo_registro: true```.  Si una plantilla debe ser sólo para un listado emplee el atributo ```solo_multiple: true```.  Puede ver un ejemplo de este  último caso en <https://github.com/pasosdeJesus/sivel2_sjrcol/blob/master/app/models/ability.rb>
+Si alguna plantilla sólo debe ser para un registro puede emplear el atributo ```solo_registro: true```.  
+Si una plantilla debe ser sólo para un listado emplee el atributo ```solo_multiple: true```.  
+Puede ver un ejemplo de este  último caso en <https://github.com/pasosdeJesus/sivel2_sjrcol/blob/master/app/models/ability.rb>
 
 ### 3.2 Permisos para gestionar y/o para llenar plantillas
 
@@ -147,13 +161,12 @@ En `app/models/ability.rb` de permiso a un usuario (digamos administrador)
 ### 3.3 Menú para gestionar plantillas
 
 Cree una entrada en el menú que permite acceder a la funcionalidad
-    de definir una plantilla. Por ejemplo en 
-    ```app/views/layouts/application.html.erb```
-    algo  como:
+de definir una plantilla. Por ejemplo en ```app/views/layouts/application.html.erb```
+algo  como:
 ```
  <% if can? :manage, Heb412Gen::Plantillahcm %>
-   <%= menu_item "Nueva plantilla para listado en hoja de calculo",   
-       heb412_gen.new_plantillahcm_path %>
+  <%= opcion_menu "Definir plantillas para listados en hojas de calculo",
+                heb412_gen.plantillashcm_path, desplegable: true %>
  <% end %>
 ```
 
@@ -164,7 +177,6 @@ y emplee la función por omisión `index` y la respectiva vista automática pues
 haga el controlador descendiente de `Heb412Gen::ModelosController` y que añada
 la función `vistas_manejadas` con un listado de las vistas que el controlador maneja
 de entre las referenciadas por la función `campos_plantillas` de `ability.rb`.  
-
 Por ejemplo:
 ```
 ...
@@ -180,7 +192,7 @@ Después debe inicar la aplicación y un administrador debe gestionar una o
 varias plantillas en listado  `.ods` para la vista en cuestión.
 
 Después de esto, cuando un usuario con permiso de lectura de las plantillas ingrese 
-a la vista, en la parte inferior verá un  control para generar el listado en formato ODS o XLSX.  
+a la vista, en la parte inferior verá un  control para generar el listado en formato ODS o XLSX o PDF.  
 Cuando elija la plantilla y pulse en el botón será dirigido a la carpeta `generados` 
 de la nube donde podrá ver el porcentaje de progreso en la generación y 
 recargar hasta que termine el proceso.
@@ -225,12 +237,12 @@ Este método por omisión generará el `.ods` en la carpeta generados de la nube
 ### 3.5 Ajuste presentación de campos
 
 Puede ajustar la forma de presentar algunos campos bien en la función
-    `presenta` del modelo asociado al controlador o bien creando en el 
-    modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
-    en https://github.com/pasosdeJesus/sip/blob/master/lib/sip/concerns/models/persona.rb  
-    Por ejemplo una función `presenta(atr)` sobrecargada para presentar
-    sigla de un tipo de documento en lugar del nombre cuando el campo
-    solicitado es `tdoc`:
+`presenta` del modelo asociado al controlador o bien creando en el 
+modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
+en https://github.com/pasosdeJesus/sip/blob/master/lib/sip/concerns/models/persona.rb  
+Por ejemplo una función `presenta(atr)` sobrecargada para presentar
+sigla de un tipo de documento en lugar del nombre cuando el campo
+solicitado es `tdoc`:
 ```
           def presenta(atr)
             case atr.to_s
@@ -248,17 +260,18 @@ Y la función auxiliar `presenta_fechanac`.
 ### 3.6 Generación de un listado en un .ods no estándar
 
 Si requiere manejar varias hojas de una hoja de cálculo o cambios
-    mayores a la forma de llenar plantillas sugerimos sobrecargar en
-    el controlador la función self.vista_listado que será llamada
-    por la tarea que genera el ODS en la carpeta generados y que puede
-    bien alistar los registros por llenar automáticamente de forma
-    uniforme en una hoja de cálculo o generar directamente el ODS.  
-    Puede ver un ejemplo en 
+mayores a la forma de llenar plantillas sugerimos sobrecargar en
+el controlador la función self.vista_listado que será llamada
+por la tarea que genera el ODS en la carpeta `generados` y que puede
+bien alistar los registros por llenar automáticamente de forma
+uniforme en una hoja de cálculo o bien generar directamente el ODS.  
+Puede ver un ejemplo en 
       https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
 
 ### 3.7 Configure una vista `show` que llenará un registro en una hoja de cálculo .ods
 
-Es el mismo procedimiento que para la vista `index` pero las plantillas definidas se verán en la vista para la que se hayan definido en la parte inferior de la vista `show`.  
+Es el mismo procedimiento que para la vista `index` pero las plantillas definidas se verán en la vista p
+ara la que se hayan definido en la parte inferior de la vista `show`.  
 
 ### 3.8 Nombre de las vistas en los formularios de definición 
 
@@ -278,6 +291,4 @@ para plantillas que sean sólo para un registro (i.e con con `solo_registro`).
 
 Por ejemplo de formularios de caracterización o de subformularios incrustados por un tipo de actividad.
 Ver <https://github.com/pasosdeJesus/heb412_gen/blob/master/doc/campos_compuestos.md>
-
-## 4. Configure su aplicación para importar información
 
