@@ -58,29 +58,37 @@ module Heb412Gen
         end
         FileUtils.mv("#{narch}#{extension}-#{ultp}", "#{narch}#{extension}-99")
       end
-      if extension == '.ods'
+      if n.include?('.')
+        nextension = '.' + n.split('.')[-1]
+      else
+        nextension = '.ods'
+      end
+      if nextension == extension
         FileUtils.mv(n, "#{narch}#{extension}")
-      elsif extension == '.pdf'
-        if File.exist?("#{n}.pdf")
-          File.delete("#{n}.pdf")
+      else
+        if File.exist?("#{narch}#{extension}")
+          File.delete("#{narch}#{extension}")
         end
         dir = File.dirname(narch)
         bn = File.basename(narch)
-        FileUtils.mv(n, "/tmp/#{bn}")
-        res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
-        puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
-        File.delete("/tmp/#{bn}")
+        if n != "/tmp/#{bn}#{nextension}"
+          FileUtils.mv(n, "/tmp/#{bn}#{nextension}")
+        end
 
-      elsif extension == '.xlsx'
-        if File.exist?("#{n}.xlsx")
-          File.delete("#{n}.xlsx")
+        if nextension == '.ods' && extension == '.pdf'
+          res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}#{nextension}" --outdir #{dir}`
+        elsif nextension == '.ods' && extension == '.xlsx'
+          res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}#{nextension}" --outdir #{dir}`
+        elsif nextension == '.xlsx' && extension =='.ods'
+
+          res = `libreoffice --headless --convert-to ods "/tmp/#{bn}#{nextension}" --outdir #{dir}`
+        elsif nextension == '.xlsx' && extension =='.pdf'
+
+          res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}#{nextension}" --outdir #{dir}`
         end
-        dir = File.dirname(narch)
-        bn = File.basename(narch)
-        FileUtils.mv(n, "/tmp/#{bn}")
-        res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir}`
+
         puts "OJO res=#{res}, n=#{n}, dir=#{dir}, bn=#{bn}"
-        File.delete("/tmp/#{bn}")
+        File.delete("/tmp/#{bn}#{nextension}")
       end
       FileUtils.rm_f("#{narch}#{extension}-99")
       puts "Fin de generación de plantilla #{idplantilla} en #{narch}"
