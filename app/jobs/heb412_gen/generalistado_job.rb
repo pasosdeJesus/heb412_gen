@@ -13,7 +13,7 @@ module Heb412Gen
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
     def perform(idplantilla, cmodelo, ccontrolador, ids, narch, parsimp,
-                extension, campoid = :id)
+                extension, campoid = :id, params = nil)
       puts "Inicio de generación de plantilla #{idplantilla}, con modelo #{cmodelo}, controlador #{ccontrolador}, cantidad de ids #{ids.length}, en #{narch}#{extension}"
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = ccontrolador.constantize
@@ -21,7 +21,7 @@ module Heb412Gen
       if controlador.respond_to?(:vista_listado)
         # Damos oportunidad de crear una vista si conviene
         vista = controlador.vista_listado(
-          plant, ids, modelo, narch, parsimp, extension, campoid)
+          plant, ids, modelo, narch, parsimp, extension, campoid, params)
         if vista.class == String
           # Suponemos que ya generó hoja de cálculo
         end
@@ -32,7 +32,7 @@ module Heb412Gen
         # Si no usamos los registros con las ids dadas para hacer
         # un ActiveModel
         vista = Heb412Gen::ModelosController.vista_listado(
-          plant, ids, modelo, narch, parsimp, campoid)
+          plant, ids, modelo, narch, parsimp, campoid, params)
       end
       if vista.class == String
         n = vista

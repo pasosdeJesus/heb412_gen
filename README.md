@@ -261,12 +261,13 @@ Y la función auxiliar `presenta_fechanac`.
 
 Si requiere manejar varias hojas de una hoja de cálculo o cambios
 mayores a la forma de llenar plantillas sugerimos sobrecargar en
-el controlador la función self.vista_listado que será llamada
+el controlador la función `self.vista_listado` que será llamada
 por la tarea que genera el ODS en la carpeta `generados` y que puede
 bien alistar los registros por llenar automáticamente de forma
-uniforme en una hoja de cálculo o bien generar directamente el ODS.  
+uniforme en una hoja de cálculo o bien generar directamente el ODS.
 Puede ver un ejemplo en 
       https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
+
 
 ### 3.7 Configure una vista `show` que llenará un registro en una hoja de cálculo .ods
 

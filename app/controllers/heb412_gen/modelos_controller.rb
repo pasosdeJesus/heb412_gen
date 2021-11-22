@@ -113,9 +113,10 @@ module Heb412Gen
     # @param parsimp es hash sencillo con algunos de los params de la solicitud: 
     # {nombre1: valor1, nombre2: valor2...}
     # @param extension Extensión por generar .ods, .xlsx
-    # @param símbolo con el campo de los ids
+    # @param campoid símbolo con el campo de los ids
+    # @param params parámetros completos
     def self.vista_listado(plant, ids, modelo, narch, parsimp, extension, 
-                           campoid = :id)
+                           campoid = :id, params = nil)
       registros = modelo.where(campoid => ids)
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
@@ -125,7 +126,7 @@ module Heb412Gen
 
     # Prepara y lanza tarea en segundo plano para llenar una plantilla
     # con cierta extensión
-    # @param extension es etensión de formato por generar comenznado con .
+    # @param extension es extensión de formato por generar comenzando con .
     def programa_generacion_listado(params, extension, campoid = :id)
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 
         head :no_content 
@@ -177,9 +178,11 @@ module Heb412Gen
             parsimp[:busfechacierre_fin] = 
               params[:filtro][:busfechacierre_localizadafin] 
           end
+          cparams=params
+          cparams.permit!
           Heb412Gen::GeneralistadoJob.perform_later(
             pl.id, @registros.take.class.name, self.class.name, ids, narch,
-            parsimp, extension, campoid)
+            parsimp, extension, campoid, cparams)
           redirect_to rutaurl, format: 'html'
           return
         end
@@ -187,19 +190,27 @@ module Heb412Gen
       redirect_to main_app.root_path, format: 'html'
     end
 
+    def index_otros_formatos_campoid
+      return :id
+    end
+
     # Sobrecarga de Sip 
     def index_otros_formatos(format, params)
       format.ods {
-        programa_generacion_listado(params, '.ods')
+        programa_generacion_listado(
+          params, '.ods', index_otros_formatos_campoid)
       }
       format.pdf {
-        programa_generacion_listado(params, '.pdf')
+        programa_generacion_listado(
+          params, '.pdf', index_otros_formatos_campoid)
       }
       format.xlsx {
-        programa_generacion_listado(params, '.xlsx')
+        programa_generacion_listado(
+          params, '.xlsx', index_otros_formatos_campoid)
       }
       format.docx {
-        programa_generacion_listado(params, '.docx')
+        programa_generacion_listado(
+          params, '.docx', index_otros_formatos_campoid)
       }
     end
 
