@@ -11,19 +11,19 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ff575edf1e86c7e526dc34339e9f8e1c3825117a
-  branch: main
+  revision: f9224bff1032ce35e15c62ec5797450ce6470702
+  branch: v2.0
   specs:
-    mr519_gen (0.2.1)
+    mr519_gen (2.0)
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2540ad199bcc2e60bd9a6c3c5c6b4d4bf1ec912d
-  branch: main
+  revision: b91d3ce7df63c432aaa6d5b4f70d55ab381186e8
+  branch: v2.0
   specs:
-    sip (2.0.b12)
+    sip (2.0)
       cancancan
       chosen-rails
       devise
@@ -46,7 +46,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (1.0.b7)
+    heb412_gen (2.0)
       mr519_gen
       redcarpet
       rspreadsheet
@@ -117,7 +117,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.1)
+    bootsnap (1.9.3)
       msgpack (~> 1.0)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -154,7 +154,7 @@ GEM
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.4)
-    globalid (0.5.2)
+    globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
@@ -260,11 +260,11 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    spring (3.0.0)
+    spring (3.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.4.0)
+    sprockets-rails (3.4.1)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
