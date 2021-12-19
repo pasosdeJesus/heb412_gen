@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 27a14dbba2c0e8793369fbfe9064c42b0e3c854c
+  revision: b7f404e2a46e5104e20ffb5e6be46cf80088fac6
   branch: main
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f0af8a39d8e38140b1fef8731ed6bd3eb1ac586f
+  revision: b90543e16f676d68f8cacceb2370948536e7a36e
   branch: main
   specs:
     sip (2.0)
@@ -158,7 +158,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.3)
+    jbuilder (2.11.4)
       activesupport (>= 5.0.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
@@ -272,7 +272,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
-    twitter_cldr (6.9.0)
+    twitter_cldr (6.10.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
