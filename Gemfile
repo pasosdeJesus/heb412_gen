@@ -30,7 +30,7 @@ gem 'odf-report' # Genera ODT
 
 gem 'pg'
 
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0'
   #git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'redcarpet'
@@ -57,11 +57,11 @@ gem 'will_paginate' # Listados en páginas
 # bien vistas
 
 gem 'sip', # Motor generico
-  git: 'https://github.com/pasosdeJesus/sip.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/sip.git', branch: :rails7
   #path: '../sip'
 
 gem 'mr519_gen', # Motor de gestion de formularios y encuestas
-  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :main
+  git: 'https://github.com/pasosdeJesus/mr519_gen.git', branch: :rails7
   #path: '../mr519_gen'
 
 
