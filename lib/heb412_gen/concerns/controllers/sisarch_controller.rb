@@ -124,7 +124,7 @@ module Heb412Gen
               redirect_to Rails.configuration.relative_url_root
               return
             end
-            if !File.exists? Rails.application.config.x.heb412_ruta
+            if !File.exist? Rails.application.config.x.heb412_ruta
                 flash[:error] = 
                   "No se ha creado #{Rails.application.config.x.heb412_ruta}"
               redirect_to Rails.configuration.relative_url_root
@@ -136,7 +136,7 @@ module Heb412Gen
             if params[:descarga]
               ar = params[:descarga].gsub(er_buen_nombre_conesp, '')
               arr = rr.join(ar)
-              if !File.exists?(arr)
+              if !File.exist?(arr)
                 flash[:error] = "No existe ruta #{Rails.application.config.x.heb412_ruta}"
                 redirect_to Rails.configuration.relative_url_root
                 return
