@@ -11,17 +11,17 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e87a73ea3ad39f2db894095068a876cd9f1ace1a
-  branch: rails7
+  revision: af543c6edf0b27f9f1ec106442587300a29c564a
+  branch: rails7jses
   specs:
-    mr519_gen (2.0)
+    mr519_gen (2.1a1)
       rails
       sip
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 66677df6ad96d7241cd939c99917a01190273841
-  branch: rails7
+  revision: 15dcc86e684b98c2eeef60d6fffe2dcd3c182b46
+  branch: rails7jses
   specs:
     sip (2.1a1)
       cancancan
@@ -46,7 +46,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (2.0)
+    heb412_gen (2.1a1)
       mr519_gen
       redcarpet
       rspreadsheet
@@ -163,6 +163,8 @@ GEM
       activesupport (>= 5.0.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    jsbundling-rails (1.0.0)
+      railties (>= 6.0.0)
     json (2.6.1)
     libxml-ruby (3.2.1)
     loofah (2.13.0)
@@ -202,8 +204,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
-    rack-proxy (0.7.0)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.0)
@@ -252,7 +252,6 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    semantic_range (3.0.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -286,11 +285,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (6.0.0.rc.6)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -311,6 +305,7 @@ DEPENDENCIES
   dotenv-rails
   heb412_gen!
   jbuilder (~> 2.5)
+  jsbundling-rails
   kt-paperclip!
   libxml-ruby
   mr519_gen!
@@ -327,10 +322,10 @@ DEPENDENCIES
   simplecov (< 0.18)
   sip!
   spring
+  sprockets-rails
   twitter_cldr
   tzinfo
   web-console
-  webpacker (~> 6.0.0.rc.1)
   will_paginate
 
 BUNDLED WITH
