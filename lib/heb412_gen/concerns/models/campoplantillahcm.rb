@@ -7,7 +7,7 @@ module Heb412Gen
         included do
 
           belongs_to :plantillahcm, class_name: '::Heb412Gen::Plantillahcm',
-            foreign_key: 'plantillahcm_id', validate: true
+            foreign_key: 'plantillahcm_id', validate: true, optional: false
 
           validates :nombrecampo, 
             presence: true,

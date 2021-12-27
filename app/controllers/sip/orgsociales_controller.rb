@@ -1,4 +1,4 @@
-require_dependency "heb412_gen/concerns/controllers/orgsociales_controller"
+require "heb412_gen/concerns/controllers/orgsociales_controller"
 
 module Sip
   class OrgsocialesController < Heb412Gen::ModelosController

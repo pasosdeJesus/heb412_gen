@@ -7,7 +7,7 @@ module Heb412Gen
         included do
 
           belongs_to :doc, class_name: '::Heb412Gen::Doc',
-            foreign_key: 'doc_id'
+            foreign_key: 'doc_id', optional: false
 
           validates :nombrecampo, 
             uniqueness: { scope: :doc_id, 
