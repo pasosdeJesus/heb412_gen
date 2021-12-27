@@ -10,7 +10,8 @@ module Heb412Gen
           belongs_to :grupo, 
             class_name: 'Sip::Grupo',
             foreign_key: 'grupo_id', 
-            validate: true
+            validate: true, 
+            optional: false
 
           validates :carpeta, presence: true, length: { maximum: 2047 }
 

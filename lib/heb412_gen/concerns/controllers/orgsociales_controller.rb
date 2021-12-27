@@ -1,4 +1,4 @@
-require_dependency "sip/concerns/controllers/orgsociales_controller"
+require "sip/concerns/controllers/orgsociales_controller"
 
 module Heb412Gen
   module Concerns

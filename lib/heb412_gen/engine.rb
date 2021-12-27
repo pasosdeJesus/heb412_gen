@@ -22,7 +22,7 @@ module Heb412Gen
     # Adaptado de http://guides.rubyonrails.org/engines.html
     config.to_prepare do |app|
       Dir.glob(Rails.root + "app/decorators/**/*_decorator*.rb").each do |c|
-        require_dependency(c)
+        require(c)
       end
     end
   end
