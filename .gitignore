@@ -36,6 +36,7 @@ test/dummy/public/colchon-articulos/
 test/dummy/archivos/
 test/dummy/public/heb412/
 test/dummy/node_modules/
+test/dummy/app/assets/builds/
 .byebug_history
 coverage
 test/dummy/public/
