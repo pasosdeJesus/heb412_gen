@@ -1,0 +1,34 @@
+en:
+  attributes:
+    fechacreacion: Creation
+    fechadeshabilitacion: Disabling
+  activerecord:
+    models:
+      "heb412_gen/plantillahcm":
+        one: Template for list
+        other: Templeates for list
+    attributes:
+      "heb412_gen/doc":
+        nombremenu: Name to present in application
+        tipodoc: Document type
+        filainicial: Starting row
+      "heb412_gen/plantilladoc":
+        Plantilladoc: Document template for a record
+        Plantillasdoc: Document templates for a record
+        nombremenu: Name to present in application
+      "heb412_gen/plantillahcm":
+        Orgsociales: Social organizations
+        nombremenu: Name to present in application
+        filainicial: Starting row
+        plantillahcm: Template for list
+        plantillashcm: Templates for list
+        Plantillahcm: Template for list
+        Plantillashcm: Templates for list
+      "heb412_gen/plantillahcr":
+        Orgsocial: Social organization
+        nombremenu: Name to present in application
+        plantillahcr: Template for one record
+        plantillashcr: Templates for one record
+        Plantillahcr: Template for one record
+        Plantillashcr: Templates for one record
+
