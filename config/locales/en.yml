@@ -1,4 +1,11 @@
 en:
+  "Generar ODS": Generate ODS
+  "Generar XLSX": Generate XLSX
+  "Generar PDF": Generate PDF
+  Nube: Cloud
+  Plantillas: Templates
+  "Plantillas para listados en hojas de cálculo": Spreadsheet templates for lists
+  "Plantillas para registros individuales en hojas de cálculo": Spreadsheet templates for individual records
   attributes:
     fechacreacion: Creation
     fechadeshabilitacion: Disabling
