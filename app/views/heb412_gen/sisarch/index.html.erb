@@ -15,7 +15,7 @@
         <div class="col"> 
           <%= f.input :nombre,
             label: false,
-            placeholder: 'Nombre' %>
+            placeholder: t('Nombre') %>
           <%= f.input :ruta, 
             as: :hidden, 
             input_html: {
@@ -23,7 +23,7 @@
             } %>
         </div>
         <div class="col"> 
-          <%= f.button :submit, 'Nueva carpeta', class: 'btn btn-default' %>
+          <%= f.button :submit, t('Nueva carpeta'), class: 'btn btn-default' %>
         </div>
       </div> <!-- row -->
     <% end %>
@@ -41,7 +41,7 @@
             } %>
         </div>
         <div class="offset-md-0 col-md-2"> 
-          <%= f.button :submit, 'Subir archivo', class: 'btn btn-default' %>
+          <%= f.button :submit, t('Subir archivo'), class: 'btn btn-default' %>
         </div>
       </div> <!--row -->
     <% end %>
@@ -64,7 +64,7 @@
             } %>
         </div>
         <div class="offset-md-0 col-md-2"> 
-          <%= f.button :submit, 'Guardar descripción', 
+          <%= f.button :submit, t('Guardar descripción'), 
             class: 'btn btn-default' 
           %>
         </div>
@@ -75,9 +75,9 @@
 
   <div id="heb412_mcarc" class="heb412_menucontextual">
     <ul>
-      <li><a id="descargar">Descargar</a></li>
+      <li><a id="descargar"><%= t('Descargar') %></a></li>
       <% if can?(:destroy, Heb412Gen::Doc) %>
-        <li><a id="eliminar">Eliminar</a></li>
+        <li><a id="eliminar"><%= t('Eliminar') %></a></li>
       <% end %>
     </ul>
   </div>
@@ -85,9 +85,9 @@
 
   <div id="heb412_mcdir" class='heb412_menucontextual'>
     <ul>
-      <li><a id="abrir">Abrir</a></li>
+      <li><a id="abrir"><%= t('Abrir') %></a></li>
       <% if can?(:destroy, Heb412Gen::Doc) %>
-        <li><a id="eliminar">Eliminar</a></li>
+        <li><a id="eliminar"><%= t('Eliminar') %></a></li>
       <% end %>
     </ul>
   </div>

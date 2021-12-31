@@ -1,11 +1,21 @@
 en:
+  Abrir: Open
+  "Añadir campo": Add field
+  Campo: Field
+  Columna: Column
+  Descargar: Download
+  Fila: Row
   "Generar ODS": Generate ODS
   "Generar XLSX": Generate XLSX
   "Generar PDF": Generate PDF
+  "Guardar descripción": Save decription
   Nube: Cloud
+  "Nueva carpeta": New folder
   Plantillas: Templates
   "Plantillas para listados en hojas de cálculo": Spreadsheet templates for lists
   "Plantillas para registros individuales en hojas de cálculo": Spreadsheet templates for individual records
+  'Probar generación': Try generation
+  "Subir archivo": Upload file
   attributes:
     fechacreacion: Creation
     fechadeshabilitacion: Disabling
@@ -24,18 +34,35 @@ en:
         Plantillasdoc: Document templates for a record
         nombremenu: Name to present in application
       "heb412_gen/plantillahcm":
+        "Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro": With templates for a list of records, starting row for first record
+        "Desde que parte de la aplicación se podrá llenar la plantilla": From what part of the application this template can be filled
+        "Nombre de esta plantilla para humanos": Name of ths template for humans
+        "Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una incial": Template, it should be a spreadsheet (in format ODS) with header and a list to add records in consecutive rows
+        "URL a la licencia, requerido si el documento se va a publicar": URL to license, it is required if the document will be public
+        "URL o referencia para dar crédito": URL o reference to give credit
         Orgsociales: Social organizations
-        nombremenu: Name to present in application
         filainicial: Starting row
+        formulario: Form
+        fuente: Source
+        licencia: License
+        nombremenu: Name to present in application
         plantillahcm: Template for list
         plantillashcm: Templates for list
         Plantillahcm: Template for list
         Plantillashcm: Templates for list
+        ruta: Path
+        vista: View
       "heb412_gen/plantillahcr":
-        Orgsocial: Social organization
+        campoplantillahcr: Fields
+        fuente: Source
+        formulario: Form
+        licencia: License
         nombremenu: Name to present in application
+        Orgsocial: Social organization
         plantillahcr: Template for one record
         plantillashcr: Templates for one record
         Plantillahcr: Template for one record
         Plantillashcr: Templates for one record
+        ruta: Path
+        vista: View
 
