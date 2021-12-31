@@ -21,7 +21,7 @@
         collection: ods,
         input_html: {
           "data-toggle" => 'tooltip',
-          "title" => 'Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una incial'
+          "title" => t('Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una incial')
         } %>
 
       <%= render partial: 'form_complemento1', locals: { f: f } %> 
@@ -29,13 +29,13 @@
       <%= f.input :fuente,
         input_html: {
         "data-toggle" => 'tooltip',
-        "title" => 'URL o referencia para dar crédito'
+        "title" => t('URL o referencia para dar crédito')
       } %> 
 
       <%= f.input :licencia,
         input_html: {
         "data-toggle" => 'tooltip',
-        "title" => 'URL a la licencia, requerido si el documento se va a publicar'
+        "title" => t('URL a la licencia, requerido si el documento se va a publicar')
       } %> 
 
       <% 
@@ -53,13 +53,13 @@
         selected: @plantillahcm.vista.nil? ? 'Usuario' : @plantillahcm.vista,
         input_html: {
           "data-toggle" => 'tooltip',
-          "title" => 'Desde que parte de la aplicación se podrá llenar la plantilla'
+          "title" => t('Desde que parte de la aplicación se podrá llenar la plantilla')
         } %>
 
       <%= f.input :nombremenu,
         input_html: {
           "data-toggle" => 'tooltip',
-          "title" => 'Nombre de esta plantilla para humanos'
+          "title" => t('Nombre de esta plantilla para humanos')
         } %>
 
       <%= f.association :formulario,
@@ -73,7 +73,7 @@
       <%= f.input :filainicial,
          input_html: {
           "data-toggle" => 'tooltip',
-          "title" => 'Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro'
+          "title" => t('Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro')
         } %>
 
       <div id="divcampos">

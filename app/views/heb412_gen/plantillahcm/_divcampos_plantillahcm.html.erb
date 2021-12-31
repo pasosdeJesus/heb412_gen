@@ -1,9 +1,9 @@
 <table class="table table-bordered" width="100%">
   <thead>
     <tr>
-      <th>Campo</th>
-      <th>Columna</th>
-      <th>Acciones</th>
+      <th><%= t('Campo') %></th>
+      <th><%= t('Columna') %></th>
+      <th><%= t('Acciones') %></th>
     </tr>
   </thead>
   <tbody id="campoplantillahcm">
@@ -17,7 +17,7 @@
 </table>
 
 <div class="links">
-  <%= link_to_add_association 'Añadir Campo', f, 
+  <%= link_to_add_association t('Añadir campo'), f, 
     :campoplantillahcm,
     :"data-association-insertion-node" => "tbody#campoplantillahcm", 
     :"data-association-insertion-method" => "append", 
