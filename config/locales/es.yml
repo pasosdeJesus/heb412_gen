@@ -1,4 +1,21 @@
 es:
+  Abrir: Abrir
+  "Añadir campo": Añadir campo
+  Campo: Campo
+  Columna: Columna
+  Descargar: Descargar
+  Fila: Fila
+  "Generar ODS": Generar ODS
+  "Generar XLSX": Generar XLSX
+  "Generar PDF": Generar PDF
+  "Guardar descripción": Guardar descripción
+  Nube: Nube
+  "Nueva carpeta": Nueva carpeta
+  Plantillas: Plantillas
+  "Plantillas para listados en hojas de cálculo": Plantillas para listados en hojas de cálculo
+  "Plantillas para registros individuales en hojas de cálculo": Plantillas para registros individuales en hojas de cálculo
+  "Probar generación": Probar generación"
+  "Subir archivo": Subir archivo
   attributes:
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
