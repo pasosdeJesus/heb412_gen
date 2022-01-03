@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: af543c6edf0b27f9f1ec106442587300a29c564a
+  revision: fb37805d38e0253c4222b75d761d0ee69522e191
   branch: rails7jses
   specs:
     mr519_gen (2.1a1)
@@ -20,17 +20,15 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 15dcc86e684b98c2eeef60d6fffe2dcd3c182b46
+  revision: 1be63d69081e8683d7c2d0170ca53e6590556311
   branch: rails7jses
   specs:
     sip (2.1a1)
       cancancan
-      chosen-rails
       devise
       devise-i18n
-      jquery-ui-rails
+      kt-paperclip
       minitest
-      paperclip
       rails
       rails-i18n
       simple_form
@@ -122,10 +120,6 @@ GEM
     builder (3.2.4)
     camertron-eprun (1.1.1)
     cancancan (3.3.0)
-    chosen-rails (1.9.0)
-      coffee-rails (>= 3.2)
-      railties (>= 3.0)
-      sassc-rails (>= 2.1.2)
     cldr-plurals-runtime-rb (1.1.0)
     climate_control (0.2.0)
     coffee-rails (4.2.2)
@@ -161,8 +155,6 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jquery-ui-rails (6.0.1)
-      railties (>= 3.2.16)
     jsbundling-rails (1.0.0)
       railties (>= 6.0.0)
     json (2.6.1)
@@ -177,9 +169,6 @@ GEM
     mime-types (3.4.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.1115)
-    mimemagic (0.3.10)
-      nokogiri (~> 1)
-      rake
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.15.0)
@@ -193,12 +182,6 @@ GEM
       nokogiri (>= 1.10.0)
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
-    paperclip (6.1.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -272,7 +255,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.1.0)
     tilt (2.0.10)
-    twitter_cldr (6.10.0)
+    twitter_cldr (6.11.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -289,7 +272,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.3)
 
 PLATFORMS
   x86_64-openbsd
