@@ -3,19 +3,25 @@ en:
   "Añadir campo": Add field
   Campo: Field
   Columna: Column
+  "Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro": Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro
   Descargar: Download
+  "Desde que parte de la aplicación se podrá llenar la plantilla": Desde que parte de la aplicación se podrá llenar la plantilla
   Fila: Row
   "Generar ODS": Generate ODS
   "Generar XLSX": Generate XLSX
   "Generar PDF": Generate PDF
   "Guardar descripción": Save decription
+  "Nombre de esta plantilla para humanos": Nombre de esta plantilla para humanos
   Nube: Cloud
   "Nueva carpeta": New folder
   Plantillas: Templates
+  "Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una inicial": Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una incial
   "Plantillas para listados en hojas de cálculo": Spreadsheet templates for lists
   "Plantillas para registros individuales en hojas de cálculo": Spreadsheet templates for individual records
   'Probar generación': Try generation
   "Subir archivo": Upload file
+  "URL a la licencia, requerido si el documento se va a publicar": URL a la licencia, requerido si el documento se va a publicar
+  "URL o referencia para dar crédito": URL o referencia para dar crédito
   attributes:
     fechacreacion: Creation
     fechadeshabilitacion: Disabling
