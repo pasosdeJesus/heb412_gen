@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 455d3a94948e4af22a40a9145a5539cc9fb17ed0
+  revision: 2daffa398ef3aca32896b8cc18a273436c9f442a
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: fedf89020c91ea549f49b675bc2d258049d2aec9
+  revision: 80ba15b9b54cc864a848931fa2baa3a9af9297b1
   branch: v2.0
   specs:
     sip (2.0)
