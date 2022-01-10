@@ -17,8 +17,7 @@
 
 document.addEventListener('turbolinks:load', function() {
   var root;
-  root = typeof exports !== "undefined" && exports !== null ? 
-    exports : window;
+  root = window;
   sip_prepara_eventos_comunes(root);
   /* Formato fecha manejado por sip */
   mr519_gen_prepara_eventos_comunes(root);
