@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: c9e6f9d0018f3913b67fed5860a5d439ac72ac78
+  revision: 1328a1a69f88c9bab911c305455e67ca4daa0b5a
   specs:
     kt-paperclip (7.0.1)
       activemodel (>= 4.2.0)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 01c72c097d974e134fd833b9ae7c1a32ee6c32c3
+  revision: bb2ea911134527b72a75ef307177a0bacecd1d14
   branch: rails7jses
   specs:
     mr519_gen (2.1a1)
@@ -20,17 +20,19 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 2e61011909b90f7b1451c37fd4e624fd9a844577
+  revision: bf64bbe14190f6b4153076907b9ace836b601298
   branch: rails7jses
   specs:
     sip (2.1a1)
       cancancan
+      coffee-rails
       devise
       devise-i18n
       kt-paperclip
       minitest
       rails
       rails-i18n
+      sassc-rails
       simple_form
       twitter_cldr
 
@@ -119,6 +121,10 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     andand (1.3.3)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.4)
@@ -274,12 +280,16 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stimulus-rails (1.0.2)
+      railties (>= 6.0.0)
     strscan (3.0.1)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.2.0)
+    turbo-rails (7.1.1)
+      rails (>= 6.0.0)
     twitter_cldr (6.11.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -303,6 +313,7 @@ PLATFORMS
   x86_64-openbsd
 
 DEPENDENCIES
+  babel-transpiler
   bootsnap
   cancancan
   cocoon!
@@ -331,10 +342,12 @@ DEPENDENCIES
   sip!
   spring
   sprockets-rails
+  stimulus-rails
+  turbo-rails
   twitter_cldr
   tzinfo
   web-console
   will_paginate
 
 BUNDLED WITH
-   2.2.28
+   2.3.4
