@@ -235,7 +235,7 @@ module Heb412Gen
         reporte_a = genera_xlsx_de_ods(npl, narchivo)
         tipomime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
       end
-      # El enlace en la vista debe tener data-turbolinks=false
+      # El enlace en la vista debe tener data-turbo=false
       if reporte_a.to_s == ''
         flash.now[:error] = "Problemas al generar plantilla #{npl}"
         redirect_to main_app.root_path
