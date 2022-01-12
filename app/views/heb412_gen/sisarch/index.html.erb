@@ -23,7 +23,8 @@
             } %>
         </div>
         <div class="col"> 
-          <%= f.button :submit, t('Nueva carpeta'), class: 'btn btn-default' %>
+          <%= f.button :submit, t('Nueva carpeta'), class: 'btn btn-default',
+            'data-turbo' => false %>
         </div>
       </div> <!-- row -->
     <% end %>
