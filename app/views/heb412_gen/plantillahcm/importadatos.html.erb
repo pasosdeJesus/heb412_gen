@@ -22,5 +22,6 @@
   <%= render partial: 'importadatos_complemento_post', 
     locals: { f: f } %>
 
-  <%= f.button :submit, 'Importar', class: 'btn btn-default' %>
+  <%= f.button :submit, 'Importar', class: 'btn btn-default',
+      'data-turbo' => false %>
 <% end %>
