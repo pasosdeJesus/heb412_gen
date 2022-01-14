@@ -2,13 +2,12 @@
 
 console.log('Hola Mundo desde ESM')
 
-import mrujs from "mrujs";
+import Rails from "@rails/ujs";
 import "@hotwired/turbo-rails";
-mrujs.start();
+Rails.start();
 
 import './jquery'
 import './jquery-ui'
-
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
