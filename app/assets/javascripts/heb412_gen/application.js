@@ -15,13 +15,3 @@
 //= require heb412_gen/motor
 //= require_tree .
 
-document.addEventListener('turbo:load', function() {
-  var root;
-  root = window;
-  sip_prepara_eventos_comunes(root);
-  /* Formato fecha manejado por sip */
-  mr519_gen_prepara_eventos_comunes(root);
-  heb412_gen_prepara_eventos_comunes(root);
-});
-
-
