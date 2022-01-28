@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 02b98adebe42574feab0920a09fea5eb5a5c7c0e
+  revision: 5ce2757b0849344e6b26fe782bfe7505e9fd0384
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: f02d6f2bf61495f5b9f749956f3faf27e9c197d8
+  revision: fe6a248bde0daa98923c16c84f0e6fc10309fc1b
   branch: main
   specs:
     sip (2.1a1)
@@ -340,7 +340,7 @@ GEM
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   x86_64-openbsd
