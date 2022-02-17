@@ -1056,13 +1056,6 @@ CREATE TABLE public.sip_grupoper (
 
 
 --
--- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en heb412gen_des';
-
-
---
 -- Name: sip_grupoper_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
