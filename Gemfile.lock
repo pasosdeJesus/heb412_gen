@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e2ac132af64ccc00f697f656cfceb3789bcdf24c
+  revision: 86ea29ff59b9ad0cc054d19f6743ec99923386e0
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 5618a257845d0a10996b6d67dd8d8a0eee1dafe2
+  revision: 3cadd546bf03328e0ee506d3ed7c023863a0b9d4
   branch: main
   specs:
     sip (2.1a1)
@@ -322,7 +322,7 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.11.1)
+    twitter_cldr (6.11.2)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
