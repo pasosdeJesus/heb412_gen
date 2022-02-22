@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9f2eb7ad98db8e2516824c1f3cd665c8e863318a
+  revision: 3e728b57fae77ac7004af03701dbfe8bad5e1df6
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: df8eb8c4da8dc61216f2758805a34e6a6739bb5d
+  revision: 22e9f51c0319cb77d257251cf280399b8fb0e313
   branch: main
   specs:
     sip (2.1a1)
@@ -230,7 +230,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.2)
+    nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.2)
@@ -238,7 +238,7 @@ GEM
       nokogiri (>= 1.10.0)
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
-    pg (1.3.2)
+    pg (1.3.3)
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
@@ -311,7 +311,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stimulus-rails (1.0.3)
+    stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.1)
     terrapin (0.6.0)
