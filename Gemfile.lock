@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 275327e0e6d07b60cc42004fc5fb83602048ba38
+  revision: d3f25c08049e34bd35954bd9b2cc2568d3f87870
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: cec94de7f976f1627e10e738f564d63a685697d1
+  revision: 1bcf41ca57e112dce8f68e26657a0f356fdbfd99
   branch: main
   specs:
     sip (2.1a1)
@@ -195,7 +195,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     json (2.6.1)
     libxml-ruby (3.2.2)
@@ -265,7 +265,7 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    rails-i18n (7.0.2)
+    rails-i18n (7.0.3)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
     railties (7.0.2.2)
