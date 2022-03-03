@@ -196,7 +196,11 @@ module Heb412Gen
  
           # eliminar archivo
           def eliminar_archivo
-            authorize! :destroy, Heb412Gen::Doc
+            if params && params[:ruta] && params[:ruta] != 'arch/generados' 
+              authorize! :destroy, Heb412Gen::Doc
+            end
+            # Se permite eliminación del directorio generados por parte de
+            # cualquier usuario
             if params[:arc].nil? || params[:ruta].nil? || 
               !limpia_ruta(params[:ruta]) 
               redirect_to Rails.configuration.relative_url_root

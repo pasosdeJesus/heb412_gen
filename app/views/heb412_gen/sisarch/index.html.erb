@@ -77,7 +77,7 @@
   <div id="heb412_mcarc" class="heb412_menucontextual">
     <ul>
       <li><a id="descargar"><%= t('Descargar') %></a></li>
-      <% if can?(:destroy, Heb412Gen::Doc) %>
+      <% if can?(:destroy, Heb412Gen::Doc) || @ruta.to_s == '/generados' %>
         <li><a id="eliminar"><%= t('Eliminar') %></a></li>
       <% end %>
     </ul>
@@ -87,7 +87,7 @@
   <div id="heb412_mcdir" class='heb412_menucontextual'>
     <ul>
       <li><a id="abrir"><%= t('Abrir') %></a></li>
-      <% if can?(:destroy, Heb412Gen::Doc) %>
+      <% if can?(:destroy, Heb412Gen::Doc) || @ruta.to_s == '/generados' %>
         <li><a id="eliminar"><%= t('Eliminar') %></a></li>
       <% end %>
     </ul>

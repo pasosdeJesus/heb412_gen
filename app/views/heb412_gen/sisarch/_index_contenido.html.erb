@@ -5,7 +5,8 @@
           <% url = File.join(
             Rails.configuration.relative_url_root,
             "/sis/arch", a[:ruta]) %>
-          <% if a[:estado] && a[:estado].ftype == "directory" && a[:nombre] == '..' %>
+          <% if a[:estado] && a[:estado].ftype == "directory" && 
+               a[:nombre] == '..' %>
             <li class='heb412_ndir'>
               <%= link_to url, remote: true do %>
                 <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
@@ -67,5 +68,5 @@
     <% end %>
 
   </div>
-      
+
 </div>
