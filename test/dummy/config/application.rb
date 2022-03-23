@@ -37,7 +37,8 @@ module Dummy
     config.x.heb412_ruta = Pathname(ENV.fetch(
       'HEB412_RUTA', Rails.root.join('public', 'heb412').to_s))
 
-    config.hosts << ENV.fetch('CONFIG_HOSTS', '127.0.0.1')
+    config.hosts.concat(
+      ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase.split(";"))
 
     #config.web_console.whitelisted_ips = '190.27.122.155'
   end
