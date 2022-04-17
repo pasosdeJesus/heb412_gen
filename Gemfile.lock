@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 4142706a306d303157ecd167f083558acb0b14a0
+  revision: d11772d2da4dd0d2988958efece443dd1cef364b
   branch: v2.0
   specs:
     mr519_gen (2.0)
