@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: e96d5f25563e87df31cb28d8bd1571ae743aca67
+  revision: 154663c366f2327e5a2798750536825e04549729
   branch: main
   specs:
     sip (2.1a1)
@@ -320,7 +320,7 @@ GEM
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.11.2)
+    twitter_cldr (6.11.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -384,4 +384,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.9
+   2.3.12
