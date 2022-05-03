@@ -48,7 +48,7 @@ INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecamp
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (150, 13, 'actualizado_en', 'K');
 
 
-SELECT pg_catalog.setval('public.heb412_gen_campoplantillahcm_id_seq', 1000, true);
+SELECT pg_catalog.setval('public.heb412_gen_campoplantillahcm_id_seq', 10000, true);
 
 
 
@@ -86,5 +86,5 @@ INSERT INTO public.heb412_gen_campoplantillahcr (id, plantillahcr_id, nombrecamp
 INSERT INTO public.heb412_gen_campoplantillahcr (id, plantillahcr_id, nombrecampo, columna, fila) VALUES (711, 7, 'creado_en', 'B', 14);
 INSERT INTO public.heb412_gen_campoplantillahcr (id, plantillahcr_id, nombrecampo, columna, fila) VALUES (712, 7, 'actualizado_en', 'D', 14);
 
-SELECT pg_catalog.setval('public.heb412_gen_campoplantillahcr_id_seq', 1042, true);
+SELECT pg_catalog.setval('public.heb412_gen_campoplantillahcr_id_seq', 10000, true);
 
