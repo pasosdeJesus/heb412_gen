@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 6e31828f57c155633617344e5777cb6803a86c1c
+  revision: 12560a518f9dee68f4f96f06fd9a7bd7cbef221e
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 153da1329038c72820dd43fdc7e4ac6a8e85e9f3
+  revision: 58f4d3aa2a9bd21f1ac08513dab4548deac0f100
   branch: v2.0
   specs:
     sip (2.0)
@@ -163,9 +163,9 @@ GEM
       activesupport (>= 5.0.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    json (2.6.1)
+    json (2.6.2)
     libxml-ruby (3.2.2)
-    loofah (2.17.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
