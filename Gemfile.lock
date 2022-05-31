@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ea472f6a729ec1739afcdbee47bcc8e1519dab01
+  revision: 275c042da38f1114ba11103b5b59723fea816dd1
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: ac8c94cc60bfe53a7578a6a6b91d07fc9186a1bf
+  revision: 139e28e90393e83039f7bee0350aa95d4397b9dc
   branch: v2.0
   specs:
     sip (2.0)
@@ -117,7 +117,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.18)
     bindex (0.8.1)
-    bootsnap (1.11.1)
+    bootsnap (1.12.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
