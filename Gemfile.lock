@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 2a3a461c04bd15b8aad12222bb1d8ef3d1831753
+  revision: 872dde990271dfd4ef8c80d96610f16d3a2ef634
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -19,9 +19,14 @@ GIT
       sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: cdfed53c2ff8495e39cda2ddff9c9d385af1847c
-  branch: main
+  remote: https://github.com/vtamara/cocoon.git
+  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
+  branch: new_id_with_ajax
+  specs:
+    cocoon (1.2.11)
+
+PATH
+  remote: ../sip
   specs:
     sip (2.1a1)
       cancancan
@@ -35,13 +40,6 @@ GIT
       sassc-rails
       simple_form
       twitter_cldr
-
-GIT
-  remote: https://github.com/vtamara/cocoon.git
-  revision: 9f1892403c3dbdb8f7d457a06f237ff58e7dfb07
-  branch: new_id_with_ajax
-  specs:
-    cocoon (1.2.11)
 
 PATH
   remote: .

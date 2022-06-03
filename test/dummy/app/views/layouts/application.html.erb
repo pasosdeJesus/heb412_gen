@@ -50,7 +50,7 @@
       <% end %>
       <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
-      <%= opcion_menu "Acerca de", '/acercade' %>
+      <%= opcion_menu "Acerca de", sip.acercade_path %>
       <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path %>
     <% end %>
   <% end %>

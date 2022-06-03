@@ -1,14 +1,5 @@
-12 Porque la palabra de Dios es viva y eficaz, y más cortante que toda 
-espada de dos filos; y penetra hasta partir el alma y el espíritu, las 
-coyunturas y los tuétanos, y discierne los pensamientos y las intenciones 
-del corazón.
+Puede ver el listado de personas que han implementado en:
+<https://github.com/pasosdeJesus/heb412_gen/graphs/contributors>
 
-Hebreos 4:12
-
-
-Favor ver créditos completos en 
-	https://github.com/pasosdeJesus/heb412/blob/master/CREDITOS.md
-
-Logo es foto de dominio público de Peggy Marco disponible en:
-	https://pixabay.com/es/nubes-cielo-nube-nubes-oscuras-1473311/
-
+Y más créditos en
+<https://github.com/pasosdeJesus/heb412/blob/master/CREDITOS.md>
