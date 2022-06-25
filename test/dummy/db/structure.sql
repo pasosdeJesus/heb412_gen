@@ -1500,6 +1500,50 @@ ALTER SEQUENCE public.sip_sectororgsocial_id_seq OWNED BY public.sip_sectororgso
 
 
 --
+-- Name: sip_solicitud; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_solicitud (
+    id bigint NOT NULL,
+    usuario_id integer NOT NULL,
+    fecha date NOT NULL,
+    solicitud character varying(5000),
+    estadosol_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_solicitud_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_solicitud_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_solicitud_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_solicitud_id_seq OWNED BY public.sip_solicitud.id;
+
+
+--
+-- Name: sip_solicitud_usuarionotificar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_solicitud_usuarionotificar (
+    usuarionotificar_id integer,
+    solicitud_id integer
+);
+
+
+--
 -- Name: sip_tclase; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2030,6 +2074,13 @@ ALTER TABLE ONLY public.sip_sectororgsocial ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: sip_solicitud id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud ALTER COLUMN id SET DEFAULT nextval('public.sip_solicitud_id_seq'::regclass);
+
+
+--
 -- Name: sip_tdocumento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2425,6 +2476,14 @@ ALTER TABLE ONLY public.sip_sectororgsocial
 
 
 --
+-- Name: sip_solicitud sip_solicitud_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud
+    ADD CONSTRAINT sip_solicitud_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_tema sip_tema_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2530,6 +2589,20 @@ CREATE INDEX index_sip_orgsocial_on_grupoper_id ON public.sip_orgsocial USING bt
 --
 
 CREATE INDEX index_sip_orgsocial_on_pais_id ON public.sip_orgsocial USING btree (pais_id);
+
+
+--
+-- Name: index_sip_solicitud_usuarionotificar_on_solicitud_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_solicitud_usuarionotificar_on_solicitud_id ON public.sip_solicitud_usuarionotificar USING btree (solicitud_id);
+
+
+--
+-- Name: index_sip_solicitud_usuarionotificar_on_usuarionotificar_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_solicitud_usuarionotificar_on_usuarionotificar_id ON public.sip_solicitud_usuarionotificar USING btree (usuarionotificar_id);
 
 
 --
@@ -2747,6 +2820,14 @@ ALTER TABLE ONLY public.sip_orgsocial
 
 
 --
+-- Name: sip_solicitud_usuarionotificar fk_rails_6296c40917; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud_usuarionotificar
+    ADD CONSTRAINT fk_rails_6296c40917 FOREIGN KEY (solicitud_id) REFERENCES public.sip_solicitud(id);
+
+
+--
 -- Name: mr519_gen_opcioncs fk_rails_656b4a3ca7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2883,6 +2964,14 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 
 --
+-- Name: sip_solicitud fk_rails_a670d661ef; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud
+    ADD CONSTRAINT fk_rails_a670d661ef FOREIGN KEY (usuario_id) REFERENCES public.usuario(id);
+
+
+--
 -- Name: sip_ubicacion fk_rails_b82283d945; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2912,6 +3001,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_cc636858ad FOREIGN KEY (tema_id) REFERENCES public.sip_tema(id);
+
+
+--
+-- Name: sip_solicitud_usuarionotificar fk_rails_db0f7c1dd6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud_usuarionotificar
+    ADD CONSTRAINT fk_rails_db0f7c1dd6 FOREIGN KEY (usuarionotificar_id) REFERENCES public.usuario(id);
 
 
 --
@@ -2960,6 +3057,14 @@ ALTER TABLE ONLY public.sip_clase
 
 ALTER TABLE ONLY public.heb412_gen_formulario_plantillahcm
     ADD CONSTRAINT fk_rails_fc3149fc44 FOREIGN KEY (plantillahcm_id) REFERENCES public.heb412_gen_plantillahcm(id);
+
+
+--
+-- Name: sip_solicitud fk_rails_ffa31a0de6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud
+    ADD CONSTRAINT fk_rails_ffa31a0de6 FOREIGN KEY (estadosol_id) REFERENCES public.sip_estadosol(id);
 
 
 --
@@ -3182,7 +3287,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201009004421'),
 ('20201119125643'),
 ('20201124035715'),
+('20201124050637'),
 ('20201124142002'),
+('20201124145625'),
 ('20201214215209'),
 ('20210401194637'),
 ('20210401210102'),
