@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1ad876b524b9800c920d944fe024b439e0aebb50
+  revision: a0813373099ea01bf4ee25c85ce0fa1bbe93a4fa
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1fbbb0119103461b953dfc100f9ceb5a13030570
+  revision: db0b58b63d9bfbdafe50c1b220c4029648abd1c3
   branch: main
   specs:
     sip (2.1a2)
@@ -176,7 +176,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    erubi (1.10.0)
+    erubi (1.11.0)
     execjs (2.8.1)
     ferrum (0.11)
       addressable (~> 2.5)
@@ -385,4 +385,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.17
+   2.3.19
