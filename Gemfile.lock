@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d072fe126f93284ee59f864eea5cd94440916d78
+  revision: 7e36515a9f930653a4fbb0b6fe72692b15d17e89
   branch: main
   specs:
     mr519_gen (2.1a1)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 99a68f32dd03927e64b32356bfe35c94b6344870
+  revision: ace8dd2a3ec578338f6935293782f0531f0667fc
   branch: main
   specs:
     sip (2.1a2)
@@ -120,8 +120,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     andand (1.3.3)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -237,7 +237,7 @@ GEM
       rubyzip (>= 1.3.0)
     orm_adapter (0.5.0)
     pg (1.4.3)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
