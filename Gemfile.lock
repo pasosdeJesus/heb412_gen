@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 09f299934e10ee3e7ce39e4773141d5f97531abc
+  revision: f1a7c347d3561509633e927e141f138ceb2eaaba
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d9f8e93da7ee0c85096b1efe60d7fb15376b5c63
+  revision: 865b02a81acceee5bfb7f60e70c9bdb070b42845
   branch: v2.0
   specs:
     sip (2.0)
@@ -181,7 +181,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.16.3)
-    msgpack (1.5.5)
+    msgpack (1.5.6)
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
@@ -198,7 +198,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.4.3)
-    puma (5.6.4)
+    puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
