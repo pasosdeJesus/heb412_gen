@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 848ca8cc1a88240d3ebbf9369f5424c58d1b6527
+  revision: dd5ed13ca4cda377552dac8fc0f399e7f7991dde
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 830e7177e083ac7759777cabf7fc1cda95dfbcfe
+  revision: a94b3358b7c87d0b9c60c7a991beb7de470ecee9
   branch: v2.0
   specs:
     sip (2.0)
@@ -261,7 +261,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    spring (4.0.0)
+    spring (4.1.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
