@@ -69,7 +69,7 @@ module Heb412Gen
 
     # Prepara lista de plantillas disponibles en base de datos 
     # para este controlador
-    def index_plantillas
+    def index_plantillas_heb412
       @plantillas = [['', '']]
       @plantillasunr = [['', '']]
       if vistas_manejadas.length > 0
@@ -77,6 +77,10 @@ module Heb412Gen
           where('vista IN (?)', vistas_manejadas).select('nombremenu, id').
           map {|p| [p.nombremenu, p.id]}
       end
+    end
+
+    def index_plantillas
+      index_plantillas_heb412
     end
 
     # Prepara lista de plantillas disponibles en base de datos 
@@ -116,12 +120,56 @@ module Heb412Gen
     # @param campoid símbolo con el campo de los ids
     # @param params parámetros completos
     def self.vista_listado(plant, ids, modelo, narch, parsimp, extension, 
-                           campoid = :id, params = nil)
+                           campoid = :id, params = nil, controlador = nil)
       registros = modelo.where(campoid => ids)
       if self.respond_to?(:index_reordenar)
         registros = self.index_reordenar(registros)
       end
       return registros
+    end
+
+    # Llamada por programa_generacion_listado y modelo para hacer
+    # otras personalizadas
+    def programa_generacion_listado_int(params, extension, campoid, pl, narch)
+      ids = @registros.map(&campoid)
+
+      parsimp = {}
+      parsimp[:busfechainicio_ini] = nil
+      if params[:filtro][:busfechainicio_localizadaini] && 
+          params[:filtro][:busfechainicio_localizadaini] != ''
+        parsimp[:busfechainicio_ini] = 
+          params[:filtro][:busfechainicio_localizadaini] 
+      end
+
+      parsimp[:busfechainicio_fin] = nil
+      if params[:filtro][:busfechainicio_localizadafin] && 
+          params[:filtro][:busfechainicio_localizadafin] != ''
+        parsimp[:busfechainicio_fin] = 
+          params[:filtro][:busfechainicio_localizadafin] 
+      end
+
+      parsimp[:busfechacierre_ini] = nil
+      if params[:filtro][:busfechacierre_localizadaini] && 
+          params[:filtro][:busfechacierre_localizadaini] != ''
+        parsimp[:busfechacierre_ini] = 
+          params[:filtro][:busfechacierre_localizadaini] 
+      end
+
+      parsimp[:busfechacierre_fin] = nil
+      if params[:filtro][:busfechacierre_localizadafin] && 
+          params[:filtro][:busfechacierre_localizadafin] != ''
+        parsimp[:busfechacierre_fin] = 
+          params[:filtro][:busfechacierre_localizadafin] 
+      end
+      cparams=params
+      cparams.permit!
+      cp = current_ability.campos_plantillas[pl.vista]
+      Heb412Gen::GeneralistadoJob.perform_later(
+        pl.id, 
+        @registros.take.class.name,  # Permite generar benefactividadpl desde actividad
+        self.class.name, 
+        ids, narch, parsimp, extension, 
+        campoid, cparams)
     end
 
     # Prepara y lanza tarea en segundo plano para llenar una plantilla
@@ -146,43 +194,15 @@ module Heb412Gen
           FileUtils.touch(narch + "#{extension}-0")
           flash[:notice] = "Se programó la generación del archivo " +
             "#{rarch}#{extension}, por favor refresque hasta verlo generado"
-          ids = @registros.map(&campoid)
+          if respond_to?("programa_generacion_listado_int#{pl.id}")
+            send("programa_generacion_listado_int#{pl.id}",
+                 params, extension, campoid, pl, narch)
+          else
+            programa_generacion_listado_int(params, extension, campoid,
+                                            pl, narch)
+          end
           rutaurl = File.join(heb412_gen.sisini_path, 
                               '/generados').to_s
-
-          parsimp = {}
-          parsimp[:busfechainicio_ini] = nil
-          if params[:filtro][:busfechainicio_localizadaini] && 
-            params[:filtro][:busfechainicio_localizadaini] != ''
-            parsimp[:busfechainicio_ini] = 
-              params[:filtro][:busfechainicio_localizadaini] 
-          end
-
-          parsimp[:busfechainicio_fin] = nil
-          if params[:filtro][:busfechainicio_localizadafin] && 
-            params[:filtro][:busfechainicio_localizadafin] != ''
-            parsimp[:busfechainicio_fin] = 
-              params[:filtro][:busfechainicio_localizadafin] 
-          end
-
-          parsimp[:busfechacierre_ini] = nil
-          if params[:filtro][:busfechacierre_localizadaini] && 
-            params[:filtro][:busfechacierre_localizadaini] != ''
-            parsimp[:busfechacierre_ini] = 
-              params[:filtro][:busfechacierre_localizadaini] 
-          end
-
-          parsimp[:busfechacierre_fin] = nil
-          if params[:filtro][:busfechacierre_localizadafin] && 
-            params[:filtro][:busfechacierre_localizadafin] != ''
-            parsimp[:busfechacierre_fin] = 
-              params[:filtro][:busfechacierre_localizadafin] 
-          end
-          cparams=params
-          cparams.permit!
-          Heb412Gen::GeneralistadoJob.perform_later(
-            pl.id, @registros.take.class.name, self.class.name, ids, narch,
-            parsimp, extension, campoid, cparams)
           redirect_to rutaurl, format: 'html'
           return
         end
