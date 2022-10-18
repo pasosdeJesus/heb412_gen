@@ -82,8 +82,11 @@ end
 
 
 group :test do
-gem 'cuprite'
 
+  gem 'capybara',
+    git: 'https://github.com/teamcapybara/capybara.git', branch: :master
+
+  gem 'cuprite'
 
   gem 'simplecov', '<0.18'
 
