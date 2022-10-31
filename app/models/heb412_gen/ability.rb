@@ -29,7 +29,12 @@ module Heb412Gen
     # Hereda basicas_id_noauto de sip
 
     NOBASICAS_INDSEQID =  [
+      ['heb412_gen', 'campohc'],
       ['heb412_gen', 'campoplantillahcm'],
+      ['heb412_gen', 'campoplantillahcr'],
+      ['heb412_gen', 'carpetaexclusiva'],
+      ['heb412_gen', 'doc'],
+      ['heb412_gen', 'formulario_plantillahcr'],
       ['heb412_gen', 'plantilladoc'],
       ['heb412_gen', 'plantillahcm'],
       ['heb412_gen', 'plantillahcr']
