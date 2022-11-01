@@ -39,7 +39,13 @@ module Heb412Gen
       ['heb412_gen', 'plantillahcm'],
       ['heb412_gen', 'plantillahcr']
     ]
-    # Hereda nobasicas_indice_seq_con_id de sip
+
+    # Tablas no básicas pero que tienen índice *_seq_id
+    def nobasicas_indice_seq_con_id
+      Sip::Ability::NOBASICAS_INDSEQID +
+        Mr519Gen::Ability::NOBASICAS_INDSEQID +
+        NOBASICAS_INDSEQID
+    end
 
     BASICAS_PRIO = []
     # Hereda tablasbasicas_prio de sip
