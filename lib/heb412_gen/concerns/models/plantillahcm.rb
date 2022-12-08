@@ -3,7 +3,7 @@ module Heb412Gen
     module Models
       module Plantillahcm
         extend ActiveSupport::Concern
-        include Sip::Modelo
+        include Msip::Modelo
 
         included do
           has_many :campoplantillahcm, 

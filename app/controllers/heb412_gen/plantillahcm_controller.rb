@@ -1,7 +1,7 @@
 require 'heb412_gen/concerns/controllers/plantillahcm_controller'
 
 module Heb412Gen
-  class PlantillahcmController < Sip::ModelosController
+  class PlantillahcmController < Msip::ModelosController
  
     before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
                                             :show, :impreso]

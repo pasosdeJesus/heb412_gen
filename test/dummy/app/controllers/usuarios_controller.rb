@@ -1,8 +1,8 @@
-require 'sip/concerns/controllers/usuarios_controller'
+require 'msip/concerns/controllers/usuarios_controller'
 
 class UsuariosController < Heb412Gen::ModelosController
 
-  include Sip::Concerns::Controllers::UsuariosController
+  include Msip::Concerns::Controllers::UsuariosController
 
   def vistas_manejadas
     ['Usuario']

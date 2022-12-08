@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_runtime_dependency "sip"
+  s.add_runtime_dependency "msip"
   s.add_runtime_dependency "mr519_gen"
   s.add_runtime_dependency "rspreadsheet"
   s.add_runtime_dependency "redcarpet"

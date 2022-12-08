@@ -7,7 +7,7 @@ module Heb412Gen
 
         included do
           include ActionView::Helpers::AssetUrlHelper
-          include Sip::FormatoFechaHelper
+          include Msip::FormatoFechaHelper
 
           # GET /docs/new
           def new

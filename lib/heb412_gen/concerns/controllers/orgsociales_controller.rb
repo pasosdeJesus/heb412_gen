@@ -1,4 +1,4 @@
-require "sip/concerns/controllers/orgsociales_controller"
+require "msip/concerns/controllers/orgsociales_controller"
 
 module Heb412Gen
   module Concerns
@@ -9,10 +9,10 @@ module Heb412Gen
 
         included do
           include ActionView::Helpers::AssetUrlHelper
-          include Sip::FormatoFechaHelper
-          include Sip::ModeloHelper
+          include Msip::FormatoFechaHelper
+          include Msip::ModeloHelper
 
-          include Sip::Concerns::Controllers::OrgsocialesController
+          include Msip::Concerns::Controllers::OrgsocialesController
  
           # La clase que incluya a este debe ser descendiente de
           # Heb412Gen::ModelosController

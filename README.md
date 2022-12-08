@@ -9,7 +9,7 @@ Este es el motor principal de la aplicación (https://github.com/pasosdeJesus/he
 que maneja una nube de documentos y plantillas ods y odt
 
 Aplican practicamente las mismas instrucciones de otros motores genérico
-basados en sip, ver por ejemplo:
+basados en msip, ver por ejemplo:
 	https://github.com/pasosdeJesus/sal7711_gen
 
 Las funcionalidades que provee al momento de este escrito son:
@@ -26,7 +26,7 @@ La exportación e importación requieren la previa configuración de la nube.
 
 ## 1. Configure gemas, javascript y base de datos
 
-Este motor opera sobre [sip](https://github.com/pasosdeJesus/sip) y [mr519_gen](https://github.com/pasosdeJesus/mr519_gen)
+Este motor opera sobre [msip](https://github.com/pasosdeJesus/msip) y [mr519_gen](https://github.com/pasosdeJesus/mr519_gen)
 
 En su Gemfile asegure tener:
 
@@ -34,7 +34,7 @@ En su Gemfile asegure tener:
 	gem 'rspreadsheet'
 	gem 'redcarpet'
 
-        gem 'sip', 
+        gem 'msip', 
           git: 'https://github.com/pasosdeJesus/heb412_gen.git'
 	gem 'mr519_gen', 
           git: 'https://github.com/pasosdeJesus/mr519_gen.git'
@@ -44,11 +44,11 @@ En su Gemfile asegure tener:
 
 
 Incluya el motor javascript en su `app/assets/javascript/application.js` 
-   por ejemplo después de `//= require sip/motor` agregue:
+   por ejemplo después de `//= require msip/motor` agregue:
 ```
 //= require heb412_gen/motor
 ```
-   y despúes de `sip_prepara_eventos_comunes...` agregue:
+   y despúes de `msip_prepara_eventos_comunes...` agregue:
 ```
 heb412_gen_prepara_eventos_comunes(root);
 ```
@@ -172,7 +172,7 @@ algo  como:
 
 ### 3.4 Configure una vista `index` que llenará un listado .ods
 
-Será simple cuando inicialmente el controlador sea descendiente de `Sip::ModelosController`
+Será simple cuando inicialmente el controlador sea descendiente de `Msip::ModelosController`
 y emplee la función por omisión `index` y la respectiva vista automática pues en tal caso basta que
 haga el controlador descendiente de `Heb412Gen::ModelosController` y que añada
 la función `vistas_manejadas` con un listado de las vistas que el controlador maneja
@@ -239,7 +239,7 @@ Este método por omisión generará el `.ods` en la carpeta generados de la nube
 Puede ajustar la forma de presentar algunos campos bien en la función
 `presenta` del modelo asociado al controlador o bien creando en el 
 modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
-en https://github.com/pasosdeJesus/sip/blob/master/lib/sip/concerns/models/persona.rb  
+en https://github.com/pasosdeJesus/msip/blob/master/lib/msip/concerns/models/persona.rb  
 Por ejemplo una función `presenta(atr)` sobrecargada para presentar
 sigla de un tipo de documento en lugar del nombre cuando el campo
 solicitado es `tdoc`:

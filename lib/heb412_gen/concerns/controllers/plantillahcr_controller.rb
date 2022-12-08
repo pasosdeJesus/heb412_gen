@@ -7,8 +7,8 @@ module Heb412Gen
 
         included do
           include ActionView::Helpers::AssetUrlHelper
-          include Sip::FormatoFechaHelper
-          include Sip::ModeloHelper
+          include Msip::FormatoFechaHelper
+          include Msip::ModeloHelper
   
           def gencalse
             'F'
@@ -23,7 +23,7 @@ module Heb412Gen
           def pintacampos
             @plantillahcr = Heb412Gen::Plantillahcr.new
             if params[:vista]
-              vista = Sip::Ubicacion.connection.quote_string(
+              vista = Msip::Ubicacion.connection.quote_string(
                 params[:vista] ).strip
               ab = ::Ability.new
               if ab.campos_plantillas[vista]

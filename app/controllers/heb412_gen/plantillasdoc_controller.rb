@@ -1,7 +1,7 @@
 require 'heb412_gen/concerns/controllers/plantillasdoc_controller'
 
 module Heb412Gen
-  class PlantillasdocController < Sip::ModelosController
+  class PlantillasdocController < Msip::ModelosController
  
     before_action :set_plantilladoc, 
       only: [:show, :edit, :update, :destroy]

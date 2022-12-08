@@ -3,7 +3,7 @@ module Heb412Gen
     module Models
       module Plantillahcr
         extend ActiveSupport::Concern
-        include Sip::Modelo
+        include Msip::Modelo
 
         included do
           has_and_belongs_to_many :formulario, 

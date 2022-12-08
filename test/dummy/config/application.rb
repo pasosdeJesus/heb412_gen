@@ -27,7 +27,7 @@ module Dummy
 
     config.railties_order = [:main_app, 
                              Heb412Gen::Engine, Mr519Gen::Engine, 
-                             Sip::Engine, :all]
+                             Msip::Engine, :all]
 
 
     config.active_record.schema_format = :sql

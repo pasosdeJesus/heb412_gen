@@ -29,7 +29,7 @@ module Heb412Gen
         #byebug
         if Heb412Gen::Carpetaexclusiva.where(carpeta: e).count > 0 &&
             Heb412Gen::Carpetaexclusiva.where(carpeta: e, 
-                                              grupo: usuario.sip_grupo).count == 0
+                                              grupo: usuario.msip_grupo).count == 0
           return false
         end
       end

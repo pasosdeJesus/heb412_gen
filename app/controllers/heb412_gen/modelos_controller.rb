@@ -1,5 +1,5 @@
 module Heb412Gen
-  class ModelosController < Sip::ModelosController
+  class ModelosController < Msip::ModelosController
 
     # Sin control de autorización porquue es usada por otras clases
     # que si lo deben implementar
@@ -214,7 +214,7 @@ module Heb412Gen
       return :id
     end
 
-    # Sobrecarga de Sip 
+    # Sobrecarga de Msip 
     def index_otros_formatos(format, params)
       format.ods {
         programa_generacion_listado(
