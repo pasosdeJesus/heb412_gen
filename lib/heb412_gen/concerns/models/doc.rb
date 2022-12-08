@@ -15,7 +15,7 @@ module Heb412Gen
           has_attached_file :adjunto, :path => :ruta_doc
 
           def ruta_doc
-            File.join(Sip.ruta_anexos, created_at.year.to_s,
+            File.join(Msip.ruta_anexos, created_at.year.to_s,
             created_at.month.to_s.rjust(2, '0'),
             created_at.day.to_s.rjust(2, '0'),
             "/#{id}_#{adjunto_file_name}")

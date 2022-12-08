@@ -1,10 +1,10 @@
 conexion = ActiveRecord::Base.connection();
 
 # De motores
-motor = ['sip', 'mr519_gen', '../..', nil]
+motor = ['msip', 'mr519_gen', '../..', nil]
 motor.each do |m|
-    Sip::carga_semillas_sql(conexion, m, :cambios)
-    Sip::carga_semillas_sql(conexion, m, :datos)
+    Msip::carga_semillas_sql(conexion, m, :cambios)
+    Msip::carga_semillas_sql(conexion, m, :datos)
 end
 
 # Usuario para primer ingreso heb412, heb412

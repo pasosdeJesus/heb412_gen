@@ -1,7 +1,7 @@
 module Heb412Gen
   module ApplicationHelper
 
-    include Sip::PaginacionAjaxHelper
+    include Msip::PaginacionAjaxHelper
 
     MAXCOL = 'AMJ' # Máxima en gnumeric
     RANGOCOL = ('A'..MAXCOL).to_a

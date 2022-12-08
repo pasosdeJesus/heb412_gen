@@ -7,8 +7,8 @@ module Heb412Gen
 
         included do
           include ActionView::Helpers::AssetUrlHelper
-          include Sip::FormatoFechaHelper
-          include Sip::ModeloHelper
+          include Msip::FormatoFechaHelper
+          include Msip::ModeloHelper
 
           if ($".select {|x| x =~ /\/zip-/}.count > 0)
             raise "Conflicto entre rubyzip y zip. "\
@@ -23,7 +23,7 @@ module Heb412Gen
           def pintacampos
             @plantillahcm = Heb412Gen::Plantillahcm.new
             if params[:vista]
-              vista = Sip::Ubicacion.connection.quote_string(
+              vista = Msip::Ubicacion.connection.quote_string(
                 params[:vista] ).strip
               ab = ::Ability.new
               if ab.campos_plantillas[vista]

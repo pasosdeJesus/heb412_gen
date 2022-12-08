@@ -11,30 +11,32 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9e03eacc719d600b6b772d4c5529e1d6a9c1721e
-  branch: main
+  revision: dff2f6a6903267ff531f48559797b041631da868
+  branch: msip
   specs:
     mr519_gen (2.1.0.beta1)
+      msip
       rails
-      sip
 
 GIT
-  remote: https://github.com/pasosdeJesus/sip.git
-  revision: a09cff8533611ef69f4ee811e2086baefa654111
+  remote: https://github.com/pasosdeJesus/msip.git
+  revision: 8b5edc23ef76e877f36a992e200c36c5bbfbbab8
   branch: main
   specs:
-    sip (2.1.0.beta1)
-      cancancan
-      coffee-rails
-      devise
-      devise-i18n
-      kt-paperclip
-      minitest
-      rails
-      rails-i18n
-      sassc-rails
-      simple_form
-      twitter_cldr
+    msip (2.2.0.alfa3)
+      cancancan (~> 3)
+      devise (~> 4)
+      devise-i18n (~> 1)
+      kt-paperclip (~> 7)
+      pg (~> 1)
+      rails (~> 7.0)
+      rails-i18n (~> 7)
+      sassc-rails (~> 2)
+      simple_form (~> 5)
+      sprockets-rails (~> 3)
+      stimulus-rails (~> 1)
+      twitter_cldr (~> 6)
+      will_paginate (~> 3)
 
 GIT
   remote: https://github.com/vtamara/cocoon.git
@@ -48,9 +50,9 @@ PATH
   specs:
     heb412_gen (2.1.0.beta1)
       mr519_gen
+      msip
       redcarpet
       rspreadsheet
-      sip
 
 GEM
   remote: https://rubygems.org/
@@ -359,6 +361,7 @@ DEPENDENCIES
   kt-paperclip!
   libxml-ruby
   mr519_gen!
+  msip!
   nokogiri (>= 1.11.1)
   odf-report
   pg
@@ -370,7 +373,6 @@ DEPENDENCIES
   sassc-rails
   simple_form
   simplecov (< 0.18)
-  sip!
   spring
   sprockets-rails
   stimulus-rails

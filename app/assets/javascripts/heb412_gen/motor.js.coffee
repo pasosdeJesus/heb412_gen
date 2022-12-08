@@ -34,7 +34,7 @@
     d += '&formatosalida=' +  formatosalida
     d += '&commit=Enviar'
     root =  window;
-    sip_arregla_puntomontaje(root)
+    msip_arregla_puntomontaje(root)
     if (root.puntomontaje != '/' || rutagenera[0] != '/') && rutagenera.substring(0, root.puntomontaje.length) != root.puntomontaje
       rutagenera = root.puntomontaje + rutagenera
     e = rutagenera + '.' + formatosalida + '?' + d
@@ -51,7 +51,7 @@
     return false
   rarc = rnarc.substr(0, ub)
   narc = rnarc.substr(ub+1)
-  sip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
+  msip_envia_ajax_datos_ruta_y_pinta('sis/eliminararc',
     {ruta: rarc, arc: narc}, '', '', 'POST', 'script', true)
 
 @heb412_gen_eliminar_directorio = (urlelim) ->
@@ -63,14 +63,14 @@
     return false
   rarc = rnarc.substr(0, ub)
   ndir = rnarc.substr(ub+1)
-  sip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
+  msip_envia_ajax_datos_ruta_y_pinta('sis/eliminardir',
     {ruta: rarc, dir: ndir}, '', '', 'POST', 'script', true)
 
 
 @heb412_gen_prepara_eventos_comunes = (root) ->
   if window.location.href.match(/\/plantillahcm\//)
     $(document).on('change', '#plantillahcm_vista', (e) -> 
-      return sip_envia_ajax_datos_ruta_y_pinta('plantillahcm/pintacampos',
+      return msip_envia_ajax_datos_ruta_y_pinta('plantillahcm/pintacampos',
         'vista=' + $(this).val(), '#gen_divcampos', '#divcampos')
     )
 
@@ -117,7 +117,7 @@
   
   $("#heb412_mcarc").click((e) ->
     root = window
-    sip_arregla_puntomontaje(root)
+    msip_arregla_puntomontaje(root)
     t = Date.now()
     d = -1
     if (root.heb412_mcarc_t)

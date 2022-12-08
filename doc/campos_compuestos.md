@@ -33,13 +33,13 @@ En un controlador que ya llene plantillas siendo descendiente de
 
 
 
-### Agregar funcionalidad a controladores descendientes de Sip::Modelo
+### Agregar funcionalidad a controladores descendientes de Msip::Modelo
 
 Además de darle sentido a los campos compuesto asociando uno o más formularios
 a cada registro que maneje el controlado, lo mínimo típicamente será:
 
 1. Haga el controlador descendiente de `Heb412Gen::ModelosController` (que a su 
-   vez es descendiente de `Sip::ModelosController`)
+   vez es descendiente de `Msip::ModelosController`)
 
 2. Sobrecargue la función `presenta` de cada modelo que se presentará para
    presentar la información correcta.
@@ -71,7 +71,7 @@ Si esto no basta para su caso puede que le sirva la descripción que sigue.
 
 - La función por omisión `programa_generacion_listados(params, extension)` 
   emplea la variable `@registros` (típica de un `index` de un controlador descendiente
-  de `Sip::ModelosController`) y los parámetros para llenar la plantilla
+  de `Msip::ModelosController`) y los parámetros para llenar la plantilla
   con la extensión dada.
   Antes de lanzar la tarea prepara una copia de la plantilla en un archivo
   por llenar, extrae la lista de identificaciones  de `@registros`

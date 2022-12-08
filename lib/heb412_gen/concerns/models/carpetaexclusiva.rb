@@ -3,12 +3,12 @@ module Heb412Gen
     module Models
       module Carpetaexclusiva
         extend ActiveSupport::Concern
-        include Sip::Modelo
+        include Msip::Modelo
 
         included do
 
           belongs_to :grupo, 
-            class_name: 'Sip::Grupo',
+            class_name: 'Msip::Grupo',
             foreign_key: 'grupo_id', 
             validate: true, 
             optional: false

@@ -3,7 +3,7 @@ module Heb412Gen
     module Models
       module Plantilladoc
         extend ActiveSupport::Concern
-        include Sip::Modelo
+        include Msip::Modelo
 
         included do
 

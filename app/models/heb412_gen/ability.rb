@@ -21,12 +21,12 @@ module Heb412Gen
     BASICAS_PROPIAS = []
 
     def tablasbasicas 
-      Sip::Ability::BASICAS_PROPIAS + 
+      Msip::Ability::BASICAS_PROPIAS + 
         Heb412Gen::Ability::BASICAS_PROPIAS
     end
 
     BASICAS_ID_NOAUTO = []
-    # Hereda basicas_id_noauto de sip
+    # Hereda basicas_id_noauto de msip
 
     NOBASICAS_INDSEQID =  [
       ['heb412_gen', 'campohc'],
@@ -42,13 +42,13 @@ module Heb412Gen
 
     # Tablas no básicas pero que tienen índice *_seq_id
     def nobasicas_indice_seq_con_id
-      Sip::Ability::NOBASICAS_INDSEQID +
+      Msip::Ability::NOBASICAS_INDSEQID +
         Mr519Gen::Ability::NOBASICAS_INDSEQID +
         NOBASICAS_INDSEQID
     end
 
     BASICAS_PRIO = []
-    # Hereda tablasbasicas_prio de sip
+    # Hereda tablasbasicas_prio de msip
 
     CAMPOS_PLANTILLAS_PROPIAS = {
       'Orgsocial' => {
@@ -61,7 +61,7 @@ module Heb412Gen
           'id', 
           'nombre',
           'pais',
-          Sip::Orgsocial.human_attribute_name(
+          Msip::Orgsocial.human_attribute_name(
             :sectoresorgsocial).downcase.gsub(' ', '_'),
           'telefono', 
           'web'
@@ -92,7 +92,7 @@ module Heb412Gen
           'tdoc',
           'tdocumento',
         ],
-        controlador: 'Sip::PersonasController',
+        controlador: 'Msip::PersonasController',
         ruta: '/personas'
       },
 

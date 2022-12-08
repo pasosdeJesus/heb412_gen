@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
     resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' } 
 
-    root 'sip/hogar#index'
+    root 'msip/hogar#index'
 
     namespace :admin do
       ab = ::Ability.new
@@ -31,5 +31,5 @@ Rails.application.routes.draw do
 
   mount Heb412Gen::Engine, at: rutarel, as: 'heb412_gen'
   mount Mr519Gen::Engine, at: rutarel, as: 'mr519_gen'
-  mount Sip::Engine, at: rutarel, as: 'sip'
+  mount Msip::Engine, at: rutarel, as: 'msip'
 end

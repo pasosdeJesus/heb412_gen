@@ -40,7 +40,7 @@ test/dummy/app/assets/builds/
 .byebug_history
 coverage
 test/dummy/public/
-test/dummy/app/javascript/controllers/sip
+test/dummy/app/javascript/controllers/msip
 test/dummy/app/javascript/controllers/mr519_gen
 test/dummy/app/javascript/controllers/heb412_gen
 test/dummy/app/javascript/controllers/cor1440_gen

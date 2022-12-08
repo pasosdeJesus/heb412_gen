@@ -7,8 +7,8 @@ module Heb412Gen
 
         included do
           include ActionView::Helpers::AssetUrlHelper
-          include Sip::FormatoFechaHelper
-          include Sip::ModeloHelper
+          include Msip::FormatoFechaHelper
+          include Msip::ModeloHelper
           helper ::ApplicationHelper
 
           def clase 

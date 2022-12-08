@@ -1,7 +1,7 @@
 require 'heb412_gen/concerns/controllers/plantillahcr_controller'
 
 module Heb412Gen
-  class PlantillahcrController < Sip::ModelosController
+  class PlantillahcrController < Msip::ModelosController
  
     before_action :set_plantillahcr, only: [:edit, :update, :destroy, 
                                             :show, :impreso]

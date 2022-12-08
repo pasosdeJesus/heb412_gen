@@ -1,6 +1,6 @@
-require 'sip/concerns/models/usuario'
+require 'msip/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
-      include Sip::Concerns::Models::Usuario
+      include Msip::Concerns::Models::Usuario
 end
 
