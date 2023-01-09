@@ -38,9 +38,8 @@ if (test "$SINAC" != "1") then {
     echo "rm -rf $rutapore/*"
     rm -rf $rutapore/*
   } fi;
-  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle update
-  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle
   NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle update --bundler
+  NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle update
   if (test "$?" != "0") then {
     exit 1;
   } fi;

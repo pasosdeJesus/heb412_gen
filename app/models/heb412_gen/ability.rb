@@ -143,6 +143,7 @@ module Heb412Gen
           can :manage, Heb412Gen::Plantilladoc
           can :manage, Heb412Gen::Plantillahcm
           can :manage, Heb412Gen::Plantillahcr
+          can :manage, Heb412Gen::Carpetaexclusiva
         end
       end
     end # initialize_heb412_gen
