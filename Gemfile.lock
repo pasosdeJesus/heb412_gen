@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: cad2644e0ea157867eaf8e5b46d18f32ad4118d4
+  revision: 266793f08acaaada88440410cbc3accddfc6a0a3
   branch: msip
   specs:
     mr519_gen (2.1.0.beta1)
