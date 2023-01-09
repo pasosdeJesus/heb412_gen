@@ -86,6 +86,8 @@ group :test do
 
   gem 'cuprite'
 
+  gem 'rails-controller-testing'
+
   gem 'simplecov', '<0.18'
 end 
 

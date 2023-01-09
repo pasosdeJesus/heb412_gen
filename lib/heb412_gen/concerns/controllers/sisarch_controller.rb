@@ -152,8 +152,10 @@ module Heb412Gen
           # Crear carpeta
           def nueva_carpeta
             authorize! :create, Heb412Gen::Doc
-            if !limpia_ruta(params[:nueva][:ruta]) ||
-              params[:nueva][:nombre].nil?
+            if !params || !params[:nueva] ||
+                !params[:nueva][:ruta] ||
+                !limpia_ruta(params[:nueva][:ruta]) ||
+                params[:nueva][:nombre].nil?
               redirect_to Rails.configuration.relative_url_root
               return
             end
@@ -171,8 +173,10 @@ module Heb412Gen
           # Crear archivo
           def nuevo_archivo
             authorize! :create, Heb412Gen::Doc
-            if !limpia_ruta(params[:nuevo][:ruta]) ||
-              params[:nuevo][:archivo].nil?
+            if !params || !params[:nuevo] ||
+                !params[:nuevo][:ruta] ||
+                !limpia_ruta(params[:nuevo][:ruta]) ||
+                params[:nuevo][:archivo].nil?
               redirect_to Rails.configuration.relative_url_root
               return
             end
@@ -237,6 +241,7 @@ module Heb412Gen
           def actleeme
             authorize! :manage, Heb412Gen::Doc
             if params[:actleeme].nil? || params[:actleeme][:ruta].nil? || 
+              !params[:actleeme][:leeme] ||
               !limpia_ruta(params[:actleeme][:ruta]) 
               redirect_to Rails.configuration.relative_url_root
               return
