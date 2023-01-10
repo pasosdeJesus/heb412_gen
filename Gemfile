@@ -104,7 +104,7 @@ group :test do
 
   gem "rails-controller-testing"
 
-  gem "simplecov", "<0.18"
+  gem "simplecov"
 end
 
 group :development do
