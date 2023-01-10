@@ -15,8 +15,9 @@ module Heb412Gen
 
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
-      @plantillahcm =  Heb412Gen::Plantillahcm.create PRUEBA_PLANTILLAHCM
-      assert @plantillahcm.valid?
+      @plantillahcm = Heb412Gen::Plantillahcm.create(PRUEBA_PLANTILLAHCM)
+
+      assert_predicate @plantillahcm, :valid?
       @plantillahcm.save
     end
 
@@ -56,8 +57,8 @@ module Heb412Gen
       assert_difference("Plantillahcm.count") do
         post heb412_gen.plantillahcm_path, params: {
           plantillahcm: @plantillahcm.attributes.merge(
-            ruta: 'y'
-          )
+            ruta: "y",
+          ),
         }
       end
 
@@ -67,7 +68,7 @@ module Heb412Gen
     test "debe actualizar existente" do
       patch heb412_gen.plantillahcm_path(@plantillahcm.id),
         params: {
-          plantillahcm: @plantillahcm.attributes.merge("ruta": 'Z')
+          plantillahcm: @plantillahcm.attributes.merge("ruta": "Z"),
         }
 
       assert_redirected_to heb412_gen.plantillahcm_path(assigns(:plantillahcm))

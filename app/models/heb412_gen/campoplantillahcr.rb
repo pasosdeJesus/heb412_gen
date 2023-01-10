@@ -1,4 +1,6 @@
-require 'heb412_gen/concerns/models/campoplantillahcr'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/models/campoplantillahcr"
 
 module Heb412Gen
   class Campoplantillahcr < ActiveRecord::Base

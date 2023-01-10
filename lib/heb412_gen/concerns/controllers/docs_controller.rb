@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Controllers
       module DocsController
-
         extend ActiveSupport::Concern
 
         included do
@@ -11,7 +12,7 @@ module Heb412Gen
 
           # GET /docs/new
           def new
-            authorize! :edit, Heb412Gen::Doc
+            authorize!(:edit, Heb412Gen::Doc)
             @doc = Heb412Gen::Doc.new
           end
 
@@ -24,13 +25,13 @@ module Heb412Gen
             respond_to do |format|
               if doc.save
                 ordena_doc
-                format.html { 
-                  redirect_to docs_url, notice: 'Documento creado.' 
-                }
-                format.json { render :show, status: :created, location: doc }
+                format.html do
+                  redirect_to(docs_url, notice: "Documento creado.")
+                end
+                format.json { render(:show, status: :created, location: doc) }
               else
-                format.html { render :new }
-                format.json { render json: doc.errors, status: :unprocessable_entity }
+                format.html { render(:new) }
+                format.json { render(json: doc.errors, status: :unprocessable_entity) }
               end
             end
           end
@@ -38,7 +39,7 @@ module Heb412Gen
           # POST /docs
           # POST /docs.json
           def create
-            authorize! :edit, Heb412Gen::Doc
+            authorize!(:edit, Heb412Gen::Doc)
             @doc = Heb412Gen::Doc.new(doc_params)
             if !@doc.nombre && @doc.adjunto_file_name
               @doc.nombre = @doc.adjunto_file_name
@@ -51,25 +52,25 @@ module Heb412Gen
 
           # GET /docs/1/edit
           def edit
-            authorize! :edit, Heb412Gen::Doc
+            authorize!(:edit, Heb412Gen::Doc)
           end
 
           # PATCH/PUT /docs/1
           # PATCH/PUT /docs/1.json
           def update
-            authorize! :edit, Heb412Gen::Doc
+            authorize!(:edit, Heb412Gen::Doc)
             respond_to do |format|
               if @doc.update(doc_params)
                 ordena_doc
-                format.html { 
-                  redirect_to @doc, notice: 'Doc actualizado.' 
-                }
-                format.json { render :show, status: :ok, location: @doc }
+                format.html do
+                  redirect_to(@doc, notice: "Doc actualizado.")
+                end
+                format.json { render(:show, status: :ok, location: @doc) }
               else
-                format.html { render :edit }
-                format.json { 
-                  render json: @doc.errors, status: :unprocessable_entity 
-                }
+                format.html { render(:edit) }
+                format.json do
+                  render(json: @doc.errors, status: :unprocessable_entity)
+                end
               end
             end
           end
@@ -77,13 +78,13 @@ module Heb412Gen
           # DELETE /docs/1
           # DELETE /docs/1.json
           def destroy
-            authorize! :edit, Heb412Gen::Doc
+            authorize!(:edit, Heb412Gen::Doc)
             @doc.destroy
             respond_to do |format|
-              format.html { 
-                redirect_to docs_url, notice: 'Doc eliminado.' 
-              }
-              format.json { head :no_content }
+              format.html do
+                redirect_to(docs_url, notice: "Doc eliminado.")
+              end
+              format.json { head(:no_content) }
             end
           end
 
@@ -101,23 +102,22 @@ module Heb412Gen
             fila = doc.filainicial
             fd.each do |r|
               doc.campohc.each do |c|
-                #byebug
-                col = (Heb412Gen::ApplicationHelper::RANGOCOL.
-                       find_index(c.columna))+1
+                # byebug
+                col = Heb412Gen::ApplicationHelper::RANGOCOL
+                  .find_index(c.columna) + 1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r[c.nombrecampo]=#{r[c.nombrecampo]}"
                 hoja[fila, col] = r[c.nombrecampo]
               end
               fila += 1
-            end 
+            end
 
-            n=File.join('/tmp', doc.adjunto_file_name)
+            n = File.join("/tmp", doc.adjunto_file_name)
             libro.save(n)
-            return n
-            #send_file n, x_sendfile: true
-              #type: 'application/vnd.oasis.opendocument.text',
-              #disposition: 'attachment',
-              #filename: 'elnombre.ods'
-
+            n
+            # send_file n, x_sendfile: true
+            # type: 'application/vnd.oasis.opendocument.text',
+            # disposition: 'attachment',
+            # filename: 'elnombre.ods'
           end
 
           def impreso
@@ -128,25 +128,26 @@ module Heb412Gen
             fila = @doc.filainicial
             (1..3).each do |r|
               @doc.campohc.each do |c|
-                col = (Heb412Gen::ApplicationHelper::RANGOCOL.
-                       find_index(c.columna))+1
+                col = Heb412Gen::ApplicationHelper::RANGOCOL
+                  .find_index(c.columna) + 1
                 puts "fila=#{fila}, col=#{col}, c.nobmrecampo=#{c.nombrecampo}, r=#{r}"
-                hoja[fila, col] = fila.to_s + " - " + col.to_s + " - " + 
+                hoja[fila, col] = fila.to_s + " - " + col.to_s + " - " +
                   c.nombrecampo
               end
               fila += 1
-            end 
+            end
 
-            n=File.join('/tmp', @doc.adjunto_file_name)
+            n = File.join("/tmp", @doc.adjunto_file_name)
             libro.save(n)
 
-            send_file n, x_sendfile: true
-              #type: 'application/vnd.oasis.opendocument.text',
-              #disposition: 'attachment',
-              #filename: 'elnombre.ods'
+            send_file(n, x_sendfile: true)
+            # type: 'application/vnd.oasis.opendocument.text',
+            # disposition: 'attachment',
+            # filename: 'elnombre.ods'
           end
 
           private
+
           # Use callbacks to share common setup or constraints between actions.
           def set_doc
             @doc = Doc.find(params[:id])
@@ -162,17 +163,16 @@ module Heb412Gen
               :descripcion,
               :adjunto,
               :vista,
-              :nombremenu, 
+              :nombremenu,
               :filainicial,
-              :campohc_attributes => [
+              campohc_attributes: [
                 :id,
                 :nombrecampo,
-                :columna
-              ]
+                :columna,
+              ],
             )
           end
         end
-
       end
     end
   end

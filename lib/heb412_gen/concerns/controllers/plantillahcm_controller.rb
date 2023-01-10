@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Controllers
       module PlantillahcmController
-
         extend ActiveSupport::Concern
 
         included do
@@ -10,64 +11,72 @@ module Heb412Gen
           include Msip::FormatoFechaHelper
           include Msip::ModeloHelper
 
-          if ($".select {|x| x =~ /\/zip-/}.count > 0)
+          if $".select { |x| x =~ %r{/zip-} }.count > 0
             raise "Conflicto entre rubyzip y zip. "\
               "Eliminar gema zip"
           end
 
-          @vista= nil
+          @vista = nil
           attr_accessor :form_f
 
-          # Vuelve a pintar asociación de campos con base en elección 
+          # Vuelve a pintar asociación de campos con base en elección
           # de controlador
           def pintacampos
             @plantillahcm = Heb412Gen::Plantillahcm.new
             if params[:vista]
               vista = Msip::Ubicacion.connection.quote_string(
-                params[:vista] ).strip
+                params[:vista],
+              ).strip
               ab = ::Ability.new
               if ab.campos_plantillas[vista]
-                @plantillahcm.vista = vista 
+                @plantillahcm.vista = vista
                 @vista = vista
                 respond_to do |format|
-                  format.html {
-                    render partial: 'form_divcampos_plantillahcm',
-                      layout: false, locals: { vista: @vista }
-                  }
-                  format.js {
-                    render partial: 'form_divcampos_plantillahcm',
-                      layout: false, locals: { vista: @vista }
-                  }
-
+                  format.html do
+                    render(
+                      partial: "form_divcampos_plantillahcm",
+                      layout: false,
+                      locals: { vista: @vista },
+                    )
+                  end
+                  format.js do
+                    render(
+                      partial: "form_divcampos_plantillahcm",
+                      layout: false,
+                      locals: { vista: @vista },
+                    )
+                  end
                 end
               end
             end
           end
 
           def clase
-            'Heb412Gen::Plantillahcm'
+            "Heb412Gen::Plantillahcm"
           end
 
           def atributos_show
-            [ :id, 
-              :ruta, 
-              :fuente, 
-              :licencia, 
-              :vista, 
-              :nombremenu, 
-              :formulario, 
-              :filainicial
+            [
+              :id,
+              :ruta,
+              :fuente,
+              :licencia,
+              :vista,
+              :nombremenu,
+              :formulario,
+              :filainicial,
             ]
           end
 
           def atributos_index
-            [ :id, 
-              :vista, 
-              :nombremenu, 
-              :ruta, 
-              :licencia, 
-              :formulario, 
-              :filainicial
+            [
+              :id,
+              :vista,
+              :nombremenu,
+              :ruta,
+              :licencia,
+              :formulario,
+              :filainicial,
             ]
           end
 
@@ -77,11 +86,11 @@ module Heb412Gen
 
           # GET /plantillahcm/nueva
           def new
-            authorize! :edit, Heb412Gen::Plantillahcm
+            authorize!(:edit, Heb412Gen::Plantillahcm)
             @plantillahcm = Heb412Gen::Plantillahcm.new
-            @plantillahcm.vista = 'Usuario'
+            @plantillahcm.vista = "Usuario"
             @vista = nil
-            render :new, layout: 'layouts/application'
+            render(:new, layout: "layouts/application")
           end
 
           # Completa @plantillahcm ya guardado. Debe terminar guardando.
@@ -93,18 +102,27 @@ module Heb412Gen
             respond_to do |format|
               if plantillahcm.save
                 ordena_plantillahcm
-                format.html { 
-                  redirect_to @plantillahcm,
-                  notice: 'Plantilla para hoja de cálculo con múltiples registros creada.' }
-                format.json {
-                  render :show, 
-                  status: :created, 
-                  location: plantillahcm }
+                format.html do
+                  redirect_to(
+                    @plantillahcm,
+                    notice: "Plantilla para hoja de cálculo con múltiples registros creada.",
+                  )
+                end
+                format.json do
+                  render(
+                    :show,
+                    status: :created,
+                    location: plantillahcm,
+                  )
+                end
               else
-                format.html { render :new }
-                format.json { 
-                  render json: plantillahcm.errors, 
-                  status: :unprocessable_entity }
+                format.html { render(:new) }
+                format.json do
+                  render(
+                    json: plantillahcm.errors,
+                    status: :unprocessable_entity,
+                  )
+                end
               end
             end
           end
@@ -112,7 +130,7 @@ module Heb412Gen
           # POST /plantillahcm
           # POST /plantillahcm.json
           def create
-            authorize! :edit, Heb412Gen::Plantillahcm
+            authorize!(:edit, Heb412Gen::Plantillahcm)
             @plantillahcm = Heb412Gen::Plantillahcm.new(plantillahcm_params)
             if !@plantillahcm.nombremenu && @plantillahcm.ruta
               @plantillahcm.nombremenu = File.basename(@plantillahcm.ruta)
@@ -122,29 +140,36 @@ module Heb412Gen
 
           # GET /plantillahcm/1/edit
           def edit
-            authorize! :edit, Heb412Gen::Plantillahcm
-            render :edit, layout: 'layouts/application'
+            authorize!(:edit, Heb412Gen::Plantillahcm)
+            render(:edit, layout: "layouts/application")
           end
 
           # PATCH/PUT /plantillahcm/1
           # PATCH/PUT /plantillahcm/1.json
           def update
-            authorize! :edit, Heb412Gen::Plantillahcm
+            authorize!(:edit, Heb412Gen::Plantillahcm)
             @vista = @plantillahcm.vista
             respond_to do |format|
               if @plantillahcm.update(plantillahcm_params)
                 ordena_plantillahcm
-                format.html { 
-                  redirect_to @plantillahcm, 
-                    notice: 'Plantilla para hoja de cálculo con múltiples registros actualizada.' 
-                }
-                format.json { render :show, status: :ok, 
-                              location: @plantillahcm }
+                format.html do
+                  redirect_to(
+                    @plantillahcm,
+                    notice: "Plantilla para hoja de cálculo con múltiples registros actualizada.",
+                  )
+                end
+                format.json do
+                  render(
+                    :show,
+                    status: :ok,
+                    location: @plantillahcm,
+                  )
+                end
               else
-                format.html { render :edit }
-                format.json { 
-                  render json: @plantillahcm.errors, status: :unprocessable_entity 
-                }
+                format.html { render(:edit) }
+                format.json do
+                  render(json: @plantillahcm.errors, status: :unprocessable_entity)
+                end
               end
             end
           end
@@ -152,25 +177,29 @@ module Heb412Gen
           # DELETE /plantillahcms/1
           # DELETE /plantillahcms/1.json
           def destroy
-            authorize! :edit, Heb412Gen::Plantillahcm
+            authorize!(:edit, Heb412Gen::Plantillahcm)
             @plantillahcm.destroy
             respond_to do |format|
-              format.html { 
-                redirect_to Rails.configuration.relative_url_root,
-                  notice: 'Plantillahcm eliminado.' 
-              }
-              format.json { head :no_content }
+              format.html do
+                redirect_to(
+                  Rails.configuration.relative_url_root,
+                  notice: "Plantillahcm eliminado.",
+                )
+              end
+              format.json { head(:no_content) }
             end
           end
 
           # Llena una plantilla para multiples registros
-          #   a partir de una fuente de datos (tabla, vista o arreglo 
+          #   a partir de una fuente de datos (tabla, vista o arreglo
           #   de objetos)
           # @param nomcontrolador es cadena con nombre de controlador
-          def self.llena_plantilla_multiple_fd(plantillahcm, fd, 
-                                               nomcontrolador = nil)
-            ruta = File.join(Rails.application.config.x.heb412_ruta, 
-                             plantillahcm.ruta).to_s
+          def self.llena_plantilla_multiple_fd(plantillahcm, fd,
+            nomcontrolador = nil)
+            ruta = File.join(
+              Rails.application.config.x.heb412_ruta,
+              plantillahcm.ruta,
+            ).to_s
             puts "ruta=#{ruta}"
             libro = Rspreadsheet.open(ruta)
             hoja = libro.worksheets(1)
@@ -178,13 +207,16 @@ module Heb412Gen
             total = fd.count
             fd.each do |r|
               plantillahcm.campoplantillahcm.each do |c|
-                next if !c.columna || c.columna =='' || !c.nombrecampo || c.nombrecampo == ''
-                col = (Heb412Gen::ApplicationHelper::RANGOCOL.
-                       find_index(c.columna))+1
-                v = r[c.nombrecampo.to_sym].nil? ?
-                  r[c.nombrecampo] :
+                next if !c.columna || c.columna == "" || !c.nombrecampo || c.nombrecampo == ""
+
+                col = Heb412Gen::ApplicationHelper::RANGOCOL
+                  .find_index(c.columna) + 1
+                v = if r[c.nombrecampo.to_sym].nil?
+                  r[c.nombrecampo]
+                else
                   r[c.nombrecampo.to_sym]
-                if !v.is_a? Integer
+                end
+                unless v.is_a?(Integer)
                   v = v.to_s
                 end
 
@@ -193,37 +225,36 @@ module Heb412Gen
               end
               fila += 1
               yield(total, fila - plantillahcm.filainicial) if block_given?
-            end 
+            end
 
-            n=File.join('/tmp', File.basename(plantillahcm.ruta))
+            n = File.join("/tmp", File.basename(plantillahcm.ruta))
             libro.save(n)
 
-            return n
+            n
           end
 
-
           def self.convierte_a_extension_esperada(nfuente, ndest, extension)
-            if extension == '.ods'
+            if extension == ".ods"
               FileUtils.mv(nfuente, "#{ndest}#{extension}")
-            elsif extension == '.pdf'
+            elsif extension == ".pdf"
               if File.exist?("#{nfuente}.pdf")
                 File.delete("#{nfuente}.pdf")
               end
               dir = File.dirname(ndest)
               bn = File.basename(ndest)
               FileUtils.mv(nfuente, "/tmp/#{bn}")
-              res = `libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir}`
+              res = %x(libreoffice --headless --convert-to pdf "/tmp/#{bn}" --outdir #{dir})
               puts "OJO res=#{res}, nfuente=#{nfuente}, dir=#{dir}, bn=#{bn}"
               File.delete("/tmp/#{bn}")
 
-            elsif extension == '.xlsx'
+            elsif extension == ".xlsx"
               if File.exist?("#{nfuente}.xlsx")
                 File.delete("#{nfuente}.xlsx")
               end
               dir = File.dirname(ndest)
               bn = File.basename(ndest)
               FileUtils.mv(nfuente, "/tmp/#{bn}")
-              res = `libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir}`
+              res = %x(libreoffice --headless --convert-to xlsx "/tmp/#{bn}" --outdir #{dir})
               puts "OJO res=#{res}, nfuente=#{nfuente}, dir=#{dir}, bn=#{bn}"
               File.delete("/tmp/#{bn}")
             end
@@ -231,11 +262,9 @@ module Heb412Gen
           end
 
           def self.fila_en_blanco(hoja, numfila, maxcol)
-            col='A'
-            while hoja[numfila, col].nil? && col<=maxcol
-              col=col.next
-            end
-            return col > maxcol
+            col = "A"
+            col = col.next while hoja[numfila, col].nil? && col <= maxcol
+            col > maxcol
           end
 
           # Llena una plantilla para multiples registros
@@ -247,11 +276,14 @@ module Heb412Gen
           # @param narchent Nombre del archivo por importar
           # @param ulteditor_id identificacion de usuario que importa
           def self.llena_plantilla_multiple_importadatos(
-            plantillahcm, controlador, modelo, narchent, ulteditor_id)
+            plantillahcm, controlador, modelo, narchent, ulteditor_id
+          )
 
             puts "self.llena_plantilla. ulteditor_id=#{ulteditor_id}"
-            rutasal = File.join(Rails.application.config.x.heb412_ruta, 
-                                plantillahcm.ruta).to_s
+            rutasal = File.join(
+              Rails.application.config.x.heb412_ruta,
+              plantillahcm.ruta,
+            ).to_s
             puts "rutaent=#{rutasal}"
             librosal = Rspreadsheet.open(rutasal)
             hojasal = librosal.worksheets(1)
@@ -262,83 +294,88 @@ module Heb412Gen
 
             libroent = Rspreadsheet.open(narchent)
             hojaent = libroent.worksheets(1)
-      
+
             colerror = "A"
-            if plantillahcm.campoplantillahcm.count > 0 
-              pc = plantillahcm.campoplantillahcm.pluck(:columna).map {|l|
-                Heb412Gen::ApplicationHelper::RANGOCOL.
-                  find_index(l)
-              }
+            if plantillahcm.campoplantillahcm.count > 0
+              pc = plantillahcm.campoplantillahcm.pluck(:columna).map do |l|
+                Heb412Gen::ApplicationHelper::RANGOCOL
+                  .find_index(l)
+              end
               colerror = Heb412Gen::ApplicationHelper::RANGOCOL[pc.max + 1]
             end
-              
+
             puts "colerror=#{colerror}"
             # En total calculamos total de filas en archivo de entrada
             total = filainicial
-            if self.fila_en_blanco(hojaent, total, colerror)
+            if fila_en_blanco(hojaent, total, colerror)
               puts "No hay datos"
               # No hay datos
-              #return
+              # return
             end
             total2 = filainicial + 1
-            
-            while !self.fila_en_blanco(hojaent, total2, colerror)
+
+            until fila_en_blanco(hojaent, total2, colerror)
               total = total2
               total2 *= 2
             end
             puts "total2=#{total2}"
 
-            # Invariante hojaent.row[total] esta lleno 
+            # Invariante hojaent.row[total] esta lleno
             # y hojaent[total2] esta vacio
-            while total < total2 
+            while total < total2
               m = (total + total2) / 2
               if total == m
                 break
-              elsif self.fila_en_blanco(hojaent, m, colerror)
+              elsif fila_en_blanco(hojaent, m, colerror)
                 total2 = m
               else
                 total = m
               end
             end
 
-            filaent = 0 
+            filaent = 0
             puts "total=#{total}"
             hojaent.rows.each do |fila|
               filaent += 1
               puts "filaent=#{filaent}, fila[1]=#{fila[1]}"
               if filaent < filainicial
-                next 
+                next
               end
-              if self.fila_en_blanco(hojaent, filaent, colerror)
+              if fila_en_blanco(hojaent, filaent, colerror)
                 break
               end
+
               dreg = {}
               plantillahcm.campoplantillahcm.each do |c|
-                if !c.columna || c.columna =='' || !c.nombrecampo || 
-                  c.nombrecampo == ''
+                if !c.columna || c.columna == "" || !c.nombrecampo ||
+                    c.nombrecampo == ""
                   next
                 end
+
                 dreg[c.nombrecampo.to_sym] = fila[c.columna]
-                if fila[c.columna] && fila[c.columna].class.to_s == 'Float' &&
-                  fila[c.columna] == fila[c.columna].to_i
-                  dreg[c.nombrecampo.to_sym] = fila[c.columna].to_i
+                dreg[c.nombrecampo.to_sym] = if fila[c.columna] && fila[c.columna].class.to_s == "Float" &&
+                    fila[c.columna] == fila[c.columna].to_i
+                  fila[c.columna].to_i
                 else
-                  dreg[c.nombrecampo.to_sym] = fila[c.columna]
+                  fila[c.columna]
                 end
                 # Aqui podrían ponerse ayudadores generales para la
                 # conversión dependiendo del tipo del campo
               end
-              # Ayudadores particulares y el que sabe como crear el 
+              # Ayudadores particulares y el que sabe como crear el
               # registro en la base de datos
-              menserror = ''
+              menserror = ""
               datossal = {}
-              registro = controlador.importa_dato(dreg.clone, datossal, 
-                                                  menserror)
-              if !registro.nil? && menserror == ''
-                if registro.validate()
+              registro = controlador.importa_dato(
+                dreg.clone,
+                datossal,
+                menserror,
+              )
+              if !registro.nil? && menserror == ""
+                if registro.validate
                   begin
                     registro.save
-                    if registro.errors.messages && 
+                    if registro.errors.messages &&
                         registro.errors.messages.count > 0
                       menserror << " Se guardo en base de datos con identificacion #{registro.id}, se sugiere no volver a importar sino arreglar en base: " + registro.errors.messages.to_s
                     end
@@ -347,39 +384,38 @@ module Heb412Gen
                   end
                   puts "Por llamar controlador.complementa_importa_dato con ulteditor_id=#{ulteditor_id}"
                   controlador.complementa_importa_dato(
-                    registro, ulteditor_id, datossal, menserror)
-                else
-                  if registro.errors.messages
-                    menserror << " " + registro.errors.messages.to_s
-                  end
+                    registro, ulteditor_id, datossal, menserror
+                  )
+                elsif registro.errors.messages
+                  menserror << " " + registro.errors.messages.to_s
                 end
               end
-              if menserror != ''
+              if menserror != ""
                 plantillahcm.campoplantillahcm.each do |c|
-                  if !c.columna || c.columna == '' || !c.nombrecampo || 
-                    c.nombrecampo == ''
+                  if !c.columna || c.columna == "" || !c.nombrecampo ||
+                      c.nombrecampo == ""
                     next
                   end
+
                   v = dreg[c.nombrecampo.to_sym]
-                  if !v.is_a? Integer
+                  unless v.is_a?(Integer)
                     v = v.to_s
                   end
-                  col = (Heb412Gen::ApplicationHelper::RANGOCOL.
-                         find_index(c.columna))+1
+                  col = Heb412Gen::ApplicationHelper::RANGOCOL
+                    .find_index(c.columna) + 1
                   hojasal[filasal, col] = v
                 end
                 hojasal[filasal, colerror] = menserror
                 filasal += 1
               end
               yield(total, filaent - plantillahcm.filainicial) if block_given?
-            end 
+            end
 
-            n=File.join('/tmp', File.basename(plantillahcm.ruta))
+            n = File.join("/tmp", File.basename(plantillahcm.ruta))
             librosal.save(n)
 
-            return n
+            n
           end
-
 
           def impreso
             fd = []
@@ -389,80 +425,92 @@ module Heb412Gen
                 reg[c.nombrecampo] = nr.to_s + " - " + c.nombrecampo
               end
               fd << reg
-            end 
+            end
             n = Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(
-              @plantillahcm, fd)
-            send_file n, x_sendfile: true
-              #type: 'application/vnd.oasis.openplantillahcmument.text',
-              #disposition: 'attachment',
-              #filename: 'elnombre.ods'
+              @plantillahcm, fd
+            )
+            send_file(n, x_sendfile: true)
+            # type: 'application/vnd.oasis.openplantillahcmument.text',
+            # disposition: 'attachment',
+            # filename: 'elnombre.ods'
           end
 
           def importadatos
             if params && params[:filtro] &&
-              params[:filtro][:plantillahcm_id] && params[:filtro][:archivo]
+                params[:filtro][:plantillahcm_id] && params[:filtro][:archivo]
 
-              if params[:filtro][:plantillahcm_id].to_i <= 0 
+              if params[:filtro][:plantillahcm_id].to_i <= 0
                 puts "Id de plantilla no valido #{params[:filtro][:plantillahcm_id]}"
-                head :no_content 
+                head(:no_content)
                 return
               end
               if Heb412Gen::Plantillahcm.where(
-                id: params[:filtro][:plantillahcm_id].to_i).take.nil?
-                head :no_content 
-                  puts "No se encuentra plantilla #{params[:filtro][:plantillahcm_id]}"
+                id: params[:filtro][:plantillahcm_id].to_i,
+              ).take.nil?
+                head(:no_content)
+                puts "No se encuentra plantilla #{params[:filtro][:plantillahcm_id]}"
                 return
               end
 
-              nombre = Heb412Gen::ApplicationHelper.
-                sanea_nombre(params[:filtro][:archivo].original_filename)
+              nombre = Heb412Gen::ApplicationHelper
+                .sanea_nombre(params[:filtro][:archivo].original_filename)
 
               rr1 = Rails.application.config.x.heb412_ruta.join("./generados/")
               rr2 = rr1.join(nombre)
-              logger.debug "~ rr2=#{rr2.to_s}"
+              logger.debug("~ rr2=#{rr2}")
               io = params[:filtro][:archivo]
-              File.open(rr2, 'wb') do |file|
+              File.open(rr2, "wb") do |file|
                 file.write(io.read)
               end
 
-              pl = Heb412Gen::Plantillahcm.
-                find(params[:filtro][:plantillahcm_id].to_i)
+              pl = Heb412Gen::Plantillahcm
+                .find(params[:filtro][:plantillahcm_id].to_i)
               ab = current_ability ? current_ability : ::Ability.new
               if ab.campos_plantillas[pl.vista].nil?
-                head :no_content 
+                head(:no_content)
                 puts "No se puede manejar vista #{pl.vista}"
                 return
               end
-              controlador = ab.campos_plantillas[pl.vista][:controlador].
-                constantize
-              authorize! :edit, controlador.new.clase.constantize
+              controlador = ab.campos_plantillas[pl.vista][:controlador]
+                .constantize
+              authorize!(:edit, controlador.new.clase.constantize)
               rarch = File.join(
-                '/generados/', File.basename(nombre, '.ods').to_s + 
-                "-" + DateTime.now.strftime('%Y%m%d%H%M%S')
+                "/generados/", File.basename(nombre, ".ods").to_s +
+                "-" + DateTime.now.strftime("%Y%m%d%H%M%S")
               ).to_s
-              narch = File.join(Rails.application.config.x.heb412_ruta, 
-                                rarch)
+              narch = File.join(
+                Rails.application.config.x.heb412_ruta,
+                rarch,
+              )
               puts "narch=#{narch}"
-              extension = '.ods'
+              extension = ".ods"
               FileUtils.touch(narch + "#{extension}-0")
-              flash[:notice] = 
-                "Se programó la generación del archivo con problemas de 
-                   importación #{rarch}#{extension}, por favor refresque 
-                   hasta verlo generado, después examine los errores que 
+              flash[:notice] =
+                "Se programó la generación del archivo con problemas de
+                   importación #{rarch}#{extension}, por favor refresque
+                   hasta verlo generado, después examine los errores que
                    indique, solucionelos e importelo."
-              rutaurl = File.join(heb412_gen.sisini_path, 
-                                  '/generados').to_s
+              rutaurl = File.join(
+                heb412_gen.sisini_path,
+                "/generados",
+              ).to_s
 
               Heb412Gen::ImportalistadoJob.perform_later(
-                pl.id, controlador.to_s, rr2.to_s, narch, extension, 
-                current_usuario.id)
-              redirect_to rutaurl, format: 'html'
+                pl.id,
+                controlador.to_s,
+                rr2.to_s,
+                narch,
+                extension,
+                current_usuario.id,
+              )
+              redirect_to(rutaurl, format: "html")
               return
             end
-            render 'importadatos', layout: 'application'
+            render("importadatos", layout: "application")
           end
 
           private
+
           # Use callbacks to share common setup or constraints between actions.
           def set_plantillahcm
             @plantillahcm = Plantillahcm.find(params[:id])
@@ -473,18 +521,17 @@ module Heb412Gen
               :filainicial,
               :fuente,
               :licencia,
-              :nombremenu, 
+              :nombremenu,
               :ruta,
               :vista,
-              :campoplantillahcm_attributes => [
+              campoplantillahcm_attributes: [
                 :id,
                 :nombrecampo,
                 :columna,
-                :_destroy
+                :_destroy,
               ],
-              :formulario_ids => []
+              formulario_ids: [],
             ]
-
           end
 
           # Never trust parameters from the scary internet, only allow the white list through.
@@ -492,7 +539,6 @@ module Heb412Gen
             params.require(:plantillahcm).permit(lista_params_heb412)
           end
         end
-
       end
     end
   end

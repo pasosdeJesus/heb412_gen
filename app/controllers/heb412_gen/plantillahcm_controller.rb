@@ -1,13 +1,18 @@
-require 'heb412_gen/concerns/controllers/plantillahcm_controller'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/controllers/plantillahcm_controller"
 
 module Heb412Gen
   class PlantillahcmController < Msip::ModelosController
- 
-    before_action :set_plantillahcm, only: [:edit, :update, :destroy, 
-                                            :show, :impreso]
-    load_and_authorize_resource  class: Heb412Gen::Plantillahcm
+    before_action :set_plantillahcm, only: [
+      :edit,
+      :update,
+      :destroy,
+      :show,
+      :impreso,
+    ]
+    load_and_authorize_resource class: Heb412Gen::Plantillahcm
 
-    include Heb412Gen::Concerns::Controllers::PlantillahcmController    
-
+    include Heb412Gen::Concerns::Controllers::PlantillahcmController
   end
 end

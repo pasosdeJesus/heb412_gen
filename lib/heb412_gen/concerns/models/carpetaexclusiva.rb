@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Models
@@ -6,23 +8,19 @@ module Heb412Gen
         include Msip::Modelo
 
         included do
-
-          belongs_to :grupo, 
-            class_name: 'Msip::Grupo',
-            foreign_key: 'grupo_id', 
-            validate: true, 
+          belongs_to :grupo,
+            class_name: "Msip::Grupo",
+            validate: true,
             optional: false
 
           validates :carpeta, presence: true, length: { maximum: 2047 }
-
         end # included
 
-        class_methods do 
+        class_methods do
           def modelos_path
-            'carpetasexclusivas_path'
+            "carpetasexclusivas_path"
           end
         end
-
       end
     end
   end

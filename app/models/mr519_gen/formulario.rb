@@ -1,4 +1,6 @@
-require 'heb412_gen/concerns/models/formulario'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/models/formulario"
 
 module Mr519Gen
   class Formulario < ActiveRecord::Base

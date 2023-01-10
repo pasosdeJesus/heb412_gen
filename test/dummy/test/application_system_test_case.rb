@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require_relative "../../../test/test_helper"
 require "capybara/cuprite"
-
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   Capybara.javascript_driver = :cuprite

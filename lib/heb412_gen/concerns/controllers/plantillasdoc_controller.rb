@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Controllers
       module PlantillasdocController
-
         extend ActiveSupport::Concern
 
         included do
@@ -11,7 +12,7 @@ module Heb412Gen
           include Msip::ModeloHelper
           helper ::ApplicationHelper
 
-          def clase 
+          def clase
             "Heb412Gen::Plantilladoc"
           end
 
@@ -24,7 +25,7 @@ module Heb412Gen
           end
 
           def atributos_form
-            atributos_show - ['id']
+            atributos_show - ["id"]
           end
 
           def index_reordenar(c)
@@ -32,11 +33,11 @@ module Heb412Gen
           end
 
           def new_modelo_path(o)
-            return new_plantilladoc_path()
+            new_plantilladoc_path
           end
 
           def genclase
-            return 'F'
+            "F"
           end
 
           private
@@ -44,7 +45,8 @@ module Heb412Gen
           def set_plantilladoc
             @registro = @plantilladoc = Heb412Gen::Plantilladoc.find(
               Heb412Gen::Plantilladoc.connection.quote_string(
-                params[:id]).to_i
+                params[:id],
+              ).to_i,
             )
           end
 
@@ -52,11 +54,8 @@ module Heb412Gen
           def plantilladoc_params
             params.require(:plantilladoc).permit(*atributos_form)
           end
-
         end # included
-
       end
     end
   end
 end
-

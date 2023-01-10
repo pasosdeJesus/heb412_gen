@@ -1,13 +1,18 @@
-require 'heb412_gen/concerns/controllers/plantillahcr_controller'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/controllers/plantillahcr_controller"
 
 module Heb412Gen
   class PlantillahcrController < Msip::ModelosController
- 
-    before_action :set_plantillahcr, only: [:edit, :update, :destroy, 
-                                            :show, :impreso]
-    load_and_authorize_resource  class: Heb412Gen::Plantillahcr
+    before_action :set_plantillahcr, only: [
+      :edit,
+      :update,
+      :destroy,
+      :show,
+      :impreso,
+    ]
+    load_and_authorize_resource class: Heb412Gen::Plantillahcr
 
-    include Heb412Gen::Concerns::Controllers::PlantillahcrController    
-
+    include Heb412Gen::Concerns::Controllers::PlantillahcrController
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class PlantillaReportePersona < ActiveRecord::Migration[6.0]
   def up
-    execute <<-SQL
+    execute(<<-SQL)
       INSERT INTO public.heb412_gen_plantillahcr (id, ruta, fuente, licencia, vista, nombremenu) VALUES (7, 'plantillas/reporte_persona.ods', 'Pasos de Jesús', 'Dominio Público', 'Persona', 'Datos de persona');
 
       INSERT INTO public.heb412_gen_campoplantillahcr (id, plantillahcr_id, nombrecampo, columna, fila) VALUES (700, 7, 'id', 'B', 6);
@@ -20,7 +22,7 @@ class PlantillaReportePersona < ActiveRecord::Migration[6.0]
   end
 
   def down
-    execute <<-SQL
+    execute(<<-SQL)
       DELETE FROM heb412_gen_campoplantillahcr WHERE id>=700 AND id<=712;
       DELETE FROM heb412_gen_plantillahcr WHERE id=7;
     SQL

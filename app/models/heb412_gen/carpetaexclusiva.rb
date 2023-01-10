@@ -1,4 +1,6 @@
-require 'heb412_gen/concerns/models/carpetaexclusiva'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/models/carpetaexclusiva"
 
 module Heb412Gen
   class Carpetaexclusiva < ActiveRecord::Base

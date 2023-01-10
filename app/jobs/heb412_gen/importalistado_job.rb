@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   class ImportalistadoJob < ApplicationJob
     queue_as :default
- 
+
     # Llena plantilla hoja de calculo con id idplantilla
     # a partir de los datos del modelo cmodelo con identificaciones ids,
     # empleando funciones de clase del controlador ccontrolador
@@ -17,30 +19,31 @@ module Heb412Gen
       plant = Heb412Gen::Plantillahcm.find(idplantilla)
       controlador = nomcontrolador.constantize.new
       modelo = controlador.clase
-      #fd = controlador.arch_a_fd(narchent, 
-      #                           plant.campoplantillahcm.map(&:nombrecampo) + 
+      # fd = controlador.arch_a_fd(narchent,
+      #                           plant.campoplantillahcm.map(&:nombrecampo) +
       #                          ['_errores'])
       ultp = 0
-      n = Heb412Gen::PlantillahcmController.
-        llena_plantilla_multiple_importadatos(
-          plant, controlador, modelo, narchent, ulteditor_id) do |t, i|
+      n = Heb412Gen::PlantillahcmController
+        .llena_plantilla_multiple_importadatos(
+          plant, controlador, modelo, narchent, ulteditor_id
+        ) do |t, i|
         p = 0
-        if t>0
-          p = 100*i/t
+        if t > 0
+          p = 100 * i / t
         end
         if p != ultp
-          FileUtils.mv("#{narcherr}#{extension}-#{ultp}", 
-                       "#{narcherr}#{extension}-#{p}")
-                       ultp = p
+          FileUtils.mv(
+            "#{narcherr}#{extension}-#{ultp}",
+            "#{narcherr}#{extension}-#{p}",
+          )
+          ultp = p
         end
       end
-      if !n.nil?
+      unless n.nil?
         FileUtils.rm("#{narcherr}#{extension}-#{ultp}")
-        Heb412Gen::PlantillahcmController::
-          convierte_a_extension_esperada(n, narcherr, extension)
+        Heb412Gen::PlantillahcmController
+          .convierte_a_extension_esperada(n, narcherr, extension)
       end
     end
-
   end
 end
-

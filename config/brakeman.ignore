@@ -1,0 +1,788 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "04632d1406447615dbca1b317ef97331c76d7cee34228d53aae5716b77788d99",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/controllers/heb412_gen/modelos_controller.rb",
+      "line": 371,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to xlsx \"#{Heb412Gen::PlantillahcrController.llena_plantilla_fd(Heb412Gen::Plantillahcr.find(plantilla_id), @registro)}\" --outdir '/tmp'`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::ModelosController",
+        "method": "genera_xlsx_de_ods"
+      },
+      "user_input": "Heb412Gen::PlantillahcrController.llena_plantilla_fd(Heb412Gen::Plantillahcr.find(plantilla_id), @registro)",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "08bfb395b413b1410294d1a4204a161a395a6ce61b4e95517b5689e397b5cb2b",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 226,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to xlsx \"/tmp/#{File.basename(ndest)}\" --outdir #{File.dirname(ndest)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "Heb412Gen::PlantillahcmController.convierte_a_extension_esperada"
+      },
+      "user_input": "File.basename(ndest)",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "0d86b84f6599ed3a4b6bee242cdd8996b5e0a876893ae7725d3552e7133e493d",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/sisarch_controller.rb",
+      "line": 168,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:nueva][:nombre])).to_s, :mode => 448)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::SisarchController",
+        "method": "nueva_carpeta"
+      },
+      "user_input": "params[:nueva][:nombre]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "0dd4424e8e98e53cb294fb7c91d422ff992347ca1764dc7cbe8fffd54fe34922",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 75,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mv(((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end), \"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "162792dac368614c54a31121a8271954ea70a53ceb8cbe35396fb941d611eb54",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 215,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to pdf \"/tmp/#{File.basename(ndest)}\" --outdir #{File.dirname(ndest)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "Heb412Gen::PlantillahcmController.convierte_a_extension_esperada"
+      },
+      "user_input": "File.basename(ndest)",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "16b9dfbded27004bc02b78524493370313df01a60f390803bcf073fce90a2407",
+      "check_name": "SendFile",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/sisarch_controller.rb",
+      "line": 144,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Rails.application.config.x.heb412_ruta.join((\"./\" + @ruta)).join(params[:descarga].gsub(er_buen_nombre_conesp, \"\")), :x_sendfile => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::SisarchController",
+        "method": "index"
+      },
+      "user_input": "params[:descarga].gsub(er_buen_nombre_conesp, \"\")",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "1fd42b9709b60b573fba565f0150e6bfaec64912d0d740c09bc1f4aa1909d5c5",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 447,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.touch((File.join(Rails.application.config.x.heb412_ruta, File.join(\"/generados/\", ((File.basename(Heb412Gen::ApplicationHelper.sanea_nombre(params[:filtro][:archivo].original_filename), \".ods\").to_s + \"-\") + DateTime.now.strftime(\"%Y%m%d%H%M%S\"))).to_s) + \"#{\".ods\"}-0\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "params[:filtro][:archivo].original_filename",
+      "confidence": "High",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "28629772c570ae73be93701e80b8a2871394e1912d0d5f3c448ea94dd5f9ca76",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 91,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.delete(\"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "33553f87c79d4f106cb18f06ac7601c0584fcaaa7d63cfc090c09e66d2e0e2f5",
+      "check_name": "SendFile",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/modelos_controller.rb",
+      "line": 264,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file((genera_odt(params[:idplantilla].to_i, \"\") or (genera_ods(params[:idplantilla].to_i, \"\") or genera_xlsx_de_ods(params[:idplantilla].to_i, \"\"))), :type => (((\"\" or \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\") or \"application/vnd.oasis.opendocument.spreadsheet\") or \"application/vnd.oasis.opendocument.text\").to_s, :disposition => \"attachment\", :filename => \"\".to_s)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::ModelosController",
+        "method": "fichaimp"
+      },
+      "user_input": "params[:idplantilla]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "3b0ad32a3d37719b8fd2bde2e261683e70001bb7e4eb2b5c712eab9655f42756",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on model attribute",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 438,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "(current_ability or ::Ability.new).campos_plantillas[Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista][:controlador].constantize.new.clase.constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista",
+      "confidence": "Medium",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "56adf03f5cb1ca61c9c02b5c3091bb2c6cba09070b6522c8e306f68036d85abb",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/sisarch_controller.rb",
+      "line": 191,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:nuevo][:archivo].original_filename)), \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::SisarchController",
+        "method": "nuevo_archivo"
+      },
+      "user_input": "params[:nuevo][:archivo].original_filename",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "58be10853aa633bf3931535a449024226f25218048aad9bfc7dcac8be609401f",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on model attribute",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 436,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "(current_ability or ::Ability.new).campos_plantillas[Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista][:controlador].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista",
+      "confidence": "Medium",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "58be10853aa633bf3931535a449024226f25218048aad9bfc7dcac8be609401f",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on model attribute",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 438,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "(current_ability or ::Ability.new).campos_plantillas[Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista][:controlador].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista",
+      "confidence": "Medium",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "58be10853aa633bf3931535a449024226f25218048aad9bfc7dcac8be609401f",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on model attribute",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 457,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "(current_ability or ::Ability.new).campos_plantillas[Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista][:controlador].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista",
+      "confidence": "Medium",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "5fe5b3e91ae2957c70a4230bfe72a33451fce67fbb49fa33df4a21be107ff457",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/sisarch_controller.rb",
+      "line": 191,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:nuevo][:archivo].original_filename)), \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::SisarchController",
+        "method": "nuevo_archivo"
+      },
+      "user_input": "params[:nuevo][:archivo].original_filename",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "63b2df2ebe3b617ea9491b17ae32ed78c20793a159357a62337305e0e4c5a8f2",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 447,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.touch((File.join(Rails.application.config.x.heb412_ruta, File.join(\"/generados/\", ((File.basename(Heb412Gen::ApplicationHelper.sanea_nombre(params[:filtro][:archivo].original_filename), \".ods\").to_s + \"-\") + DateTime.now.strftime(\"%Y%m%d%H%M%S\"))).to_s) + \"#{\".ods\"}-0\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "params[:filtro][:archivo].original_filename",
+      "confidence": "High",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "676bae7b9813d76b96eab3e7f4e723cc7eec0f68443f9ecddb3cb9c7ed7a077f",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/sisarch_controller.rb",
+      "line": 219,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.delete(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:arc])))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::SisarchController",
+        "method": "eliminar_archivo"
+      },
+      "user_input": "params[:arc]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "6bc62ed63e99761a58e5961cd494d77ba7962654459d6f4f31b2f1103548ddc5",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/sisarch_controller.rb",
+      "line": 168,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:nueva][:nombre])).to_s, :mode => 448)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::SisarchController",
+        "method": "nueva_carpeta"
+      },
+      "user_input": "params[:nueva][:nombre]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "6be7294376107c84c0cddb7565a387229fcf9fdc6b48d84a1ac93068c1ff530d",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/heb412_gen/modelos_controller.rb",
+      "line": 193,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.touch((File.join(Rails.application.config.x.heb412_ruta, File.join(\"/generados/\", ((File.basename(Heb412Gen::Plantillahcm.find(params[:idplantilla].to_i).ruta, \".ods\").to_s + \"-\") + DateTime.now.strftime(\"%Y%m%d%H%M%S\"))).to_s) + \"#{extension}-0\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::ModelosController",
+        "method": "programa_generacion_listado"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:idplantilla].to_i).ruta",
+      "confidence": "High",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "6cba221fdf86e71b96c4e047a1467e247a5b4b009d53c19f1d622ffb6c63dd68",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/controllers/heb412_gen/modelos_controller.rb",
+      "line": 287,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to pdf \"#{(genera_odt(params[:idplantilla].to_i, \"\") or genera_ods(params[:idplantilla].to_i, \"\"))}\" --outdir /tmp/`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::ModelosController",
+        "method": "fichapdf"
+      },
+      "user_input": "params[:idplantilla]",
+      "confidence": "High",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "70499e498b62eb7652cdf61e4ff40922ab06b22e5a1ad1132cca3e4c1f6929ec",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 84,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to ods \"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\" --outdir #{File.dirname(narch)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "High",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "7605473df2d90c84dc5128c2e2f650e99826b56bc7c6b2db054dc5b61fbba18e",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/sisarch_controller.rb",
+      "line": 237,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.rmdir(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:dir])))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::SisarchController",
+        "method": "eliminar_directorio"
+      },
+      "user_input": "params[:dir]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "7edc9fcd9586f96bac5b379674fea3ad641dcf2be13402c4a72f874fe84fa115",
+      "check_name": "SendFile",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/sisarch_controller.rb",
+      "line": 144,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Rails.application.config.x.heb412_ruta.join((\"./\" + @ruta)).join(params[:descarga].gsub(er_buen_nombre_conesp, \"\")), :x_sendfile => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::SisarchController",
+        "method": "index"
+      },
+      "user_input": "params[:descarga].gsub(er_buen_nombre_conesp, \"\")",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "b4734be5d78baddbdce8746f6102f1c3b13273764d7edb4b0b77c437eb27fe77",
+      "check_name": "FileAccess",
+      "message": "Model attribute used in file name",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 67,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mv(((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end), \"#{narch}#{extension}\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "bd7cc05c94739bb8925a090c74d6d7167a91253d5218a08f5503821770bf0793",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/sisarch_controller.rb",
+      "line": 219,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.delete(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:arc])))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::SisarchController",
+        "method": "eliminar_archivo"
+      },
+      "user_input": "params[:arc]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "be20c23d1a434acf652ed7f62d8b39383763ea0c0c7b93d7ac8fcda8576685f4",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 79,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to pdf \"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\" --outdir #{File.dirname(narch)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "High",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "be20c23d1a434acf652ed7f62d8b39383763ea0c0c7b93d7ac8fcda8576685f4",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 87,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to pdf \"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\" --outdir #{File.dirname(narch)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "High",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "d6368adc1fd89a4618008679f01af30c73d859ca1d33ee4faf8886df06966e11",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/sisarch_controller.rb",
+      "line": 237,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.rmdir(Rails.application.config.x.heb412_ruta.join(\"./#{@ruta}\").join(sanea_nombre(params[:dir])))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::SisarchController",
+        "method": "eliminar_directorio"
+      },
+      "user_input": "params[:dir]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "db59cb41f8180fb910a53a4f759766ff32abb80c2d544375dcfec3ea84f46bcb",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "app/jobs/heb412_gen/generalistado_job.rb",
+      "line": 81,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to xlsx \"/tmp/#{File.basename(narch)}#{((\".\" + ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or Heb412Gen::PlantillahcmController.llena_plantilla_multiple_fd(Heb412Gen::Plantillahcm.find(idplantilla), ((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)) or ccontrolador.constantize.cons_a_fd((ccontrolador.constantize.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, extension, campoid, params) or Heb412Gen::ModelosController.vista_listado(Heb412Gen::Plantillahcm.find(idplantilla), ids, cmodelo.constantize, narch, parsimp, campoid, params)), Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm.map(&:nombrecampo)))) do\n p = 0\np = ((100 * i) / t) if (t > 0)\nif ((0 or ((100 * i) / t)) != 0) then\n  FileUtils.mv(\"#{narch}#{extension}-#{0}\", \"#{narch}#{extension}-#{(0 or ((100 * i) / t))}\")\n  ultp = (0 or ((100 * i) / t))\nend\n end).split(\".\")[-1]) or \".ods\")}\" --outdir #{File.dirname(narch)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::GeneralistadoJob",
+        "method": "perform"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(idplantilla).campoplantillahcm",
+      "confidence": "High",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "e947f9c233153fffdb5a15a114b0b946ef3901ae3389a02322684832d9c772fd",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 226,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to xlsx \"/tmp/#{File.basename(ndest)}\" --outdir #{File.dirname(ndest)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "s(:self).convierte_a_extension_esperada"
+      },
+      "user_input": "File.basename(ndest)",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "ea172d0dce5890e6bd4f64c1ba6cb05590c68f38eafa03ea58bcf54564812115",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on model attribute",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 436,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "(current_ability or ::Ability.new).campos_plantillas[Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista][:controlador].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "Heb412Gen::Plantillahcm.find(params[:filtro][:plantillahcm_id].to_i).vista",
+      "confidence": "Medium",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "ec34eb7ceb9384ee2dccfb02dc4897720a173e89383a748c2f504093879f0931",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 424,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(Rails.application.config.x.heb412_ruta.join(\"./generados/\").join(Heb412Gen::ApplicationHelper.sanea_nombre(params[:filtro][:archivo].original_filename)), \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "params[:filtro][:archivo].original_filename",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "f92bd24e1905961477602c56243c92adce2fab632291ed5f3e8b89bd74d7eaed",
+      "check_name": "Execute",
+      "message": "Possible command injection",
+      "file": "lib/heb412_gen/concerns/controllers/plantillahcm_controller.rb",
+      "line": 215,
+      "link": "https://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`libreoffice --headless --convert-to pdf \"/tmp/#{File.basename(ndest)}\" --outdir #{File.dirname(ndest)}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::Concerns::Controllers::PlantillahcmController",
+        "method": "s(:self).convierte_a_extension_esperada"
+      },
+      "user_input": "File.basename(ndest)",
+      "confidence": "Medium",
+      "cwe_id": [
+        77
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "feecbfc2d35a0fae6ab6f1cc9fe8b34d2ad823cb6666fb6f05654dbdadfcda81",
+      "check_name": "FileAccess",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/heb412_gen/plantillahcm_controller.rb",
+      "line": 424,
+      "link": "https://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(Rails.application.config.x.heb412_ruta.join(\"./generados/\").join(Heb412Gen::ApplicationHelper.sanea_nombre(params[:filtro][:archivo].original_filename)), \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Heb412Gen::PlantillahcmController",
+        "method": "importadatos"
+      },
+      "user_input": "params[:filtro][:archivo].original_filename",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2023-01-10 06:45:07 -0500",
+  "brakeman_version": "5.4.0"
+}

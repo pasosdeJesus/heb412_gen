@@ -1,4 +1,6 @@
-$:.push File.expand_path("../lib", __FILE__)
+# frozen_string_literal: true
+
+$:.push(File.expand_path("../lib", __FILE__))
 
 # Maintain your gem's version:
 require "heb412_gen/version"
@@ -15,10 +17,9 @@ Gem::Specification.new do |s|
   s.license     = "Dominio Público de acuerdo a Legislación Colombiana"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA", "Rakefile", "README.md"]
-  s.test_files = Dir["test/**/*"]
 
-  s.add_runtime_dependency "msip"
-  s.add_runtime_dependency "mr519_gen"
-  s.add_runtime_dependency "rspreadsheet"
-  s.add_runtime_dependency "redcarpet"
+  s.add_runtime_dependency("mr519_gen")
+  s.add_runtime_dependency("msip")
+  s.add_runtime_dependency("redcarpet")
+  s.add_runtime_dependency("rspreadsheet")
 end

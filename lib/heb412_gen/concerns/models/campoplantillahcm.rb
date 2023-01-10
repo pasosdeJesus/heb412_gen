@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Models
@@ -5,28 +7,27 @@ module Heb412Gen
         extend ActiveSupport::Concern
 
         included do
+          belongs_to :plantillahcm,
+            class_name: "::Heb412Gen::Plantillahcm",
+            validate: true,
+            optional: false
 
-          belongs_to :plantillahcm, class_name: '::Heb412Gen::Plantillahcm',
-            foreign_key: 'plantillahcm_id', validate: true, optional: false
-
-          validates :nombrecampo, 
+          validates :nombrecampo,
             presence: true,
             allow_blank: false,
-            length: { minimum: 1, maximum: 183}
-          # El máximo es para permitir formulario.camposm.valor con 
+            length: { minimum: 1, maximum: 183 }
+          # El máximo es para permitir formulario.camposm.valor con
           # cada parte de 60 caracteres
 
-          validates :columna, 
-            uniqueness: { 
-            scope: :plantillahcm_id, 
-            message: "no puede haber columnas repetidas" },
+          validates :columna,
+            uniqueness: {
+              scope: :plantillahcm_id,
+              message: "no puede haber columnas repetidas",
+            },
             presence: true,
             allow_blank: false,
-            length: { minimum: 1}
-          
-
+            length: { minimum: 1 }
         end # included
-
       end
     end
   end

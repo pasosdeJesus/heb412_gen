@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ReservaPlantillasPersonaYActorsocial < ActiveRecord::Migration[5.2]
   def change
-    execute <<-SQL
+    execute(<<-SQL)
 
       INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (12, 'plantillas/listado_personas.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Persona', 'Listado completo de personas', 4);
       INSERT INTO public.heb412_gen_plantillahcm (id, ruta, fuente, licencia, vista, nombremenu, filainicial) VALUES (13, 'plantillas/listado_actoressociales.ods', 'Pasos de Jesús', 'Dominio público de acuerdo a legislación colombiana', 'Actorsocial', 'Listado completo de actores sociales', 4);
