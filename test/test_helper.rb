@@ -3,7 +3,8 @@
 ENV["RAILS_ENV"] ||= "test"
 
 require "simplecov"
-SimpleCov.start
+Zeitwerk::Loader.eager_load_all # buscando que simplecov cubra más
+
 require_relative "dummy/config/environment"
 require "rails/test_help"
 
