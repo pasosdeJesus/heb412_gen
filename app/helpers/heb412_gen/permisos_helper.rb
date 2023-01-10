@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module PermisosHelper
-
     # Concepto de permisos estilo "GMI - Grupo muy importante" (se parece a
     # una sala VIP que dentro puede tener subsalas aún más VIP)
     #
@@ -12,30 +13,32 @@ module Heb412Gen
     # Cuando una carpeta (no raíz) se marca como exclusiva para uno o más
     # grupos, todos sus archivos y subcarpetas recursivamente son exclusivas
     # para esos grupos.
-    # Cuando se define la exclusividad de una carpeta para uno o más grupos, 
+    # Cuando se define la exclusividad de una carpeta para uno o más grupos,
     # sólo puede ser entre los grupos permitidos para la carpeta mamá.
     def permiso_ver_leer(ruta, carpeta, usuario)
-      if usuario.rol == Ability::ROLADMIN || usuario.rol == Ability::ROLDIR || 
-          ruta == '/'
+      if usuario.rol == Ability::ROLADMIN || usuario.rol == Ability::ROLDIR ||
+          ruta == "/"
         return true
       end
+
       carpetabase = carpeta ? ruta : File.dirname(ruta)
-      p = carpetabase.split('/')
-      (1..p.length-1).each do |i|
-        e = ''
+      p = carpetabase.split("/")
+      (1..p.length - 1).each do |i|
+        e = ""
         (1..i).each do |j|
-          e += '/' + p[j]
+          e += "/" + p[j]
         end
-        #byebug
+        # byebug
         if Heb412Gen::Carpetaexclusiva.where(carpeta: e).count > 0 &&
-            Heb412Gen::Carpetaexclusiva.where(carpeta: e, 
-                                              grupo: usuario.msip_grupo).count == 0
+            Heb412Gen::Carpetaexclusiva.where(
+              carpeta: e,
+              grupo: usuario.msip_grupo,
+            ).count == 0
           return false
         end
       end
-      return true
+      true
     end
     module_function :permiso_ver_leer
-
   end
 end

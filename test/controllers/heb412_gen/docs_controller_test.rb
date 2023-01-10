@@ -15,9 +15,10 @@ module Heb412Gen
 
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
-      @doc =  Heb412Gen::Doc.create PRUEBA_DOC
+      @doc =  Heb412Gen::Doc.create(PRUEBA_DOC)
       @doc.adjunto = File.new(Rails.root + "db/seeds.rb")
-      assert @doc.valid?
+
+      assert_predicate @doc, :valid?
       @doc.save
     end
 
@@ -54,18 +55,18 @@ module Heb412Gen
 
     test "debe crear nueva" do
       # Arreglamos indice
-      #Msip::Doc.connection.execute(<<-SQL.squish)
+      # Msip::Doc.connection.execute(<<-SQL.squish)
       #  SELECT setval('public.heb412_gen.doc_id_seq', MAX(id))#{" "}
       #    FROM public.heb412_gen.doc;
-      #SQL
-      arch = fixture_file_upload 'ico.png'
+      # SQL
+      arch = fixture_file_upload("ico.png")
       assert_difference("Doc.count") do
         post heb412_gen.docs_path, params: {
           doc: @doc.attributes.merge(
-            id: nil, 
-            nombre: 'X',
-            adjunto: arch
-          )
+            id: nil,
+            nombre: "X",
+            adjunto: arch,
+          ),
         }
       end
 
@@ -75,7 +76,7 @@ module Heb412Gen
     test "debe actualizar existente" do
       patch heb412_gen.doc_path(@doc.id),
         params: {
-          doc: @doc.attributes.merge("nombre": 'Z')
+          doc: @doc.attributes.merge("nombre": "Z"),
         }
 
       assert_redirected_to heb412_gen.doc_path(assigns(:doc))

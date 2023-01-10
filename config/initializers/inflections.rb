@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Be sure to restart your server when you modify this file.
 
 # Add new inflection rules using the following format. Inflections
@@ -15,10 +17,10 @@
 #   inflect.acronym 'RESTful'
 # end
 ActiveSupport::Inflector.inflections do |inflect|
-	inflect.irregular 'carpetaexclusiva', 'carpetasexclusivas'
-	inflect.irregular 'plantillahcm', 'plantillahcm'
+  inflect.irregular("carpetaexclusiva", "carpetasexclusivas")
+  inflect.irregular("plantillahcm", "plantillahcm")
   # Toca agregar ruta post crea_plantillahcm_path
-	inflect.irregular 'plantillahcr', 'plantillahcr'
+  inflect.irregular("plantillahcr", "plantillahcr")
   # Toca agregar ruta post crea_plantillahcr_path
-	inflect.irregular 'plantilladoc', 'plantillasdoc'
+  inflect.irregular("plantilladoc", "plantillasdoc")
 end

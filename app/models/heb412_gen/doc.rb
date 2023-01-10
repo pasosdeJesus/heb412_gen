@@ -1,4 +1,6 @@
-require 'heb412_gen/concerns/models/doc'
+# frozen_string_literal: true
+
+require "heb412_gen/concerns/models/doc"
 
 module Heb412Gen
   class Doc < ActiveRecord::Base

@@ -1,51 +1,51 @@
-ENV['RAILS_ENV'] ||= 'test'
+# frozen_string_literal: true
 
-require 'simplecov'
+ENV["RAILS_ENV"] ||= "test"
+
+require "simplecov"
 SimpleCov.start
-require_relative 'dummy/config/environment'
-require 'rails/test_help'
+require_relative "dummy/config/environment"
+require "rails/test_help"
 
 class ActiveSupport::TestCase
 end
 
-
-PRUEBA_CAMPOHC={
-  nombrecampo: 'c',
-  columna: 'col',
-  fila: 1
+PRUEBA_CAMPOHC = {
+  nombrecampo: "c",
+  columna: "col",
+  fila: 1,
 }
 
 PRUEBA_CAMPOPLANTILLAHCM = {
-  nombrecampo: 'c',
-  columna: 'A'
+  nombrecampo: "c",
+  columna: "A",
 }
 
 PRUEBA_CAMPOPLANTILLAHCR = {
-  nombrecampo: 'c',
-  columna: 'A',
-  fila: 3
+  nombrecampo: "c",
+  columna: "A",
+  fila: 3,
 }
 
 PRUEBA_CARPETAEXCLUSIVA = {
-  carpeta: 'c',
+  carpeta: "c",
 }
 
-
-PRUEBA_DOC={
-  nombre: 'N',
-  tipodoc: 'T',
+PRUEBA_DOC = {
+  nombre: "N",
+  tipodoc: "T",
   dirpapa: nil,
-  url: 'url',
-  fuente: 'fuente',
-  descripcion: 'desc',
-  created_at: '2023-01-08',
-  nombremenu: 'm',
-  vista: 'v',
+  url: "url",
+  fuente: "fuente",
+  descripcion: "desc",
+  created_at: "2023-01-08",
+  nombremenu: "m",
+  vista: "v",
   filainicial: 1,
-  ruta: 'r',
-  licencia: 'l',
+  ruta: "r",
+  licencia: "l",
   tdoc_id: nil,
-  tdoc_type: nil
+  tdoc_type: nil,
 }
 
 PRUEBA_GRUPO = {
@@ -55,19 +55,18 @@ PRUEBA_GRUPO = {
 }
 
 PRUEBA_PLANTILLAHCM = {
-  ruta: 'x',
-  fuente: 'f',
-  licencia: 'l',
-  vista: 'v',
-  nombremenu: 'n',
-  filainicial: 1
+  ruta: "x",
+  fuente: "f",
+  licencia: "l",
+  vista: "v",
+  nombremenu: "n",
+  filainicial: 1,
 }
 
 PRUEBA_PLANTILLAHCR = {
-  ruta: 'x',
-  fuente: 'f',
-  licencia: 'l',
-  vista: 'v',
-  nombremenu: 'n',
+  ruta: "x",
+  fuente: "f",
+  licencia: "l",
+  vista: "v",
+  nombremenu: "n",
 }
-

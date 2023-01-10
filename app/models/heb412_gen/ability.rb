@@ -1,43 +1,43 @@
-module Heb412Gen
-	class Ability  < Mr519Gen::Ability
+# frozen_string_literal: true
 
+module Heb412Gen
+  class Ability < Mr519Gen::Ability
     ROLADMIN  = 1
-    #ROLINV    = 2
+    # ROLINV    = 2
     ROLDIR    = 3
-    #ROLCOOR   = 4
-    ROLOPERADOR = ROLANALI  = 5
-    #ROLSIST   = 6
+    # ROLCOOR   = 4
+    ROLOPERADOR = ROLANALI = 5
+    # ROLSIST   = 6
 
     ROLES = [
-      ["Administrador", ROLADMIN],  # 1
+      ["Administrador", ROLADMIN], # 1
       ["", 0], # 2
       ["Directivo", ROLDIR], # 3
       ["", 0], # 4
       ["Operador", ROLOPERADOR], # 5
-      ["", 0], #6
+      ["", 0], # 6
     ]
-
 
     BASICAS_PROPIAS = []
 
-    def tablasbasicas 
-      Msip::Ability::BASICAS_PROPIAS + 
+    def tablasbasicas
+      Msip::Ability::BASICAS_PROPIAS +
         Heb412Gen::Ability::BASICAS_PROPIAS
     end
 
     BASICAS_ID_NOAUTO = []
     # Hereda basicas_id_noauto de msip
 
-    NOBASICAS_INDSEQID =  [
-      ['heb412_gen', 'campohc'],
-      ['heb412_gen', 'campoplantillahcm'],
-      ['heb412_gen', 'campoplantillahcr'],
-      ['heb412_gen', 'carpetaexclusiva'],
-      ['heb412_gen', 'doc'],
-      ['heb412_gen', 'formulario_plantillahcr'],
-      ['heb412_gen', 'plantilladoc'],
-      ['heb412_gen', 'plantillahcm'],
-      ['heb412_gen', 'plantillahcr']
+    NOBASICAS_INDSEQID = [
+      ["heb412_gen", "campohc"],
+      ["heb412_gen", "campoplantillahcm"],
+      ["heb412_gen", "campoplantillahcr"],
+      ["heb412_gen", "carpetaexclusiva"],
+      ["heb412_gen", "doc"],
+      ["heb412_gen", "formulario_plantillahcr"],
+      ["heb412_gen", "plantilladoc"],
+      ["heb412_gen", "plantillahcm"],
+      ["heb412_gen", "plantillahcr"],
     ]
 
     # Tablas no básicas pero que tienen índice *_seq_id
@@ -51,75 +51,75 @@ module Heb412Gen
     # Hereda tablasbasicas_prio de msip
 
     CAMPOS_PLANTILLAS_PROPIAS = {
-      'Orgsocial' => {
+      "Orgsocial" => {
         campos: [
-          'actualizado_en',
-          'anotaciones',
-          'creado_en',
-          'direccion',
-          'fax',
-          'id', 
-          'nombre',
-          'pais',
+          "actualizado_en",
+          "anotaciones",
+          "creado_en",
+          "direccion",
+          "fax",
+          "id",
+          "nombre",
+          "pais",
           Msip::Orgsocial.human_attribute_name(
-            :sectoresorgsocial).downcase.gsub(' ', '_'),
-          'telefono', 
-          'web'
+            :sectoresorgsocial,
+          ).downcase.gsub(" ", "_"),
+          "telefono",
+          "web",
         ],
-        controlador: '::OrgsocialesController',
-        ruta: '/orgsociales'
+        controlador: "::OrgsocialesController",
+        ruta: "/orgsociales",
       },
 
-      'Persona' => {
+      "Persona" => {
         campos: [
-          'actualizado_en',
-          'apellidos',
-          'anionac', 
-          'centro_poblado',
-          'creado_en',
-          'departamento',
-          'dianac',
-          'fechanac_localizada',
-          'fechanac',
-          'id',
-          'mesnac',
-          'municipio',
-          'nacionalde',
-          'numerodocumento', 
-          'nombres', 
-          'pais', 
-          'sexo', 
-          'tdoc',
-          'tdocumento',
+          "actualizado_en",
+          "apellidos",
+          "anionac",
+          "centro_poblado",
+          "creado_en",
+          "departamento",
+          "dianac",
+          "fechanac_localizada",
+          "fechanac",
+          "id",
+          "mesnac",
+          "municipio",
+          "nacionalde",
+          "numerodocumento",
+          "nombres",
+          "pais",
+          "sexo",
+          "tdoc",
+          "tdocumento",
         ],
-        controlador: 'Msip::PersonasController',
-        ruta: '/personas'
+        controlador: "Msip::PersonasController",
+        ruta: "/personas",
       },
 
-      'Usuario' => {
+      "Usuario" => {
         campos: [
-          'actualizacion',
-          'condensado_de_clave', 
-          'creacion',
-          'correo', 
-          'descripcion',
-          'fechacreacion',
-          'fechadeshabilitacion',
-          'id', 
-          'idioma',
-          'nombre', 
-          'nusuario', 
-          'rol'
+          "actualizacion",
+          "condensado_de_clave",
+          "creacion",
+          "correo",
+          "descripcion",
+          "fechacreacion",
+          "fechadeshabilitacion",
+          "id",
+          "idioma",
+          "nombre",
+          "nusuario",
+          "rol",
         ],
-        controlador: '::UsuariosController',
-        ruta: '/usuarios'
-      }
+        controlador: "::UsuariosController",
+        ruta: "/usuarios",
+      },
     }
-          
-    def campos_plantillas 
+
+    def campos_plantillas
       CAMPOS_PLANTILLAS_PROPIAS
     end
-
 
     # Se definen habilidades con cancancan
     # Util en motores y aplicaciones de prueba
@@ -131,22 +131,21 @@ module Heb412Gen
       initialize_mr519_gen(usuario)
 
       if usuario && usuario.rol
-        can :read, Heb412Gen::Doc
-        can :read, Heb412Gen::Plantilladoc
-        can :read, Heb412Gen::Plantillahcm
-        can :read, Heb412Gen::Plantillahcr
+        can(:read, Heb412Gen::Doc)
+        can(:read, Heb412Gen::Plantilladoc)
+        can(:read, Heb412Gen::Plantillahcm)
+        can(:read, Heb412Gen::Plantillahcr)
 
-        case usuario.rol 
+        case usuario.rol
         when Ability::ROLANALI
         when Ability::ROLADMIN
-          can :manage, Heb412Gen::Doc
-          can :manage, Heb412Gen::Plantilladoc
-          can :manage, Heb412Gen::Plantillahcm
-          can :manage, Heb412Gen::Plantillahcr
-          can :manage, Heb412Gen::Carpetaexclusiva
+          can(:manage, Heb412Gen::Doc)
+          can(:manage, Heb412Gen::Plantilladoc)
+          can(:manage, Heb412Gen::Plantillahcm)
+          can(:manage, Heb412Gen::Plantillahcr)
+          can(:manage, Heb412Gen::Carpetaexclusiva)
         end
       end
     end # initialize_heb412_gen
-
   end # class
 end   # module

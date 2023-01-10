@@ -46,3 +46,5 @@ test/dummy/app/javascript/controllers/heb412_gen
 test/dummy/app/javascript/controllers/cor1440_gen
 test/dummy/app/javascript/controllers/sal7711_gen
 test/dummy/app/javascript/controllers/sivel2_gen
+yard_doc
+.yardoc

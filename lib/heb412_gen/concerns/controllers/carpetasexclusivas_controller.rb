@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Controllers
       module CarpetasexclusivasController
-
         extend ActiveSupport::Concern
 
         included do
@@ -11,24 +12,25 @@ module Heb412Gen
           include Msip::ModeloHelper
 
           def gencalse
-            'F'
+            "F"
           end
 
           def clase
-            'Heb412Gen::Carpetaexclusiva'
+            "Heb412Gen::Carpetaexclusiva"
           end
 
           def atributos_show
-            [:id,
-             :carpeta,
-             :grupo
+            [
+              :id,
+              :carpeta,
+              :grupo,
             ]
           end
 
           def atributos_index
             [
               :carpeta,
-              :grupo
+              :grupo,
             ]
           end
 
@@ -37,6 +39,7 @@ module Heb412Gen
           end
 
           private
+
           # Use callbacks to share common setup or constraints between actions.
           def set_carpetaexclusiva
             @registro = @carpetaexclusiva = Carpetaexclusiva.find(params[:id])
@@ -46,7 +49,7 @@ module Heb412Gen
             [
               :id,
               :grupo_id,
-              :carpeta
+              :carpeta,
             ]
           end
 
@@ -54,7 +57,6 @@ module Heb412Gen
             params.require(:carpetaexclusiva).permit(lista_params)
           end
         end
-
       end
     end
   end

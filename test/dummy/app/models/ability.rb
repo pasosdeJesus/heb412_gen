@@ -1,6 +1,6 @@
-class Ability  < Heb412Gen::Ability
+# frozen_string_literal: true
 
-
+class Ability < Heb412Gen::Ability
   def acciones_plantillas
   end
 
@@ -13,6 +13,4 @@ class Ability  < Heb412Gen::Ability
   def initialize(usuario = nil)
     initialize_heb412_gen(usuario)
   end
-
 end
-

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module PlantillaHelper
-
     # Recibe una vista, posibles formularios y retorna los campos usables
     #   al generar una plantilla
     # @param v Vista
@@ -8,14 +9,14 @@ module Heb412Gen
     # @param agrega_ult_ed Agrega último editor
     def campos_vista_formulario(v, formularios, agrega_ult_ed)
       ab = ::Ability.new
-      if v.nil? || ab.campos_plantillas[v].nil?
-        col = [['','']]
+      col = if v.nil? || ab.campos_plantillas[v].nil?
+        [["", ""]]
       else
-        col = ab.campos_plantillas[v][:campos]
+        ab.campos_plantillas[v][:campos]
       end
       if formularios
         formularios.each do |fr|
-          nf=fr.nombreinterno
+          nf = fr.nombreinterno
           if agrega_ult_ed
             col |= ["#{nf}.ultimo_editor"]
             col |= ["#{nf}.fecha_ultimaedicion"]
@@ -23,32 +24,31 @@ module Heb412Gen
           fr.campo.each do |c|
             puts "c=#{c.nombreinterno}"
             col |= ["#{nf}.#{c.nombreinterno}"]
-            if c.tipo == Mr519Gen::ApplicationHelper::SELECCIONMULTIPLE
-              c.opcioncs.each do |op|
-                col |= ["#{nf}.#{c.nombreinterno}.#{op.valor}"]
-              end
+            next unless c.tipo == Mr519Gen::ApplicationHelper::SELECCIONMULTIPLE
+
+            c.opcioncs.each do |op|
+              col |= ["#{nf}.#{c.nombreinterno}.#{op.valor}"]
             end
           end
         end
       end
-      col = col.localize(:es).to_a.map{|x| x.to_s}.sort
-      puts "OJO campoplantillahcm. col=#{col.to_s}"
-      return col
-    end 
+      col = col.localize(:es).to_a.map { |x| x.to_s }.sort
+      puts "OJO campoplantillahcm. col=#{col}"
+      col
+    end
     module_function :campos_vista_formulario
-
 
     # Dado el nombre de una columna de una hoja de cálculo retorna la siguiente
     #
-    # Supone que el nombre de la columna usa el alfabeto en inglés y en 
+    # Supone que el nombre de la columna usa el alfabeto en inglés y en
     # mayúsculas. Por ejemplo sigcol('A') es 'B', sigcol('Z') es 'AA'
     def sigcol(col)
-      res = ''
+      res = ""
       i = col.length - 1
       lleva = 1
-      while i>=0
-        if lleva == 1 && col[i] == 'Z'
-          res = 'A' + res
+      while i >= 0
+        if lleva == 1 && col[i] == "Z"
+          res = "A" + res
           lleva = 1
         elsif lleva == 1
           c0 = col[i].ord + 1
@@ -57,31 +57,32 @@ module Heb412Gen
         else
           res = col[i] + res
         end
-        i -=1
+        i -= 1
       end
       if lleva == 1
-        res = 'A' + res
+        res = "A" + res
       end
-      return res
+      res
     end
     module_function :sigcol
 
     # Dado el nombre de una columna de una hoja de cálculo retorna la anterior
     #
-    # Supone que el nombre de la columna usa el alfabeto en inglés y en 
+    # Supone que el nombre de la columna usa el alfabeto en inglés y en
     # mayúsculas. Por ejemplo antcol('B') es 'A', antco('AA') es 'Z'
     def antcol(col)
-      if col == ''
+      if col == ""
         raise "No puede calcular antcol(nil)"
       end
-      res = ''
+
+      res = ""
       i = col.length - 1
       resta = 1
-      while i>=0
-        if resta == 1 && col[i] == 'A' && i == 0
+      while i >= 0
+        if resta == 1 && col[i] == "A" && i == 0
           # elimina saltando
-        elsif resta == 1 && col[i] == 'A'
-          res = 'Z' + res
+        elsif resta == 1 && col[i] == "A"
+          res = "Z" + res
           resta = 1
         elsif resta == 1
           c0 = col[i].ord - 1
@@ -90,9 +91,9 @@ module Heb412Gen
         else
           res = col[i] + res
         end
-        i -=1
+        i -= 1
       end
-      return res
+      res
     end
     module_function :antcol
 
@@ -107,13 +108,12 @@ module Heb412Gen
       if col2.length < col1.length
         return 1
       end
+
       # col1.length == col2.length
       i = 0
-      while i < col1.length && col1[i] == col2[i]
-        i += 1
-      end
+      i += 1 while i < col1.length && col1[i] == col2[i]
 
-      if i < col1.length 
+      if i < col1.length
         if col1[i] < col2[i]
           return -1
         else
@@ -121,35 +121,34 @@ module Heb412Gen
         end
       end
 
-      return 0
+      0
     end
     module_function :compara_columnas
-
 
     # En la plantillahcm para hoja de cálculo con id plantillahcm_id,
     # emula operación en una hoja de cálculo de insertar una nueva
     # columna a la izquierda de la columna col. Y para poner en la nueva
-    # columna col crea un nuevo campoplantillahcm la id y nombrecampo 
+    # columna col crea un nuevo campoplantillahcm la id y nombrecampo
     # recibidos por parámetros
     #
     # @param id Nuevo id por crear para un campoplantillahcm (no debe haber
     # otro con ese id).
     def inserta_columna(plantillahcm_id, id, col, nombrecampo)
-      cols = Heb412Gen::Campoplantillahcm.
-        where(plantillahcm_id: plantillahcm_id).pluck(:id, :columna)
+      cols = Heb412Gen::Campoplantillahcm
+        .where(plantillahcm_id: plantillahcm_id).pluck(:id, :columna)
       cols.each do |icol|
         comp = compara_columnas(icol[1], col)
-        if comp >= 0
-          c = Heb412Gen::Campoplantillahcm.find(icol[0])
-          c.columna = Heb412Gen::PlantillaHelper.sigcol(c.columna)
-          c.save!(validate: false) # Permitir columnas repetidas temporalmente
-        end
+        next unless comp >= 0
+
+        c = Heb412Gen::Campoplantillahcm.find(icol[0])
+        c.columna = Heb412Gen::PlantillaHelper.sigcol(c.columna)
+        c.save!(validate: false) # Permitir columnas repetidas temporalmente
       end
       Heb412Gen::Campoplantillahcm.create!(
         id: id,
         plantillahcm_id: plantillahcm_id,
         nombrecampo: nombrecampo,
-        columna: col
+        columna: col,
       )
     end
     module_function :inserta_columna
@@ -163,31 +162,29 @@ module Heb412Gen
     # @param id Nuevo id por crear para un campoplantillahcm (no debe haber
     # otro con ese id).
     def elimina_columna(plantillahcm_id, id)
-      pore = Heb412Gen::Campoplantillahcm.
-        where(plantillahcm_id: plantillahcm_id).where(id: id).take
-      if !pore
+      pore = Heb412Gen::Campoplantillahcm
+        .where(plantillahcm_id: plantillahcm_id).where(id: id).take
+      unless pore
         raise "No se encontró columna con id #{id} en "\
           "plantilla con id #{plantillahcm_id}"
       end
       col = pore.columna
       pore.destroy
 
-      cols = Heb412Gen::Campoplantillahcm.
-        where(plantillahcm_id: plantillahcm_id).
-        pluck(:id, :columna)
+      cols = Heb412Gen::Campoplantillahcm
+        .where(plantillahcm_id: plantillahcm_id)
+        .pluck(:id, :columna)
 
       cols.each do |icol|
         comp = compara_columnas(icol[1], col)
-        if comp > 0
-          # Mueve cada una de las que esté a la derecha de la col-esima
-          c = Heb412Gen::Campoplantillahcm.find(icol[0])
-          c.columna = Heb412Gen::PlantillaHelper.antcol(c.columna)
-          c.save!(validate: false) # Permitir columnas repetidas temporalmente
-        end
-      end
+        next unless comp > 0
 
+        # Mueve cada una de las que esté a la derecha de la col-esima
+        c = Heb412Gen::Campoplantillahcm.find(icol[0])
+        c.columna = Heb412Gen::PlantillaHelper.antcol(c.columna)
+        c.save!(validate: false) # Permitir columnas repetidas temporalmente
+      end
     end
     module_function :elimina_columna
-
   end
 end

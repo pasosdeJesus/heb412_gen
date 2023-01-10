@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Models
@@ -5,34 +7,34 @@ module Heb412Gen
         extend ActiveSupport::Concern
 
         included do
+          belongs_to :plantillahcr,
+            class_name: "::Heb412Gen::Plantillahcr",
+            validate: true,
+            optional: false
 
-          belongs_to :plantillahcr, class_name: '::Heb412Gen::Plantillahcr',
-            foreign_key: 'plantillahcr_id', validate: true, optional: false
-
-          validates :nombrecampo, 
+          validates :nombrecampo,
             presence: true,
             allow_blank: false,
-            length: { minimum: 1}
+            length: { minimum: 1 }
 
-          validates :columna, 
-            uniqueness: { 
-            scope: [:plantillahcr_id, :fila], 
-            message: "no puede haber celdas repetidas" },
+          validates :columna,
+            uniqueness: {
+              scope: [:plantillahcr_id, :fila],
+              message: "no puede haber celdas repetidas",
+            },
             presence: true,
             allow_blank: false,
-            length: { minimum: 1}
+            length: { minimum: 1 }
 
-          validates :fila, 
+          validates :fila,
             presence: true,
             allow_blank: false,
-            numericality: { greater_than: 0}
+            numericality: { greater_than: 0 }
 
           def presenta_nombre
             nombrecampo
-          end         
-
+          end
         end # included
-
       end
     end
   end

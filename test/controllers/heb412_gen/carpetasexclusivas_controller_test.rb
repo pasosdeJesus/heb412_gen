@@ -15,12 +15,14 @@ module Heb412Gen
 
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
-      @grupo = Msip::Grupo.create PRUEBA_GRUPO
-      assert @grupo.valid?
-      @carpetaexclusiva =  Heb412Gen::Carpetaexclusiva.create!(
-        PRUEBA_CARPETAEXCLUSIVA.merge(grupo_id: @grupo.id)
+      @grupo = Msip::Grupo.create(PRUEBA_GRUPO)
+
+      assert_predicate @grupo, :valid?
+      @carpetaexclusiva = Heb412Gen::Carpetaexclusiva.create!(
+        PRUEBA_CARPETAEXCLUSIVA.merge(grupo_id: @grupo.id),
       )
-      assert @carpetaexclusiva.valid?
+
+      assert_predicate @carpetaexclusiva, :valid?
     end
 
     # Cada prueba que se ejecuta se hace en una transacción
@@ -56,16 +58,16 @@ module Heb412Gen
 
     test "debe crear nueva" do
       # Arreglamos indice
-      #Msip::Carpetaexclusiva.connection.execute(<<-SQL.squish)
+      # Msip::Carpetaexclusiva.connection.execute(<<-SQL.squish)
       #  SELECT setval('public.heb412_gen.carpetaexclusiva_id_seq', MAX(id))#{" "}
       #    FROM public.heb412_gen.carpetaexclusiva;
-      #SQL
+      # SQL
       assert_difference("Carpetaexclusiva.count") do
         post heb412_gen.carpetasexclusivas_path, params: {
           carpetaexclusiva: {
             id: nil,
-            carpeta: 'c2',
-            grupo_id: @grupo.id
+            carpeta: "c2",
+            grupo_id: @grupo.id,
           },
         }
       end
@@ -80,8 +82,8 @@ module Heb412Gen
         params: {
           carpetaexclusiva: {
             id: @carpetaexclusiva.id,
-            carpeta: 'c3',
-            grupo_id: @grupo.id
+            carpeta: "c3",
+            grupo_id: @grupo.id,
           },
         }
 
@@ -90,8 +92,8 @@ module Heb412Gen
 
     test "debe eliminar" do
       assert_difference("Carpetaexclusiva.count", -1) do
-        delete heb412_gen.carpetaexclusiva_path(Carpetaexclusiva.
-                                               find(@carpetaexclusiva.id))
+        delete heb412_gen.carpetaexclusiva_path(Carpetaexclusiva
+                                               .find(@carpetaexclusiva.id))
       end
 
       assert_redirected_to heb412_gen.carpetasexclusivas_path

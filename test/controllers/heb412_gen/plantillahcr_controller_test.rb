@@ -15,8 +15,9 @@ module Heb412Gen
 
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
-      @plantillahcr =  Heb412Gen::Plantillahcr.create PRUEBA_PLANTILLAHCR
-      assert @plantillahcr.valid?
+      @plantillahcr = Heb412Gen::Plantillahcr.create(PRUEBA_PLANTILLAHCR)
+
+      assert_predicate @plantillahcr, :valid?
       @plantillahcr.save
     end
 
@@ -56,8 +57,8 @@ module Heb412Gen
       assert_difference("Plantillahcr.count") do
         post heb412_gen.plantillahcr_path, params: {
           plantillahcr: @plantillahcr.attributes.merge(
-            ruta: 'y'
-          )
+            ruta: "y",
+          ),
         }
       end
 
@@ -67,7 +68,7 @@ module Heb412Gen
     test "debe actualizar existente" do
       patch heb412_gen.plantillahcr_path(@plantillahcr.id),
         params: {
-          plantillahcr: @plantillahcr.attributes.merge("ruta": 'Z')
+          plantillahcr: @plantillahcr.attributes.merge("ruta": "Z"),
         }
 
       assert_redirected_to heb412_gen.plantillahcr_path(assigns(:plantillahcr))
