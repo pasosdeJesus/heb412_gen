@@ -340,11 +340,12 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    simplecov (0.17.1)
+    simplecov (0.22.0)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -428,7 +429,7 @@ DEPENDENCIES
   rubyzip (>= 2.0)
   sassc-rails
   simple_form
-  simplecov (< 0.18)
+  simplecov
   spring
   sprockets-rails
   stimulus-rails
