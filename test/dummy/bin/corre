@@ -24,9 +24,9 @@ def system!(*args)
   system(*args) || abort("\n== Falló la orden #{args} ==")
 end
 
-FileUtils.chdir(RAIZ_AP) do
-  if File.exist?("./.env")
-    require "dotenv"
+FileUtils.chdir RAIZ_AP do
+  if File.exist?('./.env')
+    require 'dotenv'
     Dotenv.load
   end
 
