@@ -2,6 +2,7 @@
 
 ENV["RAILS_ENV"] ||= "test"
 
+require 'zeitwerk'
 require "simplecov"
 Zeitwerk::Loader.eager_load_all # buscando que simplecov cubra más
 
