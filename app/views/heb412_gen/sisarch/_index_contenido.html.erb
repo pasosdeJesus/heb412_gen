@@ -24,29 +24,42 @@
             <% end %>
           <% else %>
             <li class='heb412_archivo'>
-              <%= fa_icon 'file' %> <%= a[:nombre] %>
-              <% if a[:estado] %>
-                <%= link_to File.dirname(url).to_s + '?descarga=' +
-                  File.basename(url).to_s, target: '_blank' do %>
-                  <%= fa_icon 'cloud-download-alt' %>
-                <% end %>
-              <% end %>
-              <% a[:plantillashcm].each do |v| %>
-                <% if current_ability && current_ability.campos_plantillas &&
-                     current_ability.campos_plantillas[v[1]] &&
-                     current_ability.campos_plantillas[v[1]][:ruta] %>
-                  <% r = File.join(Rails.configuration.relative_url_root,
-                    current_ability.campos_plantillas[v[1]][:ruta]) %>
-                  <%= link_to r do %>
-                    <%= fa_icon 'table' %>
+              <div class="row">
+                <div class="col-md-5 heb412-div-sin-sobreflujo">
+                  <%= fa_icon 'file' %> <%= a[:nombre] %>
+                </div>
+                <div class="col-md-2">
+                  <% if a[:estado] %>
+                    <%= link_to File.dirname(url).to_s + '?descarga=' +
+                      File.basename(url).to_s, target: '_blank' do %>
+                      <%= fa_icon 'cloud-download-alt' %>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <% if can? :edit, Heb412Gen::Plantillahcm %>
-                  <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
-                    <%= fa_icon 'gears' %>
+                  <% a[:plantillashcm].each do |v| %>
+                    <% if current_ability && current_ability.campos_plantillas &&
+                        current_ability.campos_plantillas[v[1]] &&
+                        current_ability.campos_plantillas[v[1]][:ruta] %>
+                      <% r = File.join(
+                        Rails.configuration.relative_url_root,
+                        current_ability.campos_plantillas[v[1]][:ruta]) %>
+                      <%= link_to r do %>
+                        <%= fa_icon 'table' %>
+                      <% end %>
+                    <% end %>
+                    <% if can? :edit, Heb412Gen::Plantillahcm %>
+                      <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
+                        <%= fa_icon 'gears' %>
+                      <% end %>
+                    <%end %>
                   <% end %>
-                <%end %>
-              <% end %>
+                </div> <!-- col -->
+                <div class="col-md-2 heb412-div-sin-sobreflujo">
+                  <%= a[:estado].size %>
+                </div> <!-- col -->
+                <div class="col-md-3 heb412-div-sin-sobreflujo">
+                  <%= a[:estado].mtime.to_s %>
+                </div> <!-- col -->
+              </div> <!-- row -->
             </li>
           <% end %>
       <% end %>

@@ -87,3 +87,9 @@ div.heb412_menucontextual {
 	z-index: 999999;
 }
 
+div.heb412-div-sin-sobreflujo {
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+}
+
