@@ -11,8 +11,8 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 61d6a6afe293bdac2ce2a0a26cafec8b6fb24abc
-  branch: main
+  revision: 8490cb0416eca6c7252aaf7dd7386b3d38475ba1
+  branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
       rails
@@ -21,7 +21,7 @@ GIT
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
   revision: 78eb7d6b5065a35c00b2b969928b0bbe5f75c122
-  branch: main
+  branch: v2.1
   specs:
     sip (2.1.0.beta1)
       cancancan
@@ -272,7 +272,7 @@ GEM
       zeitwerk (~> 2.5)
     rake (13.0.6)
     redcarpet (3.5.1)
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
     responders (3.0.1)
