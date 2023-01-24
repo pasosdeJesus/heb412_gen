@@ -1,72 +1,96 @@
 <div class="row">
-  <div class="col-md-7">
-    <ul class='heb412'>
+  <div class="col-md-8" style="border: 1px solid black">
+    <table class='heb412 heb412-anchofijo-table table'>
+      <thead>
+        <tr>
+          <th class='heb412-anchofijo-th'>Nombre</th>
+          <th class='heb412-anchofijo-th'>Acciones</th>
+          <th class='heb412-anchofijo-th'>Tamaño</th>
+          <th class='heb412-anchofijo-th'>Último cambio</th>
+        </tr>
+      </thead>
+      <% indice = 0 %>
       <% @dir.each do |a| %>
+        <% indice += 1 %>
+        <tr class='heb412-anchofijo-tr'>
           <% url = File.join(
             Rails.configuration.relative_url_root,
             "/sis/arch", a[:ruta]) %>
           <% if a[:estado] && a[:estado].ftype == "directory" && 
-               a[:nombre] == '..' %>
-            <li class='heb412_ndir'>
-              <%= link_to url, remote: true do %>
-                <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
-              <% end %>
-            </li>
-          <% elsif a[:estado] && a[:estado].ftype == "directory" && 
-            a[:nombre] != '..' %>
-            <% if Heb412Gen::PermisosHelper.permiso_ver_leer(a[:ruta],
-                true, current_usuario) %>
-              <li class='heb412_ndir heb412_directorio'>
+              a[:nombre] == '..' %>
+            <td class='heb412-anchofijo-td'>
+              <div class='heb412_ndir heb412-anchofijo-div'>
                 <%= link_to url, remote: true do %>
                   <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
                 <% end %>
-              </li>
-            <% end %>
-          <% else %>
-            <li class='heb412_archivo'>
-              <div class="row">
-                <div class="col-md-5 heb412-div-sin-sobreflujo">
-                  <%= fa_icon 'file' %> <%= a[:nombre] %>
-                </div>
-                <div class="col-md-2">
-                  <% if a[:estado] %>
-                    <%= link_to File.dirname(url).to_s + '?descarga=' +
-                      File.basename(url).to_s, target: '_blank' do %>
-                      <%= fa_icon 'cloud-download-alt' %>
-                    <% end %>
-                  <% end %>
-                  <% a[:plantillashcm].each do |v| %>
-                    <% if current_ability && current_ability.campos_plantillas &&
-                        current_ability.campos_plantillas[v[1]] &&
-                        current_ability.campos_plantillas[v[1]][:ruta] %>
-                      <% r = File.join(
-                        Rails.configuration.relative_url_root,
-                        current_ability.campos_plantillas[v[1]][:ruta]) %>
-                      <%= link_to r do %>
-                        <%= fa_icon 'table' %>
-                      <% end %>
-                    <% end %>
-                    <% if can? :edit, Heb412Gen::Plantillahcm %>
-                      <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
-                        <%= fa_icon 'gears' %>
-                      <% end %>
-                    <%end %>
-                  <% end %>
-                </div> <!-- col -->
-                <div class="col-md-2 heb412-div-sin-sobreflujo">
-                  <%= a[:estado].size %>
-                </div> <!-- col -->
-                <div class="col-md-3 heb412-div-sin-sobreflujo">
-                  <%= a[:estado].mtime.to_s %>
-                </div> <!-- col -->
-              </div> <!-- row -->
-            </li>
+              </div>
+            </td>
+          <% elsif a[:estado] && a[:estado].ftype == "directory" && 
+            a[:nombre] != '..' %>
+          <% if Heb412Gen::PermisosHelper.permiso_ver_leer(a[:ruta],
+              true, current_usuario) %>
+            <td class='heb412_directorio heb412-anchofijo-td'>
+              <div class='heb412_ndir heb412-anchofijo-div'>
+                <%= link_to url, remote: true do %>
+                  <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
+                <% end %>
+              </div>
+            </td>
           <% end %>
+        <% else %>
+          <td class='heb412-anchofijo-td'>
+            <div 
+              class="heb412_archivo heb412-anchofijo-div" 
+              data-heb412-indice="<%= indice %>">
+              <%= fa_icon 'file' %> <%= a[:nombre] %>
+            </div>
+          </td>
+          <td class='heb412-anchofijo-td'>
+            <div class="heb412-td-acciones heb412-anchofijo-div">
+              <% if a[:estado] %>
+                <%= link_to File.dirname(url).to_s + '?descarga=' +
+                  File.basename(url).to_s,
+                  id: "heb412-enlace-#{indice}",
+                  target: '_blank' do %>
+                  <%= fa_icon 'cloud-download-alt' %>
+                <% end %>
+              <% end %>
+              <% a[:plantillashcm].each do |v| %>
+                <% if current_ability && current_ability.campos_plantillas &&
+                    current_ability.campos_plantillas[v[1]] &&
+                    current_ability.campos_plantillas[v[1]][:ruta] %>
+                  <% r = File.join(
+                    Rails.configuration.relative_url_root,
+                    current_ability.campos_plantillas[v[1]][:ruta]) %>
+                  <%= link_to r do %>
+                    <%= fa_icon 'table' %>
+                  <% end %>
+                <% end %>
+                <% if can? :edit, Heb412Gen::Plantillahcm %>
+                  <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
+                    <%= fa_icon 'gears' %>
+                  <% end %>
+                <%end %>
+              <% end %>
+            </div> <!-- acciones -->
+          </td>
+          <td class='heb412-anchofijo-td'>
+            <div class="heb412-td-tamano heb412-anchofijo-div">
+              <%= a[:estado].size %>
+            </div> 
+          </td>
+          <td class='heb412-anchofijo-td'>
+            <div class="heb412-td-fechaumod heb412-anchofijo-div">
+              <%= a[:estado].mtime.to_s %>
+            </div> <!-- col -->
+          </td>
+        </tr>
       <% end %>
-    </ul>
-  </div>
+    <% end %>
+    </table>
+  </div> <!-- col-md-8 -->
 
-  <div class="col-md-5">
+  <div class="col-md-4">
     <% if @leeme %> 
       <% @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, {
         autolink: true,
@@ -79,7 +103,6 @@
       <% c = @markdown.render(@leeme).html_safe %>
       <%= c %>
     <% end %>
+  </div> <!-- col-md-4 -->
 
-  </div>
-
-</div>
+</div> <!-- row -->

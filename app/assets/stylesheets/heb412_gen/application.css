@@ -93,3 +93,49 @@ div.heb412-div-sin-sobreflujo {
   text-overflow: ellipsis;
 }
 
+/*
+ *  maquetación tabla de ancho fijo
+ *  Respuesta de Salman A en 
+ *  https://stackoverflow.com/questions/31669939/clip-long-text-inside-html-table-cells-show-entire-content-on-hover
+ *   */
+table.heb412-anchofijo-table {
+  table-layout: fixed;
+  width: 100%;
+  /*font: larger monospace; */
+  border-collapse: collapse;
+}
+
+th.heb412-anchofijo-th:nth-child(1) {
+  width: 40%;
+}
+
+/*th.heb412-anchofijo-th:nth-child(3) {
+  width: 20%;
+} */
+
+/*
+ *  inline-block elements expand as much as content, even more
+ *  than 100% of parent
+ * relative position makes z-index work
+ * explicit width and nowrap makes overflow work
+ */
+div.heb412-anchofijo-div {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+/*
+ *  * higher z-index brings element to front
+ *   * auto width cancels the overflow
+ *    */
+div.heb412-anchofijo-div:hover {
+  z-index: 1;
+  width: auto;
+  background-color: #FFFFCC;
+}
+

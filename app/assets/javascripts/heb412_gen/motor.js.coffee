@@ -80,13 +80,17 @@
   $("#heb412_mcdir").hide();
  
   $(".heb412_archivo").bind("contextmenu", (e) ->
-    if e.target.nodeName == 'I' 
-      if e.target.parentElement.nodeName == 'A'
-        window.heb412_mcarc_descarga = e.target.parentElement
-      else
-        window.heb412_mcarc_descarga = e.target.parentElement.children[1]
+    indice = 0
+    if e.target.classList.contains('heb412_archivo')
+      indice = e.target.dataset['heb412Indice']
+    else if e.target.parentElement.classList.contains('heb412_archivo')
+      indice = e.target.parentElement.dataset['heb412Indice']
+
+    if indice > 0 
+      window.heb412_mcarc_descarga = document.querySelector(
+        '#heb412-enlace-'+indice)
     else
-      window.heb412_mcarc_descarga = e.target.children[1]
+      window.heb412_mcarc_descarga = null
     $("#heb412_mcarc").css({'display':'block', 'left':e.pageX, 'top':e.pageY });
     return false;
   )
