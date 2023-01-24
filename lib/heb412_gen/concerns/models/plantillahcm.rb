@@ -53,6 +53,10 @@ module Heb412Gen
             where("unaccent(vista) ilike unaccent('%' || ? || '%')", p)
           }
 
+          scope :filtro_nombremenu, lambda { |n|
+            where("unaccent(nombremenu) ILIKE '%' || unaccent(?) || '%'", n)
+          }
+
         end # included
 
         class_methods do
