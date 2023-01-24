@@ -1,0 +1,21 @@
+<%
+  ab = ::Ability.new;
+  cord = ab.campos_plantillas.select{|l, v| !v[:solo_registro]}.
+  keys.map { |n|
+    [Heb412Gen::Plantillahcm.human_attribute_name(n.to_s.pluralize),
+     n.to_s] 
+  }
+  cord.sort! { |x,y| x[0] <=> y[0] }
+%>
+
+<%= f.input :busvista, 
+  collection: cord,
+  label: false,
+  include_blank: true,
+  selected: Msip::ModeloHelper.poromision(params, :busvista),
+  input_html: {
+    "data-toggle" => "chosen-select",
+    "data-enviarautomatico" => "" 
+  }
+%>
+

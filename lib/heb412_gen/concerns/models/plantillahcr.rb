@@ -41,6 +41,11 @@ module Heb412Gen
               presenta_gen(atr)
             end
           end
+
+          scope :filtro_vista, lambda { |p|
+            where("unaccent(vista) ilike unaccent('%' || ? || '%')", p)
+          }
+
         end # included
 
         class_methods do
