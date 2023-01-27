@@ -29,5 +29,16 @@ module Heb412Gen
       assert_equal(1, compara_columnas("AC", "AA"))
       assert_equal(0, compara_columnas("AC", "AC"))
     end
+
+    test "numero_a_columna" do
+      assert_equal("", Heb412Gen::PlantillaHelper.numero_a_columna(0))
+      assert_equal("", Heb412Gen::PlantillaHelper.numero_a_columna(-1))
+      assert_equal("A", Heb412Gen::PlantillaHelper.numero_a_columna(1))
+      assert_equal("Z", Heb412Gen::PlantillaHelper.numero_a_columna(26))
+      assert_equal("AA", Heb412Gen::PlantillaHelper.numero_a_columna(27))
+      assert_equal("AZ", Heb412Gen::PlantillaHelper.numero_a_columna(52))
+      assert_equal("BA", Heb412Gen::PlantillaHelper.numero_a_columna(53))
+      assert_equal("AAA", Heb412Gen::PlantillaHelper.numero_a_columna(703))
+    end
   end
 end

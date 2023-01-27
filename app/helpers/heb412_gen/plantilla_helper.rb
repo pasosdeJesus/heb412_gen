@@ -186,5 +186,30 @@ module Heb412Gen
       end
     end
     module_function :elimina_columna
+
+    # Convierte el número de una columna a su representación en hoja de cálculo
+    # como letras
+    # 1 es A
+    # 2 es B
+    # ...
+    # 26 es Z
+    # 27 es AA
+    # ...
+    def numero_a_columna(n)
+      if n <= 0
+        return ""
+      end
+      lini = n
+      col = ""
+      loop do
+        letrafin= ((lini - 1) % 26) + 65
+        col = letrafin.chr + col
+        lini = (lini - 1) / 26
+        break if lini <= 0
+      end
+      return col
+    end
+    module_function :numero_a_columna
+
   end
 end
