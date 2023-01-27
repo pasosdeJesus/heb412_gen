@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: dd37e896f8f2869f27bd1ad9b310e26976aaad25
+  revision: 2e31720b644dd565b21a54e87dbe04de07dc8cce
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -330,7 +330,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.7.0)
+    webrick (1.8.1)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
