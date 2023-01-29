@@ -179,7 +179,8 @@ module Heb412Gen
     # con cierta extensión
     # @param extension es extensión de formato por generar comenzando con .
     def programa_generacion_listado(params, extension, campoid = :id)
-      if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0
+      if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 or
+          @registros == []
         head(:no_content)
       elsif Heb412Gen::Plantillahcm.where(
         id: params[:idplantilla].to_i,
