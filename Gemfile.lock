@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: d49c86f4fd6f7c089e413817de2f51da17d515b8
+  revision: e0109fe64d450a587e797817377a1a80eb3b5a25
   branch: main
   specs:
     mr519_gen (2.2.0.beta1)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 6a7e3de2f1aed3a037dded42953ccaf8879daf75
+  revision: b65fc7d91decdc9a238b206a2785d6d36f1fdf31
   branch: main
   specs:
     msip (2.2.0.beta1)
@@ -305,7 +305,7 @@ GEM
     rspreadsheet (0.5.3)
       andand (>= 1.3)
       rubyzip (>= 1.3)
-    rubocop (1.44.1)
+    rubocop (1.45.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
