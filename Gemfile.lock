@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 1359dec5ebc19f738a4d9a5fbfdfb34a2ed6bdbc
+  revision: 14254f1453ea09c0921a2f0cafcfa584d154b76f
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -309,7 +309,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   x86_64-openbsd
