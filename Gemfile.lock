@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 14254f1453ea09c0921a2f0cafcfa584d154b76f
+  revision: 52c2cd8f46ca4d6069c16ec6454dbf1b9935efca
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -211,7 +211,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.4.5)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
