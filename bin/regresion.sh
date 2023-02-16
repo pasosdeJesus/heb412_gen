@@ -66,7 +66,7 @@ if (test "$?" != "0") then {
   exit 1;
 } fi;
 
-CONFIG_HOSTS=www.example.com bin/rails test `find test/integration -type f`
+CONFIG_HOSTS=www.example.com bin/rails test `find test/integration -name "*rb" -type f`
 if (test "$?" != "0") then {
   echo "No pasaron pruebas de integración";
   exit 1;
@@ -94,7 +94,7 @@ if (test -f $rutaap/bin/pruebasjs) then {
 echo "== Unificando resultados de pruebas en directorio clásico coverage"
 mkdir -p coverage/
 rm -rf coverage/{*,.*}
-if (test "$rutaap" = "test/dummy/") then {
+if (test "$RC" = "msip") then { # "$rutaap" = "test/dummy/") then {
   ${RAILS} app:msip:reporteregresion
 } else {
   ${RAILS} msip:reporteregresion
