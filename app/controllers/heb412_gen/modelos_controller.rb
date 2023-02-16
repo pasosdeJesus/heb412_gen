@@ -394,8 +394,8 @@ module Heb412Gen
       unless plantilla
         return
       end
-
-      narchivo << File.basename(plantilla.ruta.dup.sub(/.ods$/, ".xlsx"))
+      narchivo = narchivo.dup
+      narchivo << File.basename(plantilla.ruta.sub(/.ods$/, ".xlsx"))
       ngen = Heb412Gen::PlantillahcrController.llena_plantilla_fd(
         plantilla, @registro
       )
