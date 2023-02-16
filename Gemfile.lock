@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 52c2cd8f46ca4d6069c16ec6454dbf1b9935efca
+  revision: 951f03fa78f6f89aca6b5ed6391206eb0cb3b100
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1217cafabb5252fd6e3fac7291236a0aa748ff8e
+  revision: 3d7bb0fde202c76589bc688283f2db7194f49f9a
   branch: v2.0
   specs:
     sip (2.0)
@@ -145,7 +145,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.10.2)
+    devise-i18n (1.10.3)
       devise (>= 4.8.0)
     docile (1.4.0)
     dotenv (2.8.1)
@@ -196,7 +196,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.1)
+    nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -286,7 +286,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.1)
     tilt (2.0.11)
-    timeout (0.3.1)
+    timeout (0.3.2)
     twitter_cldr (6.11.4)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -348,4 +348,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.6
+   2.4.7
