@@ -76,12 +76,12 @@
           </td>
           <td class='heb412-anchofijo-td'>
             <div class="heb412-td-tamano heb412-anchofijo-div">
-              <%= a[:estado].size %>
+              <%= a[:estado] ? a[:estado].size : '' %>
             </div> 
           </td>
           <td class='heb412-anchofijo-td'>
             <div class="heb412-td-fechaumod heb412-anchofijo-div">
-              <%= a[:estado].mtime.to_s %>
+              <%= a[:estado] ? a[:estado].mtime.to_s : '' %>
             </div> <!-- col -->
           </td>
         </tr>

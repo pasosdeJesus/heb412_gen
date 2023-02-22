@@ -19,27 +19,6 @@ if (test -f $rutaap/.env) then {
   exit 1;
 } fi;
 
-if (test "$RUTA_RELATIVA" = "") then {
-  echo "No leyó RUTA_RELATIVA de archivo .env"
-  exit 1
-} fi;
-
-echo "== Prepara base"
- 
-(cd $rutaap; RAILS_ENV=test bin/rails db:environment:set RAILS_ENV=test)
-if (test "$?" != "0") then {
-  echo "No pudo prepararse entorno para pruebas";
-  exit 1;
-} fi;
-
-(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:setup db:seed msip:indices)
-if (test "$?" != "0") then {
-  echo "No pudo prepararse base de prueba";
-  exit 1;
-} fi;
-
-echo "== Prepara herramientas"
-
 vm=`ruby -v | sed  -e "s/^ruby \([0-9]\.[0-9]\).[0-9]* .*/\1/g"`
 if (test "$vm" = "") then {
   echo "No se detectó versión de ruby"
@@ -51,6 +30,14 @@ if (test "$vm" = "3.2") then {
   RAILS="ruby --yjit bin/rails"
 } fi;
 
+
+if (test "$RUTA_RELATIVA" = "") then {
+  echo "No leyó RUTA_RELATIVA de archivo .env"
+  exit 1
+} fi;
+
+echo "== Prepara base"
+ 
 (cd $rutaap;  ${RAILS} db:environment:set RAILS_ENV=test; RAILS_ENV=test ${RAILS} db:drop db:create db:setup db:seed msip:indices)
 if (test "$?" != "0") then {
   echo "No se pudo inicializar base de pruebas";
@@ -94,7 +81,8 @@ if (test -f $rutaap/bin/pruebasjs) then {
 echo "== Unificando resultados de pruebas en directorio clásico coverage"
 mkdir -p coverage/
 rm -rf coverage/{*,.*}
-if (test "$RC" = "msip") then { # "$rutaap" = "test/dummy/") then {
+
+if (test "$rutaap" = "test/dummy/"-a "$RC" != "heb412_gen") then {
   ${RAILS} app:msip:reporteregresion
 } else {
   ${RAILS} msip:reporteregresion
