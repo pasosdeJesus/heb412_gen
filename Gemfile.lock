@@ -48,7 +48,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (2.2.0.alfa1)
+    heb412_gen (2.2.0.beta1)
       mr519_gen
       msip
       redcarpet
