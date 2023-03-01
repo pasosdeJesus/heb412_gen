@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 716279128ed410f8be50a9f72073f0ece435181c
+  revision: 991623b5ec24d22acbea76f4cdd9b93c51d58458
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -136,7 +136,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
     devise (4.9.0)
@@ -210,8 +210,8 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (1.4.5)
-    puma (6.1.0)
+    pg (1.4.6)
+    puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
