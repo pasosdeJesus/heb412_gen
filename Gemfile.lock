@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 04069b6d3f7d8de879888e0f5c0c1d4d2d20feb4
+  revision: 8fc47e995024d1a37650d3d890bb858beb85e131
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: b5bb9a4442437332e30136ecba3780c1c75eaf6e
+  revision: 281af9e4afb1c69e6d4dd2efb52eaceeb515641f
   branch: v2.0
   specs:
     sip (2.0)
@@ -287,7 +287,7 @@ GEM
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
-    twitter_cldr (6.11.4)
+    twitter_cldr (6.11.5)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -348,4 +348,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.8
+   2.4.9
