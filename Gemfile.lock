@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4addd31d8762753879f16a9ca4c66a4e3f0da2ea
+  revision: 3ebb0575f23781bb53f1942b2ef70f7ff4719365
   branch: main
   specs:
-    mr519_gen (2.2.0.beta1)
+    mr519_gen (2.2.0.beta2)
       msip
       rails
 
