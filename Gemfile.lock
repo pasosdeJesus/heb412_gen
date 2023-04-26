@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 5980af9d0db5942807386fe9f19c57bdcd76310d
+  revision: 646a99d98eefa33b93a706f1e4e70dcacf9afbe1
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -157,7 +157,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -210,11 +210,11 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (1.5.0)
+    pg (1.5.2)
     puma (6.2.2)
       nio4r (~> 2.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-proxy (0.7.6)
       rack
     rack-test (2.1.0)
