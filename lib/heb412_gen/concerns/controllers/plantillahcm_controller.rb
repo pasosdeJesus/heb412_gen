@@ -216,7 +216,7 @@ module Heb412Gen
                 else
                   r[c.nombrecampo.to_sym]
                 end
-                unless v.is_a?(Integer)
+                unless v.is_a?(Numeric)
                   v = v.to_s
                 end
 

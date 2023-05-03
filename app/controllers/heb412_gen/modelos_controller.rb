@@ -51,6 +51,8 @@ module Heb412Gen
           end
           f[c] = if v.is_a?(Integer)
             v
+          elsif r[c].class == BigDecimal
+            r[c].to_f
           else
             v.to_s
           end
