@@ -270,8 +270,8 @@ module Heb412Gen
       end
 
       puts params
-      narchivo = ""
-      tipomime = ""
+      narchivo = "".dup
+      tipomime = "".dup
       npl = params[:idplantilla].to_i
       if !params[:format] || params[:format] == "odt"
         reporte_a = genera_odt(npl, narchivo)
@@ -306,7 +306,7 @@ module Heb412Gen
         return
       end
 
-      narchivo = ""
+      narchivo = "".dup
       if !params[:format] || params[:format] == "odt"
         reporte_a = genera_odt(params[:idplantilla].to_i, narchivo)
       elsif params[:format] == "ods"
