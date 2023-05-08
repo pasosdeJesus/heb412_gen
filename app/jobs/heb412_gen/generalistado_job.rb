@@ -14,6 +14,16 @@ module Heb412Gen
     # 1. crear una vista en la base de datos --si no se especifica se
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
+    # 
+    # @param idplantilla Id de la plantilla
+    # @param cmodelo Clase del modelo
+    # @param ccontrolador Clase del controlador
+    # @param ids  Lista de ids por incluir en el reporte
+    # @param narch Nombre de archivo por generar
+    # @param parsimp Algunos parámetros simples y comunes ya reconocidos
+    # @param extension Extensión del archivo por generar
+    # @param campoid Id del campo que sirvie como id de la consulta
+    # @param params listado completo de parámetros
     def perform(idplantilla, cmodelo, ccontrolador, ids, narch, parsimp,
       extension, campoid = :id, params = nil)
       puts "Inicio de generación de plantilla #{idplantilla}, con modelo #{cmodelo}, controlador #{ccontrolador}, cantidad de ids #{ids.length}, en #{narch}#{extension}"
