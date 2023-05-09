@@ -5,6 +5,8 @@ Cuando se tienen reportes basados en tablas con varias decenas de miles de regis
 * Para la exportación del consolidado completo a hoja de cálculo crear una segunda consulta que emplee la primera como consulta base y los filtros.
 * Emplear la infraestructura de `heb412_gen` para la exportación a hoja de cálculo sobrecargando la función `self.vista_listado` bien con (1) el método flexible pero lento de exportación con plantillas ODS configurables o bien con (2) con el método rápido pero configurable solo por desarrolladores de exportación directa.  
 
+Un ejemplo de la primera consulta es <https://gitlab.com/pasosdeJesus/si_jrscol/-/blob/main/app/models/consgifmm.rb>  y de la segunda es <https://gitlab.com/pasosdeJesus/si_jrscol/-/blob/main/app/models/consgifmm_exp.rb>
+
 
 I. Vista materializada base justo con lo que debe presentarse en pantalla y filtro en pantalla
 
