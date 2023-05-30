@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b892aef32fa6a3faf317ee5724cec656d3ddc73f
+  revision: 0f39bc724254047ba07a1577921540f7f6c3b1e0
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -196,7 +196,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.1)
+    nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -237,8 +237,9 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.5.0)
-      loofah (~> 2.19, >= 2.19.1)
+    rails-html-sanitizer (1.6.0)
+      loofah (~> 2.21)
+      nokogiri (~> 1.14)
     rails-i18n (7.0.7)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
@@ -308,7 +309,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.1)
+    will_paginate (4.0.0)
     zeitwerk (2.6.8)
 
 PLATFORMS
