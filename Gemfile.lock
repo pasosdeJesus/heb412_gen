@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b23bab329ff0fe82d21e43cacd775aadcd145cc8
+  revision: 55a48ec1a185476ae462642a6e382ebbd412cdd6
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -185,7 +185,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    i18n (1.13.0)
+    i18n (1.14.0)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.6.4)
