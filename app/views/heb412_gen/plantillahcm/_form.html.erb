@@ -77,10 +77,15 @@
         } %>
 
       <div id="divcampos">
-        <%= render partial: 'divcampos_plantillahcm', 
-          locals: {f: f, vista: f.object.vista } %>
+        <% if f.object.nil? || f.object.id.nil? %>
+          <div class="alert alert-info" role="alert">
+            Guarde y vuelva a editar para agregar columnas por generar.
+          </div>
+        <% else %>
+          <%= render partial: 'divcampos_plantillahcm', 
+            locals: {f: f, vista: f.object.vista } %>
+        <% end %>
       </div>
-
       <div class="form-actions abajocentrado">
         <%= f.button :submit, class: 'btn btn-primary',
           'data-turbo' => false %>
