@@ -183,11 +183,11 @@ module Heb412Gen
     def programa_generacion_listado(params, extension, campoid = :id)
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 or
           @registros == []
-        head(:no_content)
+        flash[:error] = "No hay registros por generar"
       elsif Heb412Gen::Plantillahcm.where(
         id: params[:idplantilla].to_i,
       ).take.nil?
-        head(:no_content)
+        flash[:error] = "No hay plantilla para generar"
       else
         pl = Heb412Gen::Plantillahcm.find(
           params[:idplantilla].to_i,
