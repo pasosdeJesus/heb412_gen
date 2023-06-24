@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 804f50189cd8e107c2e4a8ca583860119c7686f5
+  revision: 2722307698d89fe47742e7d694cfc4de9739ff7d
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -152,7 +152,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    colorize (1.0.5)
+    colorize (1.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     cuprite (0.14.3)
