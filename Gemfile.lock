@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 61079cc805047c4d444c221c241593ab32314728
+  revision: 8d7d690b6d9533f3734167fd40e02047e3755339
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -225,7 +225,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.2)
+    nokogiri (1.15.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
