@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ffadce63137070c7abb3edaca5255cafa44f5f49
+  revision: 54d09e198ec0475ccf1e7e92c9916e5406613614
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 59a9522557bbb9f94b5c777b0718218db308a3d9
+  revision: 239236189f5d52c5128f611d292d0e701769ffa5
   branch: v2.0
   specs:
     sip (2.0)
@@ -350,4 +350,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.15
+   2.4.16
