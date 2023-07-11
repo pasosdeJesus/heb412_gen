@@ -37,7 +37,7 @@ module Dummy
 
     config.active_record.schema_format = :sql
 
-    config.x.formato_fecha = ENV.fetch("SIP_FORMATO_FECHA", "yyyy-mm-dd")
+    config.x.formato_fecha = ENV.fetch("MSIP_FORMATO_FECHA", "yyyy-mm-dd")
 
     config.x.heb412_ruta = Pathname(ENV.fetch(
       "HEB412_RUTA", Rails.public_path.join("heb412").to_s
