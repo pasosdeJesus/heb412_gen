@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 386bc2602a8bba159b5d35143c8278e5b0274db9
+  revision: a60196cd74c07f742f1ffc79e7fadc499a6ed67e
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -183,9 +183,9 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.2)
-    mini_portile2 (2.8.2)
+    mini_portile2 (2.8.4)
     minitest (5.18.1)
-    msgpack (1.7.1)
+    msgpack (1.7.2)
     net-imap (0.3.6)
       date
       net-protocol
