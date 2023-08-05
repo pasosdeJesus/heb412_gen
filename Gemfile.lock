@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: b502c201ab059bb9f54f4662c3103156d2ba9c7e
+  revision: b40eb996141bc379839d2f65e4050ea573d63afd
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: adab7a721a1840e29c33775398768a8770361fb3
+  revision: 5c68ab27a29fc2a9ecdcefffcee7d2f1ba364357
   branch: v2.0
   specs:
     sip (2.0)
@@ -184,9 +184,9 @@ GEM
       rake
     mini_mime (1.1.2)
     mini_portile2 (2.8.4)
-    minitest (5.18.1)
+    minitest (5.19.0)
     msgpack (1.7.2)
-    net-imap (0.3.6)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -214,7 +214,7 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.7.1)
-    rack (2.2.7)
+    rack (2.2.8)
     rack-proxy (0.7.6)
       rack
     rack-test (2.1.0)
@@ -234,7 +234,7 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.7.4)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.1.1)
+    rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -311,7 +311,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (4.0.0)
-    zeitwerk (2.6.9)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   x86_64-openbsd
@@ -350,4 +350,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.17
+   2.4.18
