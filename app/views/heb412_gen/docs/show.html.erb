@@ -13,11 +13,11 @@
 <div class="form-actions">
   <%= render partial: 'msip/modelos/boton_regresar',
     locals: {registro: @doc} %>
-  <%= render partial: 'boton_editar',
+  <%= render partial: 'msip/modelos/boton_editar',
     locals: {registro: @doc} %>
   <%= link_to t('Probar generación'),
     heb412_gen.doc_path(h @doc.id) + '/impreso', :class => 'btn',
     :target => '_blank' %>
-  <%= render partial: 'boton_eliminar',
+  <%= render partial: 'msip/modelos/boton_eliminar',
     locals: {registro: @doc} %>
 </div>
