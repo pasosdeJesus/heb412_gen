@@ -11,25 +11,13 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-    heb412_gen.docs_path, :class => 'btn'  
-  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-    heb412_gen.edit_doc_path(h @doc.id),
-    "data-turbo": false,
-    :class => 'btn' 
-  %>
+  <%= render partial: 'msip/modelos/boton_regresar',
+    locals: {registro: @doc} %>
+  <%= render partial: 'boton_editar',
+    locals: {registro: @doc} %>
   <%= link_to t('Probar generación'),
     heb412_gen.doc_path(h @doc.id) + '/impreso', :class => 'btn',
-    :target => '_blank' 
-  %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-    heb412_gen.doc_path(h @doc.id),
-    :method => 'delete',
-    :data => { :confirm => 
-      t('.confirm', :default => 
-        t("helpers.links.confirm", :default => 'Are you sure?')) 
-  },
-    :class => 'btn btn-danger' 
-  %>
+    :target => '_blank' %>
+  <%= render partial: 'boton_eliminar',
+    locals: {registro: @doc} %>
 </div>

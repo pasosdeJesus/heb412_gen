@@ -7,15 +7,13 @@
       <% if lookup_context.find_all( rutareg, [], true).any? %>
         <%= render partial: rutareg %>
       <% else %>
-        <%= link_to t('.back', default: t("helpers.links.back")),
-          modelos_path(@registro), class: 'btn'  %>
+        <%= render partial: 'boton_regresar', 
+          locals: {registro: @registro} %>
       <% end %>
 
       <% if can?(:edit, @registro) %>
-         <%= link_to t('.edit', default:  t("helpers.links.edit")),
-           edit_modelo_path(@registro), class: 'btn',
-           "data-turbo": false
-           %>
+        <%= render partial: 'boton_editar',
+          locals: {registro: @registro } %>
       <% end %>
     </div>
 
@@ -59,18 +57,8 @@
     </div>
     <div class="col-sm-3">
       <% if can?(:destroy, @registro) %>
-        <%= link_to t('.destroy', default: t("helpers.links.destroy")),
-          modelo_path(@registro),
-          method: 'delete',
-          data: {
-            confirm: t(
-              '.confirm', default: t(
-                "helpers.links.confirm", 
-                default: 'Are you sure?'
-              )
-            )
-          },
-          class: 'btn btn-danger' %>
+        <%= render partial: 'boton_eliminar',
+          locals: {registro: @registro} %>
       <% end %>
     </div>
   </div> <!-- row -->
