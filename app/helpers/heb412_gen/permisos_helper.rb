@@ -32,7 +32,7 @@ module Heb412Gen
         if Heb412Gen::Carpetaexclusiva.where(carpeta: e).count > 0 &&
             Heb412Gen::Carpetaexclusiva.where(
               carpeta: e,
-              grupo: usuario.msip_grupo,
+              grupo: usuario.grupo,
             ).count == 0
           return false
         end
