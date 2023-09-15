@@ -1,6 +1,6 @@
 
 <% ab = ::Ability.new %>
-<% cord = ab.campos_plantillas.keys.map do |n| %>
+<% cord = Ability::campos_plantillas.keys.map do |n| %>
   <% ['Resumen de ' + n.to_s, n.to_s] %>
 <% end %>
 <% cord.sort! { |x,y| x[1] <=> y[1] } %>

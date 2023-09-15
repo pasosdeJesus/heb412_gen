@@ -9,10 +9,10 @@ module Heb412Gen
     # @param agrega_ult_ed Agrega último editor
     def campos_vista_formulario(v, formularios, agrega_ult_ed)
       ab = ::Ability.new
-      col = if v.nil? || ab.campos_plantillas[v].nil?
+      col = if v.nil? || Ability::campos_plantillas[v].nil?
         [["", ""]]
       else
-        ab.campos_plantillas[v][:campos]
+        Ability::campos_plantillas[v][:campos]
       end
       if formularios
         formularios.each do |fr|

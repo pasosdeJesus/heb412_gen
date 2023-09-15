@@ -117,7 +117,7 @@ module Heb412Gen
       },
     }
 
-    def campos_plantillas
+    def self.campos_plantillas
       CAMPOS_PLANTILLAS_PROPIAS
     end
 

@@ -5,7 +5,7 @@
   <script>
     <% ab = ::Ability.new %>
     root = window;
-    root.campos_plantillas=<%= raw(ab.campos_plantillas.to_json) %>
+    root.campos_plantillas=<%= raw(Ability::campos_plantillas.to_json) %>
   </script>
 
   <div class="row">
@@ -40,7 +40,7 @@
 
       <% 
         ab = ::Ability.new
-        cord = ab.campos_plantillas.select{|l, v| !v[:solo_registro]}.
+        cord = Ability::campos_plantillas.select{|l, v| !v[:solo_registro]}.
           keys.map { |n| 
           ['Listado de ' + 
              Heb412Gen::Plantillahcm.human_attribute_name(n.to_s.pluralize), 

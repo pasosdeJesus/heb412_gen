@@ -28,7 +28,7 @@ module Heb412Gen
                 params[:vista],
               ).strip
               ab = ::Ability.new
-              if ab.campos_plantillas[vista]
+              if Ability::campos_plantillas[vista]
                 @plantillahcm.vista = vista
                 @vista = vista
                 respond_to do |format|
@@ -466,12 +466,12 @@ module Heb412Gen
               pl = Heb412Gen::Plantillahcm
                 .find(params[:filtro][:plantillahcm_id].to_i)
               ab = current_ability ? current_ability : ::Ability.new
-              if ab.campos_plantillas[pl.vista].nil?
+              if Ability::campos_plantillas[pl.vista].nil?
                 head(:no_content)
                 puts "No se puede manejar vista #{pl.vista}"
                 return
               end
-              controlador = ab.campos_plantillas[pl.vista][:controlador]
+              controlador = Ability::campos_plantillas[pl.vista][:controlador]
                 .constantize
               authorize!(:edit, controlador.new.clase.constantize)
               rarch = File.join(

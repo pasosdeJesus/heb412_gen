@@ -6,14 +6,14 @@
           defined?(@vista) ? @vista :
           defined?(f.object.plantillahcr.vista) ? 
           f.object.plantillahcr.vista :
-          defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil
+          defined?(Ability::campos_plantillas['Usuario']) ? 'Usuario' : nil
         col = Heb412Gen::PlantillaHelper.campos_vista_formulario(
           v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
           true)
-#        if v.nil? || ab.campos_plantillas[v].nil?
+#        if v.nil? || Ability::campos_plantillas[v].nil?
 #          col = [['','']]
 #        else
-#          col = ab.campos_plantillas[v][:campos]
+#          col = Ability::campos_plantillas[v][:campos]
 #        end
 #        if f.object.plantillahcr
 #          f.object.plantillahcr.formulario.each do |fr|
