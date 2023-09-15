@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 743979bb57f5a680d9bc17399149a759d1e0b873
+  revision: 8a6631b598eb8a248927ab39acd1b10c0c4cf445
   specs:
-    kt-paperclip (7.2.0)
+    kt-paperclip (7.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: d30f6e3fbaf01c6a5763eb23af57205ddfa05914
+  revision: eee6e0189562952f494a736f1193b7df3b3ad12a
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 1a931ad3804424ba2924d501a7e07e909eeeb31b
+  revision: 583e80285dfc8b8afb29029959e2b2b21e26f47d
   branch: v2.0
   specs:
     sip (2.0)
@@ -153,7 +153,7 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.12.0)
-    execjs (2.8.1)
+    execjs (2.9.0)
     ffi (1.15.5)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -184,7 +184,7 @@ GEM
       rake
     mini_mime (1.1.5)
     mini_portile2 (2.8.4)
-    minitest (5.19.0)
+    minitest (5.20.0)
     msgpack (1.7.2)
     net-imap (0.3.7)
       date
@@ -277,7 +277,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     spring (4.1.1)
-    sprockets (4.2.0)
+    sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
@@ -287,7 +287,7 @@ GEM
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.2.2)
-    tilt (2.2.0)
+    tilt (2.3.0)
     timeout (0.4.0)
     twitter_cldr (6.12.0)
       camertron-eprun
@@ -297,7 +297,7 @@ GEM
       concurrent-ruby (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
