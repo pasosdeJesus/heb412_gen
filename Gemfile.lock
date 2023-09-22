@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: eee6e0189562952f494a736f1193b7df3b3ad12a
+  revision: e9d94c7ccc931fa3c61fd9c290798ce0ee6b239c
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 583e80285dfc8b8afb29029959e2b2b21e26f47d
+  revision: 7e8559d6bcb51b5afecfda8dfe11f846d5761aa2
   branch: v2.0
   specs:
     sip (2.0)
@@ -193,7 +193,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4)
@@ -211,7 +211,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.5.4)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
