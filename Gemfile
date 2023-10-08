@@ -35,7 +35,7 @@ gem "odf-report" # Genera ODT
 
 gem "pg"
 
-gem "rails", "~> 7.0"
+gem "rails", ">= 7.0", "<7.1"
 # git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem "redcarpet"
