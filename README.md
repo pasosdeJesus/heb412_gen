@@ -120,7 +120,7 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
     CAMPOS_PLANTILLAS_PROPIAS = {
       'Actividad' => { 
         campos: [
-          'id', 'fecha', 'oficina', 'responsable', 'nombre', 
+          'id', 'fecha', 'responsable', 'nombre', 
           'areas', 'subareas', 'convenios_financieros', 
           'actividades_de_convenio', 'objetivo', 'poblacion'
         ],
