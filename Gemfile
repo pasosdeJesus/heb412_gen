@@ -12,7 +12,7 @@ gem "bootsnap"
 
 gem "cancancan" # Roles
 
-gem "coffee-rails", "~> 4.2"
+gem "coffee-rails"
 
 gem "cocoon", git: "https://github.com/vtamara/cocoon.git", branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
 
@@ -20,7 +20,7 @@ gem "devise" # Autenticación
 
 gem "devise-i18n"
 
-gem "jbuilder", "~> 2.5"
+gem "jbuilder"
 
 gem "jsbundling-rails"
 
@@ -29,20 +29,20 @@ gem "kt-paperclip", # Anexos
 
 gem "libxml-ruby"
 
-gem "nokogiri", ">=1.11.1"
+gem "nokogiri"
 
 gem "odf-report" # Genera ODT
 
 gem "pg"
 
-gem "rails", ">= 7.0", "<7.1"
+gem "rails", ">= 7.1", "<7.2"
 # git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem "redcarpet"
 
 gem "rspreadsheet" # Genera ODS
 
-gem "rubyzip", ">= 2.0"
+gem "rubyzip"
 
 gem "sassc-rails"
 
@@ -52,7 +52,7 @@ gem "sprockets-rails"
 
 gem "stimulus-rails"
 
-gem "turbo-rails", "~> 1.0"
+gem "turbo-rails"
 
 gem "twitter_cldr" # ICU con CLDR
 
@@ -66,11 +66,11 @@ gem "will_paginate" # Listados en páginas
 # bien vistas
 
 gem "msip", # Motor generico
-  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: 'main'
+  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: 'rails7.1'
 # path: '../msip'
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
-  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: 'main'
+  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: 'rails7.1'
 # path: '../mr519_gen'
 
 group :development, :test do
