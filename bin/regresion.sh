@@ -70,7 +70,7 @@ if (test "$CI" = "") then { # Por ahora no en gitlab-ci
   } fi;
 } fi;
 
-if (test -f $rutaap/bin/pruebasjs) then {
+if (test -f $rutaap/bin/pruebasjs -a "x$NOPRUEBAJS" != "x1") then {
   (cd $rutaap; CONFIG_HOSTS=127.0.0.1 ${RAILS} msip:stimulus_motores; bin/pruebasjs)
   if (test "$?" != "0") then {
     echo "No pasaron pruebas del sistema js";
@@ -82,7 +82,7 @@ echo "== Unificando resultados de pruebas en directorio clásico coverage"
 mkdir -p coverage/
 rm -rf coverage/{*,.*}
 
-if (test "$rutaap" = "test/dummy/"-a "$RC" != "heb412_gen") then {
+if (test "$rutaap" = "test/dummy/" -a "$RC" != "heb412_gen") then {
   ${RAILS} app:msip:reporteregresion
 } else {
   ${RAILS} msip:reporteregresion
