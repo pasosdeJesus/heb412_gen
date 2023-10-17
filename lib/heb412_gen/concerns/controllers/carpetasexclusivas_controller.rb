@@ -38,6 +38,9 @@ module Heb412Gen
             c.reorder([:carpeta, :grupo_id])
           end
 
+          def impreso
+          end
+
           private
 
           # Use callbacks to share common setup or constraints between actions.

@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) { |_repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 gemspec
 

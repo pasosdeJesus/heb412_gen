@@ -31,6 +31,9 @@ es:
         one: Plantilla para listado
         other: Plantillas para listado
     attributes:
+      "heb412_gen/carpetaexclusiva":
+        Carpetaexclusiva: Carpeta exclusiva
+        Carpetasexclusivas: Carpetas exclusivas
       "heb412_gen/doc":
         nombremenu: Nombre por presentar en aplicación
         tipodoc: Tipo de documento

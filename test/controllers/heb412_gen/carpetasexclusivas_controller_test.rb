@@ -86,7 +86,6 @@ module Heb412Gen
             grupo_id: @grupo.id,
           },
         }
-
       assert_redirected_to heb412_gen.carpetaexclusiva_path(assigns(:carpetaexclusiva))
     end
 
