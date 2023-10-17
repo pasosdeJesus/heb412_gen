@@ -20,7 +20,7 @@ Msip.setup do |config|
   config.descripcion = "Motor para manejar nube y plantillas en hoja de cálculo"
   config.codigofuente = "https://gitlab.com/pasosdeJesus/heb412_gen"
   config.urlcontribuyentes = "https://gitlab.com/pasosdeJesus/heb412_gen/-/graphs/main"
-  config.urlcreditos = "https://gitlab.com/pasosdeJesus/heb412_gen/-/graphs/main"
+  config.urlcreditos = "https://gitlab.com/pasosdeJesus/heb412_gen/-/graphs/main/CREDITOS.md"
 
   config.agradecimientoDios = "<p>
 Agradecemos a Jesús/Dios por su Santo Espíritu que nos recuerda su Palabra
