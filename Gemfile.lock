@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 062681f93cbb93d734a1b17780d163919e171c5f
+  revision: 02bcaff362fc229697b77d4f4aa23ab7fd57da29
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: c51cd75e6c0e02f6a969087e47ae7f3190ae8f34
+  revision: b87f700b900b680159a8a10c8457646e38fdc5d8
   branch: v2.0
   specs:
     sip (2.0)
@@ -183,10 +183,10 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.1)
+    net-imap (0.4.2)
       date
       net-protocol
     net-pop (0.1.2)
@@ -286,7 +286,7 @@ GEM
       sprockets (>= 3.0.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    thor (1.2.2)
+    thor (1.3.0)
     tilt (2.3.0)
     timeout (0.4.0)
     twitter_cldr (6.12.0)
@@ -350,4 +350,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.20
+   2.4.21
