@@ -355,7 +355,7 @@ module Heb412Gen
       report = ::ODFReport::Report.new(
         "#{Rails.root}/public/heb412/#{plantilla.ruta}",
       ) do |r|
-        cn = Ability::campos_plantillas[plantilla.vista][:campos]
+        cn = current_ability.campos_plantillas[plantilla.vista][:campos]
         cn.each do |s|
           r.add_field(s, @registro.presenta(s))
         end

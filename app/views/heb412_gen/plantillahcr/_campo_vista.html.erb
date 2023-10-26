@@ -1,6 +1,6 @@
 <% 
   ab = ::Ability.new
-  cord = Ability::campos_plantillas.select{|l, v| !v[:solo_multiple]}.
+  cord = ab.campos_plantillas.select{|l, v| !v[:solo_multiple]}.
     keys.map { |n| 
     ['Resumen de ' + Heb412Gen::Plantillahcr.human_attribute_name(n.to_s),
      n.to_s] 

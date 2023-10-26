@@ -27,7 +27,7 @@ module Heb412Gen
                 params[:vista],
               ).strip
               ab = ::Ability.new
-              if Ability::campos_plantillas[vista]
+              if ab.campos_plantillas[vista]
                 @plantillahcr.vista = vista
                 @vista = vista
                 respond_to do |format|

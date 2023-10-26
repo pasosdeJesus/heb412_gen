@@ -3,7 +3,7 @@
   En la plantilla puede emplear los campos:
   <blockquote>
     <% ab = ::Ability.new %>
-    <% Ability::campos_plantillas[@registro.vista][:campos].each do |c| %>
+    <% ab.campos_plantillas[@registro.vista][:campos].each do |c| %>
       [<%= c.upcase %>]
     <% end %>
   </blockquote>

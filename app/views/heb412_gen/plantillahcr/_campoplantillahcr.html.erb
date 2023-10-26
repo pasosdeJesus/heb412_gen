@@ -1,13 +1,14 @@
 <tr class='nested-fields'>
   <td>
-    <% ab = ::Ability.new  %>
-    <% v = defined?(vista) ? vista :  
+    <% ab = ::Ability.new %>
+    <% v = defined?(vista) ? vista : 
       defined?(@vista) ? @vista :
       defined?(f.object.plantillahcr.vista) ? 
       f.object.plantillahcr.vista :
-      defined?(Ability::campos_plantillas['Usuario']) ? 'Usuario' : nil %>
-    <% p2 = f.object.plantillahcr ? f.object.plantillahcr.formulario : nil %>
-    <% col = Heb412Gen::PlantillaHelper.campos_vista_formulario(v, p2, true) %>
+      defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil %>
+    <% col = Heb412Gen::PlantillaHelper.campos_vista_formulario(
+      v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
+      true) %>
     <%= f.input :nombrecampo,
       collection: col,
       label: false
