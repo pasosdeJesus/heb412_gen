@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 43e4dfbf40204a240bfac5366aa9bc785e7579b3
+  revision: 2c30771f38a307c79bfbf0825c85e704a007f6a4
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 87b9cbd23c2cf7356b64a469706769895db27f0a
+  revision: d76bec5aab399855b73e2181341f69e49de6f501
   branch: main
   specs:
     msip (2.2.0.beta4)
@@ -165,10 +165,10 @@ GEM
     colorize (1.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    cuprite (0.14.3)
+    cuprite (0.15)
       capybara (~> 3.0)
-      ferrum (~> 0.13.0)
-    date (3.3.3)
+      ferrum (~> 0.14.0)
+    date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -187,7 +187,7 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.9.1)
-    ferrum (0.13)
+    ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
@@ -208,7 +208,7 @@ GEM
       railties (>= 6.0.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    libxml-ruby (4.1.1)
+    libxml-ruby (4.1.2)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -227,12 +227,12 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.3)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
@@ -255,7 +255,7 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.2)
+    racc (1.7.3)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -301,7 +301,7 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.1.0)
-    rdoc (6.5.0)
+    rdoc (6.6.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     regexp_parser (2.8.2)
@@ -371,7 +371,7 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     thor (1.3.0)
     tilt (2.3.0)
-    timeout (0.4.0)
+    timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
