@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 0385ad5827ef0553600399cafb60c65c51a41255
+  revision: ad6abb67a06b03e82e46f5f3c6d28bf023a69563
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -129,7 +129,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -155,10 +155,10 @@ GEM
     colorize (1.1.0)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    cuprite (0.14.3)
+    cuprite (0.15)
       capybara (~> 3.0)
-      ferrum (~> 0.13.0)
-    date (3.3.3)
+      ferrum (~> 0.14.0)
+    date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -177,7 +177,7 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.9.1)
-    ferrum (0.13)
+    ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
@@ -197,7 +197,7 @@ GEM
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
     json (2.6.3)
-    libxml-ruby (4.1.1)
+    libxml-ruby (4.1.2)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -216,12 +216,12 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.2)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
@@ -240,7 +240,7 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -275,12 +275,12 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rake (13.0.6)
-    rdoc (6.5.0)
+    rake (13.1.0)
+    rdoc (6.6.0)
       psych (>= 4.0.0)
     redcarpet (3.6.0)
     regexp_parser (2.8.2)
-    reline (0.3.9)
+    reline (0.4.0)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -315,12 +315,12 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.8)
+    stringio (3.0.9)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
     thor (1.3.0)
     tilt (2.3.0)
-    timeout (0.4.0)
+    timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -391,4 +391,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.4.21
+   2.4.22
