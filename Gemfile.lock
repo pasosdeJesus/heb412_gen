@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: e2298fb1e869ad481670d3056d3ca3459dcf24b8
+  revision: 15806201d6cbe01d4aa0d6bdd537a935c0bc48ff
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: d9c59018b43b61240ec06f1409011c6e10a070ec
+  revision: 8c27fb351347907a265b85b5968209d1518906be
   branch: v2.0
   specs:
     sip (2.0)
@@ -166,7 +166,7 @@ GEM
       railties (>= 3.2.16)
     json (2.6.3)
     libxml-ruby (4.1.2)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -186,7 +186,7 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -276,7 +276,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    spring (4.1.1)
+    spring (4.1.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
