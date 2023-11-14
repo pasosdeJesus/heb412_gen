@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: ad6abb67a06b03e82e46f5f3c6d28bf023a69563
+  revision: bc2b4174be9e673cbc17db4a868a552a257bb56d
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -188,7 +188,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.8.3)
+    irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -198,7 +198,7 @@ GEM
       railties (>= 6.0.0)
     json (2.6.3)
     libxml-ruby (4.1.2)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -216,7 +216,7 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -305,7 +305,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    spring (4.1.1)
+    spring (4.1.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
