@@ -29,7 +29,7 @@ INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecamp
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (126, 12, 'pais', 'H');
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (127, 12, 'departamento', 'I');
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (128, 12, 'municipio', 'J');
-INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (130, 12, 'clase', 'K');
+INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (130, 12, 'centropoblado', 'K');
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (131, 12, 'nacionalde', 'L');
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (132, 12, 'creado_en', 'M');
 INSERT INTO public.heb412_gen_campoplantillahcm (id, plantillahcm_id, nombrecampo, columna) VALUES (133, 12, 'actualizado_en', 'N');
