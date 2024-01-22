@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   rutarel = ENV.fetch("RUTA_RELATIVA", "heb412/")
-  scope rutarel do
+
     devise_scope :usuario do
       get "sign_out" => "devise/sessions#destroy"
     end
@@ -27,9 +27,9 @@ Rails.application.routes.draw do
           path_names: { new: "nueva", edit: "edita" }
       end
     end
-  end
 
-  mount Heb412Gen::Engine, at: rutarel, as: "heb412_gen"
-  mount Mr519Gen::Engine, at: rutarel, as: "mr519_gen"
-  mount Msip::Engine, at: rutarel, as: "msip"
+
+  mount Heb412Gen::Engine, at: "/", as: "heb412_gen"
+  mount Mr519Gen::Engine, at: "/", as: "mr519_gen"
+  mount Msip::Engine, at: "/", as: "msip"
 end
