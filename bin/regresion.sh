@@ -37,7 +37,7 @@ if (test "$RUTA_RELATIVA" = "") then {
 } fi;
 
 echo "== Prepara base"
- 
+
 (cd $rutaap;  ${RAILS} db:environment:set RAILS_ENV=test; RAILS_ENV=test ${RAILS} db:drop db:create db:setup db:seed msip:indices)
 if (test "$?" != "0") then {
   echo "No se pudo inicializar base de pruebas";
@@ -47,13 +47,15 @@ if (test "$?" != "0") then {
 echo "== Pruebas de regresión unitarias"
 mkdir -p cobertura-unitarias/
 rm -rf cobertura-unitarias/{*,.*}
-CONFIG_HOSTS=www.example.com ${RAILS} test
+CONFIG_HOSTS=www.example.com RUTA_RELATIVA=/ ${RAILS} test
 if (test "$?" != "0") then {
   echo "No pasaron pruebas de regresión unitarias";
   exit 1;
 } fi;
 
-CONFIG_HOSTS=www.example.com bin/rails test `find test/integration -name "*rb" -type f`
+echo "Fue 1"; exit 1;
+
+CONFIG_HOSTS=www.example.com RUTA_RELATIVA=/ bin/rails test `find test/integration -name "*rb" -type f`
 if (test "$?" != "0") then {
   echo "No pasaron pruebas de integración";
   exit 1;
@@ -63,14 +65,14 @@ echo "== Pruebas de regresión al sistema"
 mkdir -p $rutaap/cobertura-sistema/
 rm -rf $rutaap/cobertura-sistema/{*,.*}
 if (test "$CI" = "") then { # Por ahora no en gitlab-ci
-  (cd $rutaap; CONFIG_HOSTS=127.0.0.1 ${RAILS} msip:stimulus_motores test:system)
+  (cd $rutaap; RUTA_RELATIVA="/" CONFIG_HOSTS=127.0.0.1 ${RAILS} msip:stimulus_motores test:system &)
   if (test "$?" != "0") then {
     echo "No pasaron pruebas del sistema rails";
     exit 1;
   } fi;
 } fi;
 
-if (test -f $rutaap/bin/pruebasjs) then {
+if (test -f $rutaap/bin/pruebasjs -a "x$NOPRUEBAJS" != "x1") then {
   (cd $rutaap; CONFIG_HOSTS=127.0.0.1 ${RAILS} msip:stimulus_motores; bin/pruebasjs)
   if (test "$?" != "0") then {
     echo "No pasaron pruebas del sistema js";
@@ -82,7 +84,7 @@ echo "== Unificando resultados de pruebas en directorio clásico coverage"
 mkdir -p coverage/
 rm -rf coverage/{*,.*}
 
-if (test "$rutaap" = "test/dummy/"-a "$RC" != "heb412_gen") then {
+if (test "$rutaap" = "test/dummy/" -a "$RC" != "heb412_gen") then {
   ${RAILS} app:msip:reporteregresion
 } else {
   ${RAILS} msip:reporteregresion

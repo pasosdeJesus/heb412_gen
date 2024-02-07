@@ -29,6 +29,7 @@ module Heb412Gen
     # que después de la prueba se revierte
 
     test "debe presentar listado" do
+      debugger
       get heb412_gen.carpetasexclusivas_path
 
       assert_response :success

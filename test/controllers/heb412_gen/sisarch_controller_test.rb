@@ -21,12 +21,21 @@ module Heb412Gen
     # que después de la prueba se revierte
 
     test "rutas" do
-      assert_equal "/heb412/sis/arch", heb412_gen.sisini_path("")
-      assert_equal "/heb412/sis/nueva", heb412_gen.nueva_carpeta_path
-      assert_equal "/heb412/sis/nuevo", heb412_gen.nuevo_archivo_path
-      assert_equal "/heb412/sis/eliminararc", heb412_gen.eliminar_archivo_path
-      assert_equal "/heb412/sis/eliminardir",
-        heb412_gen.eliminar_directorio_path
+      assert_equal File.join(
+        Rails.configuration.relative_url_root, "sis/arch"
+      ), heb412_gen.sisini_path("")
+      assert_equal File.join(
+        Rails.configuration.relative_url_root, "sis/nueva"
+      ).to_s, heb412_gen.nueva_carpeta_path
+      assert_equal File.join(
+        Rails.configuration.relative_url_root, "sis/nuevo"
+      ), heb412_gen.nuevo_archivo_path
+      assert_equal File.join(
+        Rails.configuration.relative_url_root, "sis/eliminararc"
+      ), heb412_gen.eliminar_archivo_path
+      assert_equal File.join(
+        Rails.configuration.relative_url_root, "sis/eliminardir"
+      ), heb412_gen.eliminar_directorio_path
     end
 
     test "listado de archivos" do
