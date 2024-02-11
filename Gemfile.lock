@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 9f3a77ba4f16eb301810d06b264407c81e504aaa
+  revision: 52ea9f38c16800eca63bf340a715cc3ce6d9fe82
   branch: v2.0
   specs:
     mr519_gen (2.0)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 800dccfb25799d278d56741be8a5a9bc18a86906
+  revision: 266f4513c70eff51b8d18d9a1ff1ece15ac2bd2e
   branch: v2.0
   specs:
     sip (2.0)
@@ -117,7 +117,7 @@ GEM
     andand (1.3.3)
     bcrypt (3.1.20)
     bindex (0.8.1)
-    bootsnap (1.18.1)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     camertron-eprun (1.1.1)
@@ -178,15 +178,15 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1205)
+    mime-types-data (3.2024.0206)
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.2)
     msgpack (1.7.2)
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -196,7 +196,7 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.0)
+    nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
@@ -311,7 +311,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (4.0.0)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
   x86_64-openbsd
@@ -350,4 +350,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.5
+   2.5.6
