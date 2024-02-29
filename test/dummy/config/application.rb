@@ -13,7 +13,7 @@ require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require "action_view/railtie"
-#require "action_cable/engine"
+require "action_cable/engine"
 require "rails/test_unit/railtie"
 
 
@@ -53,6 +53,9 @@ module Dummy
     config.active_record.schema_format = :sql
 
     config.x.formato_fecha = ENV.fetch("MSIP_FORMATO_FECHA", "yyyy-mm-dd")
+
+
+    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', '/heb412')
 
     config.x.heb412_ruta = Pathname(ENV.fetch(
       "HEB412_RUTA", Rails.public_path.join("heb412").to_s

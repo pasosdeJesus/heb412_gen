@@ -4,7 +4,9 @@ Heb412Gen::Engine.routes.draw do
   resources :carpetasexclusivas,
     path_names: { new: "nuevo", edit: "edita" }
 
-  resources :docs, path_names: { new: "nuevo", edit: "edita" } # ,  only: [:edit, :update, :new, :create, :destroy]
+  resources :docs,
+    path_names: { new: "nuevo", edit: "edita" } 
+  # ,  only: [:edit, :update, :new, :create, :destroy]
 
   get "docs/:id/impreso" => "docs#impreso", as: :impreso
   get "sis/*ruta", to: "sisarch#index", as: :sisarch

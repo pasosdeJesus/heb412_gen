@@ -45,6 +45,10 @@ module Heb412Gen
             @registro = @carpetaexclusiva = Carpetaexclusiva.find(params[:id])
           end
 
+          def index
+            debugger
+          end
+
           def lista_params
             [
               :id,

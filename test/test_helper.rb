@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
-ENV["RAILS_ENV"] ||= "test"
-
 require "zeitwerk"
+
+ENV["RAILS_ENV"] = "test"
+
 require "simplecov"
 Zeitwerk::Loader.eager_load_all # buscando que simplecov cubra más
 
 require_relative "dummy/config/environment"
 require "rails/test_help"
 
-class ActiveSupport::TestCase
+module ActiveSupport
+  class TestCase
+  end
 end
 
 PRUEBA_CAMPOHC = {

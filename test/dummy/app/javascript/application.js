@@ -16,6 +16,10 @@ import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 
 import 'gridstack'
+
+import {AutocompletaAjaxExpreg} from '@pasosdejesus/autocompleta_ajax'
+window.AutocompletaAjaxExpreg = AutocompletaAjaxExpreg
+
 let esperarRecursosSprocketsYDocumento = function (resolver) {
   if (typeof window.puntomontaje == 'undefined') {
     setTimeout(esperarRecursosSprocketsYDocumento, 100, resolver)
