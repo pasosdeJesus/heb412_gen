@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 257869ab3ba9ff0ec262a63309abac3e333f6769
+  revision: db9aa814bfffe7a1a4636c65bda68eda7a3e3ecd
   branch: main
   specs:
     mr519_gen (2.2.0.beta4)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: d578b28bb40c145d4fb767f484a16914dd7c2d16
+  revision: 306d12415001b3626cace575bb6c9eed006e3fef
   branch: main
   specs:
     msip (2.2.0.beta5)
@@ -264,7 +264,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pg (1.5.5)
+    pg (1.5.6)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -356,7 +356,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.30.0, < 2.0)
-    rubocop-shopify (2.14.0)
+    rubocop-shopify (2.15.1)
       rubocop (~> 1.51)
     ruby-graphviz (1.2.5)
       rexml
