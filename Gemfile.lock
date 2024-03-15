@@ -10,15 +10,6 @@ GIT
       terrapin (>= 0.6.0, < 2.0)
 
 GIT
-  remote: https://github.com/pasosdeJesus/mr519_gen.git
-  revision: 880f8d08c018b1eaa6eabf74c3845d70fb28c7ee
-  branch: v2.1
-  specs:
-    mr519_gen (2.1.0.beta1)
-      rails
-      sip
-
-GIT
   remote: https://github.com/pasosdeJesus/sip.git
   revision: 1385c9989d4fd4181c98bc79b6dc094105c6c083
   branch: v2.1
@@ -42,6 +33,15 @@ GIT
   branch: new_id_with_ajax
   specs:
     cocoon (1.2.11)
+
+GIT
+  remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
+  revision: 880f8d08c018b1eaa6eabf74c3845d70fb28c7ee
+  branch: v2.1
+  specs:
+    mr519_gen (2.1.0.beta1)
+      rails
+      sip
 
 PATH
   remote: .
