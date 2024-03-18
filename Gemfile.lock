@@ -18,8 +18,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: db9aa814bfffe7a1a4636c65bda68eda7a3e3ecd
-  branch: main
+  revision: 6036b53c4f43cc68470704b11621cd0f5a365a50
+  branch: v2.2
   specs:
     mr519_gen (2.2.0.beta4)
       msip
@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: e4d7e01308d00ba28975125e2f40a013948eaf0e
-  branch: main
+  revision: b36c9fb32345742833bf43b23b30281169202447
+  branch: v2.2
   specs:
     msip (2.2.0.beta5)
       cancancan (~> 3)
@@ -223,7 +223,7 @@ GEM
       railties (>= 6.0.0)
     json (2.7.1)
     language_server-protocol (3.17.0.3)
-    libxml-ruby (5.0.2)
+    libxml-ruby (5.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -252,7 +252,7 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.16.2)
+    nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     odf-report (0.7.3)
