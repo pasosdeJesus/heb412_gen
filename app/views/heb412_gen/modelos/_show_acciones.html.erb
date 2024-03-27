@@ -17,6 +17,14 @@
       <% end %>
     </div>
 
+    <% if can?(:edit, @registro) && defined?(controller.con_boton_copiar?)  &&
+        controller.con_boton_copiar? %>
+      <div class='col-sm-3'>
+        <%= render partial: 'boton_copiar', 
+          locals: {registro: @registro} %>
+      </div>
+    <% end %>
+
     <% rutamas = clase.pluralize.underscore + '/show_mas_acciones' %>
     <% if lookup_context.find_all( rutamas, [], true).any? %>
       <% # Hay un parcial %>
