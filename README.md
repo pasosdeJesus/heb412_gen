@@ -3,14 +3,14 @@
 
 [![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad:[![Estado Construcción](https://gitlab.com/pasosdeJesus/heb412_gen/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/heb412_gen/-/pipelines?page=1&scope=all&ref=main) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/heb412_gen/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/heb412_gen) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/heb412_gen/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/heb412_gen)
 
-![Logo de heb412_gen](https://raw.githubusercontent.com/pasosdeJesus/heb412_gen/master/test/dummy/app/assets/images/logo.jpg)
+![Logo de heb412_gen](https://gitlab.com/pasosdeJesus/heb412_gen/-/raw/main/test/dummy/app/assets/images/logo.jpg)
 
-Este es el motor principal de la aplicación (https://github.com/pasosdeJesus/heb412)[Heb412] 
+Este es el motor principal de la aplicación (https://gitlab.com/pasosdeJesus/heb412)[Heb412] 
 que maneja una nube de documentos y plantillas ods y odt
 
 Aplican practicamente las mismas instrucciones de otros motores genérico
 basados en msip, ver por ejemplo:
-	https://github.com/pasosdeJesus/sal7711_gen
+	https://gitlab.com/pasosdeJesus/sal7711_gen
 
 Las funcionalidades que provee al momento de este escrito son:
 
@@ -26,7 +26,7 @@ La exportación e importación requieren la previa configuración de la nube.
 
 ## 1. Configure gemas, javascript y base de datos
 
-Este motor opera sobre [msip](https://github.com/pasosdeJesus/msip) y [mr519_gen](https://github.com/pasosdeJesus/mr519_gen)
+Este motor opera sobre [msip](https://gitlab.com/pasosdeJesus/msip) y [mr519_gen](https://gitlab.com/pasosdeJesus/mr519_gen)
 
 En su Gemfile asegure tener:
 
@@ -35,11 +35,11 @@ En su Gemfile asegure tener:
 	gem 'redcarpet'
 
         gem 'msip', 
-          git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+          git: 'https://gitlab.com/pasosdeJesus/heb412_gen.git'
 	gem 'mr519_gen', 
-          git: 'https://github.com/pasosdeJesus/mr519_gen.git'
+          git: 'https://gitlab.com/pasosdeJesus/mr519_gen.git'
 	gem 'heb412_gen', 
-	  git: 'https://github.com/pasosdeJesus/heb412_gen.git'
+	  git: 'https://gitlab.com/pasosdeJesus/heb412_gen.git'
 ```
 
 
@@ -134,11 +134,11 @@ Agregue en el archivo `app/models/ability.rb` la relación de campos
         clone.merge(CAMPOS_PLANTILLAS_PROPIAS)
     end
 ```
-Vea un ejemplo más completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>
+Vea un ejemplo más completo en <https://gitlab.com/pasosdeJesus/cor1440/-/blob/master/app/models/ability.rb>
 
 Si alguna plantilla sólo debe ser para un registro puede emplear el atributo ```solo_registro: true```.  
 Si una plantilla debe ser sólo para un listado emplee el atributo ```solo_multiple: true```.  
-Puede ver un ejemplo de este  último caso en <https://github.com/pasosdeJesus/sivel2_sjrcol/blob/master/app/models/ability.rb>
+Puede ver un ejemplo de este  último caso en <https://gitlab.com/pasosdeJesus/si_jrscol/-/blob/master/app/models/ability.rb>
 
 ### 3.2 Permisos para gestionar y/o para llenar plantillas
 
@@ -239,7 +239,7 @@ Este método por omisión generará el `.ods` en la carpeta generados de la nube
 Puede ajustar la forma de presentar algunos campos bien en la función
 `presenta` del modelo asociado al controlador o bien creando en el 
 modelo funciones auxiliares. Pueden verse ejemplos de ambas posibilidades
-en https://github.com/pasosdeJesus/msip/blob/master/lib/msip/concerns/models/persona.rb  
+en https://gitlab.com/pasosdeJesus/msip/-/blob/master/lib/msip/concerns/models/persona.rb  
 Por ejemplo una función `presenta(atr)` sobrecargada para presentar
 sigla de un tipo de documento en lugar del nombre cuando el campo
 solicitado es `tdoc`:
@@ -266,7 +266,7 @@ por la tarea que genera el ODS en la carpeta `generados` y que puede
 bien alistar los registros por llenar automáticamente de forma
 uniforme en una hoja de cálculo o bien generar directamente el ODS.
 Puede ver un ejemplo en 
-      https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
+      https://gitlab.com/pasosdeJesus/si_jrscol/-/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
 
 
 ### 3.7 Configure una vista `show` que llenará un registro en una hoja de cálculo .ods
@@ -291,5 +291,5 @@ para plantillas que sean sólo para un registro (i.e con con `solo_registro`).
 ### 3.9 Detalles de implementación de generación de campos que provienen de subformularios
 
 Por ejemplo de formularios de caracterización o de subformularios incrustados por un tipo de actividad.
-Ver <https://github.com/pasosdeJesus/heb412_gen/blob/master/doc/campos_compuestos.md>
+Ver <https://gitlab.com/pasosdeJesus/heb412_gen/-/blob/master/doc/campos_compuestos.md>
 
