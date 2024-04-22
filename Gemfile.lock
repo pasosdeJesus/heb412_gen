@@ -18,16 +18,16 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 77703f6ba8bdd69c6cfd6dd1bdd6f928fd493d3b
+  revision: 0a40f10e2759671366764a3244a3b26ae6ec063d
   branch: v2.2
   specs:
-    mr519_gen (2.2.0.beta4)
+    mr519_gen (2.2.0.beta5)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4f69c9edb506dbe9482e0dc99837f6a0edd5ffe9
+  revision: 9ad803fbf57846d880d6c8d5ef50ca756ffd2697
   branch: v2.2
   specs:
     msip (2.2.0.beta5)
@@ -48,7 +48,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (2.2.0.beta4)
+    heb412_gen (2.2.0.beta5)
       mr519_gen
       msip
       redcarpet
