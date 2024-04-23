@@ -10,7 +10,7 @@
       v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
       true) %>
     <%= f.input :nombrecampo,
-      collection: col,
+      collection: col.localize(:es).sort.to_a,
       label: false
     %>
   </td>
