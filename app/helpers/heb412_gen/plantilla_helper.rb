@@ -33,7 +33,6 @@ module Heb412Gen
         end
       end
       col = col.localize(:es).to_a.map { |x| x.to_s }.sort
-      puts "OJO campoplantillahcm. col=#{col}"
       col
     end
     module_function :campos_vista_formulario
