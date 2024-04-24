@@ -67,11 +67,11 @@ gem "will_paginate" # Listados en páginas
 
 gem "msip", # Motor generico
   git: "https://gitlab.com/pasosdeJesus/msip.git", branch: 'main'
-# path: '../msip'
+  #path: '../msip'
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
   git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: 'main'
-# path: '../mr519_gen'
+  #path: '../mr519_gen'
 
 group :development, :test do
   gem "brakeman"
