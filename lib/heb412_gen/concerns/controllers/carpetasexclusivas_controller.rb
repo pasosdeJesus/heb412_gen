@@ -38,15 +38,15 @@ module Heb412Gen
             c.reorder([:carpeta, :grupo_id])
           end
 
+          def index(c = nil)
+            index_msip(c)
+          end
+
           private
 
           # Use callbacks to share common setup or constraints between actions.
           def set_carpetaexclusiva
             @registro = @carpetaexclusiva = Carpetaexclusiva.find(params[:id])
-          end
-
-          def index
-            debugger
           end
 
           def lista_params
