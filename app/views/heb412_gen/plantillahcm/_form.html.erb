@@ -20,6 +20,7 @@
       <%= f.input :ruta, 
         collection: ods,
         input_html: {
+          class: 'tom-select',
           "data-toggle" => 'tooltip',
           "title" => t('Plantilla, debe ser hoja de cálculo (ods) con encabezado y lista para agregar datos en las filas a continuación de una inicial')
         } %>
@@ -52,6 +53,7 @@
         include_blank: false,
         selected: @plantillahcm.vista.nil? ? 'Usuario' : @plantillahcm.vista,
         input_html: {
+          class: 'tom-select',
           "data-toggle" => 'tooltip',
           "title" => t('Desde que parte de la aplicación se podrá llenar la plantilla')
         } %>
@@ -66,7 +68,7 @@
         collection: Mr519Gen::Formulario.all,
         label_method: :presenta_nombre,
         value_method: :id,
-        input_html: { class: 'chosen-select' }
+        input_html: { class: 'tom-select' }
       %>
 
 
