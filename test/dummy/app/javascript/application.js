@@ -11,14 +11,25 @@ import './jquery'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
-import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 
 import 'gridstack'
 
+import TomSelect from 'tom-select';
+window.TomSelect = TomSelect;
+window.configuracionTomSelect = {
+    create: false,
+    diacritics: true, //no sensitivo a acentos
+    sortField: {
+          field: "text",
+          direction: "asc"
+        }
+}
+
 import Msip__Motor from "./controllers/msip/motor"
 window.Msip__Motor = Msip__Motor
+Msip__Motor.iniciar()
 import Mr519Gen__Motor from "./controllers/mr519_gen/motor"
 window.Mr519Gen__Motor = Mr519Gen__Motor
 import Heb412Gen__Motor from "./controllers/heb412_gen/motor"
@@ -47,6 +58,8 @@ let promesaRecursosSprocketsYDocumento = new Promise((resolver, rechazar) => {
 promesaRecursosSprocketsYDocumento.then((mensaje) => {
   console.log(mensaje)
   var root = window;
+  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()  // Este se ejecuta cada vez que se carga una página
+
   msip_prepara_eventos_comunes(root);
   mr519_gen_prepara_eventos_comunes(root);
   heb412_gen_prepara_eventos_comunes(root);

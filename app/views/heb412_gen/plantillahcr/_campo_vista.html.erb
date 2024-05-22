@@ -12,6 +12,7 @@
   include_blank: false,
   selected: @plantillahcr.vista.nil? ? 'Usuario' : @plantillahcr.vista,
   input_html: {
-  "data-toggle" => 'tooltip',
-  "title" => 'Desde que parte de la aplicación se podrá llenar'
-} %>
+    class: "tom-select",
+    "data-toggle" => 'tooltip',
+    "title" => 'Desde que parte de la aplicación se podrá llenar'
+  } %>

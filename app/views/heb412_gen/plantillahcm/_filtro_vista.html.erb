@@ -10,12 +10,12 @@
 
 <%= f.input :busvista, 
   collection: cord,
-  label: false,
   include_blank: true,
-  selected: Msip::ModeloHelper.poromision(params, :busvista),
   input_html: {
-    "data-toggle" => "chosen-select",
+    class: "tom-select",
     "data-enviarautomatico" => "" 
-  }
+  },
+  label: false,
+  selected: Msip::ModeloHelper.poromision(params, :busvista)
 %>
 

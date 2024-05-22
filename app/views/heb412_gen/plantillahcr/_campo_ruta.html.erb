@@ -6,7 +6,8 @@ Dir.chdir(Rails.application.config.x.heb412_ruta) {
 <%= f.input :ruta, 
   collection: ods,
   input_html: {
-  "data-toggle" => 'tooltip',
-  "title" => 'Plantilla, debe ser hoja de cálculo (ods)'
-} %>
+    class: "tom-select",
+    "data-toggle" => 'tooltip',
+    "title" => 'Plantilla, debe ser hoja de cálculo (ods)'
+  } %>
 

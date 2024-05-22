@@ -27,8 +27,13 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
+<<<<<<< HEAD
   revision: 5b87175e739fcfb9216869fbb769b0f9f23303bc
   branch: v2.2
+=======
+  revision: 1ecdb50c003747df418256414d4a847df2851c19
+  branch: tomselect
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
   specs:
     msip (2.2.0.beta7)
       cancancan (~> 3)
@@ -57,6 +62,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     actioncable (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -80,6 +86,37 @@ GEM
     actionpack (7.2.1)
       actionview (= 7.2.1)
       activesupport (= 7.2.1)
+=======
+    actioncable (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+      zeitwerk (~> 2.6)
+    actionmailbox (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      activejob (= 7.1.3.3)
+      activerecord (= 7.1.3.3)
+      activestorage (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      mail (>= 2.7.1)
+      net-imap
+      net-pop
+      net-smtp
+    actionmailer (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      actionview (= 7.1.3.3)
+      activejob (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      mail (~> 2.5, >= 2.5.4)
+      net-imap
+      net-pop
+      net-smtp
+      rails-dom-testing (~> 2.2)
+    actionpack (7.1.3.3)
+      actionview (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
       nokogiri (>= 1.8.5)
       racc
       rack (>= 2.2.4, < 3.2)
@@ -87,6 +124,7 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+<<<<<<< HEAD
       useragent (~> 0.16)
     actiontext (7.2.1)
       actionpack (= 7.2.1)
@@ -97,10 +135,22 @@ GEM
       nokogiri (>= 1.8.5)
     actionview (7.2.1)
       activesupport (= 7.2.1)
+=======
+    actiontext (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      activerecord (= 7.1.3.3)
+      activestorage (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      globalid (>= 0.6.0)
+      nokogiri (>= 1.8.5)
+    actionview (7.1.3.3)
+      activesupport (= 7.1.3.3)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
       builder (~> 3.1)
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
+<<<<<<< HEAD
     activejob (7.2.1)
       activesupport (= 7.2.1)
       globalid (>= 0.3.6)
@@ -117,6 +167,24 @@ GEM
       activesupport (= 7.2.1)
       marcel (~> 1.0)
     activesupport (7.2.1)
+=======
+    activejob (7.1.3.3)
+      activesupport (= 7.1.3.3)
+      globalid (>= 0.3.6)
+    activemodel (7.1.3.3)
+      activesupport (= 7.1.3.3)
+    activerecord (7.1.3.3)
+      activemodel (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      timeout (>= 0.4.0)
+    activestorage (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      activejob (= 7.1.3.3)
+      activerecord (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      marcel (~> 1.0)
+    activesupport (7.1.3.3)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.3.1)
@@ -244,8 +312,13 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.0903)
     mini_mime (1.1.5)
+<<<<<<< HEAD
     mini_portile2 (2.8.7)
     minitest (5.25.1)
+=======
+    mini_portile2 (2.8.6)
+    minitest (5.23.1)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
     msgpack (1.7.2)
     net-imap (0.4.16)
       date
@@ -287,8 +360,13 @@ GEM
     public_suffix (6.0.1)
     puma (6.4.3)
       nio4r (~> 2.0)
+<<<<<<< HEAD
     racc (1.8.1)
     rack (3.1.7)
+=======
+    racc (1.8.0)
+    rack (3.0.11)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -296,6 +374,7 @@ GEM
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
+<<<<<<< HEAD
     rails (7.2.1)
       actioncable (= 7.2.1)
       actionmailbox (= 7.2.1)
@@ -310,6 +389,22 @@ GEM
       activesupport (= 7.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.1)
+=======
+    rails (7.1.3.3)
+      actioncable (= 7.1.3.3)
+      actionmailbox (= 7.1.3.3)
+      actionmailer (= 7.1.3.3)
+      actionpack (= 7.1.3.3)
+      actiontext (= 7.1.3.3)
+      actionview (= 7.1.3.3)
+      activejob (= 7.1.3.3)
+      activemodel (= 7.1.3.3)
+      activerecord (= 7.1.3.3)
+      activestorage (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      bundler (>= 1.15.0)
+      railties (= 7.1.3.3)
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -329,10 +424,17 @@ GEM
     rails-i18n (7.0.9)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+<<<<<<< HEAD
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
       irb (~> 1.13)
+=======
+    railties (7.1.3.3)
+      actionpack (= 7.1.3.3)
+      activesupport (= 7.1.3.3)
+      irb
+>>>>>>> 5b847d7 (Pasar a tom-select campos con chosen. Cierra #28)
       rackup (>= 1.0.0)
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
