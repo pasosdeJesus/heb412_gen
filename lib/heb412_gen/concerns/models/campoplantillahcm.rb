@@ -9,8 +9,8 @@ module Heb412Gen
         included do
           belongs_to :plantillahcm,
             class_name: "::Heb412Gen::Plantillahcm",
-            validate: true,
-            optional: false
+            optional: false,
+            validate: true
 
           validates :nombrecampo,
             presence: true,

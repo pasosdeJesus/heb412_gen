@@ -10,9 +10,9 @@ module Heb412Gen
         included do
           has_many :campoplantillahcm,
             class_name: "::Heb412Gen::Campoplantillahcm",
+            dependent: :destroy,
             foreign_key: "plantillahcm_id",
-            validate: true,
-            dependent: :destroy
+            validate: true
           accepts_nested_attributes_for :campoplantillahcm,
             allow_destroy: true,
             reject_if: :all_blank

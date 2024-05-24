@@ -121,6 +121,10 @@ module Heb412Gen
       CAMPOS_PLANTILLAS_PROPIAS
     end
 
+    def self.lista_permisos_plantillahcm
+      [Heb412Gen::Plantillahcm, Heb412Gen::Campoplantillahcm]
+    end
+
     # Se definen habilidades con cancancan
     # Util en motores y aplicaciones de prueba
     # En aplicaciones es mejor escribir completo el modelo de autorización
@@ -133,7 +137,7 @@ module Heb412Gen
       if usuario && usuario.rol
         can(:read, Heb412Gen::Doc)
         can(:read, Heb412Gen::Plantilladoc)
-        can(:read, Heb412Gen::Plantillahcm)
+        can(:read, Heb412Gen::Ability::lista_permisos_plantillahcm)
         can(:read, Heb412Gen::Plantillahcr)
 
         case usuario.rol
@@ -141,7 +145,7 @@ module Heb412Gen
         when Ability::ROLADMIN
           can(:manage, Heb412Gen::Doc)
           can(:manage, Heb412Gen::Plantilladoc)
-          can(:manage, Heb412Gen::Plantillahcm)
+          can(:manage, Heb412Gen::Ability::lista_permisos_plantillahcm)
           can(:manage, Heb412Gen::Plantillahcr)
           can(:manage, Heb412Gen::Carpetaexclusiva)
         end

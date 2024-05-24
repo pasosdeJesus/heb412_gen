@@ -1,0 +1,20 @@
+<%= simple_form_for @plantillahcm do |f| %>
+  <%= f.simple_fields_for :campoplantillahcm,
+    child_index: params[:index] do |subf| %>
+    <%= turbo_stream.replace "agregar-campoplantillahcm" do %>
+      <%= f.submit "Agregar contacto",
+            formaction: heb412_gen.crear_campoplantillahcm_path(subf.index.to_i + 1),
+            formmethod: :post,
+            formnovalidate: true,
+            class: 'btn btn-sm btn-primary',
+            id: "agregar-campoplantillahcm",
+            data:  {
+              disable_with: false
+            } %>
+    <% end %>
+
+    <%= turbo_stream.append "camposplantillahcm_marco" do %>
+      <%= render "/heb412_gen/plantillahcm/campoplantillahcm", f: subf %>
+    <% end %>
+  <% end %>
+<% end %>
