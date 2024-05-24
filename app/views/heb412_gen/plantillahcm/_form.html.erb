@@ -1,10 +1,9 @@
 <%= simple_form_for @plantillahcm do |f| %>
 
-
   <% controller.form_f = f %>
   <script>
     <% ab = ::Ability.new %>
-    root = window;
+      root = window;
     root.campos_plantillas=<%= raw(ab.campos_plantillas.to_json) %>
   </script>
 
@@ -14,7 +13,7 @@
       <%= render partial: 'msip/hogar/errores', locals: { f: f } %>
 
       <% ods =[] 
-         Dir.chdir(Rails.application.config.x.heb412_ruta) { 
+      Dir.chdir(Rails.application.config.x.heb412_ruta) { 
         ods= Dir.glob("**/*.ods") } %>
 
       <%= f.input :ruta, 
@@ -29,25 +28,23 @@
 
       <%= f.input :fuente,
         input_html: {
-        "data-toggle" => 'tooltip',
-        "title" => t('URL o referencia para dar crédito')
-      } %> 
+          "data-toggle" => 'tooltip',
+          "title" => t('URL o referencia para dar crédito')
+        } %> 
 
       <%= f.input :licencia,
         input_html: {
-        "data-toggle" => 'tooltip',
-        "title" => t('URL a la licencia, requerido si el documento se va a publicar')
-      } %> 
+          "data-toggle" => 'tooltip',
+          "title" => t('URL a la licencia, requerido si el documento se va a publicar')
+        } %> 
 
-      <% 
-        ab = ::Ability.new
-        cord = ab.campos_plantillas.select{|l, v| !v[:solo_registro]}.
-          keys.map { |n| 
-          ['Listado de ' + 
-             Heb412Gen::Plantillahcm.human_attribute_name(n.to_s.pluralize), 
-              n.to_s] }
-          cord.sort! { |x,y| x[0] <=> y[0] }
-      %>
+      <% ab = ::Ability.new %>
+      <% sel = ab.campos_plantillas.select { |l, v| !v[:solo_registro]}.keys %>
+      <% cord = sel.map do |n| %>
+        <% ["Listado de " + Heb412Gen::Plantillahcm.human_attribute_name(
+          n.to_s.pluralize), n.to_s] %>
+      <% end %>
+      <% cord.sort! { |x,y| x[0] <=> y[0] } %>
       <%= f.input :vista, 
         collection: cord,
         include_blank: false,
@@ -68,12 +65,11 @@
         collection: Mr519Gen::Formulario.all,
         label_method: :presenta_nombre,
         value_method: :id,
-        input_html: { class: 'tom-select' }
-      %>
+        input_html: { class: 'tom-select' } %>
 
 
       <%= f.input :filainicial,
-         input_html: {
+        input_html: {
           "data-toggle" => 'tooltip',
           "title" => t('Con plantillas para múltiples registros, fila de la hoja de cálculo en la que empezará el primer registro')
         } %>
@@ -89,16 +85,20 @@
         <% end %>
       </div>
       <div class="form-actions abajocentrado">
-        <%= f.button :submit, class: 'btn btn-primary',
-          'data-turbo' => false %>
+        <%= f.button :submit, "Actualizar",
+          class: 'btn btn-primary',
+          data: {
+            disable_with: false,
+            turbo: "false"
+          } %>
 
         <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
           heb412_gen.sisini_path, :class => 'btn' 
         %>
       </div>
 
-    </div> <!-- class="offset-sm-0 col-sm-7 col-md-8" -->
-  
+    </div> <!-- campos -->
+
   </div> <!-- row -->
 
 <% end %>

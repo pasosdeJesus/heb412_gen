@@ -1,28 +1,28 @@
-<table class="table table-bordered" width="100%">
-  <thead>
-    <tr>
-      <th><%= t('Campo') %></th>
-      <th><%= t('Columna') %></th>
-      <th><%= t('Acciones') %></th>
-    </tr>
-  </thead>
-  <tbody id="campoplantillahcm">
-    <%= f.simple_fields_for :campoplantillahcm, 
-      f.object.campoplantillahcm.order(['LENGTH(columna)', :columna])  do |c| %>
-      <%= render partial: 'campoplantillahcm', 
-        locals: {f: c, vista: vista } %>
-      </div>
+<div class="div-tabla">
+  <div id="camposplantillahcm_marco" class="div-tabla-cuerpo">
+    <div class="div-tabla-fila">
+      <div class="div-tabla-celda-encabezado"><%= t('Campo') %></div>
+      <div class="div-tabla-celda-encabezado"><%= t('Columna') %></div>
+      <div class="div-tabla-celda-encabezado"><%= t('Acciones') %></div>
+    </div>
+    <%= f.simple_fields_for :campoplantillahcm,
+      f.object.campoplantillahcm.order(['LENGTH(columna)', :columna])  do |subf| %>
+      <%= render partial: 'campoplantillahcm',
+        locals: {f: subf, vista: vista } %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<div class="links">
-  <%= link_to_add_association t('Añadir campo'), f, 
-    :campoplantillahcm,
-    :"data-association-insertion-node" => "tbody#campoplantillahcm", 
-    :"data-association-insertion-method" => "append", 
-    partial: 'campoplantillahcm',
+<div class="enlace-agregar-campoplantillahcm">
+  <%= f.submit "Agregar Campo",
+    formaction: heb412_gen.crear_campoplantillahcm_path(
+      index: @plantillahcm.campoplantillahcm.size
+    ),
+    formmethod: :post,
+    formnovalidate: true,
     class: 'btn btn-sm btn-primary',
-    style: 'margin-bottom: 1em'
-  %>
+    name: "agregar-campoplantillahcm",
+    id: "agregar-campoplantillahcm",
+    data:  {
+      disable_with: false } %>
 </div>
