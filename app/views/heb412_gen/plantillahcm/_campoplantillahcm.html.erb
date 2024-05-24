@@ -1,24 +1,35 @@
-<tr class='nested-fields'>
-  <td>
+<%= turbo_frame_tag "campoplantillahcm_#{f.index}", 
+  class: 'div-tabla-fila nested-fields' do %>
+  <div class="div-tabla-celda">
     <% if defined?(vista) %>
-      <%= render partial: 'campo_nombrecampo', 
+      <%= render partial: 'heb412_gen/plantillahcm/campo_nombrecampo', 
         locals: {f: f, vista: vista} %>
     <% else %>
-      <%= render partial: 'campo_nombrecampo', 
+      <%= render partial: 'heb412_gen/plantillahcm/campo_nombrecampo', 
         locals: {f: f} %>
     <% end %>
-  </td>
-  <td> 
+  </div>
+  <div class="div-tabla-celda">
     <%= f.input :columna,
-      collection: ('A'..Heb412Gen::ApplicationHelper::MAXCOL).to_a,  # AMJ es máximo en gnumeric
+      collection: (
+        'A'..Heb412Gen::ApplicationHelper::MAXCOL
+      ).to_a,  # AMJ es máximo en gnumeric
       label: false
     %>
-  </td>
-  <td>
+  </div>
+  <div class="div-tabla-celda">
     <%= f.input :id, as: :hidden %>
-    <%= link_to_remove_association t('Eliminar'), f, 
-        :class => 'btn btn-sm btn-danger' 
-    %>
+    <%= f.submit "Eliminar",
+      formaction: heb412_gen.eliminar_campoplantillahcm_path(
+        id: f.object.id, index: f.index
+      ),
+      formmethod: :delete,
+      formnovalidate: true,
+      class: 'btn btn-sm btn-danger',
+      data: {
+        turbo_frame: "campoplantillahcm_#{f.index}",
+        disable_with: false
+      } %>
     <div><%= f.error_notification %></div>
-  </td>
-</tr>
+  </div>
+<% end %>
