@@ -9,6 +9,14 @@ Heb412Gen::Engine.routes.draw do
     end
   end
 
+  resources :campoplantillahcr, only: [], param: :index do
+    member do
+      delete '(:id)', to: "camposplantillahcr#destroy", as: "eliminar"
+      post '/' => "camposplantillahcr#create", as: "crear"
+    end
+  end
+
+
   resources :carpetasexclusivas,
     path_names: { new: "nuevo", edit: "edita" }
 

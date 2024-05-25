@@ -9,27 +9,27 @@ module Heb412Gen
         included do
           belongs_to :plantillahcr,
             class_name: "::Heb412Gen::Plantillahcr",
-            validate: true,
-            optional: false
+            optional: false,
+            validate: true
 
           validates :nombrecampo,
-            presence: true,
             allow_blank: false,
-            length: { minimum: 1 }
+            length: { minimum: 1 },
+            presence: true
 
           validates :columna,
+            allow_blank: false,
+            length: { minimum: 1 },
+            presence: true,
             uniqueness: {
               scope: [:plantillahcr_id, :fila],
               message: "no puede haber celdas repetidas",
-            },
-            presence: true,
-            allow_blank: false,
-            length: { minimum: 1 }
+            }
 
           validates :fila,
-            presence: true,
             allow_blank: false,
-            numericality: { greater_than: 0 }
+            numericality: { greater_than: 0 },
+            presence: true
 
           def presenta_nombre
             nombrecampo

@@ -3,32 +3,33 @@
     Guarde y vuelva a editar para agregar campos por generar.
   </div>
 <% else %>
-  <table class='table table-bordered' border=1 width="100%" id="divcampos">
-    <thead>
-      <tr>
-        <th><%= t('Campo') %></th>
-        <th><%= t('Columna') %></th>
-        <th><%= t('Fila') %></th>
-        <th><%= t('Acciones') %></th>
-      </tr>
-    </thead>
-    <tbody id="campoplantillahcr">
-      <%= f.simple_fields_for :campoplantillahcr do |c| %>
-        <%= render partial: 'campoplantillahcr', 
-          locals: {f: c, vista: f.object.vista} %>
-          </div>
-        <% end %>
-    </tbody>
-  </table>
+  <div class="div-tabla">
+    <div id="camposplantillahcr_marco" class="div-tabla-cuerpo">
+      <div class="div-tabla-fila">
+        <div class="div-tabla-celda-encabezado"><%= t('Campo') %></div>
+        <div class="div-tabla-celda-encabezado"><%= t('Columna') %></div>
+        <div class="div-tabla-celda-encabezado"><%= t('Fila') %></div>
+        <div class="div-tabla-celda-encabezado"><%= t('Acciones') %></div>
+      </div>
+      <%= f.simple_fields_for :campoplantillahcr,
+        f.object.campoplantillahcr.order(['LENGTH(columna)', :columna, :fila])  do |subf| %>
+        <%= render partial: 'campoplantillahcr',
+          locals: {f: subf, vista: f.object.vista } %>
+      <% end %>
+    </div>
+  </div>
 
-  <div class="links">
-    <%= link_to_add_association t('Añadir campo'), f, 
-      :campoplantillahcr,
-      :"data-association-insertion-node" => "tbody#campoplantillahcr", 
-      :"data-association-insertion-method" => "append", 
-      partial: 'campoplantillahcr',
+  <div class="enlace-agregar-campoplantillahcr">
+    <%= f.submit "Agregar Campo",
+      formaction: heb412_gen.crear_campoplantillahcr_path(
+        index: @plantillahcr.campoplantillahcr.size
+      ),
+      formmethod: :post,
+      formnovalidate: true,
       class: 'btn btn-sm btn-primary',
-      style: 'margin-bottom: 1em'
-    %>
+      name: "agregar-campoplantillahcr",
+      id: "agregar-campoplantillahcr",
+      data:  {
+        disable_with: false } %>
   </div>
 <% end %>

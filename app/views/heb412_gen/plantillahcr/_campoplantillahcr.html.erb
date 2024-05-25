@@ -1,10 +1,11 @@
-<tr class='nested-fields'>
-  <td>
+<%= turbo_frame_tag "campoplantillahcr_#{f.index}", 
+  class: 'div-tabla-fila nested-fields' do %>
+  <div class="div-tabla-celda">
     <% ab = ::Ability.new %>
-    <% v = defined?(vista) ? vista : 
+    <% v = defined?(vista) ? vista :
       defined?(@vista) ? @vista :
-      defined?(f.object.plantillahcr.vista) ? 
-      f.object.plantillahcr.vista :
+      defined?(f.object.plantillahcr.vista) ? f.object.plantillahcr.vista :
+      defined?(params[:plantillahcr][:vista]) ? params[:plantillahcr][:vista] :
       defined?(ab.campos_plantillas['Usuario']) ? 'Usuario' : nil %>
     <% col = Heb412Gen::PlantillaHelper.campos_vista_formulario(
       v, f.object.plantillahcr ? f.object.plantillahcr.formulario : nil,
@@ -13,23 +14,29 @@
       collection: col.localize(:es).sort.to_a,
       label: false
     %>
-  </td>
-  <td>
+  </div>
+  <div class="div-tabla-celda">
     <%= f.input :columna,
       collection: Heb412Gen::ApplicationHelper::RANGOCOL,
       label: false
     %>
-  </td>
-
-  <td>
+  </div>
+  <div class="div-tabla-celda">
     <%= f.input :fila, label: false %>
-  </td>
-
-  <td>
+  </div>
+  <div class="div-tabla-celda">
     <%= f.input :id, as: :hidden %>
-    <%= link_to_remove_association t("Eliminar"), f, 
-        :class => 'btn btn-sm btn-danger' 
-    %>
+    <%= f.submit "Eliminar",
+      formaction: heb412_gen.eliminar_campoplantillahcr_path(
+        id: f.object.id, index: f.index
+      ),
+      formmethod: :delete,
+      formnovalidate: true,
+      class: 'btn btn-sm btn-danger',
+      data: {
+        turbo_frame: "campoplantillahcr_#{f.index}",
+        disable_with: false
+      } %>
     <div><%= f.error_notification %></div>
-  </td>
-</tr>
+  </div>
+<% end %>

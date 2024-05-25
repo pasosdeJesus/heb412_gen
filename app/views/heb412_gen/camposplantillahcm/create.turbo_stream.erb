@@ -2,7 +2,7 @@
   <%= f.simple_fields_for :campoplantillahcm,
     child_index: params[:index] do |subf| %>
     <%= turbo_stream.replace "agregar-campoplantillahcm" do %>
-      <%= f.submit "Agregar contacto",
+      <%= f.submit "Agregar campo",
             formaction: heb412_gen.crear_campoplantillahcm_path(subf.index.to_i + 1),
             formmethod: :post,
             formnovalidate: true,
