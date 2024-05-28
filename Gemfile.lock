@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 597b79e1780a384a38e7e11869edecb837365294
+  revision: 5997a881b73529d007ac268bad0c2ef2d4f591d3
   branch: tomselect
   specs:
     mr519_gen (2.2.0.beta6)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 4f39df64e09bb8baf61d2ff05a7da4271669692c
+  revision: 876f63094344ae3b61e15136399b96a5f8251c6f
   branch: tomselect
   specs:
     msip (2.2.0.beta6)
@@ -152,7 +152,7 @@ GEM
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
     camertron-eprun (1.1.1)
-    cancancan (3.6.0)
+    cancancan (3.6.1)
     capybara (3.40.0)
       addressable
       matrix
