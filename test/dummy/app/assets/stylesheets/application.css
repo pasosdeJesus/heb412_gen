@@ -13,6 +13,5 @@
  *= require_tree .
  *= require heb412_gen/application.css
  *= require mr519_gen/application.css
- *= require tom-select/dist/css/tom-select.bootstrap5.min.css
  *= require_self
  */
