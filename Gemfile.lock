@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 6f8c2646b5fde0cb147737a4c72e96b0b9926012
+  revision: e654824cfb1babed5a9df00c5dc719d2651cc162
   branch: tomselect
   specs:
     mr519_gen (2.2.0.beta6)
@@ -131,8 +131,8 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     andand (1.3.3)
     ast (2.4.2)
     babel-source (5.8.35)
@@ -288,11 +288,11 @@ GEM
     pg (1.5.6)
     psych (5.1.2)
       stringio
-    public_suffix (5.1.1)
+    public_suffix (6.0.0)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.0)
-    rack (3.1.3)
+    rack (3.1.4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -512,4 +512,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.13
+   2.5.14
