@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 254b5fe1c4e93964265183e554bca57614e51f06
+  revision: f35ca58fad8ae4681b26240adc4eb43d2b0d767f
   specs:
     kt-paperclip (7.2.2)
       activemodel (>= 4.2.0)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 8eefff9ced139625fd9c1dc8eb3247118be150ea
+  revision: 4b02af976ae1ca6e0e309f9774aebd5d8c2f25c2
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta6)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: ccb0bc20ba4a6947eeb8dbe532266b4801396773
+  revision: ae47e85a7fabed7fcccc8031c2dbea7c7fd1f1ad
   branch: v2.2
   specs:
     msip (2.2.0.beta6)
