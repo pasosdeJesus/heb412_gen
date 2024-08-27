@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) { |_repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 gemspec
 
@@ -12,9 +12,11 @@ gem "bootsnap"
 
 gem "cancancan" # Roles
 
-gem "coffee-rails", "~> 4.2"
+gem "cocoon", 
+  git: "https://github.com/vtamara/cocoon.git", 
+  branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
 
-gem "cocoon", git: "https://github.com/vtamara/cocoon.git", branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
+gem "coffee-rails", "~> 4.2"
 
 gem "devise" # Autenticación
 
@@ -35,7 +37,7 @@ gem "odf-report" # Genera ODT
 
 gem "pg"
 
-gem "rails", "~> 7.1", "< 7.2"
+gem "rails", "~> 7.2"
 # git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem "redcarpet"
