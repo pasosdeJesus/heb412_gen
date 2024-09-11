@@ -11,7 +11,7 @@ require "heb412_gen/engine"
 # modificar las fuentes de la aplicación. Esta flexibilidad, se logra con el 
 # formato abierto ODS (nativo de LibreOffice).  
 #
-# Como la expotación con este método es demorada, no se recomienda para
+# Como la exportación con este método es demorada, no se recomienda para
 # conjuntos de registros medianos o grandes --para esos sugerimos 
 # implementar reportes particulares en las fuentes en formatos XLSX (medianos) 
 # y CSV (masivos).
