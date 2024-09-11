@@ -18,16 +18,16 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: d84cfe1e67c49d229d3fb1ddd45024f6c123f7ea
+  revision: 5f1beebad1e0d2ab3b31360a011df4e32b1d79d9
   branch: main
   specs:
-    mr519_gen (2.3.0.alfa1)
+    mr519_gen (2.3.0.alfa2)
       msip
       rails
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 31bbedbafb0b8ce47e368f72adb50fb5ca5c413e
+  revision: b9ef1a5672295def4b796650e6f10cb3a0e9843c
   branch: main
   specs:
     msip (2.3.0.alfa2)
@@ -48,7 +48,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (2.3.0.alfa1)
+    heb412_gen (2.3.0.alfa2)
       mr519_gen
       msip
       redcarpet
@@ -281,7 +281,7 @@ GEM
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
-    pg (1.5.7)
+    pg (1.5.8)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -366,10 +366,10 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.32.1)
       parser (>= 3.3.1.0)
-    rubocop-minitest (0.35.1)
+    rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.26.0)
+    rubocop-rails (2.26.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
