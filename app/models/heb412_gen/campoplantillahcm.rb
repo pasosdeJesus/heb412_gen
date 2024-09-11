@@ -2,8 +2,9 @@
 
 require "heb412_gen/concerns/models/campoplantillahcm"
 
-# Campo en una plantilla de hoja de cálculo para un conjunto de registros
 module Heb412Gen
+  # Columna donde se exporta un campo de un registro en una plantilla de 
+  # hoja de cálculo para un conjunto de registros.
   class Campoplantillahcm < ActiveRecord::Base
     include Heb412Gen::Concerns::Models::Campoplantillahcm
   end
