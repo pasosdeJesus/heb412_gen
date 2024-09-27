@@ -26,6 +26,12 @@ export default class Heb412Gen__Motor {
    */
 
 
+  // Se ejecuta cada vez que se carga una página que no está en cache
+  // y tipicamente después de que se ha cargado la página y los recursos.
+  static ejecutarAlCargarDocumentoYRecursos() {
+    console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarDocumentoYRecursos()")
+  }
+
   // Llamar cada vez que se cargue una página detectada con turbo:load
   // Tal vez en cache por lo que podría no haberse ejecutado iniciar 
   // nuevamente.
@@ -33,6 +39,11 @@ export default class Heb412Gen__Motor {
   // para no ejecutar dos veces lo que no conviene.
   static ejecutarAlCargarPagina() {
     console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarPagina()")
+  }
+
+  // Se ejecuta desde app/javascript/application.js tras importar el motor
+  static iniciar() {
+    console.log("* Corriendo Heb412Gen__Motor::iniciar()")
   }
 
 }
