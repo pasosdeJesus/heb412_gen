@@ -17,6 +17,13 @@ import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 
 import 'gridstack'
 
+import Msip__Motor from "./controllers/msip/motor"
+window.Msip__Motor = Msip__Motor
+import Mr519Gen__Motor from "./controllers/mr519_gen/motor"
+window.Mr519Gen__Motor = Mr519Gen__Motor
+import Heb412Gen__Motor from "./controllers/heb412_gen/motor"
+window.Heb412Gen__Motor = Heb412Gen__Motor
+
 import {AutocompletaAjaxExpreg} from '@pasosdejesus/autocompleta_ajax'
 window.AutocompletaAjaxExpreg = AutocompletaAjaxExpreg
 
@@ -53,7 +60,10 @@ document.addEventListener('turbo:load', (e) => {
   
   console.log('Escuchador turbo:load')
 
-  msip_ejecutarAlCargarPagina(window)
+  msip_ejecutarAlCargarPagina(window) // Establece root.puntomontaje
+  Msip__Motor.ejecutarAlCargarPagina()
+  Mr519Gen__Motor.ejecutarAlCargarPagina()
+  Heb412Gen__Motor.ejecutarAlCargarPagina()
 })
 
 import "./controllers"
