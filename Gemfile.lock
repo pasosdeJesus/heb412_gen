@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 84c046911ac5c05ae04fe088592bec01d7e4b726
+  revision: 21ef0b13735f8395dfdb6ee12e783253aa6c6d37
   branch: tomselect
   specs:
     mr519_gen (2.2.0.beta6)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: be592997647a379db03bcfb26205b3819dcdbe66
+  revision: 6aef6422392de0adacc681597d6ce5bf7076cc2b
   branch: tomselect
   specs:
     msip (2.2.0.beta6)
@@ -510,4 +510,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.19
+   2.5.20
