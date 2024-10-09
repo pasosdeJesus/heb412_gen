@@ -58,9 +58,9 @@ promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // Este se ejecuta cada vez que se carga una página
   console.log(mensaje)
   var root = window;
-  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()  
-  Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos() 
-  Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos() 
+  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
+  Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
+  Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
 
   msip_prepara_eventos_comunes(root);
   mr519_gen_prepara_eventos_comunes(root);
