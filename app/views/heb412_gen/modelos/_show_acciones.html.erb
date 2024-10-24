@@ -19,7 +19,7 @@
 
     <% if can?(:edit, @registro) && defined?(controller.con_boton_copiar?)  &&
         controller.con_boton_copiar? %>
-      <div class='col-sm-3'>
+      <div class='col-sm-1'>
         <%= render partial: 'boton_copiar', 
           locals: {registro: @registro} %>
       </div>
@@ -63,7 +63,7 @@
             {class: 'btn', "data-turbo" => false } %-->
       <% end %>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <% if can?(:destroy, @registro) %>
         <%= render partial: 'boton_eliminar',
           locals: {registro: @registro} %>
