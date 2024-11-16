@@ -7,8 +7,6 @@ import "@hotwired/turbo-rails";
 Rails.start();
 window.Rails = Rails
 
-import './jquery'
-
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
 
@@ -57,7 +55,6 @@ let promesaRecursosSprocketsYDocumento = new Promise((resolver, rechazar) => {
 promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // Este se ejecuta cada vez que se carga una página
   console.log(mensaje)
-  var window = window;
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
   Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
