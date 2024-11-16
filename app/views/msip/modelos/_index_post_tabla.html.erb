@@ -41,30 +41,23 @@
         <% Rails.logger.info "** OJO ** ruta=#{ruta}" %>
         <%= link_to t("Generar ODS"), 
           "#", class: "btn",
-          onclick: "heb412_gen_completa_generarp(this, '#filtro_disgenera', "\
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla("\
+          "this, '#filtro_disgenera', "\
           "'#{ruta}', "\
           "'#{ruta}')",
           target: "_blank" %>
         <%= link_to t("Generar XLSX"), "#", class: "btn",
-          onclick: "heb412_gen_completa_generarp(this, '#filtro_disgenera', "\
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla("\
+          "this, '#filtro_disgenera', "\
           "'#{ruta}', "\
           "'#{ruta}', 'xlsx')",
           target: "_blank" %>
         <%= link_to t("Generar PDF"), "#", class: "btn", 
-          onclick: "heb412_gen_completa_generarp(this, '#filtro_disgenera', "\
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla("\
+          "this, '#filtro_disgenera', "\
           "'#{ruta}', "\
           "'#{ruta}', 'pdf')",
           target: "_blank" %>
-
-
-        <!--%= link_to t('.imprimir', :default => 'Generar documemto'),  
-          '#', class: 'btn', 
-          onclick: "heb412_gen_completa_generarp(this, " +
-          "\'#genera_plantilla_id\', null, \'#
-          <!-- %= link_to t('.pdf', :default => 'Generar PDF'),
-            '#', class: 'btn', 
-            onclick: "heb412_gen_completa_generarp(this, " +
-            "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichapdf\')" %-->
         <% end %>
       <% end %>
 

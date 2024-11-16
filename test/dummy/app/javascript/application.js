@@ -38,7 +38,7 @@ import {AutocompletaAjaxExpreg} from '@pasosdejesus/autocompleta_ajax'
 window.AutocompletaAjaxExpreg = AutocompletaAjaxExpreg
 
 let esperarRecursosSprocketsYDocumento = function (resolver) {
-  if (typeof window.puntomontaje == 'undefined') {
+  if (typeof window.puntoMontaje == 'undefined') {
     setTimeout(esperarRecursosSprocketsYDocumento, 100, resolver)
     return false
   }
@@ -57,14 +57,10 @@ let promesaRecursosSprocketsYDocumento = new Promise((resolver, rechazar) => {
 promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // Este se ejecuta cada vez que se carga una página
   console.log(mensaje)
-  var root = window;
+  var window = window;
   Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
   Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
-
-  msip_prepara_eventos_comunes(root);
-  mr519_gen_prepara_eventos_comunes(root);
-  heb412_gen_prepara_eventos_comunes(root);
 })
 
 document.addEventListener('turbo:load', (e) => {
@@ -75,7 +71,6 @@ document.addEventListener('turbo:load', (e) => {
   
   console.log('Escuchador turbo:load')
 
-  msip_ejecutarAlCargarPagina(window) // Establece root.puntomontaje
   Msip__Motor.ejecutarAlCargarPagina()
   Mr519Gen__Motor.ejecutarAlCargarPagina()
   Heb412Gen__Motor.ejecutarAlCargarPagina()

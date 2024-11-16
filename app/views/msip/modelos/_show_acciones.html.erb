@@ -39,22 +39,19 @@
       <% if can?(:read, @registro) && @plantillas && @plantillas.count > 0 %>
         <%= link_to t('Generar ODS'),  
           '#', class: 'btn', 
-          onclick: "heb412_gen_completa_generarp(this, "\
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla(this, "\
           "\'#genera_plantilla_id\', null, "\
           "\'#{modelo_path(@registro)}/fichaimp\', 'ods')" %>
         <%= link_to t('Generar XLSX'),  
           '#', class: 'btn', 
-          onclick: "heb412_gen_completa_generarp(this, "\
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla(this, "\
           "\'#genera_plantilla_id\', null, "\
           "\'#{modelo_path(@registro)}/fichaimp\', 'xlsx')" %>
         <%= link_to t('Generar PDF'),
           '#', class: 'btn', 
-          onclick: "heb412_gen_completa_generarp(this, " +
-          "\'#genera_plantilla_id\', null, \'#{modelo_path(@registro)}/fichapdf\')" %>
-  
-          <!-- %= link_to t('.pdf', :default => 'Ficha en PDF'),
-            proyectofinanciero_path(@registro) + "/fichapdf", 
-            {class: 'btn', "data-turbo" => false } %-->
+          onclick: "Heb412Gen__Motor.completarEnlacePlantilla(this, "\
+          "\'#genera_plantilla_id\', null, "\
+          "\'#{modelo_path(@registro)}/fichapdf\')" %>
       <% end %>
     </div>
     <div class="col-sm-3">
