@@ -6,6 +6,8 @@ gemspec
 
 gem 'babel-transpiler'
 
+gem "bigdecimal"
+
 gem 'bootsnap'
 
 gem 'cancancan' # Roles
@@ -18,6 +20,8 @@ gem 'devise' # Autenticación
 
 gem 'devise-i18n'
 
+gem "drb"
+
 gem 'jbuilder', '~> 2.5'
 
 gem 'jsbundling-rails'
@@ -26,6 +30,8 @@ gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
 
 gem 'libxml-ruby'
+
+gem "mutex_m"
 
 gem 'nokogiri', '>=1.11.1'
 
