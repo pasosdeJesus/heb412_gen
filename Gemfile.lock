@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 82d7c11b5fa478757928bfe0edf45625770f0f88
+  revision: e6acee925e758d2741b0cb141431ca5452133df4
   branch: main
   specs:
     mr519_gen (2.3.0.alfa3)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: d2e9f711f4b4bf8b8a7f33a14d3045d8e0bd18fc
+  revision: 6c36f722658676faa5b895aac1be7de12ce8600a
   branch: main
   specs:
     msip (2.3.0.alfa3)
@@ -344,7 +344,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (2.4)
+    rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
