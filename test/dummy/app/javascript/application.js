@@ -55,9 +55,9 @@ let promesaRecursosSprocketsYDocumento = new Promise((resolver, rechazar) => {
 promesaRecursosSprocketsYDocumento.then((mensaje) => {
   // Este se ejecuta cada vez que se carga una página
   console.log(mensaje)
-  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
   Mr519Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
   Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
+  Msip__Motor.ejecutarAlCargarDocumentoYRecursos()
 })
 
 document.addEventListener('turbo:load', (e) => {
@@ -67,10 +67,10 @@ document.addEventListener('turbo:load', (e) => {
  */
   
   console.log('Escuchador turbo:load')
-
   Msip__Motor.ejecutarAlCargarPagina()
   Mr519Gen__Motor.ejecutarAlCargarPagina()
   Heb412Gen__Motor.ejecutarAlCargarPagina()
+  Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
 })
 
 import "./controllers"
