@@ -42,13 +42,16 @@ export default class Heb412Gen__Motor {
     }
 
     // MENUS CONTEXTUALES
-    if (document.querySelectorAll("#heb412_mcarc").length > 0) {
-      document.querySelector("#heb412_mcarc").style.display = 'none';
-      document.querySelector("#heb412_mcdir").style.display = 'none';
+    var contextmenuarc = document.querySelector("#heb412_mcarc")
+    var contextmenudir = document.querySelector("#heb412_mcdir")
+    if (document.querySelectorAll(".heb412_menucontextual").length > 0) {
+      contextmenuarc.style.display = 'none';
+      contextmenudir.style.display = 'none';
     }
 
     document.querySelectorAll(".heb412_archivo").forEach( (a) => {
       a.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
         let indice = 0
         if (e.target.classList.contains('heb412_archivo')) {
           indice = e.target.dataset['heb412Indice']
@@ -64,32 +67,32 @@ export default class Heb412Gen__Motor {
           window.heb412_mcarc_descarga = null
         }
         document.querySelector("#heb412_mcarc").style.display = "block"
-        document.querySelector("#heb412_mcarc").style.left = e.pageX
-        document.querySelector("#heb412_mcarc").style.top = e.pageY
+        document.querySelector("#heb412_mcarc").style.left = `${e.pageX}px`;
+        document.querySelector("#heb412_mcarc").style.top = `${e.pageY}px`;
         return false;
       })
     })
+
     if (document.querySelectorAll(".heb412_directorio").length > 0) {
-
-      document.querySelector(".heb412_directorio").
-        addEventListener("contextmenu", 
-          (e) => {
-            if (e.target.getAttribute('href') == null) {
-              window.heb412_mcdir_enlace = e.target.parentElement
-            } else {
-              window.heb412_mcdir_enlace = e.target
-            }
-            document.querySelector("#heb412_mcdir").style.display = "block"
-            document.querySelector("#heb412_mcdir").style.left = e.pageX
-            document.querySelector("#heb412_mcdir").style.top = e.pageY
-
-            document.addEventListener("click", (e) => {
-              if (e.button == 0) {
-                document.querySelector(".heb412_menucontextual").style.display = "none"
-              }
-            })
+      document.querySelectorAll(".heb412_ndir").forEach( (a) => {
+        a.addEventListener("contextmenu", (e) => {
+          e.preventDefault();
+          if (e.target.getAttribute('href') == null) {
+            window.heb412_mcdir_enlace = e.target.parentElement
+          } else {
+            window.heb412_mcdir_enlace = e.target
           }
-        )
+          document.querySelector("#heb412_mcdir").style.display = "block"
+          document.querySelector("#heb412_mcdir").style.left = `${e.pageX}px`;
+          document.querySelector("#heb412_mcdir").style.top = `${e.pageY}px`;
+
+          document.addEventListener("click", (e) => {
+            if (e.button == 0) {
+              document.querySelector(".heb412_menucontextual").style.display = "none"
+            }
+          })
+        })
+      })
 
       document.addEventListener("mouseleave", e => {
         if (e.target.querySelectorAll(".heb412_menucontextual").length > 0) {
@@ -106,7 +109,11 @@ export default class Heb412Gen__Motor {
       })
 
       document.addEventListener("click", e => {
-        if (e.target.id == "heb412_mcarc") {
+        if (e.target === document.body) {
+          contextmenuarc.style.display = 'none';
+          contextmenudir.style.display = 'none';
+        }
+        else if (e.target.parentElement.parentElement.parentElement.id == "heb412_mcarc") {
           Msip__Motor.arreglarPuntoMontaje()
           let t = Date.now()
           let d = -1
@@ -123,7 +130,7 @@ export default class Heb412Gen__Motor {
               case "renombrar":
                 alert("renombrado archivo!")
                 break
-              case "eliminar": 
+              case "eliminar":
                 Heb412Gen__Motor.eliminarArchivo(window.heb412_mcarc_descarga.href)
                 break
               case "permisos":
@@ -132,7 +139,7 @@ export default class Heb412Gen__Motor {
             }
           }
           return false
-        } else if (e.target.id == "heb412_mcdir") {
+        } else if (e.target.parentElement.parentElement.parentElement.id == "heb412_mcdir") {
           let t = Date.now()
           let d = -1
           if (window.heb412_mcdir_t) {
@@ -156,6 +163,10 @@ export default class Heb412Gen__Motor {
                 break
             }
           }
+        }
+        else{
+          contextmenuarc.style.display = 'none';
+          contextmenudir.style.display = 'none';
         }
 
       })
