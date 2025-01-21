@@ -26,10 +26,7 @@ export default class Heb412Gen__Motor {
    */
 
 
-  // Se ejecuta cada vez que se carga una página que no está en cache
-  // y tipicamente después de que se ha cargado la página y los recursos.
-  static ejecutarAlCargarDocumentoYRecursos() {
-    console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarDocumentoYRecursos()")
+  static refrescar() {
     if (window.location.href.match(/\/plantillahcm\/ */)) {
       document.addEventListener('change', event => { 
         if (event.target.id = "plantillahcm_vista") {
@@ -171,6 +168,15 @@ export default class Heb412Gen__Motor {
 
       })
     }
+
+  }
+
+
+  // Se ejecuta cada vez que se carga una página que no está en cache
+  // y tipicamente después de que se ha cargado la página y los recursos.
+  static ejecutarAlCargarDocumentoYRecursos() {
+    console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarDocumentoYRecursos()")
+    refrescar()
     return
   }
 
@@ -181,6 +187,7 @@ export default class Heb412Gen__Motor {
   // para no ejecutar dos veces lo que no conviene.
   static ejecutarAlCargarPagina() {
     console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarPagina()")
+    refrescar()
   }
 
   // Se ejecuta desde app/javascript/application.js tras importar el motor

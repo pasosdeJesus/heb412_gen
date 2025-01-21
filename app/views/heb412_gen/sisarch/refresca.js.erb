@@ -1,16 +1,16 @@
-  document.querySelector("#ruta").textContent = "<%= @ruta%>"
-  document.querySelector("#nuevo_ruta").value = "<%= File.join("arch", @ruta) %>"
-  document.querySelector("#nueva_ruta").value = "<%= File.join("arch", @ruta) %>"
-  document.querySelector("#contenido").innerHTML =
-    "<%= escape_javascript(render('heb412_gen/sisarch/index_contenido')) %>"
-  document.querySelector("#nueva_nombre").value = ""
-  // Buscamos que al crear carpeta nuevo e ingresar presente menus contextuales
-  
-Heb412Gen__Motor.ejecutarAlCargarDocumentoYRecursos()
+document.querySelector("#ruta").textContent = "<%= @ruta%>"
+document.querySelector("#nuevo_ruta").value = "<%= File.join("arch", @ruta) %>"
+document.querySelector("#nueva_ruta").value = "<%= File.join("arch", @ruta) %>"
+document.querySelector("#contenido").innerHTML =
+  "<%= escape_javascript(render('heb412_gen/sisarch/index_contenido')) %>"
+document.querySelector("#nueva_nombre").value = ""
+// Buscamos que al crear carpeta nuevo e ingresar presente menus contextuales
+
+Heb412Gen__Motor.refrescar()
 document.addEventListener("DOMContentLoaded", function() {
   <% if @modhistorial %>
-    window.location.pathname = "<%= File.join(
-      Rails.configuration.relative_url_root, 
-      'sis/arch', @ruta) %>"
+      window.location.pathname = "<%= File.join(
+        Rails.configuration.relative_url_root, 
+        'sis/arch', @ruta) %>"
   <% end %>
 });
