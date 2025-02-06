@@ -176,7 +176,7 @@ export default class Heb412Gen__Motor {
   // y tipicamente después de que se ha cargado la página y los recursos.
   static ejecutarAlCargarDocumentoYRecursos() {
     console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarDocumentoYRecursos()")
-    refrescar()
+    Heb412Gen__Motor.refrescar()
     return
   }
 
@@ -187,7 +187,7 @@ export default class Heb412Gen__Motor {
   // para no ejecutar dos veces lo que no conviene.
   static ejecutarAlCargarPagina() {
     console.log("* Corriendo Heb412Gen__Motor::ejecutarAlCargarPagina()")
-    refrescar()
+    Heb412Gen__Motor.refrescar()
   }
 
   // Se ejecuta desde app/javascript/application.js tras importar el motor
