@@ -11,10 +11,6 @@ Msip.setup do |config|
     "MSIP_RUTA_VOLCADOS",
     "#{Rails.root}/archivos/bd",
   )
-  # En heroku los anexos son super-temporales
-  unless ENV["HEROKU_POSTGRESQL_GREEN_URL"].nil?
-    config.ruta_anexos = "#{Rails.root}/tmp/"
-  end
   config.titulo = "Heb412Gen #{Heb412Gen::VERSION}"
 
   config.descripcion = "Motor para manejar nube y plantillas en hoja de cálculo"
