@@ -13,7 +13,7 @@
   include_blank: true,
   input_html: {
     class: "tom-select",
-    "data-enviarautomatico" => "" 
+    'data-action': 'change->msip--enviarautomatico#enviar'
   },
   label: false,
   selected: Msip::ModeloHelper.poromision(params, :busvista)
