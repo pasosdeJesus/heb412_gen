@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |_repo| 'https://github.com/#{repo}.git' }
 
 gemspec
 
@@ -60,12 +60,14 @@ gem "will_paginate" # Listados en páginas
 # bien vistas
 
 gem "msip", # Motor generico
-  git: "https://gitlab.com/pasosdeJesus/msip.git", branch: 'main'
-  #path: '../msip'
+  git: "https://gitlab.com/pasosdeJesus/msip.git",
+  branch: "main"
+# path: '../msip'
 
 gem "mr519_gen", # Motor de gestion de formularios y encuestas
-  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git", branch: 'main'
-  #path: '../mr519_gen'
+  git: "https://gitlab.com/pasosdeJesus/mr519_gen.git",
+  branch: "main"
+# path: '../mr519_gen'
 
 group :development, :test do
   gem "brakeman"

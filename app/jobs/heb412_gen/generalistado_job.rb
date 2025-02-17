@@ -14,7 +14,7 @@ module Heb412Gen
     # 1. crear una vista en la base de datos --si no se especifica se
     #    usarán los registros filtrados en el listado
     # 2. convertir de la base de datos a objetos ruby usando el método presenta
-    # 
+    #
     # @param idplantilla Id de la plantilla
     # @param cmodelo Clase del modelo
     # @param ccontrolador Clase del controlador

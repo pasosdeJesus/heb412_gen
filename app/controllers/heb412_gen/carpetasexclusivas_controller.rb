@@ -8,7 +8,7 @@ module Heb412Gen
       :edit,
       :update,
       :destroy,
-      :show
+      :show,
     ]
     load_and_authorize_resource class: Heb412Gen::Carpetaexclusiva
 

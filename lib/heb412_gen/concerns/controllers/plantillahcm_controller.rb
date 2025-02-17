@@ -12,7 +12,7 @@ module Heb412Gen
           include Msip::ModeloHelper
 
           if $".select { |x| x =~ %r{/zip-} }.count > 0
-            raise "Conflicto entre rubyzip y zip. "\
+            raise "Conflicto entre rubyzip y zip. " \
               "Eliminar gema zip"
           end
 
@@ -278,7 +278,6 @@ module Heb412Gen
           def self.llena_plantilla_multiple_importadatos(
             plantillahcm, controlador, modelo, narchent, ulteditor_id
           )
-
             puts "self.llena_plantilla. ulteditor_id=#{ulteditor_id}"
             rutasal = File.join(
               Rails.application.config.x.heb412_ruta,
@@ -444,9 +443,9 @@ module Heb412Gen
                 head(:no_content)
                 return
               end
-              if Heb412Gen::Plantillahcm.where(
+              if Heb412Gen::Plantillahcm.find_by(
                 id: params[:filtro][:plantillahcm_id].to_i,
-              ).take.nil?
+              ).nil?
                 head(:no_content)
                 puts "No se encuentra plantilla #{params[:filtro][:plantillahcm_id]}"
                 return

@@ -10,6 +10,6 @@ class Msip::PersonasController < Heb412Gen::ModelosController
   end
 
   def index(c = nil)
-    super(c)
+    super
   end
 end

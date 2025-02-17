@@ -5,11 +5,11 @@ require "heb412_gen/version"
 Msip.setup do |config|
   config.ruta_anexos = ENV.fetch(
     "MSIP_RUTA_ANEXOS",
-    "#{Rails.root}/archivos/anexos",
+    "#{Rails.root.join("archivos/anexos")}",
   )
   config.ruta_volcados = ENV.fetch(
     "MSIP_RUTA_VOLCADOS",
-    "#{Rails.root}/archivos/bd",
+    "#{Rails.root.join("archivos/bd")}",
   )
   config.titulo = "Heb412Gen #{Heb412Gen::VERSION}"
 

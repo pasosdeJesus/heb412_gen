@@ -210,9 +210,9 @@ module Heb412Gen
 
           # eliminar archivo
           def eliminar_archivo
-            #if params && params[:ruta] && params[:ruta] != "arch/generados"
-              #authorize!(:destroy, Heb412Gen::Doc)
-            #end
+            # if params && params[:ruta] && params[:ruta] != "arch/generados"
+            # authorize!(:destroy, Heb412Gen::Doc)
+            # end
             # Se permite eliminación del directorio generados por parte de
             # cualquier usuario --no conviene por ejemplo de no autenticados
             if params[:arc].nil? || params[:ruta].nil? ||
