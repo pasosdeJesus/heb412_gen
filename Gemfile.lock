@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: ba73ce9cc6059691ce3c1ef005ad9cf8f8c9b877
+  revision: 935a3f16337a47a7aeee8a3a2ee58c1dd441b623
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 77bc3bc85f2fbffafe679cf4cb06825715099797
+  revision: 3dbae72aa3ba928dcefd67b49fee715f82e68389
   branch: v2.2
   specs:
     msip (2.2.0.beta7)
@@ -374,7 +374,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.1)
+    rubocop-rails (2.30.2)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -424,7 +424,7 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    twitter_cldr (6.13.0)
+    twitter_cldr (6.14.0)
       base64
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
@@ -516,4 +516,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.4
+   2.6.5
