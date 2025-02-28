@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 935a3f16337a47a7aeee8a3a2ee58c1dd441b623
+  revision: 209505491a65c878c9ad6cc8742f39fdab2a815b
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta7)
@@ -346,7 +346,7 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    redcarpet (3.6.0)
+    redcarpet (3.6.1)
     regexp_parser (2.10.0)
     reline (0.5.10)
       io-console (~> 0.5)
