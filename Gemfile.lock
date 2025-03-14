@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 4c1dfd6aaeaaafe9fc7c74e1a14c30cc68e1328e
+  revision: e65b0b12d43dd74bb0b35385f08d7d6994145a89
   branch: v2.2
   specs:
     mr519_gen (2.2.0.beta8)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 3236799e07d3dec84bde58f4edefe2d607b4c937
+  revision: 0984afcbbb6ce76fe514b27d977eef09e76643ee
   branch: v2.2
   specs:
     msip (2.2.0.beta8)
@@ -405,7 +405,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    spring (4.2.1)
+    spring (4.3.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -517,4 +517,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.5
+   2.6.6
