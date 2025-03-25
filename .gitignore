@@ -50,3 +50,7 @@ yard_doc
 .yardoc
 cobertura-unitarias/
 test/dummy/cobertura-sistema/
+test/dummy/app/assets/stylesheets/actiontext
+test/dummy/app/assets/stylesheets/heb412_gen
+test/dummy/app/assets/stylesheets/mr519_gen
+test/dummy/app/assets/stylesheets/msip
