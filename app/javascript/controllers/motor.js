@@ -31,7 +31,7 @@ export default class Heb412Gen__Motor {
       document.addEventListener('change', event => { 
         if (event.target.id = "plantillahcm_vista") {
           Msip__Motor.enviarAjaxDatosRutaYPinta(
-            'plantillahcm/pintacampos', 'vista=' + $(this).val(), 
+            'plantillahcm/pintacampos', 'vista=' + this.value, 
             '#gen_divcampos', '#divcampos'
           )
         }
@@ -208,7 +208,7 @@ export default class Heb412Gen__Motor {
     elema, idselplantilla, idruta, rutagenera, formatosalida = 'ods'
   ) {
     let formato = formatosalida
-    let p = $(idselplantilla).val().split('.')
+    let p = document.querySelector(idselplantilla).value.split('.')
     let nplantilla = p[0].replace(/[^a-zA-Z0-9_]/g, "")
     if (p.length == 2) {
       if (p[1] != 'html' && p[1] != 'ods' && p[1] != 'odt' && p[1] != 'xrlat' && p[1] != 'json' && p[1] != 'csv') {
@@ -223,11 +223,11 @@ export default class Heb412Gen__Motor {
     if (nplantilla.length > 0) {
       let f = null
       if (idruta == null) {
-        f = $(elema).closest('form')
+        f = document.querySelector(elema).closest('form')
       } else {
-        f = $("form[action$='" + idruta + "']")
+        f = document.querySelector("form[action$='" + idruta + "']")
       }
-      let d = f.serialize()
+      let d = Msip__Motor.serializarFormulario(f)
       d += '&idplantilla=' +  nplantilla
       d += '&formato=' +  formato
       d += '&formatosalida=' +  formatosalida
@@ -239,7 +239,7 @@ export default class Heb412Gen__Motor {
         rutagenera = window.puntoMontaje + rutagenera
       }
       let e = rutagenera + '.' + formatosalida + '?' + d
-      $(elema).attr('href', e)
+      elema.setAttribute('href', e)
     } else  {
       return false
     }
