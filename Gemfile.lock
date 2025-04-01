@@ -11,8 +11,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 6a095c39008eb96d0cb36ed4335d66c84e68c08f
-  branch: rails8
+  revision: 962207ac1933e847ed46919f3cdd09082dd539b1
+  branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
       msip
@@ -20,8 +20,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 24f05fb0d04e40a4f3af51b14a7c780c474047d7
-  branch: rails8
+  revision: 9bcb21704d8612652695bdeed5274ba0c624030f
+  branch: main
   specs:
     msip (2.3.0.alfa4)
       cancancan (~> 3)
