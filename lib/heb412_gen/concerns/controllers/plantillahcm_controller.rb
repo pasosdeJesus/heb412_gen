@@ -228,7 +228,13 @@ module Heb412Gen
             end
 
             n = File.join("/tmp", File.basename(plantillahcm.ruta))
-            libro.save(n)
+            n1 = File.join(
+              "/tmp", 
+              "probcompr_#{File.basename(plantillahcm.ruta)}"
+            )
+            libro.save(n1)
+            res = %x(zip -F "#{n1}" --out "#{n}")
+            puts "OJO llena_plantilla_multiple_fd zip res=#{res}"
 
             n
           end
@@ -411,7 +417,13 @@ module Heb412Gen
             end
 
             n = File.join("/tmp", File.basename(plantillahcm.ruta))
-            librosal.save(n)
+            n1 = File.join(
+              "/tmp", 
+              "probcompr_#{File.basename(plantillahcm.ruta)}"
+            )
+            librosal.save(n1)
+            res = %x(zip -F "#{n1}" --out "#{n}")
+            puts "OJO llena_plantilla_multiple_importadatos zip res=#{res}"
 
             n
           end
