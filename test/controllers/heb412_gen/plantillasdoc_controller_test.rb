@@ -5,6 +5,8 @@ require "test_helper"
 class PlantillasdocControllerTest < ActionController::TestCase
   setup do
     skip
+
+    Rails.application.try(:reload_routes_unless_loaded)
     @plantilladoc = Plantilladoc(:one)
   end
 

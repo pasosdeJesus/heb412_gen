@@ -13,6 +13,7 @@ module Heb412Gen
         raise "CONFIG_HOSTS debe ser www.example.com"
       end
 
+      Rails.application.try(:reload_routes_unless_loaded)
       @current_usuario = ::Usuario.find(1)
       sign_in @current_usuario
       @grupo = Msip::Grupo.create(PRUEBA_GRUPO)
