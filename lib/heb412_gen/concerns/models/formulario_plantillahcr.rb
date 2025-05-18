@@ -7,16 +7,13 @@ module Heb412Gen
         extend ActiveSupport::Concern
 
         included do
-
           belongs_to :plantillahcr,
             class_name: "::Heb412Gen::Plantillahcr",
             optional: false
           belongs_to :formulario,
             class_name: "::Heb412Gen::Formulario",
             optional: false
-
         end
-
       end
     end
   end

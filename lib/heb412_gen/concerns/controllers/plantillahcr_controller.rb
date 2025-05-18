@@ -229,8 +229,8 @@ module Heb412Gen
 
             n = File.join("/tmp", File.basename(plantillahcr.ruta))
             n1 = File.join(
-              "/tmp", 
-              "probcompr_#{File.basename(plantillahcr.ruta)}"
+              "/tmp",
+              "probcompr_#{File.basename(plantillahcr.ruta)}",
             )
             libro.save(n1)
             res = %x(zip -F "#{n1}" --out "#{n}")

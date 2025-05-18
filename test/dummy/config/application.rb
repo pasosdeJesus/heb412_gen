@@ -16,7 +16,6 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "rails/test_unit/railtie"
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -25,10 +24,9 @@ require "heb412_gen"
 
 module Dummy
   class Application < Rails::Application
+    config.load_defaults(Rails::VERSION::STRING.to_f)
 
-    config.load_defaults Rails::VERSION::STRING.to_f
-
-    config.autoload_lib(ignore: %w(assets tasks))
+    config.autoload_lib(ignore: ["assets", "tasks"])
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -54,8 +52,7 @@ module Dummy
 
     config.x.formato_fecha = ENV.fetch("MSIP_FORMATO_FECHA", "yyyy-mm-dd")
 
-
-    config.relative_url_root = ENV.fetch('RUTA_RELATIVA', '/heb412')
+    config.relative_url_root = ENV.fetch("RUTA_RELATIVA", "/heb412")
 
     config.x.heb412_ruta = Pathname(ENV.fetch(
       "HEB412_RUTA", Rails.public_path.join("heb412").to_s

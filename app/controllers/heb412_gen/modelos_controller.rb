@@ -184,9 +184,9 @@ module Heb412Gen
       if params[:idplantilla].nil? or params[:idplantilla].to_i <= 0 or
           @registros == []
         flash[:error] = "No hay registros por generar"
-      elsif Heb412Gen::Plantillahcm.where(
+      elsif Heb412Gen::Plantillahcm.find_by(
         id: params[:idplantilla].to_i,
-      ).take.nil?
+      ).nil?
         flash[:error] = "No hay plantilla para generar"
       else
         pl = Heb412Gen::Plantillahcm.find(
@@ -288,7 +288,7 @@ module Heb412Gen
         flash.now[:error] = "Problemas al generar plantilla #{npl}"
         redirect_to(main_app.root_path)
       else
-        puts "OJO reporte_a=#{reporte_a}, tipomime=#{tipomime}, "\
+        puts "OJO reporte_a=#{reporte_a}, tipomime=#{tipomime}, " \
           "narchivo=#{narchivo}"
         send_file(
           reporte_a, # x_sendfile: true,
@@ -353,7 +353,7 @@ module Heb412Gen
 
       narchivo << File.basename(plantilla.ruta)
       report = ::ODFReport::Report.new(
-        "#{Rails.root}/public/heb412/#{plantilla.ruta}",
+        "#{Rails.root.join("public/heb412/#{plantilla.ruta}")}",
       ) do |r|
         cn = current_ability.campos_plantillas[plantilla.vista][:campos]
         cn.each do |s|
@@ -396,6 +396,7 @@ module Heb412Gen
       unless plantilla
         return
       end
+
       narchivo = narchivo.dup
       narchivo << File.basename(plantilla.ruta.sub(/.ods$/, ".xlsx"))
       ngen = Heb412Gen::PlantillahcrController.llena_plantilla_fd(

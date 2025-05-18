@@ -1,27 +1,25 @@
 # frozen_string_literal: true
 
 Heb412Gen::Engine.routes.draw do
-
   resources :campoplantillahcm, only: [], param: :index do
     member do
-      delete '(:id)', to: "camposplantillahcm#destroy", as: "eliminar"
-      post '/' => "camposplantillahcm#create", as: "crear"
+      delete "(:id)", to: "camposplantillahcm#destroy", as: "eliminar"
+      post "/" => "camposplantillahcm#create", as: "crear"
     end
   end
 
   resources :campoplantillahcr, only: [], param: :index do
     member do
-      delete '(:id)', to: "camposplantillahcr#destroy", as: "eliminar"
-      post '/' => "camposplantillahcr#create", as: "crear"
+      delete "(:id)", to: "camposplantillahcr#destroy", as: "eliminar"
+      post "/" => "camposplantillahcr#create", as: "crear"
     end
   end
-
 
   resources :carpetasexclusivas,
     path_names: { new: "nuevo", edit: "edita" }
 
   resources :docs,
-    path_names: { new: "nuevo", edit: "edita" } 
+    path_names: { new: "nuevo", edit: "edita" }
   # ,  only: [:edit, :update, :new, :create, :destroy]
 
   get "docs/:id/impreso" => "docs#impreso", as: :impreso

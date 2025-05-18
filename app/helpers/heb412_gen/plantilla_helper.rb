@@ -162,9 +162,9 @@ module Heb412Gen
     # otro con ese id).
     def elimina_columna(plantillahcm_id, id)
       pore = Heb412Gen::Campoplantillahcm
-        .where(plantillahcm_id: plantillahcm_id).where(id: id).take
+        .where(plantillahcm_id: plantillahcm_id).find_by(id: id)
       unless pore
-        raise "No se encontró columna con id #{id} en "\
+        raise "No se encontró columna con id #{id} en " \
           "plantilla con id #{plantillahcm_id}"
       end
       col = pore.columna
@@ -198,17 +198,17 @@ module Heb412Gen
       if n <= 0
         return ""
       end
+
       lini = n
       col = ""
       loop do
-        letrafin= ((lini - 1) % 26) + 65
+        letrafin = ((lini - 1) % 26) + 65
         col = letrafin.chr + col
         lini = (lini - 1) / 26
         break if lini <= 0
       end
-      return col
+      col
     end
     module_function :numero_a_columna
-
   end
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   devise_scope :usuario do
     get "sign_out" => "devise/sessions#destroy"
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Heb412Gen
   module Concerns
     module Controllers
@@ -5,7 +7,6 @@ module Heb412Gen
         extend ActiveSupport::Concern
 
         included do
-
           def destroy
           end
 
@@ -16,13 +17,11 @@ module Heb412Gen
 
           def preparar_plantillahcr
             @registro = @plantillahcr = Heb412Gen::Plantillahcr.new(
-              campoplantillahcr: [Heb412Gen::Campoplantillahcr.new]
+              campoplantillahcr: [Heb412Gen::Campoplantillahcr.new],
             )
           end
         end # included
-
       end
     end
   end
 end
-
