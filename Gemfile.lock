@@ -48,7 +48,7 @@ GIT
 PATH
   remote: .
   specs:
-    heb412_gen (2.2.0.beta8)
+    heb412_gen (2.2.0)
       mr519_gen
       msip
       redcarpet
@@ -519,4 +519,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.8
+   2.6.9
