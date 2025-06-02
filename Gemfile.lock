@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/pasosdeJesus/sip.git
-  revision: 9fc8158fbc6ae92594278dc919afa9a801f036b9
+  revision: 35f17acbb9db92ace45ef8e788c3f3b354783d97
   branch: v2.1
   specs:
     sip (2.1.0.beta1)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 59459d274b8981104be21303b89b7ee6334b0f31
+  revision: d2f935d5e5f8b6c0c326bf06bc4fa73c48f5ebfa
   branch: v2.1
   specs:
     mr519_gen (2.1.0.beta1)
@@ -129,7 +129,7 @@ GEM
       execjs (~> 2.0)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    bigdecimal (3.2.0)
+    bigdecimal (3.2.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
