@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: ccda597b7b283a3ec7dbafd68d1d109b4d564713
+  revision: 21cb35edbf7c47c78eedfd3ff72ce34cbf2d2d1a
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 6a1f16bfb4fea3e3900e48bc23abdaf75cd4026b
+  revision: c7d29febdb585ed1eb3c051885380ae74bd51f0f
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -374,7 +374,7 @@ GEM
     rubocop-ast (1.44.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    rubocop-minitest (0.38.0)
+    rubocop-minitest (0.38.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.38.0, < 2.0)
