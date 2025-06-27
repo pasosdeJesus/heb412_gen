@@ -53,10 +53,10 @@ test:
     - bin/rails db:drop db:create db:setup
     - bin/rails msip:indices
     - yarn
-    - bin/rails assets:precompile
     - ls -l public
     - ls -l public/heb412_sisarch
     - ls -l public/heb412_2_2
+    - bin/rails assets:precompile
     - cd ../..
   script:
     - NORPEUBAJS=1 bin/regresion.sh
