@@ -7,15 +7,14 @@ services:
     alias: postgres
 
 variables:
-  BUNDLE_PATH: vendor/bundle
-  NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
   CC_TEST_REPORTER_ID: "25b2e6c40bbd457e1569bff1c83e9a461986bdfa180cf6049090dd6ac358bdd2"
   CI: 'Si'
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
+  POSTGRES_DB: msipdes_pru
   POSTGRES_ENABLED: 'true'
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ''
-  POSTGRES_DB: heb412gen_pru
   POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_PASSWORD: ''
+  POSTGRES_USER: runner
   RAILS_ENV: test
 
 stages:
@@ -75,4 +74,3 @@ include:
     - template: Security/SAST.gitlab-ci.yml
     - template: Security/Secret-Detection.gitlab-ci.yml
     - template: Security/DAST.gitlab-ci.yml
-
