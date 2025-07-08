@@ -3,13 +3,9 @@
 
 /* Bootstrap */
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
 /* Tomselect */
 @import "tom-select/dist/css/tom-select.bootstrap5.min.css";
-
-/* Fontawesome */
-@import "@fortawesome/fontawesome-free/css/fontawesome.css"
 
 /* Gridstack */
 
@@ -19,21 +15,5 @@
 @import 'msip/motor.css';
 @import 'mr519_gen/motor.css';
 @import 'heb412_gen/motor.css';
-
-
-:root, :host {
-  --fa-style-family-classic: 'Font Awesome 6 Free';
-  --fa-font-solid: normal 900 1em/1 'Font Awesome 6 Free'; }
-
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-style: normal;
-  font-weight: 900;
-  font-display: block;
-  src: url("webfonts/fa-solid-900.woff2") format("woff2"), url("webfonts/fa-solid-900.ttf") format("truetype"); }
-
-.fas,
-.fa-solid {
-  font-weight: 900; }
 
 
