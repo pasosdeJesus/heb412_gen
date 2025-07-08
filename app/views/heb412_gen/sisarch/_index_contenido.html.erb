@@ -21,7 +21,7 @@
             <td class='heb412-anchofijo-td'>
               <div class='heb412_ndir heb412-anchofijo-div'>
                 <%= link_to url, remote: true do %>
-                  <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
+                  <span>&#x1f5bf; <%= a[:nombre] %></span>
                 <% end %>
               </div>
             </td>
@@ -32,7 +32,7 @@
             <td class='heb412_directorio heb412-anchofijo-td'>
               <div class='heb412_ndir heb412-anchofijo-div'>
                 <%= link_to url, remote: true do %>
-                  <%= fa_icon 'folder', text: " #{a[:nombre]}" %>
+                  <span>&#x1f5bf; <%= a[:nombre] %></span>
                 <% end %>
               </div>
             </td>
@@ -42,7 +42,7 @@
             <div 
               class="heb412_archivo heb412-anchofijo-div" 
               data-heb412-indice="<%= indice %>">
-              <%= fa_icon 'file' %> <%= a[:nombre] %>
+              <span>&#x1f5cc; <%= a[:nombre] %></span>
             </div>
           </td>
           <td class='heb412-anchofijo-td'>
@@ -52,7 +52,7 @@
                   File.basename(url).to_s,
                   id: "heb412-enlace-#{indice}",
                   target: '_blank' do %>
-                  <span style="font-weight: bold">&#x2193;</span>
+                  <span style="font-weight: bold">&#x2913;</span>
                 <% end %>
               <% end %>
               <% a[:plantillashcm].each do |v| %>
@@ -63,12 +63,12 @@
                     Rails.configuration.relative_url_root,
                     current_ability.campos_plantillas[v[1]][:ruta]) %>
                   <%= link_to r do %>
-                    <%= fa_icon 'table' %>
+                    <span>&#x1f5bd;</span>
                   <% end %>
                 <% end %>
                 <% if can? :edit, Heb412Gen::Plantillahcm %>
                   <%= link_to heb412_gen.plantillahcm_path(v[0]) do %>
-                    <%= fa_icon 'gears' %>
+                    <span>&#x2699;</span>
                   <% end %>
                 <%end %>
               <% end %>
