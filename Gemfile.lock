@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 5095a7edcaacb9b48b3686a3e3d77ec685ee0eb4
+  revision: dbb6862a627c58bbd57e0949df267d6efc3c9220
   branch: sintema
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 41b2a92175b9d4fad5af1cc80a9442c9b56831f5
+  revision: a23c746bf06cbf4957aabf1e5596b5f06d46660b
   branch: sintema
   specs:
     msip (2.3.0.alfa4)
