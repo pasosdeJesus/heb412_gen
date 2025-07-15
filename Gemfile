@@ -10,15 +10,11 @@ gem "bootsnap"
 
 gem "cancancan" # Roles
 
-gem "cssbundling-rails"
-
 gem "devise" # Autenticación
 
 gem "devise-i18n"
 
 gem "jbuilder"
-
-gem "jsbundling-rails"
 
 gem "kt-paperclip", # Anexos
   git: "https://github.com/kreeti/kt-paperclip.git"
@@ -31,8 +27,6 @@ gem "odf-report" # Genera ODT
 
 gem "pg"
 
-gem "propshaft"
-
 gem "rails", "~> 8.0"
 # git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
@@ -43,6 +37,8 @@ gem "rspreadsheet" # Genera ODS
 gem "rubyzip"
 
 gem "simple_form" # Formularios simples
+
+gem "sprockets-rails"
 
 gem "stimulus-rails"
 
