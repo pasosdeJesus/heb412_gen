@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 24608f1fe0d9dedb6fb3ffccaf791a4fd06c7817
+  revision: 4218f63d7673e73fff2e62feab2d23c760e337f9
   branch: v2.2
   specs:
     mr519_gen (2.2.0)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: c1ffbe951e6a4bcff7bc95b3232a944794ea53e5
+  revision: cc806f8286d12e5e04576e56ada4357d65d0c590
   branch: v2.2
   specs:
     msip (2.2.0)
@@ -230,7 +230,7 @@ GEM
       railties (>= 6.0.0)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    libxml-ruby (5.0.4)
+    libxml-ruby (5.0.5)
     lint_roller (1.1.0)
     logger (1.6.1)
     loofah (2.22.0)
@@ -297,7 +297,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
-    puma (6.6.0)
+    puma (6.6.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.7)
@@ -393,7 +393,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (2.4.1)
+    rubyzip (3.0.0)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
