@@ -393,7 +393,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (3.0.0)
+    rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -510,7 +510,7 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-rails
   rubocop-shopify
-  rubyzip (>= 2.0)
+  rubyzip (<= 2.4.1)
   sassc-rails
   simple_form
   simplecov

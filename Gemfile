@@ -42,7 +42,7 @@ gem "redcarpet"
 
 gem "rspreadsheet" # Genera ODS
 
-gem "rubyzip", ">= 2.0"
+gem "rubyzip", "<= 2.4.1"
 
 gem "sassc-rails"
 
