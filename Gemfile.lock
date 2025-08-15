@@ -349,7 +349,7 @@ GEM
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.13.0)
-    rubyzip (3.0.1)
+    rubyzip (2.4.1)
     securerandom (0.4.1)
     simple_form (5.3.1)
       actionpack (>= 5.2)
@@ -446,7 +446,7 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-rails
   rubocop-shopify
-  rubyzip
+  rubyzip (<= 2.4.1)
   simple_form
   simplecov
   spring
