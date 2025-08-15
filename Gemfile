@@ -34,7 +34,7 @@ gem "redcarpet"
 
 gem "rspreadsheet" # Genera ODS
 
-gem "rubyzip"
+gem "rubyzip", "<= 2.4.1"
 
 gem "simple_form" # Formularios simples
 
