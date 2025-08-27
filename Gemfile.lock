@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 98628b61c85c6bdf7440cd1e29056eb88864a8f0
+  revision: d45848809108cf5158c27d11709b6995468e51dc
   branch: main
   specs:
     mr519_gen (2.3.0.alfa4)
@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 7841171b8947da9161b3f59a87547f87ed0d99a1
+  revision: 3c30bfa3816958182ecfafdb7596d05d05557858
   branch: main
   specs:
     msip (2.3.0.alfa4)
@@ -155,7 +155,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.14.0)
+    devise-i18n (1.15.0)
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
