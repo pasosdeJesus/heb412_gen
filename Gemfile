@@ -117,11 +117,7 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
-
   gem "connection_pool"
-
-  gem "cuprite"
 
   gem "minitest", "~> 5.16"
 
