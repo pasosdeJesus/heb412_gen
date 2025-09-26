@@ -1,79 +1,90 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) { |_repo| 'https://github.com/#{repo}.git' }
+# No usamos gemspec porque la aplicacón de prueba de un motor rails
+# no lo soporta.
 
-gemspec
+ruby ">= 3.1.2"
 
 gem "babel-transpiler"
 
-gem "bootsnap"
+gem "benchmark"
 
-gem "cancancan" # Roles
+gem "bootsnap", ">= 1.4.4", require: false
 
-gem "coffee-rails", "~> 4.2"
+gem "cancancan", "~> 3.4" # Control de acceso
 
-gem "cocoon", git: "https://github.com/vtamara/cocoon.git", branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
+gem "cocoon",
+  git: "https://github.com/vtamara/cocoon.git",
+  branch: "new_id_with_ajax" # Formularios anidados (algunos con ajax)
 
-gem "devise" # Autenticación
+gem "coffee-rails", "~> 5.0"    # CoffeeScript para recursos .js.coffee
 
-gem "devise-i18n"
+gem "devise", "~> 4.8"          # Autenticación
 
-gem "jbuilder", "~> 2.5"
+gem "devise-i18n"               # Localización e Internacionalización
+
+gem "jbuilder", ">= 2.7"        # Json
 
 gem "jsbundling-rails"
 
-gem "kt-paperclip", # Anexos
+gem "kt-paperclip",             # Anexos
   git: "https://github.com/kreeti/kt-paperclip.git"
+# git: 'https://github.com/vtamara/paperclip.git', branch: 'fix-ruby3'
+# path: '../tmp/paperclip'
 
 gem "libxml-ruby"
 
 gem "nokogiri", ">=1.11.1"
 
-gem "odf-report" # Genera ODT
+gem "odf-report"
 
-gem "pg"
+gem "pg" # PostgreSQL
 
-gem "rails", "~> 7.2"
+gem "puma" # Lanza en modo desarrollo
+
+gem "rails", ">= 7.2.2.2", "< 7.3"
 # git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
+
+gem "rails-i18n", "~> 7.0"      # Localización e Internacionalización
 
 gem "redcarpet"
 
-gem "rspreadsheet" # Genera ODS
+gem "rexml", ">= 3.4.2"
 
-gem "rubyzip", "<= 2.4.1"
+gem "rspreadsheet"
 
-gem "sassc-rails"
+gem "sassc-rails", "~> 2.1"     # Conversión a CSS
 
-gem "simple_form" # Formularios simples
+gem "simple_form", "~> 5.1"     # Formularios
 
 gem "sprockets-rails"
 
-gem "stimulus-rails"
+gem "stimulus-rails"            # Controladores en javascript
 
 gem "turbo-rails", "~> 1.0"
 
-gem "twitter_cldr" # ICU con CLDR
+gem "twitter_cldr", "~> 6.11"   # Localiación e internacionalización
 
-gem "tzinfo" # Zonas horarias
+gem "tzinfo"                    # Zonas horarias
 
-gem "will_paginate" # Listados en páginas
+gem "will_paginate"             # Pagina listados
 
 #####
 # Motores que se sobrecargan vistas (deben ponerse en orden de apilamiento
-# lógico y no alfabetico como las gemas anteriores) para que sobrecarguen
-# bien vistas
-
+# lógico y no alfabetico como las gemas anteriores)
 gem "msip", # Motor generico
   git: "https://gitlab.com/pasosdeJesus/msip.git",
   branch: "v2.2"
-# path: '../msip-2.2'
+# path: "../msip-2.2"
 
-gem "mr519_gen", # Motor de gestion de formularios y encuestas
+gem "mr519_gen", # Motor generico
   git: "https://gitlab.com/pasosdeJesus/mr519_gen.git",
   branch: "v2.2"
-# path: '../mr519_gen-2.2'
+# path: "../mr519_gen-2.2"
+
 
 group :development, :test do
   gem "brakeman"
@@ -95,22 +106,30 @@ group :development, :test do
   gem "rubocop-rails"
 
   gem "rubocop-shopify"
+
+  gem "thor", ">= 1.4.0"
+
+  gem "yard"
+end
+
+group :development do
+  gem "web-console", ">= 3.3.0"
 end
 
 group :test do
   gem "capybara"
 
+  gem "connection_pool"
+
   gem "cuprite"
+
+  gem "minitest", "~> 5.16"
+
+  gem "minitest-reporters"
 
   gem "rails-controller-testing"
 
   gem "simplecov"
-end
 
-group :development do
-  gem "puma"
-
-  gem "spring"
-
-  gem "web-console"
+  gem "spork" # Un proceso para cada prueba -- acelera
 end

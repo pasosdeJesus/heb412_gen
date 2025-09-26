@@ -10,11 +10,11 @@ Gem::Specification.new do |s|
   s.name        = "heb412_gen"
   s.version     = Heb412Gen::VERSION
   s.authors     = ["Vladimir Támara Patiño"]
-  s.email       = ["vtamara@pasosdeJesus.org"]
-  s.homepage    = "http://sivel.sf.net"
+  s.email       = ["vtamara@pasosdejesus.org"]
+  s.homepage    = "https://gitlab.com/pasosdeJesus/heb412_gen"
   s.summary     = "Motor para heb412"
   s.description = ""
-  s.license     = "Dominio Público de acuerdo a Legislación Colombiana"
+  s.license     = "ISC"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA", "Rakefile", "README.md"]
 

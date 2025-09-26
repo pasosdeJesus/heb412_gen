@@ -10,6 +10,7 @@ module Heb412Gen
           include ActionView::Helpers::AssetUrlHelper
           include Msip::FormatoFechaHelper
           include Msip::ModeloHelper
+
           helper ::ApplicationHelper
 
           def clase
