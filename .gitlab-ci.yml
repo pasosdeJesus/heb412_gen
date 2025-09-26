@@ -9,7 +9,7 @@ services:
 variables:
   CI: 'Si'
   NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
-  POSTGRES_DB: heb412_pru
+  POSTGRES_DB: heb412gen_pru
   POSTGRES_ENABLED: 'true'
   POSTGRES_HOST_AUTH_METHOD: trust
   POSTGRES_PASSWORD: ''
