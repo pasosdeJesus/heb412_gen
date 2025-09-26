@@ -6,6 +6,7 @@ module Heb412Gen
   class DocsControllerTest < ActionDispatch::IntegrationTest
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
+
     # include Cocoon::ViewHelpers
 
     setup do
