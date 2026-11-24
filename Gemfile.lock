@@ -7,8 +7,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/mr519_gen.git
-  revision: 87b383305a903a88f14f194ebf71752394cb2ed4
-  branch: v2.2
+  revision: 2712b4ad8d7eb6d0aee133b96549a4ab24f4f6c3
+  branch: v2.2r3.4
   specs:
     mr519_gen (2.2.0)
       msip
@@ -16,8 +16,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/pasosdeJesus/msip.git
-  revision: 577e59e44e93ed0689d4316daf6b99d2cdfbf385
-  branch: v2.2
+  revision: 6741be15b543a8ce6317c0a060eb0addf06391fd
+  branch: v2.2r3.4
   specs:
     msip (2.2.0)
       cancancan (~> 3)

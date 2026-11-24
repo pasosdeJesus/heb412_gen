@@ -81,13 +81,13 @@ gem "will_paginate"             # Pagina listados
 # lógico y no alfabetico como las gemas anteriores)
 gem "msip", # Motor generico
   git: "https://gitlab.com/pasosdeJesus/msip.git",
-  branch: "v2.2"
-# path: "../msip-2.2"
+  branch: "v2.2r3.4"
+# path: "../msip-2.2r3.4"
 
 gem "mr519_gen", # Motor generico
   git: "https://gitlab.com/pasosdeJesus/mr519_gen.git",
-  branch: "v2.2"
-# path: "../mr519_gen-2.2"
+  branch: "v2.2r3.4"
+# path: "../mr519_gen-2.2r3.4"
 
 
 group :development, :test do
